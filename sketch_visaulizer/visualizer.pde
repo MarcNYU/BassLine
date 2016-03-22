@@ -9,7 +9,7 @@ class visualizer {
   float t = 0;
   float tChange = .02;
   visualizer() {  
-    //output = createWriter("data.txt");
+    output = createWriter("music.txt");
     hVal = 0;
     //rectMode(CORNERS);
     rectMode(CORNER);
@@ -41,7 +41,7 @@ class visualizer {
       //change to:
       //rect(x, y, w, h);
       //println((height/2 - 100) - fft.getFreq(i)*1.2);
-      //output.println((height/2 - 100) - fft.getFreq(i)*1.2);
+      output.println(fft.getFreq(i)*1.2);
       
       rect(i, height/12, 25, (height/2 - 100) - fft.getFreq(i)*1.2);// draws an inversed rect and alters its height based on the translated frequency
       rect(i, height+50, 25, -height/2 - fft.getFreq(i)*1.2);// draws a rect and alters its height based on the translated frequency
