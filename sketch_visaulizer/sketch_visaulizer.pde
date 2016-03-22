@@ -46,7 +46,7 @@ void setup()
 
 void draw()
 {
-  canPlay = true;
+    canPlay = true;
     background(0);
     classicVi.drawEQ();
     if(canPlay)
