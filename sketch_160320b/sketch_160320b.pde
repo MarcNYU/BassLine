@@ -27,11 +27,12 @@ boolean jump = false;
 boolean superjump = false;
 boolean leftPressed = false;
 boolean rightPressed = false;
-float gravity = 0.2;
+float gravity = 0.25;
 float ground = 300;
 float dampen = 0.2;
 float y;
-float speed = 6.2;
+float speed = 2.6;
+float timer = 60;
 
 int set = 0;
 int[] seq;
@@ -39,7 +40,6 @@ int[] seq;
 Camera c;
 PipeSet[] ps;
 int NUMPIPES;
-int numPipes;
 static final int GAMEOVER = 1;
 static final int GAME = 0;
 int gameState;
@@ -84,12 +84,45 @@ class PipeSet {
 
   void drawPipes() {
     //fill(pos.x/2, 30, pos.y/2);
+    if (timer > 0) {
+      timer -= .001;
+      if (pos.y == 50) {
+        stroke(#14FF00);//Green
+        fill(#14FF00);//Green
+      }
+      if (pos.y == 70) {
+        //stroke(#00F4FF);//Blue
+        //fill(#00F4FF);//Blue
+        stroke(#FFF700);//Yellow
+        fill(#FFF700);//Yellow
+      }
+      if (pos.y == 90) {
+        //stroke(#FFF700);//Yellow
+        //fill(#FFF700);//Yellow
+        stroke(#FC0303);//Red
+        fill(#FC0303);//Red
+      }
+      if (pos.y == 110) {
+        //stroke(#FC0303);//Red
+        //fill(#FC0303);//Red
+        stroke(#00F4FF);//Blue
+        fill(#00F4FF);//Blue
+      }
+      if (pos.y == 150) {
+        smooth();
+        colorMode(HSB);// sets color mode value 
+        fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
+        stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
+        colorMode(RGB);//sets color mode back to Red green and blue 
+      }
+    }
+    else {
     smooth();
     colorMode(HSB);// sets color mode value 
     fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
     stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
     colorMode(RGB);//sets color mode back to Red green and blue 
-
+    }
     rect(pos.x, 0, 50, pos.y);
     rect(pos.x, pos.y+bHeight, 50, height);
 
@@ -108,7 +141,7 @@ void setup() {
   frameRate(60);
   String l[] = loadStrings("music.txt");
   lines = l;
-  NUMPIPES = lines.length - 300;
+  NUMPIPES = lines.length;
   minim = new Minim(this);
   //mp3 = minim.loadFile("68 Gerudo Valley.mp3",2048);
   //mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3",2048);
@@ -129,7 +162,8 @@ void draw() {
     canPlay = false;
     started = false;
     canPlay = true;
-    mp3.close();
+    mp3.pause();
+    mp3.rewind();
     //minim.stop();
     background(0);
     //mp3.pause();
@@ -144,7 +178,6 @@ void draw() {
     }
     break;
   case 0:
-    canPlay = true;
     background(0);
     mp3.play();
     update();
@@ -280,13 +313,29 @@ void render() {
 }
 
 void drawFG() {
+  //stroke(255);
   fill(0);
   rect(-20, height-200, width+50, 300);
-  fill(255);
+  
+  fill(#FC0303);//Red
   ellipse(width/2 - 35, 500, 50, 50);
+  fill(255);
+  ellipse(width/2 - 35, 500, 40, 40);
+  
+  fill(#FFF700);//Yellow
   ellipse(width/2 + 35, 500, 50, 50);
+  fill(255);
+  ellipse(width/2 + 35, 500, 40, 40);
+  
+  fill(#00F4FF);//Blue
   ellipse(width/2 - 75, 550, 50, 50);
+  fill(255);
+  ellipse(width/2 - 75, 550, 40, 40);
+  
+  fill(#14FF00);//Green
   ellipse(width/2 + 75, 550, 50, 50);
+  fill(255);
+  ellipse(width/2 + 75, 550, 40, 40);
 }
 
 void drawGUI() {
@@ -305,10 +354,22 @@ void makePipes(String g[]) {
   float y = 150;
   float h = 125;
   //println(g.length + " = " + NUMPIPES);
-  for (int i = 0; i < NUMPIPES; i++) {
+  for (int i = 87; i < NUMPIPES; i++) {
     ps[i] = new PipeSet(x, y, h);
     //println(g[i]);
-    y = 150 - ceil(int(g[i]));
+    //if (int(g[i]) < 1) y = 150;
+    //if (int(g[i]) >= 1 && int(g[i]) <= 3) y = 110;
+    //if (int(g[i]) > 3 && int(g[i]) <= 5) y = 90;
+    //if (int(g[i]) > 5 && int(g[i]) <= 7) y = 70;
+    //if (int(g[i]) > 7) y = 50;
+    
+    if (int(g[i]) < 1) y = 50;
+    if (int(g[i]) >= 1 && int(g[i]) <= 3) y = 70;
+    if (int(g[i]) > 3 && int(g[i]) <= 5) y = 90;
+    if (int(g[i]) > 5 && int(g[i]) <= 7) y = 110;
+    if (int(g[i]) > 7) y = 150;
+    
+    //y = 150 - ceil(int(g[i])*1.5);
     h = 125;
     x += 150;
   }
@@ -317,11 +378,11 @@ void makePipes(String g[]) {
 void drawPipes() {
 
 
-  for (int i = 0; i < NUMPIPES; i++) {
+  for (int i = 87; i < NUMPIPES; i++) {
     if (PVector.dist(b.pos, ps[i].pos) < 650)
       ps[i].draw();
-    //if (b.pos.x > ps[i].pos.x && b.pos.x < ps[i].pos.x + ps[i].bWidth && (b.pos.y < ps[i].pos.y || b.pos.y > ps[i].pos.y + ps[i].bHeight))
-    //  gameState = GAMEOVER;
+    if (b.pos.x > ps[i].pos.x && b.pos.x < ps[i].pos.x + ps[i].bWidth && (b.pos.y < ps[i].pos.y || b.pos.y > ps[i].pos.y + ps[i].bHeight))
+     gameState = GAMEOVER;
   }
 }
 
@@ -330,7 +391,7 @@ void handelInputs() {
     //LEFT
     if (key == 'q') {
       shortHop = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
+      if (b.pos.y >= ground-55 && b.pos.y <= ground) {
         spike = 100;
         if (set < 4) {
           seq[set] = 1;
@@ -344,7 +405,7 @@ void handelInputs() {
     }
     if (key == 'w') {
       hop = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
+      if (b.pos.y >= ground-55 && b.pos.y <= ground) {
         spike = 300;
         if (set < 4) {
           seq[set] = 2;
@@ -359,7 +420,7 @@ void handelInputs() {
     //RIGHT
     if (key == 'o') {
       jump = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
+      if (b.pos.y >= ground-55 && b.pos.y <= ground) {
         spike = 600;
         if (set < 4) {
           seq[set] = 3;
@@ -373,7 +434,7 @@ void handelInputs() {
     }
     if (key == 'p') {
       superjump = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
+      if (b.pos.y >= ground-55 && b.pos.y <= ground) {
         spike = 900;
         if (set < 4) {
           seq[set] = 4;

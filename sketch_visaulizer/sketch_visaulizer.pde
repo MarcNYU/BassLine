@@ -1,8 +1,9 @@
 import ddf.minim.*;
 import ddf.minim.signals.*; 
 import ddf.minim.analysis.*;
-visualizer classicVi;
+//visualizer classicVi;
 //v classicVi;
+right classicVi;
 
 Minim minim;
 FFT fft;
@@ -22,7 +23,7 @@ void setup()
 {
   
   //program setup 
-  size(900,500);
+  size(900,640);
   frameRate(60);
   started = false;
   selection = false;
@@ -40,8 +41,9 @@ void setup()
   rectMode(CORNERS);
   mp3.loop();
   
-  classicVi = new visualizer(); // initializes the class visualizer
+  //classicVi = new visualizer(); // initializes the class visualizer
   //classicVi = new v(); // initializes the class visualizer
+  classicVi = new right(); // initializes the class visualizer
 }
 
 void draw()
@@ -62,7 +64,7 @@ void keyPressed()
     started = false; //kills the program 
     mp3.pause();
   }
-  output.flush(); // Writes the remaining data to the file
-  output.close(); // Finishes the file
-  exit(); // Stops the program
+  //output.flush(); // Writes the remaining data to the file
+  //output.close(); // Finishes the file
+  //exit(); // Stops the program
 }
