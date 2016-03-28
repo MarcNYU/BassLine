@@ -17,14 +17,14 @@ AudioPlayer mp3;
 static final int GAMEOVER = 1;
 static final int GAME = 0;
 int gameState;
-int hVal;
+int hVal; 
 float spike;
-float easing = 0.35;
-float gravity = 0.2;
-float ground = 690;
-float left = 50;
-float right = 590;
-float dampen = 0.1;
+float easing = 0.35; //lerps spikes on noise wave
+float gravity = 0.2; //for the  ball
+float ground = 690;//center point of ground debug line
+float left = 50;//center point of left debug line
+float right = 590;//center point of right debug line
+float dampen = 0.1;//not being used now
 
 boolean started; //boolean for telling if the program has started 
 boolean selection; //boolean for telling if a song has been selected
@@ -32,22 +32,22 @@ boolean canPlay;//boolean for allowing the audio to play
 boolean consol = false;
 
 void initGame() {
-  t = new Trigger[8];
+  t = new Trigger[8]; //array of platforms 
   b = new Ball(200, ground, 20); //x = 200
 
   gameState = 0;
-  started = false;
-  selection = false;
-  minim = new Minim(this);
+  started = false; //if the music has started
+  selection = false; //if a song song switch selection has been made
+  minim = new Minim(this); 
   mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);
   out = minim.getLineOut(Minim.STEREO, 44100);
-  fft = new FFT(mp3.bufferSize(), mp3.sampleRate());//allows for the decription of the sound waves 
+  fft = new FFT(mp3.bufferSize(), mp3.sampleRate());//initializes a buffer with the entire sound file 
   rectMode(CORNERS);
-  mp3.loop();
+  mp3.loop();//loop the song
   classicVi = new Visualizer(); // initializes the class visualizer
 }
 
-void drawGuides() {
+void drawGuides() { //debug lines
   pushMatrix();
   stroke(#FF0000);
   //line(0, ground-51, width, ground-51);

@@ -1,7 +1,7 @@
 boolean triggerSpike = false;
 boolean LWallJump = false;
-boolean RJump = false;
-boolean LJump = false;
+boolean RJump = false; //If player jumps right one position
+boolean LJump = false;//If player jumps left one position
 boolean RWallJump = false;
 boolean grounded = false;
 
@@ -17,10 +17,10 @@ class Ball {
 
 
   Ball (float x, float y, float r) {
-    pos = new PVector(x, y);
-    velo = new PVector(0, 0);
-    dir = 1;
-    bounce = 8;
+    pos = new PVector(x, y); //Vec2 of x and y position
+    velo = new PVector(0, 0); //Vec2 of x and y velocity
+    dir = 1; 
+    bounce = 8; 
     radius = r;
     hp = 0;
   }
@@ -35,10 +35,12 @@ class Ball {
     if (triggerSpike) {
       spike = 100;
     }
-    
+    //if the ball is on the bottom wire
     if (grounded()) {
       //println("yes");
+      //if player jumps right one position
       if (RJump) {//w
+        //set the y velocity to negative (upward) direction, set x velocity to positive direction
         velo.y = -5.5;
         //velo.x = 4;
         println("w: " + pos.x + ", " + pos.y);
@@ -46,7 +48,9 @@ class Ball {
         velo.y = 0;
         velo.x = 0;
       }
-      if (LJump) {//o
+      //if the player jumps left one position
+      if (LJump) {
+        //set the y velocity to negative (upward) direction, set x velocity to negative direction
         velo.y = -5.5;
         //velo.x = -4;
         println("o: " + pos.x + ", " + pos.y);
@@ -54,7 +58,9 @@ class Ball {
         velo.y = 0;
         velo.x = 0;
       }
-      if (LWallJump) {//q
+      //if the player jumps left one position to the wall
+      if (LWallJump) {
+        //set the y velocity to negative (upward) direction, set x velocity to negative direction
         velo.y = -4.5;
         //velo.x = -5;
         println("q: " + pos.x + ", " + pos.y);
@@ -62,7 +68,9 @@ class Ball {
         velo.y = 0;
         velo.x = 0;
       }
-      if (RWallJump) {//p
+      //if the player jumps right one position to the wall
+      if (RWallJump) {
+        //set the y velocity to negative (upward) direction, set x velocity to positive direction
         velo.y = -4.5;
         //velo.x = 5;
         println("p: " + pos.x + ", " + pos.y);
@@ -74,7 +82,7 @@ class Ball {
   }
 
   Boolean grounded() {
-    if (pos.y <= ground+1 && pos.y >= ground-1) return true;
+    if (pos.y <= ground+1 && pos.y >= ground-1) return true; //If the ball is between the positions right above and below the "ground"
     return false;
   }
 
@@ -98,9 +106,9 @@ class Ball {
     switch (hp) {
     case 5:
       pushMatrix();
-      fill(#03F6FC);
-      stroke(#03F6FC);
-      rect(220, 800, 40, 10); 
+      fill(#03F6FC);//color of the inside
+      stroke(#03F6FC);//color of lines strokes
+      rect(220, 800, 40, 10); //parameters are x,y, width, height
       rect(270, 800, 40, 10);
       rect(320, 800, 40, 10);
       rect(370, 800, 40, 10);

@@ -3,22 +3,22 @@ import ddf.minim.signals.*;
 import ddf.minim.analysis.*;
 
 void setup() {
-  size(640, 900);
-  noiseDetail(8);
+  size(640, 900); //size of the screen
+  noiseDetail(8); //
   //frameRate(60);
-  started = false;
+  started = false; //whether the music has started
   selection = false;
   initGame();
 }
 
 void draw() {
-  canPlay = true;
-  background(0);
-  handleInputs();
+  canPlay = true; //if game is in a state where the music can play
+  background(0); //set background to black
+  handleInputs(); 
   b.update();
   b.render();
   DrawLines();
-  classicVi.drawEQ();
+  classicVi.drawEQ(); 
   mp3.play();
   if (consol) {
     debug();

@@ -14,22 +14,22 @@ void DrawLines() {
 
 void BaseLine() {
   pushMatrix();
-  translate(0, 445);
-  stroke(255);
-  noFill();
+  translate(0, 445); //move center point of the line down to 445
+  stroke(255); //draws line with color value
+  noFill();//inside of shape is transparent
   //fill(0);
   beginShape(); 
   float xoff = 0;       // Option #1: 2D Noise
   // Iterate over horizontal pixels
   for (float x = 0; x <= width; x += 10) {
     // Calculate a y value according to noise, map to 
-    if (spike >= 0 && b.grounded()) {
+    if (spike >= 0 && b.grounded()) {//checks if a spike in the wave has been made and if the ball was on the baseline
       y = map(noise(xoff*nInt+1, yoff*nAmp+1), 0, 1, 200, 300); // Option #1: 2D Noise
     } 
     if (spike <= 1) {
       y = 250;
     }
-    vertex(x, y); 
+    vertex(x, y); //draws the top line of the rectangle with the noise function
     // Increment x dimension for noise
     xoff += 0.05;
   }
@@ -37,7 +37,7 @@ void BaseLine() {
   yoff += 0.01;
   vertex(width, height);
   vertex(0, height);
-  endShape(CLOSE);
+  endShape(CLOSE);//closes the shape at the bottom of the screen
   popMatrix();
 }
 

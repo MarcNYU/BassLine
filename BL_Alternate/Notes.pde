@@ -1,6 +1,6 @@
 float space = 172.5;
 
-class Trigger {
+class Trigger { //platforms to jump between
   PVector pos;
   PVector dem;
 
@@ -18,7 +18,7 @@ class Trigger {
   }
 }
 
-void triggers() {
+void triggers() {//hard coded platfomrs
   t1 = new Trigger(width/2 - 120, 695, 50, 10);
   t2 = new Trigger(width/2 + 120, 695, 50, 10);
   t3 = new Trigger(40, space*2.5 + 120, 10, 50);
@@ -38,6 +38,6 @@ void triggers() {
   t[7] = t8;
 
   for (int i = 0; i < t.length; i++) {
-    t[i].draw();
+    t[i].draw(); // draw each platform
   }
 }
