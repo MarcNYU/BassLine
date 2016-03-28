@@ -79,7 +79,12 @@ class Ball {
         velo.x = 0;
       }
     }
+    if ( grounded()){
+       onGround(); 
+    }
   }
+
+
 
   Boolean grounded() {
     if (pos.y <= ground+1 && pos.y >= ground-1) return true; //If the ball is between the positions right above and below the "ground"

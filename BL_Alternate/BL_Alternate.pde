@@ -4,6 +4,7 @@ import ddf.minim.analysis.*;
 
 void setup() {
   size(640, 900); //size of the screen
+  surface.setResizable(true);
   noiseDetail(8); //
   //frameRate(60);
   started = false; //whether the music has started
@@ -16,7 +17,7 @@ void draw() {
   background(0); //set background to black
   handleInputs(); 
   b.update();
-  b.render();
+  
   DrawLines();
   classicVi.drawEQ(); 
   mp3.play();
@@ -24,6 +25,7 @@ void draw() {
     debug();
   }
   b.DrawHP();
+  b.render();
 }
 
 void keyPressed()
