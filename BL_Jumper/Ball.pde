@@ -36,6 +36,7 @@ class Ball {
     if (grounded()) {
       onGround() ;
     }
+   
   }
 
   Boolean grounded() {
@@ -102,25 +103,39 @@ void keyReleased() {
 
 
 void onGround() {
-  if (RWallJump) {//p
-    println("press p");
-    b.velo.y = -4.5;
-    b.velo.x = 5;
-  } else if (RJump) {//w
-    println("press w");
-    b.velo.y = -5.5;
-    b.velo.x = 4;
-  } else if (LJump) {//o
-    b.velo.y = -5.5;
-    b.velo.x = -4;
-  } else if (LWallJump) {//q
-    b.velo.y = -4.5;
-    b.velo.x = -5;
-  } else {
-    b.velo.y = 0;
-    b.velo.x = 0;
-  }
+  if (RJump) {//w
+      println("press w");
+      b.velo.y = -5.5;
+      b.velo.x = 4;
+    } else {
+      b.velo.y = 0;
+      b.velo.x = 0;
+    }
+    if (LJump) {//o
+      b.velo.y = -5.5;
+      b.velo.x = -4;
+    } else {
+      b.velo.y = 0;
+      b.velo.x = 0;
+    }
+
+    if (LWallJump) {//q
+      b.velo.y = -4.5;
+      b.velo.x = -5;
+    } else {
+      b.velo.y = 0;
+      b.velo.x = 0;
+    }
+    if (RWallJump) {//p
+      println("press p");
+      b.velo.y = -4.5;
+      b.velo.x = 5;
+    } else {
+      b.velo.y = 0;
+      b.velo.x = 0;
+    }
 }
 
 void onWall() {
+  
 }

@@ -37,47 +37,7 @@ class Ball {
     }
     //if the ball is on the bottom wire
     if (grounded()) {
-      //println("yes");
-      //if player jumps right one position
-      if (RJump) {//w
-        //set the y velocity to negative (upward) direction, set x velocity to positive direction
-        velo.y = -5.5;
-        //velo.x = 4;
-        println("w: " + pos.x + ", " + pos.y);
-      } else {
-        velo.y = 0;
-        velo.x = 0;
-      }
-      //if the player jumps left one position
-      if (LJump) {
-        //set the y velocity to negative (upward) direction, set x velocity to negative direction
-        velo.y = -5.5;
-        //velo.x = -4;
-        println("o: " + pos.x + ", " + pos.y);
-      } else {
-        velo.y = 0;
-        velo.x = 0;
-      }
-      //if the player jumps left one position to the wall
-      if (LWallJump) {
-        //set the y velocity to negative (upward) direction, set x velocity to negative direction
-        velo.y = -4.5;
-        //velo.x = -5;
-        println("q: " + pos.x + ", " + pos.y);
-      } else {
-        velo.y = 0;
-        velo.x = 0;
-      }
-      //if the player jumps right one position to the wall
-      if (RWallJump) {
-        //set the y velocity to negative (upward) direction, set x velocity to positive direction
-        velo.y = -4.5;
-        //velo.x = 5;
-        println("p: " + pos.x + ", " + pos.y);
-      } else {
-        velo.y = 0;
-        velo.x = 0;
-      }
+      onGround();
     }
   }
 
@@ -175,5 +135,26 @@ class Ball {
       popMatrix();
       break;
     }
+  }
+}
+
+void onGround() {
+  if (RWallJump) {//p
+    println("press p");
+    b.velo.y = -4.5;
+    b.velo.x = 5;
+  } else if (RJump) {//w
+    println("press w");
+    b.velo.y = -5.5;
+    b.velo.x = 4;
+  } else if (LJump) {//o
+    b.velo.y = -5.5;
+    b.velo.x = -4;
+  } else if (LWallJump) {//q
+    b.velo.y = -4.5;
+    b.velo.x = -5;
+  } else {
+    b.velo.y = 0;
+    b.velo.x = 0;
   }
 }
