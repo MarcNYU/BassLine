@@ -1,124 +1,171 @@
-boolean shortHop = false;
-boolean hop = false;
-boolean jump = false;
-boolean superjump = false;
+boolean triggerSpike = false;
+boolean LWallJump = false;
+boolean RJump = false;
+boolean LJump = false;
+boolean RWallJump = false;
+boolean grounded = false;
 
 class Ball {
   PVector pos;
-  float dir;
   PVector velo;
-  float roll;
+
+  int hp;
+  int dir;
+
   float bounce;
   float radius;
 
-  void update() {
-    b.pos.x += 2;
-    if (b.pos.y < ground) {
-      b.pos.y += b.velo.y;
-      b.velo.y += gravity;
-      if (b.pos.y >= ground-100/2) {
-        b.velo.y *= -dampen;
-      }
-    } else {
-      b.velo.y = 0;
-    }
 
-    if (b.pos.y >= (ground-50) && shortHop) {
-      b.velo.y = -b.bounce + 3;
+  Ball (float x, float y, float r) {
+    pos = new PVector(x, y);
+    velo = new PVector(0, 0);
+    dir = 1;
+    bounce = 8;
+    radius = r;
+    hp = 0;
+  }
+
+  void update() {
+    //Apply Gravity
+    //Apply Gravity
+    pos.y += velo.y;
+    pos.x += velo.x;
+    velo.y += gravity;
+    
+    if (triggerSpike) {
+      spike = 100;
     }
-    if (b.pos.y >= (ground-50) && hop) {
-      b.velo.y = -b.bounce + 2;
-    }
-    if (b.pos.y >= (ground-50) && jump) {
-      b.velo.y = -b.bounce + 1.4;
-    }
-    if (b.pos.y >= (ground-50) && superjump) {
-      b.velo.y = -b.bounce + .5;
+    
+    if (grounded()) {
+      //println("yes");
+      if (RJump) {//w
+        velo.y = -5.5;
+        //velo.x = 4;
+        println("w: " + pos.x + ", " + pos.y);
+      } else {
+        velo.y = 0;
+        velo.x = 0;
+      }
+      if (LJump) {//o
+        velo.y = -5.5;
+        //velo.x = -4;
+        println("o: " + pos.x + ", " + pos.y);
+      } else {
+        velo.y = 0;
+        velo.x = 0;
+      }
+      if (LWallJump) {//q
+        velo.y = -4.5;
+        //velo.x = -5;
+        println("q: " + pos.x + ", " + pos.y);
+      } else {
+        velo.y = 0;
+        velo.x = 0;
+      }
+      if (RWallJump) {//p
+        velo.y = -4.5;
+        //velo.x = 5;
+        println("p: " + pos.x + ", " + pos.y);
+      } else {
+        velo.y = 0;
+        velo.x = 0;
+      }
     }
   }
-  
+
+  Boolean grounded() {
+    if (pos.y <= ground+1 && pos.y >= ground-1) return true;
+    return false;
+  }
+
+  Boolean leftB() {
+    if (pos.x <= left+1 && pos.x >= left-1) return true;
+    return false;
+  }
+
+  Boolean rightB() {
+    if (pos.x <= right+1 && pos.x >= right-1) return true;
+    return false;
+  }
+
   void render() {
     noStroke();
     fill(255);
-    ellipse(b.pos.x, b.pos.y, b.radius, b.radius);
+    ellipse(pos.x, pos.y, radius, radius);
   }
-}
 
-void handelInputs() {
-  if (keyPressed) {
-    //LEFT
-    if (key == 'q') {
-      shortHop = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
-        spike = 100;
-      } else {
-        float targetA = 0;
-        float dx = targetA - spike;
-        spike += dx * 0.35;//ease rate
-      }
-    }
-    if (key == 'w') {
-      hop = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
-        spike = 300;
-      } else {
-        float targetA = 0;
-        float dx = targetA - spike;
-        spike += dx * 0.3;//ease rate
-      }
-    }
-    //RIGHT
-    if (key == 'o') {
-      jump = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
-        spike = 600;
-      } else {
-        float targetA = 0;
-        float dx = targetA - spike;
-        spike += dx * 0.25;//ease rate
-      }
-    }
-    if (key == 'p') {
-      superjump = true;
-      if (b.pos.y >= ground-50 && b.pos.y <= ground) {
-        spike = 900;
-      } else {
-        float targetA = 0;
-        float dx = targetA - spike;
-        spike += dx * 0.2;//ease rate
-      }
-    }
-  }
-  if (!keyPressed) {
-    //LEFT
-    if (key == 'q') {
-      //spike = 0;
-      shortHop = false;
-      float targetA = 0;
-      float dx = targetA - spike;
-      spike += dx * 0.35;//ease rate
-    }
-    if (key == 'w') {
-      //spike = 0;
-      hop = false;
-      float targetA = 0;
-      float dx = targetA - spike;
-      spike += dx * 0.3;//ease rate
-    }
-    //RIGHT
-    if (key == 'o') {
-      //spike = 0;
-      jump = false;
-      float targetA = 0;
-      float dx = targetA - spike;
-      spike += dx * 0.25;//ease rate
-    }
-    if (key == 'p') {
-      //spike = 0;
-      superjump = false;
-      float targetA = 0;
-      float dx = targetA - spike;
-      spike += dx * 0.2;//ease rate
+  void DrawHP() {
+    switch (hp) {
+    case 5:
+      pushMatrix();
+      fill(#03F6FC);
+      stroke(#03F6FC);
+      rect(220, 800, 40, 10); 
+      rect(270, 800, 40, 10);
+      rect(320, 800, 40, 10);
+      rect(370, 800, 40, 10);
+      rect(420, 800, 40, 10);
+      popMatrix();
+      break;
+    case 4:
+      pushMatrix();
+      fill(#03F6FC);
+      stroke(#03F6FC);
+      rect(220, 800, 40, 10); 
+      rect(270, 800, 40, 10);
+      rect(320, 800, 40, 10);
+      rect(370, 800, 40, 10);
+      noFill();
+      rect(420, 800, 40, 10);
+      popMatrix();
+      break;
+    case 3:
+      pushMatrix();
+      fill(#03F6FC);
+      stroke(#03F6FC);
+      rect(220, 800, 40, 10); 
+      rect(270, 800, 40, 10);
+      rect(320, 800, 40, 10);
+      noFill();
+      rect(370, 800, 40, 10);
+      rect(420, 800, 40, 10);
+      popMatrix();
+      break;
+    case 2:
+      pushMatrix();
+      fill(#03F6FC);
+      stroke(#03F6FC);
+      rect(220, 800, 40, 10); 
+      rect(270, 800, 40, 10);
+      noFill();
+      rect(320, 800, 40, 10);
+      rect(370, 800, 40, 10);
+      rect(420, 800, 40, 10);
+      popMatrix();
+      break;
+    case 1:
+      pushMatrix();
+      fill(#03F6FC);
+      stroke(#03F6FC);
+      rect(220, 800, 40, 10);
+      noFill();
+      rect(270, 800, 40, 10);
+      rect(320, 800, 40, 10);
+      rect(370, 800, 40, 10);
+      rect(420, 800, 40, 10);
+      popMatrix();
+      break;
+    case 0:
+      pushMatrix();
+      noFill();
+      stroke(#03F6FC);
+      rect(220, 800, 40, 10);
+      rect(270, 800, 40, 10);
+      rect(320, 800, 40, 10);
+      rect(370, 800, 40, 10);
+      rect(420, 800, 40, 10);
+      popMatrix();
+      break;
     }
   }
 }

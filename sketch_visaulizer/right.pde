@@ -22,6 +22,7 @@ class right {
 
   void drawEQ()
   {
+    pushMatrix();
     // rainbow Effect parameters
     smooth();
     colorMode(HSB);// sets color mode value 
@@ -41,7 +42,8 @@ class right {
       
       //rect(i, height/12, 25, (height/2 - 100) - fft.getFreq(i)*1.2);// draws an inversed rect and alters its height based on the translated frequency
       //rect(i, height+50, 25, -height/2 - fft.getFreq(i)*1.2);// draws a rect and alters its height based on the translated frequency
-      rect(width, i/1.8, -10 - fft.getFreq(i)*1.2, 25);
+      //rect(width, i/1.8, -10 - fft.getFreq(i)*1.2, 25);
+      triangle(width, i/1.8, -fft.getFreq(i)/1000, i/1.8 + 12.5, width, i/1.8 + 25);
       //x-=.01;
       if (fft.getFreq(i)*1.2 > 1) {
         n = new Note(x, i/1.8, 5, 25);
@@ -56,6 +58,7 @@ class right {
     {
      hVal = 0;
     }
+    popMatrix();
   }
 }
 
@@ -71,9 +74,11 @@ class Note {
   }
   
   void draw() {
+    pushMatrix();
     //pos.x-=.01;
     noStroke();
     fill(255);
     rect(pos.x, pos.y, dem.x, dem.y);
+    popMatrix();
   }
 }
