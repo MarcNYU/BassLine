@@ -90,7 +90,7 @@ class Visualizer {
     
     fft.forward(mp3.mix);// used to analyze the frequency coming from the mix 
     
-    for (int i = 0; i < fft.specSize(); i += 65)// specSize is changing the range of analysis
+    for (int i = 0; i < fft.specSize(); i += 500)// specSize is changing the range of analysis
     {
       float u = random(65, fft.specSize());
       
