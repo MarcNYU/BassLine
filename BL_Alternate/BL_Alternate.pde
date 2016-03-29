@@ -18,7 +18,8 @@ void draw() {
   b.update();
   b.render();
   DrawLines();
-  classicVi.drawEQ(); 
+  classicVi.drawBEQ(); 
+  classicVi.drawWEQ();
   mp3.play();
   if (consol) {
     debug();
@@ -33,7 +34,7 @@ void keyPressed()
     started = false; //kills the program 
     mp3.pause();
   }
-  
+
   if (key == DELETE || key == BACKSPACE) {
     consol = true;
   }

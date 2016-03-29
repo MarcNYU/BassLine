@@ -13,13 +13,13 @@ class Visualizer {
   Visualizer() {  
     hVal = 0; //hue value
     rectMode(CORNER); //set rectangles to be drawn from top left corner
-    
+
     //fade = get(0, 0, width, height); 
     //rWidth = width*0.99; 
     //rHeight = height*0.99;
   }  
 
-  void drawEQ()
+  void drawBEQ()
   {
     pushMatrix(); //saves current context of the operations
     // rainbow Effect parameters
@@ -40,7 +40,7 @@ class Visualizer {
       w = (fft.getFreq(i)*1.2); //width is set to the frequency value 
       // Each box is centered so we move half the width
       arclength += d; //spaces the boxes out at intervals of size distance (d) 
-      
+
       // Angle in radians is the arclength divided by the radius
       float theta = arclength / r;     
 
@@ -66,5 +66,44 @@ class Visualizer {
     fill(0);// covers up the center of the circle
     ellipse(0, 0, r*2, r*2); // draws the full circle
     popMatrix();
+  }
+  void drawWEQ()
+  {
+    // rainbow Effect parameters
+    smooth();
+    colorMode(HSB);// sets color mode value 
+    fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
+    stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
+    colorMode(RGB);//sets color mode back to Red green and blue 
+    //fill(EQColorR,EQColorG,EQColorB);
+
+
+    //for loop for creating the audio bars
+    
+    fft.forward(mp3.mix);// used to analyze the frequency coming from the mix 
+    
+    for (int i = 0; i < fft.specSize(); i += 65)// specSize is changing the range of analysis
+    {
+      float u = random(65, fft.specSize());
+      //if (fft.getFreq(i) > 30) {
+      //  triangle(0, i/1.5, fft.getFreq(i)/1.1, (i/1.5)+12.5, 0, (i/1.5)+25);
+      //  triangle(width, i/1.5, width-fft.getFreq(i)/1.1, (i/1.5)+12.5, width, (i/1.5)+25);
+      //}
+      //else {
+      //  triangle(0, i/1.5, fft.getFreq(i*15)/1.1, (i/1.5)+12.5, 0, (i/1.5)+25);
+      //  triangle(width, i/1.5, width-fft.getFreq(i*15)/1.1, (i/1.5)+12.5, width, (i/1.5)+25);
+      //}
+      
+      triangle(40, i/1.5, 40+fft.getFreq(i)/1.1, (i/1.5)+12.5, 40, (i/1.5)+25);
+      triangle(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
+      
+    }
+
+    hVal +=1;
+
+    if (hVal > 255)
+    {
+      hVal = 0;
+    }
   }
 }

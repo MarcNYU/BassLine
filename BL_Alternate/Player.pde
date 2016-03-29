@@ -1,9 +1,16 @@
-boolean triggerSpike = false;
+boolean triggerws = false;
 boolean LWallJump = false;
 boolean RJump = false; //If player jumps right one position
 boolean LJump = false;//If player jumps left one position
 boolean RWallJump = false;
 boolean grounded = false;
+
+float easing = 0.35; //lerps spikes on noise wave
+float gravity = 0.2; //for the  ball
+float ground = 690;//center point of ground debug line
+float left = 50;//center point of left debug line
+float right = 590;//center point of right debug line
+float dampen = 0.1;//not being used now
 
 class Ball {
   PVector pos;
@@ -31,9 +38,15 @@ class Ball {
     pos.y += velo.y;
     pos.x += velo.x;
     velo.y += gravity;
-    
-    if (triggerSpike) {
-      spike = 100;
+
+    if (triggerws) {
+      if (grounded()) {
+        fws = 100;
+      } else if (leftB()) {
+        lws = 100;
+      } else if (rightB()) {
+        rws = 100;
+      }
     }
     //if the ball is on the bottom wire
     if (grounded()) {

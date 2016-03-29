@@ -3,35 +3,35 @@ void handleInputs() {
     if (b.grounded()) {
       if (key == 'q') {
         LWallJump = true;
-        triggerSpike = true;
+        triggerws = true;
       } 
       if (key == 'w') {
         RJump = true;
-        triggerSpike = true;
+        triggerws = true;
       }
       if (key == 'o') {
         LJump = true;
-        triggerSpike = true;
+        triggerws = true;
       }
       if (key == 'p') {
         RWallJump = true;
-        triggerSpike = true;
+        triggerws = true;
       }
     } else {
       float target = 0;
-      float dx = target - spike;
-      spike += dx * 0.55;//ease rate
-      triggerSpike = false;
+      float dx = target - fws;
+      fws += dx * 0.35;//ease rate
+      triggerws = false;
     }
   }
   if (!keyPressed) {
-    triggerSpike = false;
+    triggerws = false;
     if (key == 'q') LWallJump = false;
     if (key == 'w') RJump = false;
     if (key == 'o') LJump = false;
     if (key == 'p') RWallJump = false;
     float target = 0;
-    float dx = target - spike;
-    spike += dx * 0.55;//ease rate
+    float dx = target - fws;
+    fws += dx * 0.35;//ease rate
   }
 }

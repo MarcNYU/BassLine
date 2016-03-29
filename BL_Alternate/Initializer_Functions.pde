@@ -17,14 +17,6 @@ AudioPlayer mp3;
 static final int GAMEOVER = 1;
 static final int GAME = 0;
 int gameState;
-int hVal; 
-float spike;
-float easing = 0.35; //lerps spikes on noise wave
-float gravity = 0.2; //for the  ball
-float ground = 690;//center point of ground debug line
-float left = 50;//center point of left debug line
-float right = 590;//center point of right debug line
-float dampen = 0.1;//not being used now
 
 boolean started; //boolean for telling if the program has started 
 boolean selection; //boolean for telling if a song has been selected
