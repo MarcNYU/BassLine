@@ -21,6 +21,8 @@ int hVal;
 float spike;
 float easing = 0.35; //lerps spikes on noise wave
 float gravity = 0.2; //for the  ball
+float left_x_gravity = -0.2; //when the ball is on the left wall
+float right_x_gravity = 0.2; //when the ball is on the right wall
 float ground = 690;//center point of ground debug line
 float left = 50;//center point of left debug line
 float right = 590;//center point of right debug line

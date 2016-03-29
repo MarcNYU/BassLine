@@ -5,10 +5,29 @@ boolean LJump = false;//If player jumps left one position
 boolean RWallJump = false;
 boolean grounded = false;
 
+class Platform{
+   PVector pos;
+   
+   Platform(float x, float y){
+     pos = new PVector(x,y); //Vec2 of x and y position 
+   }
+   
+}
+
+  //could possibly be implemented as an adjacency list
+int[][]  decisionGraph = {{0,0,0,0,1,1,1,1},
+                          {0,0,0,0,1,1,1,1},
+                          {0,0,0,0,1,1,1,1},
+                          {0,0,0,0,1,1,1,1},
+                          {1,1,1,1,0,0,0,0},
+                          {1,1,1,1,0,0,0,0},
+                          {1,1,1,1,0,0,0,0},
+                          {1,1,1,1,0,0,0,0}};
+
 class Ball {
   PVector pos;
   PVector velo;
-
+  int currentPlatform; 
   int hp;
   int dir;
 
@@ -18,13 +37,18 @@ class Ball {
 
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
+    currentPlatform = 4;
     velo = new PVector(0, 0); //Vec2 of x and y velocity
     dir = 1; 
     bounce = 8; 
     radius = r;
     hp = 0;
   }
+  
 
+
+
+ 
   void update() {
     //Apply Gravity
     //Apply Gravity
@@ -35,6 +59,20 @@ class Ball {
     if (triggerSpike) {
       spike = 100;
     }
+    
+    
+    //if the ball is on the left side of the screen
+    if(currentPlatform < 5){
+      //print options from current platform
+      //translate ball from current position to position of target platform
+    }
+    //if it's on the right side
+    else{
+      
+    }
+    
+    
+    
     //if the ball is on the bottom wire
     if (grounded()) {
       //println("yes");
@@ -83,7 +121,26 @@ class Ball {
        onGround(); 
     }
   }
-
+void onGround() {
+  if (RWallJump) {//p
+    println("press p");
+    b.velo.y = -4.5;
+    b.velo.x = 5;
+  } else if (RJump) {//w
+    println("press w");
+    b.velo.y = -5.5;
+    b.velo.x = 4;
+  } else if (LJump) {//o
+    b.velo.y = -5.5;
+    b.velo.x = -4;
+  } else if (LWallJump) {//q
+    b.velo.y = -4.5;
+    b.velo.x = -5;
+  } else {
+    b.velo.y = 0;
+    b.velo.x = 0;
+  }
+}
 
 
   Boolean grounded() {
