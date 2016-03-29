@@ -11,6 +11,7 @@ class Trigger { //platforms to jump between
 
   void draw() {
     pushMatrix();
+    rectMode(CENTER);
     noStroke();
     fill(#00F9FF);
     rect(pos.x, pos.y, dem.x, dem.y);

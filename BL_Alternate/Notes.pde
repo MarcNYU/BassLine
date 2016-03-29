@@ -1,3 +1,5 @@
+Spike s[];
+
 class Spike {
   PVector pt1;
   PVector pt2;
@@ -34,5 +36,17 @@ class Bar {
     fill(255);
     rect(pos.x, pos.y, dem.x, dem.y);
     popMatrix();
+  }
+  
+  void collidesWithBar() {
+    if (b.pos.x > pos.x - dem.y/2 && b.pos.x < pos.x + dem.y/2 && b.pos.y < pos.y - dem.x && b.pos.y > pos.y + dem.x)
+      println("GAMEOVER");
+  }
+}
+
+
+void makeSpikes() {
+  for (int i = 0; i < spikes.length; i++) {
+    spikes[i] = new Spike(0, 0, 0, 0, 0, 0);
   }
 }

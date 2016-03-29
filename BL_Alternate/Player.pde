@@ -29,7 +29,7 @@ class Ball {
     dir = 1; 
     bounce = 8; 
     radius = r;
-    hp = 0;
+    hp = 5;
   }
 
   void update() {

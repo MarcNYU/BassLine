@@ -14,7 +14,7 @@ void setup() {
 void draw() {
   canPlay = true; //if game is in a state where the music can play
   background(0); //set background to black
-  handleInputs(); 
+  handleInputs();
   b.update();
   b.render();
   DrawLines();
@@ -25,6 +25,8 @@ void draw() {
     debug();
   }
   b.DrawHP();
+  //triggers();
+  //drawArc();
 }
 
 void keyPressed()
