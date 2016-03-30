@@ -8,14 +8,6 @@ boolean grounded = false;
 
 
 
-class Platform{
-   PVector pos;
-   
-   Platform(float x, float y){
-     pos = new PVector(x,y); //Vec2 of x and y position 
-   }
-   
-}
 
  
 //pseduo adjacency list for player jump decisions at each platform

@@ -1,3 +1,4 @@
+
 Ball b;
 //Trigger t1;
 //Trigger t2;
@@ -10,17 +11,28 @@ Ball b;
 Trigger t[];
 //Null trigger
 float space = 172.5;
-int jumpCounter = 0;
-Trigger  t1 = new Trigger(width/2 - 120, 695, 50, 10);
-Trigger t2 = new Trigger(width/2 + 120, 695, 50, 10);
-Trigger  t3 = new Trigger(40, space*2.5 + 120, 10, 50);
-Trigger t4 = new Trigger(600, space*2.5 + 120, 10, 50);
-Trigger  t5 = new Trigger(40, space*2.1, 10, 50);
-Trigger  t6 = new Trigger(600, space*2.1, 10, 50);
-Trigger  t7 = new Trigger(40, space, 10, 50);
-Trigger  t8 = new Trigger(600, space, 10, 50);
+
+
+//Trigger  t1 = new Trigger(width/2 - 120, 695, 50, 10);--Checked
+//Trigger t2 = new Trigger(width/2 + 120, 695, 50, 10);--Checked
+//Trigger  t3 = new Trigger(40, space*2.5 + 120, 10, 50);--Checked
+//Trigger t4 = new Trigger(600, space*2.5 + 120, 10, 50);--Checked
+//Trigger  t5 = new Trigger(40, space*2.1, 10, 50);--Checked
+//Trigger  t6 = new Trigger(600, space*2.1, 10, 50);--Checked
+//Trigger  t7 = new Trigger(40, space, 10, 50);
+//Trigger  t8 = new Trigger(600, space, 10, 50);
+//Trigger  tNull = new Trigger(0,0,0,0);
+
+Trigger  t1 = new Trigger(40, space, 10, 50);//fixed
+Trigger t2 = new Trigger(40, space*2.1, 10, 50); //fixed
+Trigger  t3 = new Trigger(40, space*2.5 + 120, 10, 50); //Already Correct
+Trigger t4 = new Trigger(width/2 - 120, 695, 50, 10); //fixed
+Trigger  t5 = new Trigger(width/2 + 120, 695, 50, 10); //fixed
+Trigger  t6 = new Trigger(600, space*2.5 + 120, 10, 50); //fixed
+Trigger  t7 = new Trigger(600, space*2.1, 10, 50);//fixed
+Trigger  t8 = new Trigger(600, space, 10, 50);//Already Correct
 Trigger  tNull = new Trigger(0,0,0,0);
-//tNull.isNull = true;
+
 
 
 
@@ -51,7 +63,7 @@ boolean consol = false;
 
 void initGame() {
   t = new Trigger[8]; //array of platforms 
-  b = new Ball(200, ground, 20); //x = 200
+  b = new Ball(40, space, 20); //x = 200
 
   gameState = 0;
   started = false; //if the music has started
