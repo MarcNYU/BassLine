@@ -3,8 +3,10 @@ class NoteSheet {
   int sheet_height = 20;  // width of space between line
   int interval = 200;  // intervals of generating notes in milliseconds
   float fall_freq = 0.3; // frequency of note falling
+  int drop_margin = 40;  // left and right margin of balls dropping
   int x_speed = 5;  // speed of horizontal move
   int y_speed = 3;  // speed of vertical move
+  int radius = sheet_height / 2;
   
   
   int timer = millis();
@@ -28,6 +30,14 @@ class NoteSheet {
     }
     popMatrix();
   }
+  boolean collide(Ball b) {
+    for (int i = 0; i < notes.length; ++i) {
+      if (Math.pow((b.pos.x - notes[i].cx),2) + Math.pow((b.pos.y - notes[i].cy), 2) < Math.pow(b.radius+ radius, 2)) {
+         return true; 
+      }
+    }
+    return false;
+  }
   void generateNote() {
     for (int i = 0; i < notes.length; ++i) {
       if (notes[i] == null) {
@@ -48,13 +58,17 @@ class NoteSheet {
   }
   
   class Note {
-   int d = sheet_height;
+   int d = radius * 2;
    float cx = d;
    float cy;
    float x_limit; // where does the note fall
    Note(int layer) {  // high -> low : 1 -> 7
      cy = layer*d/2+margin_top;
-     x_limit = (float)(Math.random() * width / fall_freq);
+     if (Math.random() > fall_freq) {
+       x_limit = width * 2; 
+     } else {
+       x_limit = (float)((Math.random() * (width-drop_margin*2))+drop_margin);
+     }
    }
    void drawNote() {
      pushMatrix();
