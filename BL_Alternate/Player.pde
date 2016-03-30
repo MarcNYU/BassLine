@@ -7,11 +7,12 @@ boolean grounded = false;
 
 float easing = 0.35; //lerps spikes on noise wave
 float gravity = 0.2; //for the  ball
-float ground = 690;//center point of ground debug line
+float ground = 690 + UY;//center point of ground debug line
 float left = 50;//center point of left debug line
 float right = 590;//center point of right debug line
 float dampen = 0.1;//not being used now
 
+int hpCoord = 200;
 
 
 class Ball {
@@ -74,9 +75,12 @@ class Ball {
   }
 
   void render() {
+    pushMatrix();
+    //stroke(#03F6FC);
     noStroke();
-    fill(255);
+    fill(#03F6FC, 255);
     ellipse(pos.x, pos.y, radius, radius);
+    popMatrix();
   }
 
   void DrawHP() {
@@ -85,70 +89,71 @@ class Ball {
       pushMatrix();
       fill(#03F6FC);//color of the inside
       stroke(#03F6FC);//color of lines strokes
-      rect(220, 800, 40, 10); //parameters are x,y, width, height
-      rect(270, 800, 40, 10);
-      rect(320, 800, 40, 10);
-      rect(370, 800, 40, 10);
-      rect(420, 800, 40, 10);
+      //parameters are x,y, width, height
+      rect(hpCoord, 820, 40, 10); 
+      rect(hpCoord+50, 820, 40, 10);
+      rect(hpCoord+100, 820, 40, 10);
+      rect(hpCoord+150, 820, 40, 10);
+      rect(hpCoord+200, 820, 40, 10);
       popMatrix();
       break;
     case 4:
       pushMatrix();
       fill(#03F6FC);
       stroke(#03F6FC);
-      rect(220, 800, 40, 10); 
-      rect(270, 800, 40, 10);
-      rect(320, 800, 40, 10);
-      rect(370, 800, 40, 10);
+      rect(hpCoord, 820, 40, 10); 
+      rect(hpCoord+50, 820, 40, 10);
+      rect(hpCoord+100, 820, 40, 10);
+      rect(hpCoord+150, 820, 40, 10);
       noFill();
-      rect(420, 800, 40, 10);
+      rect(hpCoord+200, 820, 40, 10);
       popMatrix();
       break;
     case 3:
       pushMatrix();
       fill(#03F6FC);
       stroke(#03F6FC);
-      rect(220, 800, 40, 10); 
-      rect(270, 800, 40, 10);
-      rect(320, 800, 40, 10);
+      rect(hpCoord, 820, 40, 10); 
+      rect(hpCoord+50, 820, 40, 10);
+      rect(hpCoord+100, 820, 40, 10);
       noFill();
-      rect(370, 800, 40, 10);
-      rect(420, 800, 40, 10);
+      rect(hpCoord+150, 820, 40, 10);
+      rect(hpCoord+200, 820, 40, 10);
       popMatrix();
       break;
     case 2:
       pushMatrix();
       fill(#03F6FC);
       stroke(#03F6FC);
-      rect(220, 800, 40, 10); 
-      rect(270, 800, 40, 10);
+      rect(hpCoord, 820, 40, 10); 
+      rect(hpCoord+50, 820, 40, 10);
       noFill();
-      rect(320, 800, 40, 10);
-      rect(370, 800, 40, 10);
-      rect(420, 800, 40, 10);
+      rect(hpCoord+100, 820, 40, 10);
+      rect(hpCoord+150, 820, 40, 10);
+      rect(hpCoord+200, 820, 40, 10);
       popMatrix();
       break;
     case 1:
       pushMatrix();
       fill(#03F6FC);
       stroke(#03F6FC);
-      rect(220, 800, 40, 10);
+      rect(hpCoord, 820, 40, 10); 
       noFill();
-      rect(270, 800, 40, 10);
-      rect(320, 800, 40, 10);
-      rect(370, 800, 40, 10);
-      rect(420, 800, 40, 10);
+      rect(hpCoord+50, 820, 40, 10);
+      rect(hpCoord+100, 820, 40, 10);
+      rect(hpCoord+150, 820, 40, 10);
+      rect(hpCoord+200, 820, 40, 10);
       popMatrix();
       break;
     case 0:
       pushMatrix();
       noFill();
       stroke(#03F6FC);
-      rect(220, 800, 40, 10);
-      rect(270, 800, 40, 10);
-      rect(320, 800, 40, 10);
-      rect(370, 800, 40, 10);
-      rect(420, 800, 40, 10);
+      rect(hpCoord, 820, 40, 10); 
+      rect(hpCoord+50, 820, 40, 10);
+      rect(hpCoord+100, 820, 40, 10);
+      rect(hpCoord+150, 820, 40, 10);
+      rect(hpCoord+200, 820, 40, 10);
       popMatrix();
       break;
     }

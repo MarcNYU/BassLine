@@ -1,6 +1,7 @@
 Ball b;
 Bar rBars[];
 Bar lBars[];
+NoteSheet ns;
 
 Visualizer classicVi;
 Minim minim;
@@ -14,12 +15,15 @@ static final int GAME = 0;
 int gameState;
 int jumpCounter = 0;
 
+int UY = 100;
+
 boolean started; //boolean for telling if the program has started 
 boolean selection; //boolean for telling if a song has been selected
 boolean canPlay;//boolean for allowing the audio to play 
 boolean consol = false;
 
 void initGame() {
+  ns = new NoteSheet();
   rBars = new Bar[14];
   lBars = new Bar[14];
   t = new Trigger[8]; //array of platforms 

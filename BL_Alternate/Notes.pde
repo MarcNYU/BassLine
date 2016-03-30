@@ -1,4 +1,4 @@
-float barGap = 0;
+float barGap = UY;
 
 class Bar {
   PVector pos;
@@ -53,6 +53,7 @@ class Bar {
       break;
     }
   }
+  
 }
 
 
@@ -61,7 +62,7 @@ void makeBars() {
     rBars[i] = new Bar(width-40, barGap, 0, 25);
     barGap += 50;
   }
-  barGap = 0;
+  barGap = UY;
   for (int i = 0; i < lBars.length; i++) {
     lBars[i] = new Bar(40, barGap, 0, 25);
     barGap += 50;
@@ -74,5 +75,11 @@ void drawBars() {
   }
   for (int i = 0; i < lBars.length; i++) {
     lBars[i].drawBar();
+  }
+}
+
+void checkPlatformAvailability(Bar arr[]) {
+  for (int i = 0; i < arr.length; i++) {
+    
   }
 }

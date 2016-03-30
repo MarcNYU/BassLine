@@ -19,11 +19,11 @@ void draw() {
   background(0); //set background to black
   handleInputs();
   checkCollision();
-  b.update();
-  b.render();
+  ns.drawNoteSheet();
   DrawLines();
+  
   //delay(60);
-  classicVi.drawBEQ(); 
+  //classicVi.drawBEQ(); 
   classicVi.drawWEQ();
   mp3.play();
   if (consol) {
@@ -33,6 +33,8 @@ void draw() {
   drawTriggers();
   //triggers();
   //drawArc();
+  b.update();
+  b.render();
 }
 
 void keyPressed()

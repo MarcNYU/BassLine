@@ -18,7 +18,7 @@ void DrawLines() {
 
 void BaseLine() {
   pushMatrix();
-  translate(0, 445); //move center point of the line down to 445
+  translate(0, 445 + UY); //move center point of the line down to 445
   stroke(255); //draws line with color value
   noFill();//inside of shape is transparent
   //fill(0);
@@ -61,7 +61,7 @@ void LWallLine() {
 
   float xoff = 0;       // Option #1: 2D Noise
   // Iterate over horizontal pixels
-  for (float x = 0; x <= height; x += 10) {
+  for (float x = UY; x <= height; x += 10) {
     // Calculate a y value according to noise, map to 
     if (lws >= 0 && b.leftB()) {
       z = map(noise(xoff*nInt, yoff*nAmp), 0, 1, 200, 300)-200; // Option #1: 2D Noise
@@ -76,7 +76,7 @@ void LWallLine() {
   // increment y dimension for noise
   yoff += 0.01;
   vertex(-width, height);
-  vertex(-width, 0);
+  vertex(-width, UY);
   endShape(CLOSE);
   popMatrix();
 }
@@ -93,7 +93,7 @@ void RWallLine() {
 
   float xoff = 0;       // Option #1: 2D Noise
   // Iterate over horizontal pixels
-  for (float x = 0; x <= height; x += 10) {
+  for (float x = UY; x <= height; x += 10) {
     // Calculate a y value according to noise, map to 
     if (rws >= 0 && b.rightB()) {
       u = map(noise(xoff*nInt+1, yoff*nAmp+1), 0, 1, 200, 300)+350; // Option #1: 2D Noise
@@ -107,7 +107,7 @@ void RWallLine() {
   // increment y dimension for noise
   yoff += 0.01;
   vertex(width, height);
-  vertex(width, 0);
+  vertex(width, UY);
   endShape(CLOSE);
   popMatrix();
 }
