@@ -33,7 +33,8 @@ class NoteSheet {
   boolean collide(Ball b) {
     for (int i = 0; i < notes.length; ++i) {
       if (Math.pow((b.pos.x - notes[i].cx),2) + Math.pow((b.pos.y - notes[i].cy), 2) < Math.pow(b.radius+ radius, 2)) {
-         return true; 
+        notes[i] = null;
+        return true; 
       }
     }
     return false;
