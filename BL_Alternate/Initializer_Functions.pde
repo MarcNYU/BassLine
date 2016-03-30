@@ -1,11 +1,13 @@
 Ball b;
-Bar bars[];
+Bar rBars[];
+Bar lBars[];
 
 Visualizer classicVi;
 Minim minim;
 FFT fft;
 AudioOutput out;
 AudioPlayer mp3;
+BeatDetect beat;
 
 static final int GAMEOVER = 1;
 static final int GAME = 0;
@@ -18,7 +20,8 @@ boolean canPlay;//boolean for allowing the audio to play
 boolean consol = false;
 
 void initGame() {
-  bars = new Bar[16];
+  rBars = new Bar[14];
+  lBars = new Bar[14];
   t = new Trigger[8]; //array of platforms 
   b = new Ball(200, ground, 20); //x = 200
   triggers();
@@ -34,6 +37,7 @@ void initGame() {
   myDelay = new Delay( 0.4, 0.5, true, true );
   rectMode(CORNERS);
   mp3.loop();//loop the song
+  beat = new BeatDetect();
   classicVi = new Visualizer(); // initializes the class visualizer
   
   //makeSpikes();

@@ -5,10 +5,11 @@ class Visualizer {
   PImage fade; 
   float rWidth, rHeight;
   int hVal;
+  Bar rotatingBar;
   Bar barBarR;
   Bar barBarL;
   
-
+  float bw = 0;
   // The radius of a circle
   float r = 200;
   // The width and height of the boxes (dimensions of the platforms)
@@ -25,8 +26,7 @@ class Visualizer {
     //rHeight = height*0.99;
   }  
 
-  void drawBEQ()
-  {
+  void drawBEQ() {
     pushMatrix(); //saves current context of the operations
     // rainbow Effect parameters
     smooth(); //linearly interpolates between color gradient
@@ -58,10 +58,11 @@ class Visualizer {
       // Rotate the box
       rotate(theta); //rotates the boxes based on the position of the circle rotation
       rectMode(CENTER); // Draws rectangles from the center points
-      rect(0, 0, w, h);  //Initializes boxes to 0, 0
-      //b = new Bar(0, 0, w, h);
-      //b.drawBar();
-      //b.collidesWithBar();
+      //rect(0, 0, w, h);  //Initializes boxes to 0, 0
+      rotatingBar = new Bar(0, 0, w, h);
+      rotatingBar.drawBar();
+      rotatingBar.collidesWithBar();
+      println(rotatingBar.pos.x + ", " + rotatingBar.pos.y);
       popMatrix();
       // Move halfway again
       arclength += d/2; //increments the arclength to be drawn to the next segment
@@ -77,8 +78,8 @@ class Visualizer {
     ellipse(0, 0, r*2, r*2); // draws the full circle
     popMatrix();
   }
-  void drawWEQ()
-  {
+  
+  void drawWEQ() {
     //noLoop();
     pushMatrix();
     // rainbow Effect parameters
@@ -88,44 +89,18 @@ class Visualizer {
     fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
     stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
     colorMode(RGB);//sets color mode back to Red green and blue 
-    //fill(EQColorR,EQColorG,EQColorB);
-
-
-    //for loop for creating the audio bars
-    
-    fft.forward(mp3.mix);// used to analyze the frequency coming from the mix 
-    
-    for (int i = 0; i < fft.specSize(); i += 65)// specSize is changing the range of analysis
-    {
-      //float u = random(65, fft.specSize());
-      
-      //rect(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
-      //rect(40, i/1.5, fft.getFreq(i)/1.5, 25);
-      
-      float target = i;
-      float dx = target - rate;
-      rate += dx * 1.1;//ease rate
-      
-      barBarR = new Bar(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
-      barBarR.drawBar();
-      barBarR.collidesWithBar();
-      
-      barBarL = new Bar(40, i/1.5, fft.getFreq(i)/1.5, 25);
-      barBarL.drawBar();
-      barBarL.collidesWithBar();
-      
-      //triangle(40, i/1.5, 40+fft.getFreq(i)/1.1, (i/1.5)+12.5, 40, (i/1.5)+25);
-      //triangle(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
-      //s = new Spike(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
-      //s.drawSpike();
-    }
-
-    hVal +=1;
-
-    if (hVal > 255)
-    {
-      hVal = 0;
-    }
+    int i = (int) random(0, 14);
+    int j = (int) random(0, 14);
+    float freq = random(20, 200);
+    beat.detect(mp3.mix);
+    fft.forward(mp3.mix);
+    float a = map(bw, 20, 80, 60, 255);
+    if ( beat.isOnset() ) bw = freq;
+    rBars[i].dim.x = -bw;
+    lBars[i].dim.x = bw;
+    drawBars();
+    bw *= 0.95;
+    if ( bw < 0 ) bw = 0;
     popMatrix();
   }
 }

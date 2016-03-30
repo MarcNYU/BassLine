@@ -21,10 +21,9 @@ void draw() {
   b.update();
   b.render();
   DrawLines();
-  drawBars();
   //delay(60);
   classicVi.drawBEQ(); 
-  //classicVi.drawWEQ();
+  classicVi.drawWEQ();
   mp3.play();
   if (consol) {
     debug();

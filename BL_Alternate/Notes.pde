@@ -1,4 +1,4 @@
-float barGap = 50;
+float barGap = 0;
 
 class Bar {
   PVector pos;
@@ -10,11 +10,11 @@ class Bar {
   }
   
   void drawBar() {
-    pushMatrix();
-    stroke(255);
-    fill(255);
+    //pushMatrix();
+    //stroke(255);
+    //fill(255);
     rect(pos.x, pos.y, dim.x, dim.y);
-    popMatrix();
+    //popMatrix();
   }
   
   void collidesWithBar() {
@@ -25,14 +25,22 @@ class Bar {
 
 
 void makeBars() {
-  for (int i = 0; i < bars.length; i++) {
-    bars[i] = new Bar(width-40, barGap, 0, 25);
-    barGap += 10;
+  for (int i = 0; i < rBars.length; i++) {
+    rBars[i] = new Bar(width-40, barGap, 0, 25);
+    barGap += 50;
+  }
+  barGap = 0;
+  for (int i = 0; i < lBars.length; i++) {
+    lBars[i] = new Bar(40, barGap, 0, 25);
+    barGap += 50;
   }
 }
 
 void drawBars() {
-  for (int i = 0; i < bars.length; i++) {
-    bars[i].drawBar();
+  for (int i = 0; i < rBars.length; i++) {
+    rBars[i].drawBar();
+  }
+  for (int i = 0; i < lBars.length; i++) {
+    lBars[i].drawBar();
   }
 }
