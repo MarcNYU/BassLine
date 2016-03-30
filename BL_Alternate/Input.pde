@@ -71,9 +71,9 @@ void handleInputs() {
         
         println("  Decision Space: [ " );
         for(int i = 0; i < 8; i++){
-          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
-            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
-          }
+         if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+           println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+         }
         }
         println("]");
         
@@ -89,9 +89,9 @@ void handleInputs() {
         //println("Ball current position: " + b.pos + " Platform Target Position: " + target2);
         println(" Decision Space: [ " );
         for(int i = 0; i < 8; i++){
-          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
-            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
-          }
+         if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+           println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+         }
         }
         println("]");
         b.currentPlatform = 6;
@@ -104,9 +104,9 @@ void handleInputs() {
         
         println(" Decision Space: [ " );
         for(int i = 0; i < 8; i++){
-          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
-            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
-          }
+         if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+           println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+         }
         }
         println("]");
         b.currentPlatform = 7;
@@ -120,9 +120,9 @@ void handleInputs() {
         
         println(" Decision Space: [ " );
         for(int i = 0; i < 8; i++){
-          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
-            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
-          }
+        if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+          println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+        }
         }
         println("]");
         b.currentPlatform = 8;

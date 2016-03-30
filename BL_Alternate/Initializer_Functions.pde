@@ -35,7 +35,8 @@ void initGame() {
   started = false; //if the music has started
   selection = false; //if a song song switch selection has been made
   minim = new Minim(this); 
-  mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);
+  //mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);
+  mp3 = minim.loadFile("44_Drum_beat_(Rock).mp3", 2048);
   out = minim.getLineOut(Minim.STEREO, 44100);
   fft = new FFT(mp3.bufferSize(), mp3.sampleRate());//initializes a buffer with the entire sound file 
   myDelay = new Delay( 0.4, 0.5, true, true );

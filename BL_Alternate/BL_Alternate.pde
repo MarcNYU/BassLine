@@ -5,6 +5,8 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
+boolean turnoff = false;
+
 void setup() {
   size(640, 900); //size of the screen
   noiseDetail(8); //
@@ -20,7 +22,7 @@ void draw() {
   triggers();
   handleInputs();
   checkCollision();
-  if (!consol) {
+  if (!consol && !turnoff) {
     ns.drawNoteSheet();
   }
   DrawLines();
@@ -52,5 +54,9 @@ void keyPressed()
 
   if (key == DELETE || key == BACKSPACE) {
     consol = true;
+  }
+  
+  if (key == TAB) {
+    turnoff = true;
   }
 }
