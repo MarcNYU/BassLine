@@ -7,6 +7,8 @@ class NoteSheet {
   float fall_freq = 0.3; // frequency of note falling
   int x_speed = 5;  // speed of horizontal move
   int y_speed = 3;  // speed of vertical move
+  int note_limit = 20; // Maximum of notes that will appear in the screen at the same time 
+  int radius = sheet_height/2;
   
   
   int timer = millis();
@@ -28,6 +30,14 @@ class NoteSheet {
        }
     }
   }
+  boolean collide(Ball b) {
+    for (int i = 0; i < notes.length; ++i) {
+      if (Math.pow((b.pos.x - notes[i].cx),2) + Math.pow((b.pos.y - notes[i].cy), 2) < Math.pow(b.radius+ radius, 2)) {
+         return true; 
+      }
+    }
+    return false;
+  }
   void generateNote() {
     for (int i = 0; i < notes.length; ++i) {
       if (notes[i] == null) {
@@ -48,7 +58,7 @@ class NoteSheet {
   }
   
   class Note {
-   int d = sheet_height;
+   int d = radius * 2;
    float cx = d;
    float cy;
    float x_limit; // where does the note fall
@@ -74,12 +84,20 @@ class NoteSheet {
 }
 
 
+// Example Usage:
+/*
+
 NoteSheet ns;
 void setup() {
-  size(640, 360);
-  ns = new NoteSheet();
+ size(640, 360);
+ ns = new NoteSheet();
 }
 
 void draw() {
-  ns.draw();
+ ns.draw();
+ if (ns.collide(b)) {
+    //handleCollide(); 
+ }
 }
+
+*/
