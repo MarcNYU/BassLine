@@ -1,9 +1,12 @@
 boolean triggerSpike = false;
-boolean LWallJump = false;
-boolean RJump = false; //If player jumps right one position
-boolean LJump = false;//If player jumps left one position
-boolean RWallJump = false;
+boolean choice1 = false;
+boolean choice2 = false; //If player jumps right one position
+boolean choice3 = false;//If player jumps left one position
+boolean choice4 = false;
 boolean grounded = false;
+
+
+
 
 class Platform{
    PVector pos;
@@ -14,15 +17,30 @@ class Platform{
    
 }
 
-  //could possibly be implemented as an adjacency list
-int[][]  decisionGraph = {{0,0,0,0,1,1,1,1},
-                          {0,0,0,0,1,1,1,1},
-                          {0,0,0,0,1,1,1,1},
-                          {0,0,0,0,1,1,1,1},
-                          {1,1,1,1,0,0,0,0},
-                          {1,1,1,1,0,0,0,0},
-                          {1,1,1,1,0,0,0,0},
-                          {1,1,1,1,0,0,0,0}};
+ 
+//pseduo adjacency list for player jump decisions at each platform
+
+//Trigger[][] decisionGraph = new Trigger[8][8];
+//decisionGraph[0] = {tNull,tNull,tNull,tNull,t5,t6,t7,t8};
+//decisionGraph=            {{tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+//                           {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+//                           {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+//                           {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+//                           {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+//                           {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+//                           {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+//                           {t1,t2,t3,t4,tNull,tNull,tNull,tNull}};
+
+
+Trigger[][]  decisionGraph = {{tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull}};
+
 
 class Ball {
   PVector pos;
@@ -65,6 +83,7 @@ class Ball {
     if(currentPlatform < 5){
       //print options from current platform
       //translate ball from current position to position of target platform
+      
     }
     //if it's on the right side
     else{
@@ -77,7 +96,7 @@ class Ball {
     if (grounded()) {
       //println("yes");
       //if player jumps right one position
-      if (RJump) {//w
+      if (choice2) {//w
         //set the y velocity to negative (upward) direction, set x velocity to positive direction
         velo.y = -5.5;
         //velo.x = 4;
@@ -87,7 +106,7 @@ class Ball {
         velo.x = 0;
       }
       //if the player jumps left one position
-      if (LJump) {
+      if (choice3) {
         //set the y velocity to negative (upward) direction, set x velocity to negative direction
         velo.y = -5.5;
         //velo.x = -4;
@@ -97,7 +116,7 @@ class Ball {
         velo.x = 0;
       }
       //if the player jumps left one position to the wall
-      if (LWallJump) {
+      if (choice1) {
         //set the y velocity to negative (upward) direction, set x velocity to negative direction
         velo.y = -4.5;
         //velo.x = -5;
@@ -107,7 +126,7 @@ class Ball {
         velo.x = 0;
       }
       //if the player jumps right one position to the wall
-      if (RWallJump) {
+      if (choice3) {
         //set the y velocity to negative (upward) direction, set x velocity to positive direction
         velo.y = -4.5;
         //velo.x = 5;
@@ -122,18 +141,18 @@ class Ball {
     }
   }
 void onGround() {
-  if (RWallJump) {//p
+  if (choice4) {//p
     println("press p");
     b.velo.y = -4.5;
     b.velo.x = 5;
-  } else if (RJump) {//w
+  } else if (choice2) {//w
     println("press w");
     b.velo.y = -5.5;
     b.velo.x = 4;
-  } else if (LJump) {//o
+  } else if (choice3) {//o
     b.velo.y = -5.5;
     b.velo.x = -4;
-  } else if (LWallJump) {//q
+  } else if (choice1) {//q
     b.velo.y = -4.5;
     b.velo.x = -5;
   } else {

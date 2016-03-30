@@ -13,6 +13,7 @@ void setup() {
 }
 
 void draw() {
+  debug();
   canPlay = true; //if game is in a state where the music can play
   background(0); //set background to black
   handleInputs(); 
@@ -21,9 +22,9 @@ void draw() {
   DrawLines();
   classicVi.drawEQ(); 
   mp3.play();
-  if (consol) {
-    debug();
-  }
+  
+  
+  
   b.DrawHP();
   b.render();
 }
