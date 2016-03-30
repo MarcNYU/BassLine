@@ -26,8 +26,8 @@ float space = 172.5;
 Trigger  t1 = new Trigger(40, space, 10, 50);//fixed
 Trigger t2 = new Trigger(40, space*2.1, 10, 50); //fixed
 Trigger  t3 = new Trigger(40, space*2.5 + 120, 10, 50); //Already Correct
-Trigger t4 = new Trigger(width/2 - 120, 695, 50, 10); //fixed
-Trigger  t5 = new Trigger(width/2 + 120, 695, 50, 10); //fixed
+Trigger t4 = new Trigger(width/2 + 120, 695, 50, 10); //fixed
+Trigger  t5 = new Trigger(width/2, height/2, 50, 10); //fixed
 Trigger  t6 = new Trigger(600, space*2.5 + 120, 10, 50); //fixed
 Trigger  t7 = new Trigger(600, space*2.1, 10, 50);//fixed
 Trigger  t8 = new Trigger(600, space, 10, 50);//Already Correct
@@ -98,5 +98,5 @@ void drawGuides() { //debug lines
 
 void debug() {
   drawGuides();
-  triggers();
+  
 }

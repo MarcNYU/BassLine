@@ -13,9 +13,10 @@ class Trigger { //platforms to jump between
     platformIdx = 0;
   }
 
-  void draw() {
+  void drawtr() {
     pushMatrix();
     noStroke();
+    rectMode(CENTER);
     fill(#00F9FF);
     rect(pos.x, pos.y, dim.x, dim.y);
     popMatrix();
@@ -52,7 +53,11 @@ void triggers() {//hard coded platfomrs
   t[6] = t7;
   t[7] = t8;
 
+  
+}
+
+void drawT() {
   for (int i = 0; i < t.length; i++) {
-    t[i].draw(); // draw each platform
+    t[i].drawtr(); // draw each platform
   }
 }

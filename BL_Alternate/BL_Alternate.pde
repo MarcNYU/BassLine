@@ -13,20 +13,23 @@ void setup() {
 }
 
 void draw() {
-  debug();
+  //debug();
+  triggers();
+  println(t5.pos.x + ", " + t5.pos.y);
   canPlay = true; //if game is in a state where the music can play
   background(0); //set background to black
   handleInputs(); 
   b.update();
   
   DrawLines();
-  classicVi.drawEQ(); 
+  //classicVi.drawEQ(); 
   mp3.play();
   
   
   
   b.DrawHP();
   b.render();
+  drawT();
 }
 
 void keyPressed()
