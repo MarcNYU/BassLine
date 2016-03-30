@@ -10,7 +10,7 @@ Ball b;
 Trigger t[];
 //Null trigger
 float space = 172.5;
-
+int jumpCounter = 0;
 Trigger  t1 = new Trigger(width/2 - 120, 695, 50, 10);
 Trigger t2 = new Trigger(width/2 + 120, 695, 50, 10);
 Trigger  t3 = new Trigger(40, space*2.5 + 120, 10, 50);

@@ -4,11 +4,13 @@ class Trigger { //platforms to jump between
   PVector pos;
   PVector dim;
   Boolean isNull;
+  int platformIdx;
 
   Trigger(float x, float y, float w, float h) {
     pos = new PVector(x, y);
     dim = new PVector(w, h);
     isNull = false;
+    platformIdx = 0;
   }
 
   void draw() {
@@ -30,6 +32,14 @@ void triggers() {//hard coded platfomrs
   //t7 = new Trigger(40, space, 10, 50);
   //t8 = new Trigger(600, space, 10, 50);
   //tNull = new Trigger(0,0,0,0);
+  t1.platformIdx = 1;
+  t2.platformIdx = 2;
+  t3.platformIdx = 3;
+  t4.platformIdx = 4;
+  t5.platformIdx = 5;
+  t6.platformIdx = 6;
+  t7.platformIdx = 7;
+  t8.platformIdx = 8;
   tNull.isNull = true;
 
 

@@ -21,7 +21,14 @@ void handleInputs() {
         //interpolate ball from its current position to the position of the target platform
         PVector target = new PVector(decisionGraph[(b.currentPlatform-1)][4].pos.x, decisionGraph[(b.currentPlatform-1)][4].pos.y);
         b.pos.lerp(target,1);
-        //println("Ball current position: " + b.pos + " Platform Target Position: " + target);
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         
         b.currentPlatform = 5;
       } 
@@ -30,15 +37,31 @@ void handleInputs() {
         triggerSpike = true;
         PVector target2 = new PVector(decisionGraph[(b.currentPlatform-1)][5].pos.x, decisionGraph[(b.currentPlatform-1)][5].pos.y);
         b.pos.lerp(target2,1);
-        b.currentPlatform = 6; 
-        println("Ball current position: " + b.pos + " Platform Target Position: " + target2);
+        
+        jumpCounter++;
+        //println("Ball current position: " + b.pos + " Platform Target Position: " + target2);
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
+        b.currentPlatform = 6;
       }
       else if (key == 'o') {
         choice3 = true;
         triggerSpike = true;
         PVector target3 = new PVector(decisionGraph[(b.currentPlatform-1)][6].pos.x, decisionGraph[(b.currentPlatform-1)][6].pos.y);
         b.pos.lerp(target3,1);
-      
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         b.currentPlatform = 7;
         
       }
@@ -47,7 +70,14 @@ void handleInputs() {
         triggerSpike = true;
         PVector target4 = new PVector(decisionGraph[(b.currentPlatform-1)][7].pos.x, decisionGraph[(b.currentPlatform-1)][7].pos.y);
         b.pos.lerp(target4,1);
-     
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         b.currentPlatform = 8;
         
       }
@@ -66,7 +96,14 @@ void handleInputs() {
         triggerSpike = true;
         PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][0].pos.x, decisionGraph[(b.currentPlatform-1)][0].pos.y);
         b.pos.lerp(target5,1);
-        
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         b.currentPlatform = 1;
       } 
       else if (key == 'w') {
@@ -74,7 +111,14 @@ void handleInputs() {
         triggerSpike = true;
         PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
         b.pos.lerp(target6,1);
-        
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         b.currentPlatform = 2; 
         
       }
@@ -83,7 +127,14 @@ void handleInputs() {
         triggerSpike = true;
         PVector target7 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
         b.pos.lerp(target7,1);
-        
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         b.currentPlatform = 3;
         
       }
@@ -92,7 +143,14 @@ void handleInputs() {
         triggerSpike = true;
         PVector target8 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
         b.pos.lerp(target8,1);
-        
+        jumpCounter++;
+        println("Current jump: " + jumpCounter + " Decision Space: [ " );
+        for(int i = 0; i < 8; i++){
+          if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
+            println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
+          }
+        }
+        println("]");
         b.currentPlatform = 4;
         
       }

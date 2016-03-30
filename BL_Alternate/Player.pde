@@ -55,7 +55,7 @@ class Ball {
 
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
-    currentPlatform = 4;
+    currentPlatform = 1;
     velo = new PVector(0, 0); //Vec2 of x and y velocity
     dir = 1; 
     bounce = 8; 
