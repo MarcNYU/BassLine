@@ -1,8 +1,8 @@
-boolean triggerws = false;
-boolean LWallJump = false;
-boolean RJump = false; //If player jumps right one position
-boolean LJump = false;//If player jumps left one position
-boolean RWallJump = false;
+boolean triggerSpike = false;
+boolean choice1 = false;
+boolean choice2 = false; //If player jumps right one position
+boolean choice3 = false;//If player jumps left one position
+boolean choice4 = false;
 boolean grounded = false;
 
 float easing = 0.35; //lerps spikes on noise wave
@@ -12,12 +12,15 @@ float left = 50;//center point of left debug line
 float right = 590;//center point of right debug line
 float dampen = 0.1;//not being used now
 
+
+
 class Ball {
   PVector pos;
   PVector velo;
 
   int hp;
   int dir;
+  int currentPlatform;
 
   float bounce;
   float radius;
@@ -26,6 +29,7 @@ class Ball {
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
     velo = new PVector(0, 0); //Vec2 of x and y velocity
+    currentPlatform = 1;
     dir = 1; 
     bounce = 8; 
     radius = r;
@@ -39,7 +43,7 @@ class Ball {
     pos.x += velo.x;
     velo.y += gravity;
 
-    if (triggerws) {
+    if (triggerSpike) {
       if (grounded()) {
         fws = 100;
       } else if (leftB()) {
@@ -152,18 +156,18 @@ class Ball {
 }
 
 void onGround() {
-  if (RWallJump) {//p
+  if (choice4) {//p
     println("press p");
     b.velo.y = -4.5;
     b.velo.x = 5;
-  } else if (RJump) {//w
+  } else if (choice2) {//w
     println("press w");
     b.velo.y = -5.5;
     b.velo.x = 4;
-  } else if (LJump) {//o
+  } else if (choice3) {//o
     b.velo.y = -5.5;
     b.velo.x = -4;
-  } else if (LWallJump) {//q
+  } else if (choice1) {//q
     b.velo.y = -4.5;
     b.velo.x = -5;
   } else {

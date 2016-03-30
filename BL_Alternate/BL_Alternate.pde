@@ -1,11 +1,14 @@
 import ddf.minim.*;
-import ddf.minim.signals.*; 
 import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
 
 void setup() {
   size(640, 900); //size of the screen
   noiseDetail(8); //
-  //frameRate(60);
+  //frameRate(1);
   started = false; //whether the music has started
   selection = false;
   initGame();
@@ -18,13 +21,16 @@ void draw() {
   b.update();
   b.render();
   DrawLines();
+  drawBars();
+  //delay(60);
   classicVi.drawBEQ(); 
-  classicVi.drawWEQ();
+  //classicVi.drawWEQ();
   mp3.play();
   if (consol) {
     debug();
   }
   b.DrawHP();
+  drawTriggers();
   //triggers();
   //drawArc();
 }

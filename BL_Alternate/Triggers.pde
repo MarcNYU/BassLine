@@ -1,20 +1,45 @@
 float space = 172.5;
 
+Trigger t1;
+Trigger t2;
+Trigger t3;
+Trigger t4;
+Trigger t5;
+Trigger t6;
+Trigger t7;
+Trigger t8;
+Trigger tNull;
+Trigger t[];
+
+Trigger[][]  decisionGraph = {{tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
+                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull}};
+
+
 class Trigger { //platforms to jump between
   PVector pos;
-  PVector dem;
+  PVector dim;
+  Boolean isNull;
+  int platformIdx;
 
   Trigger(float x, float y, float w, float h) {
     pos = new PVector(x, y);
-    dem = new PVector(w, h);
+    dim = new PVector(w, h);
+    isNull = false;
+    platformIdx = 0;
   }
 
-  void draw() {
+  void drawT() {
     pushMatrix();
     rectMode(CENTER);
-    noStroke();
-    fill(#00F9FF);
-    rect(pos.x, pos.y, dem.x, dem.y);
+    stroke(255);
+    fill(0);
+    rect(pos.x, pos.y, dim.x, dim.y);
     popMatrix();
   }
 }
@@ -28,6 +53,17 @@ void triggers() {//hard coded platfomrs
   t6 = new Trigger(600, space*2.1, 10, 50);
   t7 = new Trigger(40, space, 10, 50);
   t8 = new Trigger(600, space, 10, 50);
+  tNull = new Trigger(0,0,0,0);
+  
+  t1.platformIdx = 1;
+  t2.platformIdx = 2;
+  t3.platformIdx = 3;
+  t4.platformIdx = 4;
+  t5.platformIdx = 5;
+  t6.platformIdx = 6;
+  t7.platformIdx = 7;
+  t8.platformIdx = 8;
+  tNull.isNull = true;
 
   t[0] = t1;
   t[1] = t2;
@@ -38,7 +74,11 @@ void triggers() {//hard coded platfomrs
   t[6] = t7;
   t[7] = t8;
 
+  
+}
+
+void drawTriggers() {
   for (int i = 0; i < t.length; i++) {
-    t[i].draw(); // draw each platform
+    t[i].drawT(); // draw each platform
   }
 }

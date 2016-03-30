@@ -1,3 +1,6 @@
+float rate;
+Delay myDelay;
+
 class Visualizer {
   PImage fade; 
   float rWidth, rHeight;
@@ -38,6 +41,7 @@ class Visualizer {
 
     //noFill();
     fft.forward(mp3.mix);// used to analyze the frequency coming from the mix 
+    
     for (int i = 0; i < fft.specSize(); i += 50)// specSize is changing the range of analysis (iterates through sound sample returned from fft incrementing by 50 which is the size of each line)
     {
       w = (fft.getFreq(i)*1.2); //width is set to the frequency value 
@@ -75,6 +79,7 @@ class Visualizer {
   }
   void drawWEQ()
   {
+    //noLoop();
     pushMatrix();
     // rainbow Effect parameters
     smooth();
@@ -92,10 +97,14 @@ class Visualizer {
     
     for (int i = 0; i < fft.specSize(); i += 65)// specSize is changing the range of analysis
     {
-      float u = random(65, fft.specSize());
+      //float u = random(65, fft.specSize());
       
       //rect(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
       //rect(40, i/1.5, fft.getFreq(i)/1.5, 25);
+      
+      float target = i;
+      float dx = target - rate;
+      rate += dx * 1.1;//ease rate
       
       barBarR = new Bar(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
       barBarR.drawBar();

@@ -2,36 +2,44 @@ void handleInputs() {
   if (keyPressed) {
     if (b.grounded()) {
       if (key == 'q') {
-        LWallJump = true;
-        triggerws = true;
+        choice1 = true;
+        triggerSpike = true;
       } 
       if (key == 'w') {
-        RJump = true;
-        triggerws = true;
+        choice2 = true;
+        triggerSpike = true;
       }
       if (key == 'o') {
-        LJump = true;
-        triggerws = true;
+        choice3 = true;
+        triggerSpike = true;
       }
       if (key == 'p') {
-        RWallJump = true;
-        triggerws = true;
+        choice4 = true;
+        triggerSpike = true;
       }
     } else {
       float target = 0;
       float dx = target - fws;
+      float dt = target - lws;
+      float dl = target - rws;
       fws += dx * 0.35;//ease rate
-      triggerws = false;
+      lws += dt * 0.35;//ease rate
+      rws += dl * 0.35;//ease rate
+      triggerSpike = false;
     }
   }
   if (!keyPressed) {
-    triggerws = false;
-    if (key == 'q') LWallJump = false;
-    if (key == 'w') RJump = false;
-    if (key == 'o') LJump = false;
-    if (key == 'p') RWallJump = false;
+    triggerSpike = false;
+    if (key == 'q') choice1 = false;
+    if (key == 'w') choice2 = false;
+    if (key == 'o') choice3 = false;
+    if (key == 'p') choice4 = false;
     float target = 0;
     float dx = target - fws;
+    float dt = target - lws;
+    float dl = target - rws;
     fws += dx * 0.35;//ease rate
+    lws += dt * 0.35;//ease rate
+    rws += dl * 0.35;//ease rate
   }
 }
