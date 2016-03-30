@@ -10,6 +10,10 @@ class Visualizer {
   float h = 25;
   float d = 42;
 
+  Bar rBar;
+  Bar lBar;
+  Bar bBar;
+
   Visualizer() {  
     hVal = 0; //hue value
     rectMode(CORNER); //set rectangles to be drawn from top left corner
@@ -51,7 +55,11 @@ class Visualizer {
       // Rotate the box
       rotate(theta); //rotates the boxes based on the position of the circle rotation
       rectMode(CENTER); // Draws rectangles from the center points
-      rect(0, 0, w, h);  //Initializes boxes to 0, 0
+      //rect(0, 0, w, h);  //Initializes boxes to 0, 0
+      bBar = new Bar(0, 0, w, h);
+      bBar.drawBar();
+      bBar.collidesWithBall(2);
+      bBar.collidesWithBall(3);
       popMatrix();
       // Move halfway again
       arclength += d/2; //increments the arclength to be drawn to the next segment
@@ -69,8 +77,10 @@ class Visualizer {
   }
   void drawWEQ()
   {
+    pushMatrix();
     // rainbow Effect parameters
     smooth();
+    rectMode(CORNER);
     colorMode(HSB);// sets color mode value 
     fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
     stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
@@ -79,9 +89,9 @@ class Visualizer {
 
 
     //for loop for creating the audio bars
-    
+
     fft.forward(mp3.mix);// used to analyze the frequency coming from the mix 
-    
+
     for (int i = 0; i < fft.specSize(); i += 65)// specSize is changing the range of analysis
     {
       float u = random(65, fft.specSize());
@@ -93,10 +103,24 @@ class Visualizer {
       //  triangle(0, i/1.5, fft.getFreq(i*15)/1.1, (i/1.5)+12.5, 0, (i/1.5)+25);
       //  triangle(width, i/1.5, width-fft.getFreq(i*15)/1.1, (i/1.5)+12.5, width, (i/1.5)+25);
       //}
+
+      //triangle(40, i/1.5, 40+fft.getFreq(i)/1.1, (i/1.5)+12.5, 40, (i/1.5)+25);
+      //triangle(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
+
+
+
+      rBar = new Bar(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
+      rBar.drawBar();
+      rBar.collidesWithBall(0);
+
+      lBar = new Bar(40, i/1.5, fft.getFreq(i)/1.5, 25);
+      lBar.drawBar();
+      lBar.collidesWithBall(1);
       
-      triangle(40, i/1.5, 40+fft.getFreq(i)/1.1, (i/1.5)+12.5, 40, (i/1.5)+25);
-      triangle(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
-      
+      fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
+      stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
+      rect(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
+      rect(40, i/1.5, fft.getFreq(i)/1.5, 25);
     }
 
     hVal +=1;
@@ -105,5 +129,6 @@ class Visualizer {
     {
       hVal = 0;
     }
+    popMatrix();
   }
 }

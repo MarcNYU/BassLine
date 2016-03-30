@@ -25,8 +25,8 @@ boolean consol = false;
 
 void initGame() {
   t = new Trigger[8]; //array of platforms 
-  b = new Ball(200, ground, 20); //x = 200
-
+  b = new Ball(left, ground, 20); //x = 200
+  triggers();
   gameState = 0;
   started = false; //if the music has started
   selection = false; //if a song song switch selection has been made

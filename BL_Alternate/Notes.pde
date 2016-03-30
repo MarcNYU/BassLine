@@ -35,4 +35,40 @@ class Bar {
     rect(pos.x, pos.y, dem.x, dem.y);
     popMatrix();
   }
+  
+  
+  void collidesWithBall(int wall)
+  {
+    //println( pos.x, pos.y, " b.pos.x: ", b.pos.x, ", b.pos.y: ", b.pos.y );
+    // wall = 0: left; wall = 1: right
+    
+    switch(wall)
+    {
+      case 0:
+        if(pos.x < b.pos.x && pos.y < b.pos.y && pos.y + dem.y > b.pos.y)
+        {
+          println("Game Over: hit right");
+        }
+        break;
+      case 1:
+        if(pos.x + dem.x > b.pos.x && pos.y < b.pos.y && pos.y + dem.y > b.pos.y)
+        {
+          println("Game Over: hit left");
+        }
+        break;
+      case 2:
+        if(height - dem.x < t1.pos.y && width/2 + dem.y > t1.pos.x && width/2 + dem.y < t1.pos.x + 50 &&  b.pos.x > t1.pos.x && b.pos.x < t1.pos.x + 50 && b.pos.y > 680)
+        {
+          println("Game Over: hit bottom");
+        }
+        break;
+      case 3:
+        
+        if( height - dem.x < t2.pos.y && width/2 + dem.y > t2.pos.x && width/2 + dem.y < t2.pos.x + 50 &&  b.pos.x > t2.pos.x && b.pos.x < t2.pos.x + 50 && b.pos.y > 680)
+        {
+          println("Game Over: hit bottom2");
+        }
+        break;
+    } //<>//
+  }
 }

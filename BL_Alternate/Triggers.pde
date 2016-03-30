@@ -18,9 +18,9 @@ class Trigger { //platforms to jump between
   }
 }
 
-void triggers() {//hard coded platfomrs
+void triggers() {//hard coded platfomers
   t1 = new Trigger(width/2 - 120, 695, 50, 10);
-  t2 = new Trigger(width/2 + 120, 695, 50, 10);
+  t2 = new Trigger(width/2 + 160, 695, 50, 10);
   t3 = new Trigger(40, space*2.5 + 120, 10, 50);
   t4 = new Trigger(600, space*2.5 + 120, 10, 50);
   t5 = new Trigger(40, space*2.1, 10, 50);

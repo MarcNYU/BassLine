@@ -41,7 +41,7 @@ class Ball {
 
     if (triggerws) {
       if (grounded()) {
-        fws = 100;
+        fws = 100;        //wave spike
       } else if (leftB()) {
         lws = 100;
       } else if (rightB()) {
