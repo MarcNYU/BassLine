@@ -17,14 +17,16 @@ void setup() {
 void draw() {
   canPlay = true; //if game is in a state where the music can play
   background(0); //set background to black
+  triggers();
   handleInputs();
   checkCollision();
   b.update();
   b.render();
   DrawLines();
+  
   //delay(60);
-  classicVi.drawBEQ(); 
-  classicVi.drawWEQ();
+  //classicVi.drawBEQ(); 
+  //classicVi.drawWEQ();
   mp3.play();
   if (consol) {
     debug();

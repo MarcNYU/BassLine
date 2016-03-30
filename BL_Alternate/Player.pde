@@ -41,7 +41,7 @@ class Ball {
     //Apply Gravity
     pos.y += velo.y;
     pos.x += velo.x;
-    velo.y += gravity;
+    //velo.y += gravity;
 
     if (triggerSpike) {
       if (grounded()) {
@@ -158,18 +158,18 @@ class Ball {
 void onGround() {
   if (choice4) {//p
     println("press p");
-    b.velo.y = -4.5;
-    b.velo.x = 5;
+    //b.velo.y = -4.5;
+    //b.velo.x = 5;
   } else if (choice2) {//w
     println("press w");
-    b.velo.y = -5.5;
-    b.velo.x = 4;
+    //b.velo.y = -5.5;
+    //b.velo.x = 4;
   } else if (choice3) {//o
-    b.velo.y = -5.5;
-    b.velo.x = -4;
+    //b.velo.y = -5.5;
+    //b.velo.x = -4;
   } else if (choice1) {//q
-    b.velo.y = -4.5;
-    b.velo.x = -5;
+    //b.velo.y = -4.5;
+    //b.velo.x = -5;
   } else {
     b.velo.y = 0;
     b.velo.x = 0;

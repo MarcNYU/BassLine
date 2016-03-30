@@ -1,24 +1,25 @@
 float space = 172.5;
 
-Trigger t1;
-Trigger t2;
-Trigger t3;
-Trigger t4;
-Trigger t5;
-Trigger t6;
-Trigger t7;
-Trigger t8;
-Trigger tNull;
+Trigger t1 = new Trigger(40, space, 10, 50);
+Trigger t2 = new Trigger(40, space+200, 10, 50);
+Trigger t3 = new Trigger(40, space+400, 10, 50);
+Trigger t4 = new Trigger(width/2 + 120, 695, 50, 10);
+Trigger t5 = new Trigger(width/2+400, height/2+645, 50, 10);
+Trigger t6 = new Trigger(600, space, 10, 50);
+Trigger t7 = new Trigger(600, space+200, 10, 50);
+Trigger t8 = new Trigger(600, space+400, 10, 50);
+Trigger tNull = new Trigger(0, 0, 0, 0);
 Trigger t[];
 
-Trigger[][]  decisionGraph = {{tNull,tNull,tNull,tNull,t5,t6,t7,t8},
-                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
-                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
-                              {tNull,tNull,tNull,tNull,t5,t6,t7,t8},
-                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
-                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
-                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull},
-                              {t1,t2,t3,t4,tNull,tNull,tNull,tNull}};
+
+Trigger[][]  decisionGraph = {{tNull, tNull, tNull, tNull, t5, t6, t7, t8}, 
+  {tNull, tNull, tNull, tNull, t5, t6, t7, t8}, 
+  {tNull, tNull, tNull, tNull, t5, t6, t7, t8}, 
+  {tNull, tNull, tNull, tNull, t5, t6, t7, t8}, 
+  {t1, t2, t3, t4, tNull, tNull, tNull, tNull}, 
+  {t1, t2, t3, t4, tNull, tNull, tNull, tNull}, 
+  {t1, t2, t3, t4, tNull, tNull, tNull, tNull}, 
+  {t1, t2, t3, t4, tNull, tNull, tNull, tNull}};
 
 
 class Trigger { //platforms to jump between
@@ -44,17 +45,20 @@ class Trigger { //platforms to jump between
   }
 }
 
+void initTr() {
+  t1 = new Trigger(40, space, 10, 50);
+  t2 = new Trigger(40, space+200, 10, 50);
+  t3 = new Trigger(40, space+400, 10, 50);
+  t4 = new Trigger(width/2 - 120, 695, 50, 10);
+  t5 = new Trigger(width/2 + 120, 695, 50, 10);
+  t6 = new Trigger(600, space, 10, 50);
+  t7 = new Trigger(600, space+200, 10, 50);
+  t8 = new Trigger(600, space+400, 10, 50);
+  tNull = new Trigger(0, 0, 0, 0);
+}
+
 void triggers() {//hard coded platfomrs
-  t1 = new Trigger(width/2 - 120, 695, 50, 10);
-  t2 = new Trigger(width/2 + 120, 695, 50, 10);
-  t3 = new Trigger(40, space*2.5 + 120, 10, 50);
-  t4 = new Trigger(600, space*2.5 + 120, 10, 50);
-  t5 = new Trigger(40, space*2.1, 10, 50);
-  t6 = new Trigger(600, space*2.1, 10, 50);
-  t7 = new Trigger(40, space, 10, 50);
-  t8 = new Trigger(600, space, 10, 50);
-  tNull = new Trigger(0,0,0,0);
-  
+
   t1.platformIdx = 1;
   t2.platformIdx = 2;
   t3.platformIdx = 3;
@@ -73,8 +77,6 @@ void triggers() {//hard coded platfomrs
   t[5] = t6;
   t[6] = t7;
   t[7] = t8;
-
-  
 }
 
 void drawTriggers() {

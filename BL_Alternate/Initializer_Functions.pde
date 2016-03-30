@@ -20,11 +20,13 @@ boolean canPlay;//boolean for allowing the audio to play
 boolean consol = false;
 
 void initGame() {
+  //initTr();
+  
   rBars = new Bar[14];
   lBars = new Bar[14];
   t = new Trigger[8]; //array of platforms 
-  b = new Ball(200, ground, 20); //x = 200
-  triggers();
+  b = new Ball(40, space, 20); //x = 200
+  
   makeBars();
 
   gameState = 0;
