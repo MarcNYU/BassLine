@@ -61,8 +61,7 @@ class Visualizer {
       //rect(0, 0, w, h);  //Initializes boxes to 0, 0
       rotatingBar = new Bar(0, 0, w, h);
       rotatingBar.drawBar();
-      rotatingBar.collidesWithBar();
-      println(rotatingBar.pos.x + ", " + rotatingBar.pos.y);
+      
       popMatrix();
       // Move halfway again
       arclength += d/2; //increments the arclength to be drawn to the next segment

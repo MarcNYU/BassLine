@@ -70,6 +70,16 @@ void drawArc() {
   popMatrix();
 }
 
+void checkCollision() {
+  for (int i = 0; i < rBars.length; i++) {
+    rBars[i].collidesWithBall(0);
+    lBars[i].collidesWithBall(1);
+  }
+  for (int j = 0; j < lBars.length; j++) {
+    lBars[j].collidesWithBall(1);
+  }
+}
+
 void debug() {
   drawGuides();
   //drawArc();

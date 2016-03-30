@@ -18,6 +18,7 @@ void draw() {
   canPlay = true; //if game is in a state where the music can play
   background(0); //set background to black
   handleInputs();
+  checkCollision();
   b.update();
   b.render();
   DrawLines();
