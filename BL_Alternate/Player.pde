@@ -162,24 +162,41 @@ class Ball {
 }
 
 void press() {
-  if (choice4) {//p
-    println("press p");
-    //b.velo.y = -4.5;
-    //b.velo.x = 5;
-  } else if (choice2) {//w
-    println("press w");
-    //b.velo.y = -5.5;
-    //b.velo.x = 4;
-  } else if (choice3) {//o
-    //b.velo.y = -5.5;
-    //b.velo.x = -4;
-    
-  } else if (choice1) {//q
-    //b.velo.y = -4.5;
-    //b.velo.x = -5;
-    
-  } else {
-    b.velo.y = 0;
-    b.velo.x = 0;
+  if (b.currentPlatform < 5) {
+    if (choice1) {
+      PVector target = new PVector(decisionGraph[(b.currentPlatform-1)][4].pos.x, decisionGraph[(b.currentPlatform-1)][4].pos.y);
+      b.pos.lerp(target, 1);
+      b.currentPlatform = 5;
+    } else if (choice2) {
+      PVector target2 = new PVector(decisionGraph[(b.currentPlatform-1)][5].pos.x, decisionGraph[(b.currentPlatform-1)][5].pos.y);
+      b.pos.lerp(target2, 1);
+      b.currentPlatform = 6;
+    } else if (choice3) {
+      PVector target3 = new PVector(decisionGraph[(b.currentPlatform-1)][6].pos.x, decisionGraph[(b.currentPlatform-1)][6].pos.y);
+      b.pos.lerp(target3, 1);
+      b.currentPlatform = 7;
+    } else if (choice4) {
+      PVector target4 = new PVector(decisionGraph[(b.currentPlatform-1)][7].pos.x, decisionGraph[(b.currentPlatform-1)][7].pos.y);
+      b.pos.lerp(target4, 1);
+      b.currentPlatform = 8;
+    }
+  } else if (b.currentPlatform >= 5) {
+    if (choice1) {
+      PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
+      b.pos.lerp(target5, 1);
+      b.currentPlatform = 1;
+    } else if (choice2) {
+      PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
+      b.pos.lerp(target6, 1);
+      b.currentPlatform = 2;
+    } else if (choice3) {
+      PVector target7 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
+      b.pos.lerp(target7, 1);
+      b.currentPlatform = 3;
+    } else if (choice4) {
+      PVector target8 = new PVector(decisionGraph[(b.currentPlatform-1)][0].pos.x, decisionGraph[(b.currentPlatform-1)][0].pos.y);
+      b.pos.lerp(target8, 1);
+      b.currentPlatform = 4;
+    }
   }
 }

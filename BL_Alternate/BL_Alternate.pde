@@ -6,6 +6,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 boolean turnoff = false;
+boolean turnoffm = false;
 
 void setup() {
   size(640, 900); //size of the screen
@@ -36,6 +37,9 @@ void draw() {
     mp3.close();
     b.hp = 3;
   }
+  if (turnoffm) {
+    mp3.close();
+  }
   b.DrawHP();
   drawTriggers();
   //triggers();
@@ -57,6 +61,9 @@ void keyPressed()
   }
   
   if (key == TAB) {
+    turnoff = true;
+  }
+  if (key == SHIFT) {
     turnoff = true;
   }
 }
