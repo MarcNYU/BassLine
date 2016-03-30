@@ -72,7 +72,7 @@ class Ball {
     //Apply Gravity
     pos.y += velo.y;
     pos.x += velo.x;
-    velo.y += gravity;
+    //velo.y += gravity;
     
     if (triggerSpike) {
       spike = 100;

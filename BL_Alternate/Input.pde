@@ -9,45 +9,54 @@ void handleInputs() {
   //println("current platform " + (b.currentPlatform-1));
   if (keyPressed) {
     if(b.currentPlatform < 5){
-    if (b.grounded()) {
+    //if (b.grounded()) {
       if (key == 'q') {
         choice1 = true;
         
         triggerSpike = true;
         //interpolate ball from its current position to the position of the target platform
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][4].pos.x);
+        PVector target = new PVector(decisionGraph[(b.currentPlatform-1)][4].pos.x, decisionGraph[(b.currentPlatform-1)][4].pos.y);
+        b.pos.lerp(target,0.5);
+        println("Ball current position: " + b.pos + " Platform Target Position: " + target);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][4].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][4].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][4].pos.y);
         b.currentPlatform = 5;
       } 
-      if (key == 'w') {
+      else if (key == 'w') {
         choice2 = true;
         triggerSpike = true;
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][5].pos.x);
+        PVector target2 = new PVector(decisionGraph[(b.currentPlatform-1)][5].pos.x, decisionGraph[(b.currentPlatform-1)][5].pos.y);
+        b.pos.lerp(target2,0.5);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][5].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][5].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][5].pos.y);
         b.currentPlatform = 6; 
         
       }
-      if (key == 'o') {
+      else if (key == 'o') {
         choice3 = true;
         triggerSpike = true;
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][6].pos.x);
+        PVector target3 = new PVector(decisionGraph[(b.currentPlatform-1)][6].pos.x, decisionGraph[(b.currentPlatform-1)][6].pos.y);
+        b.pos.lerp(target3,0.5);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][6].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][6].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][6].pos.y);
         b.currentPlatform = 7;
         
       }
-      if (key == 'p') {
+      else if (key == 'p') {
         choice4 = true;
         triggerSpike = true;
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][7].pos.x);
+        PVector target4 = new PVector(decisionGraph[(b.currentPlatform-1)][7].pos.x, decisionGraph[(b.currentPlatform-1)][7].pos.y);
+        b.pos.lerp(target4,0.5);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][7].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][7].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][7].pos.y);
         b.currentPlatform = 8;
         
       }
-    }
+  //  }
     else {
       float target = 0;
       float dx = target - spike;
@@ -56,39 +65,47 @@ void handleInputs() {
     }
   }
   else if(b.currentPlatform > 5){
-    if (b.grounded()) {
+    //if (b.grounded()) {
       if (key == 'q') {
         choice1 = true;
         triggerSpike = true;
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][0].pos.x);
+        PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][0].pos.x, decisionGraph[(b.currentPlatform-1)][0].pos.y);
+        b.pos.lerp(target5,0.5);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][0].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][0].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][0].pos.y);
         b.currentPlatform = 1;
       } 
-      if (key == 'w') {
+      else if (key == 'w') {
         choice2 = true;
         triggerSpike = true;
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][1].pos.x);
+        PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
+        b.pos.lerp(target6,0.5);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][1].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][1].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][1].pos.y);
         b.currentPlatform = 2; 
         
       }
-      if (key == 'o') {
+      else if (key == 'o') {
         choice3 = true;
         triggerSpike = true;
-        b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][2].pos.x);
+        PVector target7 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
+        b.pos.lerp(target7,0.5);
+        //b.pos.x = map(b.velo.x, 40,width-40 ,b.pos.x,decisionGraph[(b.currentPlatform-1)][2].pos.x);
         
-        b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][2].pos.y);
+        //b.pos.y = map(b.velo.y,0,695,b.pos.y,decisionGraph[(b.currentPlatform-1)][2].pos.y);
         b.currentPlatform = 3;
         
       }
-      if (key == 'p') {
+      else if (key == 'p') {
         choice4 = true;
         triggerSpike = true;
-        map(b.velo.x,0,1,b.pos.x,decisionGraph[(b.currentPlatform-1)][3].pos.x);
+        PVector target8 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
+        b.pos.lerp(target8,0.5);
+        //map(b.velo.x,0,1,b.pos.x,decisionGraph[(b.currentPlatform-1)][3].pos.x);
         
-        map(b.velo.y,0,1,b.pos.y,decisionGraph[(b.currentPlatform-1)][3].pos.y);
+        //map(b.velo.y,0,1,b.pos.y,decisionGraph[(b.currentPlatform-1)][3].pos.y);
         b.currentPlatform = 4;
         
       }
@@ -100,7 +117,7 @@ void handleInputs() {
       triggerSpike = false;
     }
   }
-  }
+  //}
   if (!keyPressed) {
     triggerSpike = false;
     if (key == 'q') choice1 = false;
