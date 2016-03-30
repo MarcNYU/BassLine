@@ -17,9 +17,12 @@ void setup() {
 void draw() {
   canPlay = true; //if game is in a state where the music can play
   background(0); //set background to black
+  triggers();
   handleInputs();
   checkCollision();
-  ns.drawNoteSheet();
+  if (!consol) {
+    ns.drawNoteSheet();
+  }
   DrawLines();
   
   //delay(60);
@@ -28,6 +31,8 @@ void draw() {
   mp3.play();
   if (consol) {
     debug();
+    mp3.close();
+    b.hp = 3;
   }
   b.DrawHP();
   drawTriggers();

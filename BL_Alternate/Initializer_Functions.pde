@@ -27,8 +27,8 @@ void initGame() {
   rBars = new Bar[14];
   lBars = new Bar[14];
   t = new Trigger[8]; //array of platforms 
-  b = new Ball(200, ground, 20); //x = 200
-  triggers();
+  b = new Ball(t4.pos.x, t4.pos.y, 20); //x = 200
+  //triggers();
   makeBars();
 
   gameState = 0;

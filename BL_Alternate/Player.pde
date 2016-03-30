@@ -42,7 +42,7 @@ class Ball {
     //Apply Gravity
     pos.y += velo.y;
     pos.x += velo.x;
-    velo.y += gravity;
+    //velo.y += gravity;
 
     if (triggerSpike) {
       if (grounded()) {
@@ -55,7 +55,7 @@ class Ball {
     }
     //if the ball is on the bottom wire
     if (grounded()) {
-      onGround();
+      //onGround();
     }
   }
 
