@@ -88,7 +88,6 @@ class Visualizer {
     fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
     stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
     colorMode(RGB);//sets color mode back to Red green and blue 
-<<<<<<< HEAD
     int i = (int) random(0, 14);
     int j = (int) random(0, 14);
     float freq = random(20, 200);
@@ -101,42 +100,6 @@ class Visualizer {
     drawBars();
     bw *= 0.95;
     if ( bw < 0 ) bw = 0;
-=======
-    //fill(EQColorR,EQColorG,EQColorB);
-
-
-    //for loop for creating the audio bars
-    
-    fft.forward(mp3.mix);// used to analyze the frequency coming from the mix 
-    
-    for (int i = 0; i < fft.specSize(); i += 500)// specSize is changing the range of analysis
-    {
-      float u = random(65, fft.specSize());
-      
-      //rect(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
-      //rect(40, i/1.5, fft.getFreq(i)/1.5, 25);
-      
-      barBarR = new Bar(width-40, i/1.5, -fft.getFreq(i)/1.5, 25);
-      barBarR.drawBar();
-      barBarR.collidesWithBar();
-      
-      barBarL = new Bar(40, i/1.5, fft.getFreq(i)/1.5, 25);
-      barBarL.drawBar();
-      barBarL.collidesWithBar();
-      
-      //triangle(40, i/1.5, 40+fft.getFreq(i)/1.1, (i/1.5)+12.5, 40, (i/1.5)+25);
-      //triangle(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
-      //s = new Spike(width-40, i/1.5, width-40-fft.getFreq(i)/1.1, (i/1.5)+12.5, width-40, (i/1.5)+25);
-      //s.drawSpike();
-    }
-
-    hVal +=1;
-
-    if (hVal > 255)
-    {
-      hVal = 0;
-    }
->>>>>>> Tebyt
     popMatrix();
   }
 }
