@@ -21,6 +21,10 @@ class NoteSheet {
     for (int i = 0; i < notes.length; ++i) {
        if (notes[i] != null) {
           notes[i].drawNote();
+          if( notes[i].checkBallCollsion() )        //Checks for note, ball collision
+          {
+            println("hit note");  
+          }
           if (notes[i].outbound()) {
              notes[i] = null; 
           }
@@ -73,6 +77,38 @@ class NoteSheet {
    }
    boolean outbound() {
       return (cx > width || cy > ground); 
+   }
+   boolean checkBallCollsion()
+   {
+     // Check right collision
+     if( b.pos.x + 10 > cx - 12.5 && b.pos.x + 10 < cx + 12.5)
+     {
+       if( b.pos.y + 10 > cy - 12.5 && b.pos.y + 10 < cy + 12.5 )
+       {
+         //println("hit right", b.pos.y +10, cy - 12.5, cy + 12.5 );
+         return true;
+       }
+       else if( b.pos.y - 10 > cy - 12.5 && b.pos.y - 10 < cy + 12.5 )
+       {
+         //println("hit right", b.pos.y -10, cy - 12.5, cy + 12.5);
+         return true;
+       }
+     }
+     // Check left collision
+     else if( b.pos.x - 10 > cx -12.5 && b.pos.x - 10 < cx + 12.5)
+     {
+        if( b.pos.y - 10 > cy +12.5 && b.pos.y - 10 < cy - 12.5 )
+        {
+          //println("hit leftl", b.pos.y -10, cy - 12.5, cy + 12.5);
+          return true;
+        }
+        else if( b.pos.y + 10 > cy -12.5 && b.pos.y +10 < cy + 12.5)
+        {
+          //println("hit leftr", b.pos.y +10, cy - 12.5, cy + 12.5);
+          return true;
+        }
+     }
+     return false;
    }
   }
 }

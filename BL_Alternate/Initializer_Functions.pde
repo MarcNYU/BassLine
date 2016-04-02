@@ -83,6 +83,7 @@ void checkCollision() {
   for (int j = 0; j < lBars.length; j++) {
     lBars[j].collidesWithBall(1);
   }
+  
 }
 
 void debug() {

@@ -27,18 +27,18 @@ class Bar {
     case 0:
       if (pos.x < b.pos.x && pos.y < b.pos.y && pos.y + dim.y > b.pos.y)
       {
-        println("Game Over: hit right");
+        //println("Game Over: hit right");
         b.hp -= 1;
       }
       break;
     case 1:
       if (pos.x + dim.x > b.pos.x && pos.y < b.pos.y && pos.y + dim.y > b.pos.y)
       {
-        println("Game Over: hit left");
+        //println("Game Over: hit left");
         b.hp -= 1;
       }
       break;
-    case 2:
+    /*case 2:
       if (height - dim.x < t1.pos.y && width/2 + dim.y > t1.pos.x && width/2 + dim.y < t1.pos.x + 50 &&  b.pos.x > t1.pos.x && b.pos.x < t1.pos.x + 50 && b.pos.y > 680)
       {
         println("Game Over: hit bottom");
@@ -50,7 +50,7 @@ class Bar {
       {
         println("Game Over: hit bottom2");
       }
-      break;
+      break;*/
     }
   }
   
