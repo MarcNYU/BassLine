@@ -1,5 +1,8 @@
 float barGap = UY;
 
+
+
+
 class Bar {
   PVector pos;
   PVector dim;

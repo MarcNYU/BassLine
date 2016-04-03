@@ -9,7 +9,12 @@ boolean turnoff = false;
 boolean turnoffm = false;
 
 void setup() {
+  //ortho();
+  
   size(640, 900); //size of the screen
+  //ortho(-width, width, -height*2, height*2);
+  //translate(width/2, -height/2, 0);
+  //surface.setResizable(true);
   noiseDetail(8); //
   //frameRate(1);
   started = false; //whether the music has started
