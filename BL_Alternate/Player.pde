@@ -48,7 +48,7 @@ class Ball {
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
     velo = new PVector(0, 0); //Vec2 of x and y velocity
-    currentPlatform = 1;
+    currentPlatform = 5;
     dir = 1; 
     bounce = 8; 
     radius = r;
@@ -199,11 +199,12 @@ class Ball {
 
 void mousePressed() {
   //println("mouse pressed");
+  
   pct = 0.0;
   beginX = b.pos.x;
   beginY = b.pos.y;
   
-  
+  PVector target9 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
   if (b.currentPlatform < 5) {
     if (choice1) {
       PVector target = new PVector(decisionGraph[(b.currentPlatform-1)][4].pos.x, decisionGraph[(b.currentPlatform-1)][4].pos.y);
@@ -235,11 +236,13 @@ void mousePressed() {
       b.currentPlatform = 8;
     }
   } else if (b.currentPlatform >= 5) {
+    println("choice1 is: " +choice1);
     if (choice1) {
       PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
       //b.pos.lerp(target5, 1);
       endX = target5.x;
       endY = target5.y;
+      println("choice1 is: " +choice1);
       b.currentPlatform = 1;
     } else if (choice2) {
       PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
@@ -261,7 +264,9 @@ void mousePressed() {
       b.currentPlatform = 4;
     }
   }
-  
+  if(withinRange(mouseX,mouseY,target9.x,target9.y)){
+    println("within range, current platform: " + b.currentPlatform);
+  }
   distX = endX - beginX;
   distY = endY - beginY;
 }
