@@ -46,11 +46,21 @@ void draw() {
     mp3.close();
   }
   b.DrawHP();
+  fill(0);
   drawTriggers();
   //triggers();
   //drawArc();
   b.update();
   b.render();
+  //highlight platforms that can 
+  fill(20,20, 255);
+    for(int i =0; i < 8;i++){
+      if(!(decisionGraph[b.currentPlatform-1][i].isNull)){
+        decisionGraph[b.currentPlatform-1][i].drawT();
+        
+      }
+      
+    }
 }
 
 void keyPressed()

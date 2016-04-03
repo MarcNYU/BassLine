@@ -1,8 +1,13 @@
 boolean triggerSpike = false;
 boolean choice1 = false;
-boolean choice2 = false; //If player jumps right one position
-boolean choice3 = false;//If player jumps left one position
+boolean choice2 = false;
+boolean choice3 = false;
 boolean choice4 = false;
+boolean choice5 = false;
+boolean choice6 = false;
+boolean choice7 = false;
+boolean choice8 = false;
+
 boolean grounded = false;
 
 float easing = 0.35; //lerps spikes on noise wave
@@ -18,19 +23,21 @@ int hpCoord = 200;
 
 //float beginX = width/2 + 120 ;  // Initial x-coordinate
 //float beginY = 795;  // Initial y-coordinate
-float beginX = 250 ;  // Initial x-coordinate
-float beginY = 250;  // Initial y-coordinate
+float beginX = 40.0 ;  // Initial x-coordinate
+float beginY = 172.5 + UY;  // Initial y-coordinate
 
-float endX = 100.0;   // Final x-coordinate
-float endY = 100.0;   // Final y-coordinate
+float endX = 40.0;   // Final x-coordinate
+float endY = 172.5 + UY;   // Final y-coordinate
 float distX;          // X-axis distance to move
 float distY;          // Y-axis distance to move
-float exponent = 4;   // Determines the curve
+float exponent = 4;   // Determines the curve 
 float current_x = 0.0;        // Current x-coordinate
 float current_y = 0.0;        // Current y-coordinate
-float step = 0.01;    // Size of each step along the path
+float step = 0.02;    // Size of each step along the path (Use to adjust speed of the ball)
 float pct = 0.0;      // Percentage traveled (0.0 to 1.0)
 
+boolean canMoveTo = false;
+boolean locked = false;
 
 
 class Ball {
@@ -48,7 +55,7 @@ class Ball {
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
     velo = new PVector(0, 0); //Vec2 of x and y velocity
-    currentPlatform = 5;
+    currentPlatform = 1;
     dir = 1; 
     bounce = 8; 
     radius = r;
@@ -77,7 +84,9 @@ class Ball {
     }
     
     pct += step; //increase the percentage of the curve that is currently done by step
-    
+   
+   
+       
   }
 
   Boolean grounded() {
@@ -99,13 +108,14 @@ class Ball {
     pushMatrix();
     //stroke(#03F6FC);
     noStroke();
-    fill(#03F6FC, 255);
     
-    if (pct < 1.0) {
+    
+    if (pct <= 1.0) {
       pos.x = beginX + (pct * distX);
       pos.y = beginY + (pow(pct, exponent) * distY);
     } 
     
+    fill(#03F6FC, 255);
     ellipse(pos.x, pos.y, radius, radius);
     popMatrix();
   }
@@ -197,14 +207,14 @@ class Ball {
 //  distY = endY - beginY;
 //}
 
-void mousePressed() {
+void mouseClicked() {
   //println("mouse pressed");
   
   pct = 0.0;
   beginX = b.pos.x;
   beginY = b.pos.y;
   
-  PVector target9 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
+  
   if (b.currentPlatform < 5) {
     if (choice1) {
       PVector target = new PVector(decisionGraph[(b.currentPlatform-1)][4].pos.x, decisionGraph[(b.currentPlatform-1)][4].pos.y);
@@ -228,45 +238,45 @@ void mousePressed() {
       
       b.currentPlatform = 7;
     } else if (choice4) {
+      
       PVector target4 = new PVector(decisionGraph[(b.currentPlatform-1)][7].pos.x, decisionGraph[(b.currentPlatform-1)][7].pos.y);
       //b.pos.lerp(target4, 1);
       endX = target4.x;
       endY = target4.y;
       
       b.currentPlatform = 8;
+      println("current platform: " + b.currentPlatform);
     }
   } else if (b.currentPlatform >= 5) {
     println("choice1 is: " +choice1);
-    if (choice1) {
-      PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
+    if (choice5) {
+      PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][0].pos.x, decisionGraph[(b.currentPlatform-1)][0].pos.y);
       //b.pos.lerp(target5, 1);
       endX = target5.x;
       endY = target5.y;
       println("choice1 is: " +choice1);
       b.currentPlatform = 1;
-    } else if (choice2) {
-      PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
+    } else if (choice6) {
+      PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
       //b.pos.lerp(target6, 1);
       endX = target6.x;
       endY = target6.y;
       b.currentPlatform = 2;
-    } else if (choice3) {
-      PVector target7 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
+    } else if (choice7) {
+      PVector target7 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
       //b.pos.lerp(target7, 1);
       endX = target7.x;
       endY = target7.y;
       b.currentPlatform = 3;
-    } else if (choice4) {
-      PVector target8 = new PVector(decisionGraph[(b.currentPlatform-1)][0].pos.x, decisionGraph[(b.currentPlatform-1)][0].pos.y);
+    } else if (choice8) {
+      PVector target8 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
       //b.pos.lerp(target8, 1);
       endX = target8.x;
       endY = target8.y;
       b.currentPlatform = 4;
     }
   }
-  if(withinRange(mouseX,mouseY,target9.x,target9.y)){
-    println("within range, current platform: " + b.currentPlatform);
-  }
+  
   distX = endX - beginX;
   distY = endY - beginY;
 }

@@ -45,7 +45,7 @@ void handleInputsOld() {
 }
 
 Boolean withinRange(float mouse_x, float mouse_y, float target_x, float target_y){
-  if(dist(mouse_x,mouse_y, target_x,target_y) <= 30){
+  if(dist(mouse_x,mouse_y, target_x,target_y) <= 80){
     //println("within range, current platform: " + b.currentPlatform);
     return true;
   }
@@ -78,10 +78,16 @@ void handleInputs() {
              // println(decisionGraph[i][0].pos +" "+ decisionGraph[i][1].pos + " "+ decisionGraph[i][2].pos + " "+decisionGraph[i][3].pos + " "+ decisionGraph[i][4].pos + " "+decisionGraph[i][5].pos + " "+ decisionGraph[i][6].pos + " "+ decisionGraph[i][7].pos); 
            //}
         //}
+        choice1 = true;
+        
+        choice8 = false;
+        choice7 = false;
+        choice6 = false;
+        choice5 = true; 
         choice2 = false;
         choice3 = false;
         choice4 = false;
-        choice1 = true;    
+        
         triggerSpike = true;
         ////interpolate ball from its current position to the position of the target platform
         //PVector target = new PVector(decisionGraph[(b.currentPlatform-1)][4].pos.x, decisionGraph[(b.currentPlatform-1)][4].pos.y);
@@ -105,6 +111,10 @@ void handleInputs() {
         choice1 = false;
         choice3 = false;
         choice4 = false;
+        choice8 = false;
+        choice7 = false;
+        choice6 = false;
+        choice5 = false; 
         triggerSpike = true;
         //PVector target2 = new PVector(decisionGraph[(b.currentPlatform-1)][5].pos.x, decisionGraph[(b.currentPlatform-1)][5].pos.y);
         //b.pos.lerp(target2,1);
@@ -128,6 +138,10 @@ void handleInputs() {
         choice1 =false;
         choice2 = false;
         choice4 = false;
+        choice8 = false;
+        choice7 = false;
+        choice6 = false;
+        choice5 = false; 
         
         triggerSpike = true;
         //PVector target3 = new PVector(decisionGraph[(b.currentPlatform-1)][6].pos.x, decisionGraph[(b.currentPlatform-1)][6].pos.y);
@@ -151,6 +165,10 @@ void handleInputs() {
         choice1 =false;
         choice2 = false;
         choice3 = false;
+        choice8 = false;
+        choice7 = false;
+        choice6 = false;
+        choice5 = false; 
         triggerSpike = true;
         //PVector target4 = new PVector(decisionGraph[(b.currentPlatform-1)][7].pos.x, decisionGraph[(b.currentPlatform-1)][7].pos.y);
         //b.pos.lerp(target4,1);
@@ -182,11 +200,15 @@ void handleInputs() {
       //if (key == 'q') {
        if (withinRange(mouseX,mouseY,t1.pos.x,t1.pos.y)) {
          println("platform 1 selected");
-        choice1 = true;
+        choice5 = true;
         
         choice3 =false;
         choice2 = false;
         choice4 = false;
+        choice8 = false;
+        choice7 = false;
+        choice6 = false;
+        choice1 = false; 
         triggerSpike = true;
         //PVector target5 = new PVector(decisionGraph[(b.currentPlatform-1)][3].pos.x, decisionGraph[(b.currentPlatform-1)][3].pos.y);
         //b.pos.lerp(target5,1);
@@ -203,11 +225,15 @@ void handleInputs() {
       //else if (key == 'w') {
        else if (withinRange(mouseX,mouseY,t2.pos.x,t2.pos.y)) {
          println("platform 2 selected");
-        choice2 = true;
+        choice6 = true;
         
         choice1 =false;
         choice3 = false;
         choice4 = false;
+        choice8 = false;
+        choice7 = false;
+        choice2 = false;
+        choice5 = false; 
         triggerSpike = true;
         //PVector target6 = new PVector(decisionGraph[(b.currentPlatform-1)][2].pos.x, decisionGraph[(b.currentPlatform-1)][2].pos.y);
         //b.pos.lerp(target6,1);
@@ -225,11 +251,15 @@ void handleInputs() {
       //else if (key == 'o') {
        else if (withinRange(mouseX,mouseY,t3.pos.x,t3.pos.y)) {
          println("platform 3 selected");
-        choice3 = true;
+        choice7 = true;
         
         choice1 =false;
-        choice2 = false;
+        choice3 = false;
         choice4 = false;
+        choice8 = false;
+        choice2 = false; //<>//
+        choice6 = false;
+        choice5 = false;
         triggerSpike = true;
         //PVector target7 = new PVector(decisionGraph[(b.currentPlatform-1)][1].pos.x, decisionGraph[(b.currentPlatform-1)][1].pos.y);
         //b.pos.lerp(target7,1);
@@ -247,17 +277,21 @@ void handleInputs() {
       //else if (key == 'p') {
        else if (withinRange(mouseX,mouseY,t4.pos.x,t4.pos.y)) {
          println("platform 4 selected");
-        choice4 = true;
+        choice8 = true;
         
         choice1 =false;
-        choice2 = false;
         choice3 = false;
+        choice4 = false;
+        choice6 = false;
+        choice7 = false;
+        choice2 = false;
+        choice5 = false;
         triggerSpike = true;
         //PVector target8 = new PVector(decisionGraph[(b.currentPlatform-1)][0].pos.x, decisionGraph[(b.currentPlatform-1)][0].pos.y);
         //b.pos.lerp(target8,1);
         
         //println(" Decision Space: [ " );
-        //for(int i = 0; i < 8; i++){ //<>//
+        //for(int i = 0; i < 8; i++){
         //  if(!(decisionGraph[(b.currentPlatform-1)][i].isNull)){
         //    println(decisionGraph[(b.currentPlatform-1)][i].platformIdx + " , ");
         //  }

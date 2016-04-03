@@ -38,7 +38,7 @@ class Trigger { //platforms to jump between
     pushMatrix();
     rectMode(CENTER);
     stroke(255);
-    fill(0);
+    //fill(0);
     rect(pos.x, pos.y, dim.x, dim.y);
     popMatrix();
   }
