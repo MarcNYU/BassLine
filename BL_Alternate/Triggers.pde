@@ -1,4 +1,4 @@
-float space = 172.5 + UY;
+float space = 272.5;
 
 Trigger t1 = new Trigger(40, space, 10, 50);//x=40
 Trigger t2 = new Trigger(40, space+200, 10, 50);

@@ -41,7 +41,7 @@ void initGame() {
   fft = new FFT(mp3.bufferSize(), mp3.sampleRate());//initializes a buffer with the entire sound file 
   myDelay = new Delay( 0.4, 0.5, true, true );
   rectMode(CORNERS);
-  mp3.loop();//loop the song
+  //mp3.loop();//loop the song
   beat = new BeatDetect();
   classicVi = new Visualizer(); // initializes the class visualizer
   
