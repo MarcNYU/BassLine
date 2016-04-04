@@ -17,6 +17,7 @@ Camera c;
 NoteSheet ns;
 
 int move = 0;
+int state = 0;
 
 void setup() {
   //fullScreen();
@@ -40,21 +41,17 @@ void setup() {
 
 void draw() {
   background(0);
-  println(frameRate);
-  mp3.play();
-  input();
-  translate(-c.pos.x, c.pos.y);
-  drawHeights();
-  b.update();
-  b.render();
-  c.draw();
-  translate(c.pos.x, -c.pos.y);
-  ns.drawNoteSheet();
-  DrawLines();
-  //b.render();
-  classicVi.drawEQ();
-  classicVi.drawBeat();
+gameStates();
   
+  if(keyPressed ){
+      if(key == 'd'){
+         state = 2; 
+      }
+      else if(key == 'o'){
+        state = 0;
+      }
+  }
+
   //drawGuides();
   
 }

@@ -1,4 +1,4 @@
-float ground = 785;
+float ground = height;
 float left = 50;
 float right = 430;
 boolean jump;
@@ -73,10 +73,14 @@ class Ball {
     } else {
       gravity = .3;
     }
+     if( grounded()){
+      state = 1; 
+    }
+    
   }
 
   Boolean grounded() {
-    if (pos.y <= ground+1 && pos.y >= ground-1) return true; //If the ball is between the positions right above and below the "ground"
+    if (pos.y <= ground) return true; //If the ball is below the "ground"
     return false;
   }
 
