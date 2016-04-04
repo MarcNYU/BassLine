@@ -2,7 +2,7 @@ class NoteSheet {
   int margin_top = 10;  // margin before top layer note
   int sheet_height = 20;  // width of space between line
   int interval = 200;  // intervals of generating notes in milliseconds
-  float fall_freq = 0.3; // frequency of note falling
+  float fall_freq = 0.1; // frequency of note falling
   int x_speed = 5;  // speed of horizontal move
   int y_speed = 3;  // speed of vertical move
   
@@ -24,7 +24,7 @@ class NoteSheet {
           notes[i].drawNote();
           if( notes[i].checkBallCollsion() )        //Checks for note, ball collision
           {
-            println("hit note");  
+            applyPowerUp(notes[i]);  
           }
           if (notes[i].outbound()) {
              notes[i] = null; 
@@ -52,25 +52,51 @@ class NoteSheet {
     popMatrix();
   }
   
+  void applyPowerUp(Note n){
+    switch(n.getPowerUp()){
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+    }
+  }
+  
   class Note {
    int d = sheet_height;
    float cx = d;
    float cy;
    float x_limit; // where does the note fall
+   int powerUp;
+   
    Note(int layer) {  // high -> low : 1 -> 7
      cy = layer*d/2+margin_top;
-     x_limit = (float)(Math.random() * width / fall_freq);
+     x_limit = (float)(Math.random() * (width) / fall_freq);
+     powerUp = (int)(random(1,4));                            // Selects random powerup
    }
    void drawNote() {
      pushMatrix();
      noStroke();
-     fill(255);
+     //fill(255);
+     switch(powerUp)
+     {
+       case 1:
+         fill(255, 100, 100);
+         break;
+       case 2:
+         fill(255, 100, 200);
+         break;
+       case 3:
+         fill(255, 200, 100);
+         break;
+     }
      ellipse(cx, cy, d, d);
      move();
      popMatrix();
    }
    void move() {
-     if (cx >= x_limit) {
+     if (cx >= x_limit && cx > 150 && cx < width-150) {
         cy += y_speed; 
      } else {
        cx += x_speed; 
@@ -110,6 +136,10 @@ class NoteSheet {
         }
      }
      return false;
+   }
+   int getPowerUp()
+   {
+     return powerUp;
    }
   }
 }

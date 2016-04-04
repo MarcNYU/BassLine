@@ -49,7 +49,7 @@ void draw() {
   b.render();
   c.draw();
   translate(c.pos.x, -c.pos.y);
-  //ns.drawNoteSheet();
+  ns.drawNoteSheet();
   DrawLines();
   //b.render();
   classicVi.drawEQ();

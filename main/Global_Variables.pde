@@ -53,7 +53,7 @@ float endX = 40.0;   // Final x-coordinate
 float endY = 272.5;   // Final y-coordinate
 float distX;          // X-axis distance to move
 float distY;          // Y-axis distance to move
-float exponent = 4;   // Determines the curve 
+float exponent = 6;   // Determines the curve 
 float current_x = 0.0;        // Current x-coordinate
 float current_y = 0.0;        // Current y-coordinate
 float step = 0.02;    // Size of each step along the path (Use to adjust speed of the ball)

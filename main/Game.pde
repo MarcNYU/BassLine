@@ -3,7 +3,7 @@ void GameMode () {
   platforms();
   handleInputs();
   checkCollision();
-  //ns.drawNoteSheet();
+  ns.drawNoteSheet();
   //classicVi.drawBEQ(); 
   classicVi.drawWEQ();
   DrawLines();
