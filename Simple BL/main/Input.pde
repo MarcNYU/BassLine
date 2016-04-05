@@ -1,8 +1,9 @@
 void input() {
-  if(keyPressed) {
+  if (keyPressed) {
     //if(key == 'b' && eRadius > 65) {
-    if(key == 'b') {
+    if (key == 'b') {
       jump = true;
+      start = false;
     }
   } else {
     jump = false;

@@ -10,7 +10,7 @@ void setup() {
   //fullScreen();
   surface.setResizable(true);
   size(480, 852);
-  frameRate(40);
+  frameRate(60);
   noiseDetail(8);
   initMusic();
   initGame();
@@ -27,6 +27,4 @@ void draw() {
       state = 0;
     }
   }
-
-  //drawGuides();
 }

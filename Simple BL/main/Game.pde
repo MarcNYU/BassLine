@@ -4,13 +4,11 @@ void Game() {
   input();
   translate(-c.pos.x, c.pos.y);
   b.update();
-  b.render();
   drawBG();
   c.drawC();
   translate(c.pos.x, -c.pos.y);
   drawFG();
-  
-  
+  b.render();
 }
 
 void drawFG() {

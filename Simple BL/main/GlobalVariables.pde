@@ -12,9 +12,11 @@ NoteSheet ns;
 // GAME VARS
 int move = 0;
 int state = 0;
+int score;
 
 // GUIDE VARS
-float ground = 780;
+float ceilling = height+100;
+float ground = height+650;
 float left = 50;
 float right = 430;
 
@@ -23,6 +25,7 @@ float gravity = .3;
 
 // PLAYER VARS
 boolean jump;
+boolean start = true;
 
 // EQ VARS
 float eRadius;

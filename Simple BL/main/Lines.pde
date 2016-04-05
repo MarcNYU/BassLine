@@ -77,6 +77,9 @@ void drawGuides() {
   //line(0, ground, width, ground);
   line(0, ground+1, width, ground+1);
 
+  line(0, ceilling-1, width, ceilling-1);
+  line(0, ceilling+1, width, ceilling+1);
+
   line(left-2, 0, left-2, height);
   //line(left, 0, left, height);
   line(left+2, 0, left+2, height);
@@ -91,6 +94,8 @@ void drawGuides() {
 void drawHeights() {
   textSize(32);
   fill(255);
+
+
   text(height/4, width/2-textWidth("000")/2, height/4);
   //text(height/4 + 300, width/2-textWidth("000")/2, height/4 - 300);
   text(height/4 + 500, width/2-textWidth("000")/2, height/4 - 500);

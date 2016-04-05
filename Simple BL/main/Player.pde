@@ -8,6 +8,8 @@ class Ball {
   float bounce;
   float radius;
 
+  boolean alive;
+
 
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
@@ -16,6 +18,7 @@ class Ball {
     dir = 1; 
     bounce = 8; 
     radius = r;
+    alive = true;
   }
 
   void update() {
@@ -24,11 +27,19 @@ class Ball {
     pos.x += velo.x;
     pos.y += velo.y;
 
-    if (pos.y <= height-200) {
-      velo.y += gravity;
+    if (start) {
+      if (pos.y <= height-200) {
+        velo.y += gravity;
+      } else {
+        velo.y = 0;
+      }
     } else {
-      velo.y = 0;
+      if (pos.y <= height-200) {
+        velo.y += gravity;
+      }
     }
+
+
 
     if (leftB()) {
       lws = 150;
@@ -43,11 +54,19 @@ class Ball {
     }
 
     if (pos.x == 40 && jump) {
-      velo.x = 8;
-      velo.y = -10;
+      if (eRadius >= 65) {
+        velo.y = -9;
+      } else {
+        velo.y = -7;
+      }
+      velo.x = 10;
     } else if (pos.x == 440 && jump) {
-      velo.x = -8;
-      velo.y = -10;
+      if (eRadius >= 65) {
+        velo.y = -9;
+      } else {
+        velo.y = -7;
+      }
+      velo.x = -10;
     }
 
     if (pos.x < 40) {
@@ -67,16 +86,21 @@ class Ball {
     } else {
       gravity = .3;
     }
-     if( grounded()){
-      state = 1; 
+    if (grounded()) {
+      state = 1;
+      alive = false;
     }
-    
+    if (pos.y < ceilling) {
+      gravity = .5;
+    }
+
+    if (alive && !start) {
+      score += 1;
+    }
   }
 
   Boolean grounded() {
-    if (pos.y < height/4) {
-      if (pos.y >= pos.y+100) return true; //If the ball is below the "ground"
-    }
+    if (pos.y >= ground) return true; //If the ball is below the "ground"
     return false;
   }
 
@@ -94,7 +118,11 @@ class Ball {
     pushMatrix();
     //stroke(#03F6FC);
     noStroke();
-    fill(#03F6FC, 255);
+    if (jump && eRadius >= 65) {
+      fill(#00FF79);
+    } else {
+      fill(#03F6FC);
+    }
     ellipse(pos.x, pos.y, radius, radius);
     popMatrix();
   }

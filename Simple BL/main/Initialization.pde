@@ -3,6 +3,7 @@ void initGame() {
   c = new Camera();
   classicVi = new Visualizer();
   ns = new NoteSheet();
+  score = (int) b.pos.y;
 }
 
 void initMusic() {
