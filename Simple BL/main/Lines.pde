@@ -90,10 +90,10 @@ void drawGuides() {
   pushMatrix();
   strokeWeight(1);
   stroke(#FF0000);
-  ////line(0, ground-51, width, ground-51);
-  //line(0, ground-1, width, ground-1);
-  ////line(0, ground, width, ground);
-  //line(0, ground+1, width, ground+1);
+  //line(0, ground-51, width, ground-51);
+  line(0, ground-1, width, ground-1);
+  //line(0, ground, width, ground);
+  line(0, ground+1, width, ground+1);
 
   line(left-2, 0, left-2, height);
   //line(left, 0, left, height);
