@@ -1,19 +1,3 @@
-// LINE VARS
-float spike = -1;
-float yoff = 0.0;  // 2nd dimension of perlin noise
-float nInt;    // noise intensity
-float nAmp;    // noise amplitude
-
-float fws = -1;
-float lws = -1;
-float rws = -1;
-
-float z;
-float u;
-
-float lH = -height;
-float bH;
-
 void DrawLines() {
   LWallLine();
   RWallLine();
@@ -50,7 +34,6 @@ void LWallLine() {
   vertex(-width, 100);
   endShape(CLOSE);
   popMatrix();
-  lH-=100;
 }
 
 void RWallLine() {
@@ -83,7 +66,6 @@ void RWallLine() {
   vertex(width, 100);
   endShape(CLOSE);
   popMatrix();
-  lH-=100;
 }
 
 void drawGuides() {
@@ -113,23 +95,23 @@ void drawHeights() {
   //text(height/4 + 300, width/2-textWidth("000")/2, height/4 - 300);
   text(height/4 + 500, width/2-textWidth("000")/2, height/4 - 500);
   text(height/4 + 500*2, width/2-textWidth("000")/2, height/4 - 500*2);
-  text(height/4 + 500*3, width/2-textWidth("000")/2, height/4 - 500*3);
-  text(height/4 + 500*4, width/2-textWidth("000")/2, height/4 - 500*4);
-  text(height/4 + 500*5, width/2-textWidth("000")/2, height/4 - 500*5);
-  text(height/4 + 500*6, width/2-textWidth("000")/2, height/4 - 500*6);
-  text(height/4 + 500*7, width/2-textWidth("000")/2, height/4 - 500*7);
-  text(height/4 + 500*8, width/2-textWidth("000")/2, height/4 - 500*8);
-  text(height/4 + 500*9, width/2-textWidth("000")/2, height/4 - 500*9);
-  text(height/4 + 500*10, width/2-textWidth("000")/2, height/4 - 500*10);
-  text(height/4 + 500*15, width/2-textWidth("000")/2, height/4 - 500*15);
-  text(height/4 + 500*20, width/2-textWidth("000")/2, height/4 - 500*20);
-  text(height/4 + 500*25, width/2-textWidth("000")/2, height/4 - 500*25);
-  text(height/4 + 500*30, width/2-textWidth("000")/2, height/4 - 500*30);
-  text(height/4 + 500*40, width/2-textWidth("000")/2, height/4 - 500*40);
-  text(height/4 + 500*50, width/2-textWidth("000")/2, height/4 - 500*50);
-  text(height/4 + 500*60, width/2-textWidth("000")/2, height/4 - 500*60);
-  text(height/4 + 500*70, width/2-textWidth("000")/2, height/4 - 500*70);
-  text(height/4 + 500*80, width/2-textWidth("000")/2, height/4 - 500*80);
-  text(height/4 + 500*90, width/2-textWidth("000")/2, height/4 - 500*90);
-  text(height/4 + 500*100, width/2-textWidth("000")/2, height/4 - 500*100);
+  text(height/4 + 500*3, width/2-textWidth("0000")/2, height/4 - 500*3);
+  text(height/4 + 500*4, width/2-textWidth("0000")/2, height/4 - 500*4);
+  text(height/4 + 500*5, width/2-textWidth("0000")/2, height/4 - 500*5);
+  text(height/4 + 500*6, width/2-textWidth("0000")/2, height/4 - 500*6);
+  text(height/4 + 500*7, width/2-textWidth("0000")/2, height/4 - 500*7);
+  text(height/4 + 500*8, width/2-textWidth("0000")/2, height/4 - 500*8);
+  text(height/4 + 500*9, width/2-textWidth("0000")/2, height/4 - 500*9);
+  text(height/4 + 500*10, width/2-textWidth("00000")/2, height/4 - 500*10);
+  text(height/4 + 500*15, width/2-textWidth("00000")/2, height/4 - 500*15);
+  text(height/4 + 500*20, width/2-textWidth("00000")/2, height/4 - 500*20);
+  text(height/4 + 500*25, width/2-textWidth("00000")/2, height/4 - 500*25);
+  text(height/4 + 500*30, width/2-textWidth("00000")/2, height/4 - 500*30);
+  text(height/4 + 500*40, width/2-textWidth("00000")/2, height/4 - 500*40);
+  text(height/4 + 500*50, width/2-textWidth("00000")/2, height/4 - 500*50);
+  text(height/4 + 500*60, width/2-textWidth("00000")/2, height/4 - 500*60);
+  text(height/4 + 500*70, width/2-textWidth("00000")/2, height/4 - 500*70);
+  text(height/4 + 500*80, width/2-textWidth("00000")/2, height/4 - 500*80);
+  text(height/4 + 500*90, width/2-textWidth("00000")/2, height/4 - 500*90);
+  text(height/4 + 500*100, width/2-textWidth("00000")/2, height/4 - 500*100);
 }

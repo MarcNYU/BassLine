@@ -1,9 +1,3 @@
-float ground = height;
-float left = 50;
-float right = 430;
-boolean jump;
-float gravity = .3;
-
 class Ball {
   PVector pos;
   PVector velo;
@@ -37,15 +31,15 @@ class Ball {
     }
 
     if (leftB()) {
-      lws = 100;
+      lws = 150;
     } else if (rightB()) {
-      rws = 100;
+      rws = 150;
     } else {
       float target = 0;
       float dt = target - lws;
       float dl = target - rws;
-      lws += dt * 0.35;//ease rate
-      rws += dl * 0.35;//ease rate
+      lws += dt * 0.3;//ease rate
+      rws += dl * 0.3;//ease rate
     }
 
     if (pos.x == 40 && jump) {
@@ -80,7 +74,9 @@ class Ball {
   }
 
   Boolean grounded() {
-    if (pos.y <= ground) return true; //If the ball is below the "ground"
+    if (pos.y < height/4) {
+      if (pos.y >= pos.y+100) return true; //If the ball is below the "ground"
+    }
     return false;
   }
 

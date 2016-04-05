@@ -3,7 +3,7 @@ void gameStates()
   switch(state)
   {
   case 0:
-    initialize();
+    Game();
     println("Play Test");
 
 
@@ -19,7 +19,7 @@ void gameStates()
     text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
     text("Distance: " + (int)(b.pos.y/100), width/2-textWidth("Distance: #")/2, height-100);
     if (keyPressed) {
-      initialize();
+      Game();
       state = 0;
     }
     println("Game Over");
@@ -28,7 +28,7 @@ void gameStates()
 
   case 2: 
     drawGuides();
-    initialize();
+    Game();
     println("Debug");
     break;
   }

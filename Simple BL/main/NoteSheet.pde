@@ -17,7 +17,6 @@ class NoteSheet {
       generateNote();
       timer = millis();
     }
-    background(0);
     drawSheet();
     for (int i = 0; i < notes.length; ++i) {
        if (notes[i] != null) {
@@ -26,7 +25,7 @@ class NoteSheet {
           {
             applyPowerUp(notes[i]);  
           }
-          if (notes[i].outbound()) {
+          if (notes[i].outbound() || notes[i].checkBallCollsion()) {
              notes[i] = null; 
           }
        }

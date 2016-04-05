@@ -1,5 +1,3 @@
-float eRadius;
-
 class Visualizer {
  PImage fade; 
  float rWidth, rHeight;
