@@ -1,8 +1,15 @@
-float ground = 785;
+float ground = 750;
 float left = 50;
 float right = 430;
 boolean jump;
 float gravity = .3;
+int currentTime = 0;
+int destTime = 0;
+boolean frozen = false;
+boolean increase = false;
+boolean secLifeOn = false;
+boolean hasPowerUp = false;
+int increaseRadius = 50;
 
 class Ball {
   PVector pos;
@@ -30,7 +37,17 @@ class Ball {
     pos.x += velo.x;
     pos.y += velo.y;
 
-    if (pos.y <= height-200) {
+    if(frozen == true)
+      freeze();
+    if(increase == true)
+      increaseSize();
+    if( pos.y > ground && secLifeOn == true){
+      println("secLife", pos.y, ground);
+      secLifeOn();  
+    }
+    
+    
+    if (pos.y <= height-100) {
       velo.y += gravity;
     } else {
       velo.y = 0;
@@ -97,5 +114,44 @@ class Ball {
     fill(#03F6FC, 255);
     ellipse(pos.x, pos.y, radius, radius);
     popMatrix();
+  }
+  
+  void freeze()
+  {
+    //println("freeze", currentTime, destTime);
+
+    if(currentTime < destTime )
+    {
+      frozen = true; 
+      currentTime ++; 
+    }
+    else
+    {
+      frozen = false;
+      hasPowerUp = false;
+    }
+  }
+  void increaseSize()
+  {
+    //println("increase", currentTime, destTime);
+   
+    if(currentTime < destTime )
+    {
+      radius = increaseRadius; 
+      currentTime ++; 
+    } 
+    else
+    {
+      radius = 25;
+      increase = false;
+      hasPowerUp = false;
+    }
+  }
+  void secLifeOn()
+  {
+    println("secLife", pos.y, ground);
+
+      pos.y = 500;
+      secLifeOn = false;
   }
 }

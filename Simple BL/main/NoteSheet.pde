@@ -2,7 +2,7 @@ class NoteSheet {
   int margin_top = 10;  // margin before top layer note
   int sheet_height = 20;  // width of space between line
   int interval = 200;  // intervals of generating notes in milliseconds
-  float fall_freq = 0.1; // frequency of note falling
+  float fall_freq = 0.2; // frequency of note falling
   int x_speed = 5;  // speed of horizontal move
   int y_speed = 3;  // speed of vertical move
   
@@ -54,11 +54,41 @@ class NoteSheet {
   
   void applyPowerUp(Note n){
     switch(n.getPowerUp()){
+      case 1:  // freeze
+        if(hasPowerUp == false){
+          hasPowerUp = true;
+          frozen = true;
+          setTime(1);
+        }
+        break;
+      case 2:   // increase player size
+        if(hasPowerUp == false){
+          hasPowerUp = true;
+          increase = true;
+          setTime(2);
+        }
+        break;
+      case 3:   // second chance
+
+        secLifeOn = true;
+        println("hii", secLifeOn);
+        break;
+      
+      
+    }
+  }
+  
+  void setTime(int power)
+  {
+    switch(power)
+    {
       case 1:
+        currentTime = timer;
+        destTime = timer + 100;
         break;
       case 2:
-        break;
-      case 3:
+        currentTime = timer;
+        destTime = timer + 300;
         break;
     }
   }
@@ -74,6 +104,7 @@ class NoteSheet {
      cy = layer*d/2+margin_top;
      x_limit = (float)(Math.random() * (width) / fall_freq);
      powerUp = (int)(random(1,4));                            // Selects random powerup
+     //powerUp = 3;
    }
    void drawNote() {
      pushMatrix();
