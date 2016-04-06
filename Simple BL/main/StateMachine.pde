@@ -33,13 +33,14 @@ void gameStates()
     Game();
     //println("Debug");
     if (keyPressed) {
-     
+     //If the user presses the right arrow, the next song in the array is played
        if (key == CODED) {
           if (keyCode == RIGHT) {
             println("Right pressed");
            int newIdx = currentSongIdx + 1;
            changeMusic(newIdx);   
           }
+          //This is supposed to play the previous song but it's now causing an index error 
           else if(keyCode == LEFT ){
             println("Left pressed");            
             int newIdx = currentSongIdx - 1; 

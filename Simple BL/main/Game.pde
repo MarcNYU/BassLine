@@ -1,7 +1,6 @@
 void Game() {
   println(frameRate);
   if (!start) {
-    
     musicQueue[currentSongIdx].play();
   }
   input();
@@ -23,7 +22,7 @@ void resetGame(){
     translate(c.pos.x, c.pos.y);
     score = 0;
 }
-
+//Called in the debug state
 void changeMusic(int newIdx){
   println("current index" + currentSongIdx); 
    musicQueue[currentSongIdx].close();
