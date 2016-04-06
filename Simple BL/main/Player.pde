@@ -27,6 +27,15 @@ class Ball {
     pos.x += velo.x;
     pos.y += velo.y;
 
+    if(frozen == true)
+      freeze();
+    if(increase == true)
+      increaseSize();
+    if( pos.y > ground && secLifeOn == true){
+      println("secLife", pos.y, ground);
+      secLifeOn();  
+    }
+
     if (start) {
       if (pos.y <= height-200) {
         velo.y += gravity;
@@ -131,5 +140,44 @@ class Ball {
     }
     ellipse(pos.x, pos.y, radius, radius);
     popMatrix();
+  }
+  
+  void freeze()
+  {
+    //println("freeze", currentTime, destTime);
+
+    if(currentTime < destTime )
+    {
+      frozen = true; 
+      currentTime ++; 
+    }
+    else
+    {
+      frozen = false;
+      hasPowerUp = false;
+    }
+  }
+  void increaseSize()
+  {
+    //println("increase", currentTime, destTime);
+   
+    if(currentTime < destTime )
+    {
+      radius = increaseRadius; 
+      currentTime ++; 
+    } 
+    else
+    {
+      radius = 25;
+      increase = false;
+      hasPowerUp = false;
+    }
+  }
+  void secLifeOn()
+  {
+    println("secLife", pos.y, ground);
+
+      pos.y = 500;
+      secLifeOn = false;
   }
 }
