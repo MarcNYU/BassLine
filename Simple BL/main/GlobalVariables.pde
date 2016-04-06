@@ -26,6 +26,13 @@ float gravity = .3;
 // PLAYER VARS
 boolean jump;
 boolean start = true;
+int currentTime = 0;
+int destTime = 0;
+boolean frozen = false;
+boolean increase = false;
+boolean secLifeOn = false;
+boolean hasPowerUp = false;
+int increaseRadius = 50;
 
 // EQ VARS
 float eRadius;
