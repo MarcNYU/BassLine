@@ -25,7 +25,7 @@ void draw() {
   gameStates();
   //Supposed to be used to go to the next song automatically when the currentt one ends
   
-  if( !(musicQueue[currentSongIdx].isPlaying())){ 
+  if(!start && state != 1 && !(musicQueue[currentSongIdx].isPlaying())){ 
       //This is the only call to the play function that gets the audio to play. It starts from the second song because of currentSongIdx + 1 which is supposed to be used to play the next song
       //I think this is the only one that works since its running in the draw() function
        musicQueue[currentSongIdx = (currentSongIdx + 1) % musicQueue.length].play();
