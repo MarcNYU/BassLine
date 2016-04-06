@@ -1,7 +1,7 @@
 void Game() {
   println(frameRate);
   if (!start) {
-    musicQueue[currentSongIdx].play();
+    musicQueue[0].play();
   }
   input();
   translate(-c.pos.x, c.pos.y);

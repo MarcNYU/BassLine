@@ -12,7 +12,7 @@ void gameStates()
 
 
     //musicQueue[currentSongIdx].close();
-    musicQueue[currentSongIdx].pause();
+    musicQueue[0].close();
     background(0);
     textSize(32);
     fill(255);
@@ -21,7 +21,7 @@ void gameStates()
     text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
     if (keyPressed) {
     resetGame();
-    musicQueue[currentSongIdx].play();
+    musicQueue[0].play();
     state = 0;
     }
     println("Game Over");

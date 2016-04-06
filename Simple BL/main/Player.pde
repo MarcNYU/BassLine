@@ -37,15 +37,9 @@ class Ball {
     }
 
     if (start) {
-      if (pos.y <= height-200) {
-        velo.y += gravity;
-      } else {
-        velo.y = 0;
-      }
+      velo.y = 0;
     } else {
-      if (pos.y <= height-200) {
-        velo.y += gravity;
-      }
+      velo.y += gravity;
     }
 
 
