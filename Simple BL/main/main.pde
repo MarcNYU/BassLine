@@ -14,17 +14,24 @@ void setup() {
   noiseDetail(8);
   initMusic();
   initGame();
+  
+  
+  //println(state
+  
 }
 
 void draw() {
   background(0);
   gameStates();
-
+  if(!start && !(musicQueue[currentSongIdx].isPlaying())){ 
+    //   musicQueue[currentSongIdx = (currentSongIdx + 1) % musicQueue.length].play();
+  }
   if (keyPressed ) {
     if (key == 'd') {
       state = 2;
     } else if (key == 'o') {
       state = 0;
     }
+    
   }
 }

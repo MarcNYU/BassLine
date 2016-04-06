@@ -27,6 +27,11 @@ float gravity = .3;
 boolean jump;
 boolean start = true;
 
+//MUSIC VARS
+//String[] musicQueue = new String[3];
+AudioPlayer[] musicQueue = new AudioPlayer[3];
+int currentSongIdx = 0;
+
 // EQ VARS
 float eRadius;
 

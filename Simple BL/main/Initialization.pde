@@ -8,6 +8,15 @@ void initGame() {
 
 void initMusic() {
   minim = new Minim(this); 
+  Boolean isLoaded = false;
+  
+  //println("isLoaded:" + isLoaded); 
+  musicQueue[0] = minim.loadFile("44_Drum_beat_(Rock).mp3", 2048);
+  musicQueue[1] = minim.loadFile("I'm Gonna Be (500 Miles) - Sleeping At Last Karaoke.mp3", 2048);
+  musicQueue[2] = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);
+  
+  println("initial index" + currentSongIdx); 
+  
   mp3 = minim.loadFile("44_Drum_beat_(Rock).mp3", 2048);
   //mp3 = minim.loadFile("I'm Gonna Be (500 Miles) - Sleeping At Last Karaoke.mp3", 2048);
   //mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);

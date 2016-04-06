@@ -11,7 +11,8 @@ void gameStates()
   case 1:
 
 
-    mp3.close();
+    //musicQueue[currentSongIdx].close();
+    musicQueue[currentSongIdx].pause();
     background(0);
     textSize(32);
     fill(255);
@@ -20,6 +21,7 @@ void gameStates()
     text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
     if (keyPressed) {
     resetGame();
+    musicQueue[currentSongIdx].play();
     state = 0;
     }
     println("Game Over");
@@ -29,7 +31,23 @@ void gameStates()
   case 2: 
     drawGuides();
     Game();
-    println("Debug");
+    //println("Debug");
+    if (keyPressed) {
+     
+       if (key == CODED) {
+          if (keyCode == RIGHT) {
+            println("Right pressed");
+           int newIdx = currentSongIdx + 1;
+           changeMusic(newIdx);   
+          }
+          else if(keyCode == LEFT ){
+            println("Left pressed");            
+            int newIdx = currentSongIdx - 1; 
+            changeMusic(newIdx);
+          }
+       }
+  
+    }
     break;
   }
 }

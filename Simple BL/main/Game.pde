@@ -1,7 +1,8 @@
 void Game() {
   println(frameRate);
   if (!start) {
-    mp3.play();
+    
+    musicQueue[currentSongIdx].play();
   }
   input();
   translate(-c.pos.x, c.pos.y);
@@ -14,7 +15,7 @@ void Game() {
 }
 void resetGame(){
     surface.setResizable(true);
-    
+  
     initMusic();
     initGame();
     c.pos.x = 0;
@@ -22,6 +23,17 @@ void resetGame(){
     translate(c.pos.x, c.pos.y);
     score = 0;
 }
+
+void changeMusic(int newIdx){
+  println("current index" + currentSongIdx); 
+   musicQueue[currentSongIdx].close();
+  if(newIdx < musicQueue.length -1){
+    currentSongIdx = newIdx;
+    musicQueue[currentSongIdx].play();
+  }
+  
+}
+
 
 void drawFG() {
   ns.drawNoteSheet();
