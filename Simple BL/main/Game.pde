@@ -1,6 +1,8 @@
 void Game() {
   println(frameRate);
-  mp3.play();
+  if (!start) {
+    mp3.play();
+  }
   input();
   translate(-c.pos.x, c.pos.y);
   b.update();
@@ -19,8 +21,6 @@ void resetGame(){
     c.pos.y = 0;
     translate(c.pos.x, c.pos.y);
     score = 0;
-    
-  
 }
 
 void drawFG() {
