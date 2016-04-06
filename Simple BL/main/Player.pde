@@ -97,6 +97,12 @@ class Ball {
     if (alive && !start) {
       score += 1;
     }
+    
+    if (jump && eRadius >= 65) {
+      gravity = .3;
+    } else {
+      gravity = .4;
+    }
   }
 
   Boolean grounded() {

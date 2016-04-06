@@ -11,7 +11,7 @@ void gameStates()
   case 1:
 
 
-
+    mp3.close();
     background(0);
     textSize(32);
     fill(255);
@@ -19,8 +19,8 @@ void gameStates()
     text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
     text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
     //if (keyPressed) {
-    //  Game();
-    //  state = 0;
+    //initGame();
+    //state = 0;
     //}
     println("Game Over");
 
