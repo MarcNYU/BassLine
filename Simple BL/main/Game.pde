@@ -26,7 +26,9 @@ void resetGame(){
 }
 
 void drawFG() {
-  ns.drawNoteSheet();
+  if (!start) {
+    ns.drawNoteSheet();
+  }
   DrawLines();
   classicVi.drawEQ();
   classicVi.drawBeat();
