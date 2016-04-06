@@ -3,7 +3,9 @@ void Game() {
   if (!start) {
     mp3.play();
   }
-  input();
+  if (b.pos.x < left || b.pos.x > right) {
+    input();
+  }
   translate(-c.pos.x, c.pos.y);
   b.update();
   drawBG();

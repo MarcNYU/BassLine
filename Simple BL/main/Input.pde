@@ -9,3 +9,13 @@ void input() {
     jump = false;
   }
 }
+
+//void keyPressed() {
+//  if (key == 'b') {
+//    jump = true;
+//    start = false;
+//  } else {
+//    jump = false;
+//  }
+  
+//}

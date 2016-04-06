@@ -4,7 +4,7 @@ void gameStates()
   {
   case 0:
     Game();
-    println("Play Test");
+    //println("Play Test");
 
 
     break;
@@ -20,9 +20,10 @@ void gameStates()
     text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
     if (keyPressed) {
     resetGame();
+    start = true;
     state = 0;
     }
-    println("Game Over");
+    //println("Game Over");
 
     break;
 
