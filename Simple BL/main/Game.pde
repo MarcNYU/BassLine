@@ -1,7 +1,8 @@
 void Game() {
   println(frameRate);
-  if (!start) {
-    musicQueue[0].play();
+  if (start) {
+    
+    musicQueue[currentSongIdx].play();
   }
   input();
   translate(-c.pos.x, c.pos.y);
@@ -14,8 +15,8 @@ void Game() {
 }
 void resetGame(){
     surface.setResizable(true);
-  
-    initMusic();
+    musicQueue[currentSongIdx].play();
+    //initMusic();
     initGame();
     c.pos.x = 0;
     c.pos.y = 0;
