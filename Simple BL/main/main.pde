@@ -14,6 +14,7 @@ void setup() {
   noiseDetail(8);
   initMusic();
   initGame();
+  println("current Song: " + musicQueue[currentSongIdx].name );
   
   
   //println(state
@@ -23,7 +24,7 @@ void setup() {
 void draw() {
   background(0);
   gameStates();
-  if(!musicPaused && !(musicQueue[currentSongIdx].isPlaying())){ 
+  if(!musicPaused && !(musicQueue[currentSongIdx].musicFile.isPlaying())){ 
       // musicQueue[currentSongIdx = (currentSongIdx + 1) % musicQueue.length].play();
   }
   if (keyPressed ) {

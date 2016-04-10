@@ -29,8 +29,8 @@ boolean start = true;
 
 //MUSIC VARS
 //String[] musicQueue = new String[3];
-AudioPlayer[] musicQueue = new AudioPlayer[3];
-//AudioFile[] musicQueue = new AudioFile[3];
+//AudioPlayer[] musicQueue = new AudioPlayer[3];]
+AudioFile[] musicQueue = new AudioFile[3];
 int currentSongIdx = 0;
 Boolean musicPaused = false;
 

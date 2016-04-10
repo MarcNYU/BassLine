@@ -1,8 +1,9 @@
 void Game() {
-  println(frameRate);
+  //println(frameRate);
   if (!start) {
     
     musicQueue[currentSongIdx].play();
+    
   }
   input();
   translate(-c.pos.x, c.pos.y);
@@ -26,12 +27,13 @@ void resetGame(){
 
 void changeMusic(int newIdx){
   println("current index" + currentSongIdx); 
-   musicQueue[currentSongIdx].close();
+   musicQueue[currentSongIdx].musicFile.close();
    musicQueue[newIdx].play();
    println("music queue length: " + musicQueue.length); 
   //if(newIdx < musicQueue.length -1){
     currentSongIdx = newIdx;
-    println("currentSongIdx changed newIdx");
+    //musicQueue[currentSongIdx].play(); 
+    println("current Song: " + musicQueue[currentSongIdx].name + "current index: " + currentSongIdx );
     //musicQueue[newIdx].play();
   //}
   
