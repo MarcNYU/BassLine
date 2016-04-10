@@ -23,8 +23,8 @@ void setup() {
 void draw() {
   background(0);
   gameStates();
-  if(!start && !(musicQueue[currentSongIdx].isPlaying())){ 
-    //   musicQueue[currentSongIdx = (currentSongIdx + 1) % musicQueue.length].play();
+  if(!musicPaused && !(musicQueue[currentSongIdx].isPlaying())){ 
+      // musicQueue[currentSongIdx = (currentSongIdx + 1) % musicQueue.length].play();
   }
   if (keyPressed ) {
     if (key == 'd') {

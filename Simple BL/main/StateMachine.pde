@@ -5,14 +5,13 @@ void gameStates()
   case 0:
     Game();
     println("Play Test");
-
-
+    
     break;
   case 1:
 
-
     //musicQueue[currentSongIdx].close();
     musicQueue[currentSongIdx].pause();
+    musicPaused = true;
     background(0);
     textSize(32);
     fill(255);
@@ -22,6 +21,7 @@ void gameStates()
     if (keyPressed) {
     resetGame();
     musicQueue[currentSongIdx].play();
+    musicPaused = false;
     state = 0;
     }
     println("Game Over");
@@ -32,18 +32,23 @@ void gameStates()
     drawGuides();
     Game();
     //println("Debug");
-    if (keyPressed) {
-     
+    if (keyPressed) {    
        if (key == CODED) {
           if (keyCode == RIGHT) {
             println("Right pressed");
            int newIdx = currentSongIdx + 1;
-           changeMusic(newIdx);   
+           if(newIdx <3){
+           changeMusic(newIdx);
+           }
           }
           else if(keyCode == LEFT ){
-            println("Left pressed");            
-            int newIdx = currentSongIdx - 1; 
-            changeMusic(newIdx);
+            println("Left pressed"); 
+            if(currentSongIdx > 0){
+              int newIdx = currentSongIdx - 1; 
+              if(newIdx <3){
+                changeMusic(newIdx);
+              }
+            }
           }
        }
   

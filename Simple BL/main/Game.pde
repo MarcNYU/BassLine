@@ -27,10 +27,13 @@ void resetGame(){
 void changeMusic(int newIdx){
   println("current index" + currentSongIdx); 
    musicQueue[currentSongIdx].close();
-  if(newIdx < musicQueue.length -1){
+   musicQueue[newIdx].play();
+   println("music queue length: " + musicQueue.length); 
+  //if(newIdx < musicQueue.length -1){
     currentSongIdx = newIdx;
-    musicQueue[currentSongIdx].play();
-  }
+    println("currentSongIdx changed newIdx");
+    //musicQueue[newIdx].play();
+  //}
   
 }
 
