@@ -6,10 +6,10 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 
-void setup() {
-  //fullScreen();
-  surface.setResizable(true);
-  size(480, 852);
+  void setup() {
+    //fullScreen();
+    surface.setResizable(true);
+    size(480, 852);
   frameRate(60);
   noiseDetail(8);
   initMusic();

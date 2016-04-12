@@ -23,7 +23,8 @@ class Ball {
 
   void update() {
     //pos.y-=move;
-
+    
+    
     pos.x += velo.x;
     pos.y += velo.y;
 
@@ -102,6 +103,9 @@ class Ball {
 
     if (alive && !start) {
       score += 1;
+    }
+    if(pos.x == 40 || pos.x == 440){
+     jump = false; 
     }
   }
 

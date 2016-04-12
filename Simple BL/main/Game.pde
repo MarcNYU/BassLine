@@ -5,7 +5,8 @@ void Game() {
     musicQueue[currentSongIdx].play();
     
   }
-  input();
+  //input();
+  //keyReleased();
   translate(-c.pos.x, c.pos.y);
   b.update();
   drawBG();
