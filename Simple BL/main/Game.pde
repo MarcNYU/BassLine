@@ -1,5 +1,5 @@
 void Game() {
-  println(frameRate);
+  //println(frameRate);
   if (!start) {
     mp3.play();
   }

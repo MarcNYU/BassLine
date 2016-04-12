@@ -125,18 +125,30 @@ class Ball {
   void render() {
     pushMatrix();
     //stroke(#03F6FC);
-    noStroke();
-    if (jump && eRadius >= 65) {
-      fill(#FFF300);
-    } else {
-      fill(#03F6FC);
+
+    if(secLifeOn == true)
+    {
+       stroke( #03F6FC );
+       strokeWeight(2);
+       fill(0);
+       ellipse(pos.x, pos.y, radius+7, radius+7);
     }
-    ellipse(pos.x, pos.y, radius, radius);
-    popMatrix();
+    noStroke();
+    if(frozen == false){
+      if (jump && eRadius >= 65) {
+        fill(#FFF300);
+      } else {
+        fill(#03F6FC);
+      }
+    }
+    else
+      fill(255);
+      ellipse(pos.x, pos.y, radius, radius);
+      popMatrix();
   }
 void freeze()
   {
-    //println("freeze", currentTime, destTime);
+    println("freeze", currentTime, destTime);
 
     if(currentTime < destTime )
     {
