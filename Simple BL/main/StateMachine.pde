@@ -33,20 +33,24 @@ void gameStates()
     Game();
     //println("Debug");
     if (keyPressed) {    
-       
-          if (key == 'f') {
+       if (key == CODED) {
+          if (keyCode == RIGHT) {
             println("Right pressed");
            int newIdx = currentSongIdx + 1;
            if(newIdx <3){
-           changeMusic(newIdx);
+             noLoop();
+             changeMusic(newIdx);
+             loop();
            }
           }
-          else if(key == 'r' ){
+          else if(keyCode == LEFT ){
             println("Left pressed"); 
             if(currentSongIdx > 0){
               int newIdx = currentSongIdx - 1; 
               if(newIdx <3){
+                noLoop();
                 changeMusic(newIdx);
+                loop();
               }
             }
           }
@@ -55,4 +59,5 @@ void gameStates()
     }
     break;
   }
+}
 }

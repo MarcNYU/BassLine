@@ -33,6 +33,51 @@ void draw() {
     } else if (key == 'o') {
       state = 0;
     }
-    
+    if (key == CODED) {
+          if (keyCode == UP) {
+                if (b.pos.x == 40 && jump) {
+                  if (eRadius >= 65) {
+                    b.velo.y = -9;
+                    //b.velo.y += -2;
+                  } else {
+                    b.velo.y = -7;
+                    //b.velo.y += -2;
+                  }
+                  b.velo.x = 11;
+                  b.velo.x += 4;
+                } else if (b.pos.x == 440 && jump) {
+                  if (eRadius >= 65) {
+                    b.velo.y = -9;
+                   // b.velo.y += -2;
+                  } else {
+                    b.velo.y = -7;
+                    //b.velo.y += -2;
+                  }
+                  b.velo.x = -11;
+                  b.velo.x += -4;
+                }
+            
+          }
+          else if (keyCode == DOWN) {
+            if (b.pos.x == 40 && jump) {
+                  if (eRadius >= 65) {
+                    b.velo.y = -9;
+                  } else {
+                    b.velo.y = -7;
+                  }
+                  b.velo.x = 11;
+                } else if (b.pos.x == 440 && jump) {
+                  if (eRadius >= 65) {
+                    b.velo.y = -9;
+                  } else {
+                    b.velo.y = -7;
+                  }
+                  b.velo.x = -11;
+                }
+                
+            
+          }
+    }
   }
+  
 }
