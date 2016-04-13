@@ -13,11 +13,12 @@ void setup() {
   //fullScreen();
   surface.setResizable(true);
   size(480, 852);
-  frameRate(60);
+  initBeat();
+  //frameRate(60);
   noiseDetail(8);
   initMusic();
   initGame();
-  initBeat();
+
   //background(0);
 }
 
