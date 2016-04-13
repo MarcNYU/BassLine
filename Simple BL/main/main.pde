@@ -1,3 +1,6 @@
+import beads.*;
+import org.jaudiolibs.beads.*;
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -14,6 +17,8 @@ void setup() {
   noiseDetail(8);
   initMusic();
   initGame();
+  initBeat();
+  //background(0);
 }
 
 void draw() {

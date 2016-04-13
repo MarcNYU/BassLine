@@ -10,12 +10,13 @@ void input() {
   }
 }
 
-//void keyPressed() {
-//  if (key == 'b') {
-//    jump = true;
-//    start = false;
-//  } else {
-//    jump = false;
-//  }
-  
+//void keyReleased() {  
+// if (key == 'b') {
+//   //value = 255;
+//   jump = true;
+//   start = false;
+    
+// } else {
+//   jump = false;
+// }
 //}

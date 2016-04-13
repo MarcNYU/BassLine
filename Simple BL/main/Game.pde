@@ -1,28 +1,45 @@
 void Game() {
-  println(frameRate);
+  //println(frameRate);
+  println(eRadius);
   if (!start) {
     mp3.play();
   }
   if (b.pos.x < left || b.pos.x > right) {
     input();
+  } 
+  if (!start) {
+   ns.drawNoteSheet();
   }
-  translate(-c.pos.x, c.pos.y);
+  classicVi.drawEQ();
+  //classicVi.drawBeat();
+  drawBeat();
   b.update();
+  b.render();
+  //translate(-c.pos.x, c.pos.y);
+  translate(-c.pos.x, height-300);
+
   drawBG();
   c.drawC();
-  translate(c.pos.x, -c.pos.y);
-  drawFG();
-  b.render();
+  translate(c.pos.x, -b.pos.y);
+  drawGuides();
+  //b.update();
+  //drawFG();
+  DrawLines();
+  //b.render();
+   //if (!start) {
+   // ns.drawNoteSheet();
+  //}
 }
-void resetGame(){
-    surface.setResizable(true);
-    
-    initMusic();
-    initGame();
-    c.pos.x = 0;
-    c.pos.y = 0;
-    translate(c.pos.x, c.pos.y);
-    score = 0;
+
+void resetGame() {
+  surface.setResizable(true);
+
+  initMusic();
+  initGame();
+  c.pos.x = 0;
+  c.pos.y = 0;
+  translate(c.pos.x, c.pos.y);
+  score = 0;
 }
 
 void drawFG() {
@@ -31,7 +48,8 @@ void drawFG() {
   }
   DrawLines();
   classicVi.drawEQ();
-  classicVi.drawBeat();
+  //classicVi.drawBeat();
+  drawBeat();
   //drawGuides();
 }
 

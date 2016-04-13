@@ -1,3 +1,6 @@
+float [] j = new float [50];
+float [] k = new float [50];
+
 class Ball {
   PVector pos;
   PVector velo;
@@ -19,6 +22,10 @@ class Ball {
     bounce = 8; 
     radius = r;
     alive = true;
+    for (int i = 0; i<50; i++) {
+      j[i] = 0;
+      k[i] = 0;
+    }
   }
 
   void update() {
@@ -26,17 +33,17 @@ class Ball {
 
     pos.x += velo.x;
     pos.y += velo.y;
-    
-    if(frozen == true)
+
+    if (frozen == true)
       freeze();
-    if(increase == true)
+    if (increase == true)
       increaseSize();
-    if( pos.y > ground && secLifeOn == true){
+    if ( pos.y > ground && secLifeOn == true) {
       println("secLife", pos.y, ground);
-      secLifeOn();  
+      secLifeOn();
     }
-    
-    
+
+
     if (start) {
       velo.y = 0;
     } else {
@@ -56,14 +63,14 @@ class Ball {
     }
 
     if (pos.x == 40 && jump) {
-      if (eRadius >= 65) {
+      if (eRadius >= 52) {
         velo.y = -9;
       } else {
         velo.y = -7;
       }
       velo.x = 11;
     } else if (pos.x == 440 && jump) {
-      if (eRadius >= 65) {
+      if (eRadius >= 52) {
         velo.y = -9;
       } else {
         velo.y = -7;
@@ -82,9 +89,9 @@ class Ball {
     } 
 
     if (pos.x == 40) {
-      gravity = .1;
+      gravity = .05;
     } else if (pos.x == 440) {
-      gravity = .1;
+      gravity = .05;
     } else {
       gravity = .3;
     }
@@ -93,17 +100,23 @@ class Ball {
       alive = false;
     }
     if (pos.y < ceilling) {
+    //if (false) {
       gravity = .5;
     } else {
       if (jump && eRadius >= 60) {
         gravity = .3;
       } else {
-        gravity = .4;
+        //gravity = .4;
+        gravity = .3;//temp
       }
     }
 
     if (alive && !start) {
       score += 1;
+    }
+    
+    if(pos.x == 40 || pos.x == 440){
+     jump = false; 
     }
   }
 
@@ -121,29 +134,52 @@ class Ball {
     if (pos.x <= right+2 && pos.x >= right-2) return true;
     return false;
   }
+  
+  Boolean leftW() {
+    if (pos.x <= lw+5 && pos.x >= lw-5) return true;
+    return false;
+  }
+
+  Boolean rightW() {
+    if (pos.x <= rw+5 && pos.x >= rw-5) return true;
+    return false;
+  }
 
   void render() {
     pushMatrix();
-    //stroke(#03F6FC);
     noStroke();
-    if (jump && eRadius >= 65) {
-      fill(#FFF300);
-    } else {
-      fill(#03F6FC);
-    }
-    ellipse(pos.x, pos.y, radius, radius);
+    fill (#03FFFD);
+    //if (pos.x == 40 || pos.x == 440) {
+    //  for (int i=0; i<radius; i++) {
+    //    j[i] = pos.x;
+    //    k[i] = pos.y;
+    //    ellipse (j[i], k[i], radius, radius);
+    //  } 
+    //} else {
+    //  for (int i=0; i<radius; i++) {
+    //    j[i] = j [i+1];
+    //    k[i] = k [i+1];
+    //    ellipse (j[i], k[i], i, i);
+    //  }
+    //}
+    for (int i=0; i<radius; i++) {
+        j[i] = j [i+1];
+        k[i] = k [i+1];
+        ellipse (j[i], k[i], i, i);
+      }
+    j[25] = pos.x;
+    k[25] = pos.y;
     popMatrix();
   }
-void freeze()
+  void freeze()
   {
     //println("freeze", currentTime, destTime);
 
-    if(currentTime < destTime )
+    if (currentTime < destTime )
     {
       frozen = true; 
-      currentTime ++; 
-    }
-    else
+      currentTime ++;
+    } else
     {
       frozen = false;
       hasPowerUp = false;
@@ -152,13 +188,12 @@ void freeze()
   void increaseSize()
   {
     //println("increase", currentTime, destTime);
-   
-    if(currentTime < destTime )
+
+    if (currentTime < destTime )
     {
-      radius = increaseRadius; 
-      currentTime ++; 
-    } 
-    else
+      radius = 25; 
+      currentTime ++;
+    } else
     {
       radius = 25;
       increase = false;
@@ -169,7 +204,7 @@ void freeze()
   {
     println("secLife", pos.y, ground);
 
-      pos.y = 500;
-      secLifeOn = false;
+    pos.y = 500;
+    secLifeOn = false;
   }
 }

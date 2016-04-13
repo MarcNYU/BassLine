@@ -1,13 +1,16 @@
 // INITIALIZATION VARS
 Visualizer classicVi;
 Minim minim;
-FFT fft;
+ddf.minim.analysis.FFT fft;
 AudioOutput out;
 AudioPlayer mp3;
 BeatDetect beat;
 Ball b;
 Camera c;
 NoteSheet ns;
+AudioContext ac;
+PeakDetector beatDetector;
+
 
 // GAME VARS
 int move = 0;
@@ -19,6 +22,8 @@ float ceilling = height+100;
 float ground = height+650;
 float left = 50;
 float right = 430;
+float lw = 40;
+float rw = 440;
 
 // PHYSICS VARS
 float gravity = .3;
@@ -36,6 +41,10 @@ int increaseRadius = 50;
 
 // EQ VARS
 float eRadius;
+
+// BEAT VARS
+float brightness;
+int time; // tracks the time 
 
 // LINE VARS
 float spike = -1;
