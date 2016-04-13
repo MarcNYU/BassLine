@@ -84,7 +84,7 @@ class NoteSheet {
     {
       case 1:
         currentTime = timer;
-        destTime = timer + 45;
+        destTime = timer + 36;
         break;
       case 2:
         currentTime = timer;
@@ -103,8 +103,8 @@ class NoteSheet {
    Note(int layer) {  // high -> low : 1 -> 7
      cy = layer*d/2+margin_top;
      x_limit = (float)(Math.random() * (width) / fall_freq);
-     //powerUp = (int)(random(1,4));                            // Selects random powerup
-     powerUp = 1;
+     powerUp = (int)(random(1,4));                            // Selects random powerup
+     //powerUp = 1;
    }
    void drawNote() {
      pushMatrix();
