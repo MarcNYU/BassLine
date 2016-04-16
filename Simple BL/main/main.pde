@@ -9,6 +9,8 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 
+
+
 void setup() {
   //fullScreen();
   surface.setResizable(true);
@@ -16,6 +18,7 @@ void setup() {
   initBeat();
   //frameRate(60);
   noiseDetail(8);
+  initTracks();
   initMusic();
   initGame();
 

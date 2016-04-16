@@ -1,3 +1,35 @@
+class AudioFile{
+  //AudioFile musicFile;
+  String name;
+  
+  AudioFile(String aName){
+    //musicFile = aFile;    
+    name = aName;
+  }
+
+  
+  void displayName(){
+    println("current song: " + name);
+  }  
+}
+void initTracks(){
+  AudioFile track2 = new AudioFile("44_Drum_beat_(Rock).mp3");
+  AudioFile track1 = new AudioFile("Tongue Tied (Instrumental Version).mp3");
+  AudioFile track3 = new AudioFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3");
+  musicQueue[0] = track1;
+  musicQueue[1] = track2;
+  musicQueue[2] = track3;
+}
+//musicQueue[0] = track1;
+//AudioFile track3 = new AudioFile(minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048), "Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3");
+
+//musicQueue[0] = tr1ck1;
+//musicQueue[1] = track2;
+//musicQueue[2] = track3;
+
+//2usicQueue[currentSongIdx].play();
+
+
 void initGame() {
   b = new Ball(40, height-200, 25);
   c = new Camera();
