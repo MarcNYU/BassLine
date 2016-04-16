@@ -3,6 +3,42 @@ void gameStates()
   switch(state)
   {
   case 0:
+    background(0);
+    textSize(32);
+    fill(255);
+    //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
+    text("Select A Song\n\n", width/2-textWidth("Select A Song\n\n")/2, height/4-24);
+    text("Select the number that \ncorresponds with each song\n\n", width/2-textWidth("Select the number that \n\ncorresponds with each song\n\n")/2, height/4+24);
+    textSize(14);
+    for(int i = 0; i < songList.length; i++){
+      text(i+1 + ". " + songList[i] + "\n", width/2-textWidth(i+1 + ". " +songList[i]+ "\n")/2, height- 282 + i *40);   
+    
+    }
+    //text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
+    if (keyPressed ) {
+      if (key == 'a') {
+        currentSongIdx = 0;
+        
+        state = 1;
+      } else if (key == '2') {
+        currentSongIdx = 1;
+        
+        state = 1;
+      }
+      else if(key == '3'){
+        currentSongIdx = 2;
+        
+        state = 1;
+      }
+  }
+  
+    break;
+  case 1:
+    println("game started");
+    if(gameInit){
+      initBeat();
+      gameInit = false;
+    }
     if(!(ac.isRunning())){
       ac.start();
     }
@@ -11,7 +47,7 @@ void gameStates()
 
 
     break;
-  case 1:
+  case 2:
 
 
     //mp3.close();
@@ -26,13 +62,13 @@ void gameStates()
     if (keyPressed) {
     resetGame();
     start = true;
-    state = 0;
+    state = 1;
     }
     //println("Game Over");
 
     break;
 
-  case 2: 
+  case 3: 
     drawGuides();
     Game();
     println("Debug");

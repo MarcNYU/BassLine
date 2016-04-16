@@ -1,14 +1,9 @@
-String[] songList = new String[3];
-String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
-String track2 = "44_Drum_beat_(Rock).mp3";  
-String track3 = "Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3";
+
 
 
 void initBeat()
 {
-  songList[0] = song1;
-  songList[1] = track2;
-  songList[2] = track3;
+  
   time = millis();
   
   // set up the AudioContext and the master Gain object
