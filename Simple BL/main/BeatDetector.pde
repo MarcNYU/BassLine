@@ -8,8 +8,17 @@ void initBeat()
   
   // set up the AudioContext and the master Gain object
   ac = new AudioContext();
-  beads.Gain g = new beads.Gain(ac, 2, 0.2);
+  g = new beads.Gain(ac, 2, 0.2);
   ac.out.addInput(g);
+  
+  // create an Envelope to control the frequency
+  frequencyEnvelope = new Envelope(ac, 440.0f);
+  
+  // create a sine generator
+  sine = new WavePlayer(ac, frequencyEnvelope, Buffer.SINE);
+  
+ 
+  
   
   // load up a sample included in code download
   SamplePlayer sp = null;
@@ -66,7 +75,10 @@ void initBeat()
   
   ac.out.addDependent(sfs); // tell the AudioContext that it needs to update the ShortFrameSegmenter
   
+  
   ac.start(); // start working with audio data
+  
+  
   
 }
 

@@ -9,6 +9,9 @@ Ball b;
 Camera c;
 NoteSheet ns;
 AudioContext ac;
+beads.Gain g;
+Envelope frequencyEnvelope;
+WavePlayer sine;
 PeakDetector beatDetector;
 
 //MUSIC VARS
@@ -24,6 +27,7 @@ Boolean musicPaused = false;
 int move = 0;
 int state = 0;
 int score;
+boolean error = false;
 
 // GUIDE VARS
 float ceilling = height+100;

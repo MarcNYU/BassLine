@@ -16,7 +16,7 @@ void gameStates()
     }
     //text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
     if (keyPressed ) {
-      if (key == 'a') {
+      if (key == '1') {
         currentSongIdx = 0;
         
         state = 1;
@@ -51,6 +51,15 @@ void gameStates()
 
 
     //mp3.close();
+    error = true;
+    if(error){
+      // add the sine generator as an input to the Gain
+       g.addInput(sine);
+    
+      // ramp the frequency up to 2000Hz over 1000 ms
+      frequencyEnvelope.addSegment(2000.0f, 1000.0f);
+      error = false;
+    }
     ac.stop();
     
     background(0);
@@ -59,9 +68,11 @@ void gameStates()
     text("GAME OVER", width/2-textWidth("GAME OVER")/2, height/2-32);
     text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
     text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
+    
     if (keyPressed) {
     resetGame();
     start = true;
+    //frequencyEnvelope.clear();
     state = 1;
     }
     //println("Game Over");
