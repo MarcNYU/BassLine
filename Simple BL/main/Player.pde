@@ -98,6 +98,7 @@ class Ball {
       gravity = .3;
     }
     if (grounded()) {
+      playError();
       state = 2;
       alive = false;
     }

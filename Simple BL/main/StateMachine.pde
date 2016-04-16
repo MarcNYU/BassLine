@@ -34,6 +34,7 @@ void gameStates()
   
     break;
   case 1:
+    
     println("game started");
     if(gameInit){
       initBeat();
@@ -51,15 +52,8 @@ void gameStates()
 
 
     //mp3.close();
-    error = true;
-    if(error){
-      // add the sine generator as an input to the Gain
-       g.addInput(sine);
-    
-      // ramp the frequency up to 2000Hz over 1000 ms
-      frequencyEnvelope.addSegment(2000.0f, 1000.0f);
-      error = false;
-    }
+    //ac.reset();
+    //frequencyEnvelope.clear();
     ac.stop();
     
     background(0);

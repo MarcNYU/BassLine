@@ -17,8 +17,22 @@ void initBeat()
   // create a sine generator
   sine = new WavePlayer(ac, frequencyEnvelope, Buffer.SINE);
   
- 
+ // create a WavePlayer to control the frequency
+  modulator = new WavePlayer(ac, 220.0f, Buffer.SINE);
   
+  frequencyModulation = new Function(modulator){
+  @Override
+  public float calculate()
+  {
+    // x[0] = modulator
+    // 20.0f = modulation width
+    // 440.0f = modulation center (carrier frequency)
+    return (x[0] * 200.0f) + 440.0f;
+  }
+};
+
+// create a sine generator
+carrier = new WavePlayer(ac, frequencyModulation, Buffer.SINE);
   
   // load up a sample included in code download
   SamplePlayer sp = null;

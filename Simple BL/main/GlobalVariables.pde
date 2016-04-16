@@ -13,6 +13,9 @@ beads.Gain g;
 Envelope frequencyEnvelope;
 WavePlayer sine;
 PeakDetector beatDetector;
+WavePlayer modulator;
+Function frequencyModulation;
+WavePlayer carrier;
 
 //MUSIC VARS
 //String[] musicQueue = new String[3];
