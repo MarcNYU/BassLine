@@ -3,7 +3,7 @@ void Game() {
   //println(frameRate);
   //println(eRadius);
   //println(brightness);
-  mp3.play();
+ // mp3.play();
   if (!start) {
    //mp3.play();
   }
@@ -18,7 +18,7 @@ void Game() {
   
   b.update();
   b.render();
-   drawGuides();
+   //drawGuides();
   //b.update();
   //drawFG();
   DrawLines();
@@ -40,8 +40,9 @@ void Game() {
 }
 
 void resetGame() {
+  println("game reset");
   surface.setResizable(true);
-
+  ac.reset();
   initMusic();
   initGame();
   c.pos.x = 0;

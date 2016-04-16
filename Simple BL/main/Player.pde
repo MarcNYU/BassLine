@@ -183,11 +183,14 @@ class Ball {
     //    ellipse (j[i], k[i], i, i);
     //  }
     //}
+    
+    //Causing the array index error
+    
     for (int i=0; i<radius; i++) {
-        j[i] = j [i+1];
-        k[i] = k [i+1];
-        ellipse (j[i], k[i], i, i);
-      }
+       j[i] = j [i+1];
+       k[i] = k [i+1];
+       ellipse (j[i], k[i], i, i);
+     }
     j[25] = pos.x;
     k[25] = pos.y;
     popMatrix();

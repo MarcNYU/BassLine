@@ -3,6 +3,9 @@ void gameStates()
   switch(state)
   {
   case 0:
+    if(!(ac.isRunning())){
+      ac.start();
+    }
     Game();
     //println("Play Test");
 
@@ -11,7 +14,9 @@ void gameStates()
   case 1:
 
 
-    mp3.close();
+    //mp3.close();
+    ac.stop();
+    
     background(0);
     textSize(32);
     fill(255);
