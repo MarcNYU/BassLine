@@ -3,7 +3,7 @@ void Game() {
   //println(frameRate);
   //println(eRadius);
   //println(brightness);
-  mp3.play();
+ // mp3.play();
   if (!start) {
    //mp3.play();
   }
@@ -18,7 +18,7 @@ void Game() {
   
   b.update();
   b.render();
-   drawGuides();
+   //drawGuides();
   //b.update();
   //drawFG();
   DrawLines();
@@ -39,9 +39,25 @@ void Game() {
   drawBeat();
 }
 
-void resetGame() {
-  surface.setResizable(true);
+void playError(){
+     //error = true;
+    //if(error){
+     // // add the sine generator as an input to the Gain
+     //  g.addInput(sine);
+    
+     // // ramp the frequency up to 2000Hz over 1000 ms
+     // frequencyEnvelope.addSegment(2000.0f, 10.0f);
+     // error = false;
+    //}
+    g.addInput(carrier);
+    ac.out.addInput(g);
+}
 
+void resetGame() {
+  println("game reset");
+  g = new beads.Gain(ac, 2, 0.2);
+  surface.setResizable(true);
+  ac.reset();
   initMusic();
   initGame();
   c.pos.x = 0;

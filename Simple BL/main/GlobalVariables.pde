@@ -9,13 +9,28 @@ Ball b;
 Camera c;
 NoteSheet ns;
 AudioContext ac;
+beads.Gain g;
+Envelope frequencyEnvelope;
+WavePlayer sine;
 PeakDetector beatDetector;
+WavePlayer modulator;
+Function frequencyModulation;
+WavePlayer carrier;
+
+//MUSIC VARS
+//String[] musicQueue = new String[3];
+//AudioPlayer[] musicQueue = new AudioPlayer[3];
+//AudioFile[] musicQueue = new AudioFile[3];
+int currentSongIdx = 0;
+Boolean musicPaused = false;  
+int timer = millis();
 
 
 // GAME VARS
 int move = 0;
 int state = 0;
 int score;
+boolean error = false;
 
 // GUIDE VARS
 float ceilling = height+100;
@@ -30,6 +45,7 @@ float gravity = .3;
 
 // PLAYER VARS
 boolean jump;
+boolean gameInit = true;
 boolean start = true;
 int currentTime = 0;
 int destTime = 0;
@@ -38,6 +54,8 @@ boolean increase = false;
 boolean secLifeOn = false;
 boolean hasPowerUp = false;
 int increaseRadius = 50;
+boolean delay = false;
+boolean collected = true;
 
 // EQ VARS
 float eRadius;

@@ -1,17 +1,46 @@
+
+
+
 void initBeat()
 {
+  
   time = millis();
   
   // set up the AudioContext and the master Gain object
   ac = new AudioContext();
-  beads.Gain g = new beads.Gain(ac, 2, 0.2);
+  g = new beads.Gain(ac, 2, 0.2);
   ac.out.addInput(g);
+  
+  // create an Envelope to control the frequency
+  frequencyEnvelope = new Envelope(ac, 440.0f);
+  
+  // create a sine generator
+  sine = new WavePlayer(ac, frequencyEnvelope, Buffer.SINE);
+  
+ // create a WavePlayer to control the frequency
+  modulator = new WavePlayer(ac, 220.0f, Buffer.SINE);
+  
+  frequencyModulation = new Function(modulator){
+  @Override
+  public float calculate()
+  {
+    // x[0] = modulator
+    // 20.0f = modulation width
+    // 440.0f = modulation center (carrier frequency)
+    return (x[0] * 200.0f) + 440.0f;
+  }
+};
+
+// create a sine generator
+carrier = new WavePlayer(ac, frequencyModulation, Buffer.SINE);
   
   // load up a sample included in code download
   SamplePlayer sp = null;
   try
   {
-    sp = new SamplePlayer(ac, new Sample(sketchPath("") + "Tongue Tied (Instrumental Version) copy.mp3")); // load up a new SamplePlayer using an included audio file
+    sp = new SamplePlayer(ac, new Sample(sketchPath("") + songList[currentSongIdx])); // load up a new SamplePlayer using an included audio file
+    //println("current song: "+ musicQueue[currentSongIdx].name);
+    //sp = new SamplePlayer(ac, new Sample(sketchPath("") + musicQueue[currentSongIdx].name)); // load up a new SamplePlayer using an included audio file
     g.addInput(sp); // connect the SamplePlayer to the master Gain
   }
   catch(Exception e)
@@ -60,7 +89,10 @@ void initBeat()
   
   ac.out.addDependent(sfs); // tell the AudioContext that it needs to update the ShortFrameSegmenter
   
+  
   ac.start(); // start working with audio data
+  
+  
   
 }
 

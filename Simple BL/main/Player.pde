@@ -12,6 +12,7 @@ class Ball {
   float radius;
 
   boolean alive;
+  int bColor;
 
 
   Ball (float x, float y, float r) {
@@ -22,6 +23,7 @@ class Ball {
     bounce = 8; 
     radius = r;
     alive = true;
+    bColor = (int)(random(1,3));
     for (int i = 0; i<50; i++) {
       j[i] = 0;
       k[i] = 0;
@@ -30,97 +32,119 @@ class Ball {
 
   void update() {
     //pos.y-=move;
-
-    pos.x += velo.x;
-    pos.y += velo.y;
-
-    if (frozen == true)
-      freeze();
-    if (increase == true)
-      increaseSize();
-    if ( pos.y > ground && secLifeOn == true) {
-      //println("secLife", pos.y, ground);
-      secLifeOn();
-    }
-
-
-    if (start) {
-      velo.y = 0;
-    } else {
-      velo.y += gravity;
-    }
-
-    if (leftB()) {
-      lws = 150;
-    } else if (rightB()) {
-      rws = 150;
-    } else {
-      float target = 0;
-      float dt = target - lws;
-      float dl = target - rws;
-      lws += dt * 0.3;//ease rate
-      rws += dl * 0.3;//ease rate
-    }
-
-    if (pos.x == 40 && jump) {
-      //if (eRadius >= 52) {
-        if (jump && brightness != 0.0) {
-        velo.y = -9;
-      } else {
-        velo.y = -7;
+  if(delay == true && currentTime < destTime)
+  {
+      currentTime++;
+  }
+  else {
+      delay = false;
+      pos.x += velo.x;
+      pos.y += velo.y;
+  
+      if (frozen == true)
+        freeze();
+      if (increase == true)
+        increaseSize();
+      if ( pos.y > ground && secLifeOn == true) {
+        //println("secLife", pos.y, ground);
+        secLifeOn();
       }
-      velo.x = 13;
-    } else if (pos.x == 440 && jump) {
-      //if (eRadius >= 52) {
-        if (jump && brightness != 0.0) {
-        velo.y = -9;
+  
+  
+      if (start) {
+        velo.y = 0;
       } else {
-        velo.y = -7;
+        velo.y += gravity;
       }
-      velo.x = -13;
-    }
-
-    if (pos.x < 40) {
-      velo.x = 0;
-      velo.y = 0;
-      pos.x = 40;
-    } else if (pos.x > 440) {
-      velo.x = 0;
-      velo.y = 0;
-      pos.x = 440;
-    } 
-
-    if (pos.x == 40) {
-      gravity = .05;
-    } else if (pos.x == 440) {
-      gravity = .05;
-    } else {
-      gravity = .3;
-    }
-    if (grounded()) {
-      state = 1;
-      alive = false;
-    }
-    if (pos.y < ceilling) {
-    //if (false) {
-      gravity = .6;
-    } else {
-      //if (jump && eRadius >= 60) {
-      if (jump && brightness != 0.0) {
+  
+      if (leftB()) {
+        lws = 150;
+      } else if (rightB()) {
+        rws = 150;
+      } else {
+        float target = 0;
+        float dt = target - lws;
+        float dl = target - rws;
+        lws += dt * 0.3;//ease rate
+        rws += dl * 0.3;//ease rate
+      }
+  
+      if (pos.x == 40 && jump) {
+        //if (eRadius >= 52) {
+          if (jump && brightness != 0.0) {
+          velo.y = -9;
+        } else {
+          velo.y = -7;
+        }
+        velo.x = 13;
+      } else if (pos.x == 440 && jump) {
+        //if (eRadius >= 52) {
+          if (jump && brightness != 0.0) {
+          velo.y = -9;
+        } else {
+          velo.y = -7;
+        }
+        velo.x = -13;
+      }
+  
+      if (pos.x < 40) {
+        velo.x = 0;
+        velo.y = 0;
+        pos.x = 40;
+        if(collected && random(1, 500) < 30)
+        {
+           bColor = (int)(random(1,3));
+        }
+      } else if (pos.x > 440) {
+        velo.x = 0;
+        velo.y = 0;
+        pos.x = 440;
+        if(collected && random(1, 500) < 30)
+        {
+           bColor = (int)(random(1,3));
+        }
+      } 
+  
+      if (pos.x == 40) {
+        gravity = .05;
+      } else if (pos.x == 440) {
+        gravity = .05;
+      } else {
         gravity = .3;
-      } else {
-        gravity = .4;
-        //gravity = .3;//temp
       }
-    }
-
-    if (alive && !start) {
-      score += 1;
-    }
+      if (grounded()) {
+        if(secLifeOn == true)
+        {
+          state = 4;
+        }
+        else
+        {
+          //playError();
+          state = 2;
+          alive = false;
+        }
+      }
+      if (pos.y < ceilling) {
+      //if (false) {
+        gravity = .6;
+      } else {
+        //if (jump && eRadius >= 60) {
+        if (jump && brightness != 0.0) {
+          gravity = .3;
+        } else {
+          gravity = .4;
+          //gravity = .3;//temp
+        }
+      }
+  
+      if (alive && !start) {
+        score += 1;
+      }
     
     //if(pos.x == 40 || pos.x == 440){
     // jump = false; 
     //}
+    }
   }
 
   Boolean grounded() {
@@ -151,6 +175,7 @@ class Ball {
   void render() {
     pushMatrix();
     noStroke();
+    
     if(secLifeOn == true)
     {
        stroke( #03F6FC );
@@ -162,8 +187,21 @@ class Ball {
     if(frozen == false){
       if (jump && eRadius >= 65) {
         fill(#FFF300);
-      } else {
-        fill(#03F6FC);
+      } 
+      else {
+        switch(bColor)
+         {
+         case 1:
+           fill(255, 100, 100);
+           break;
+         case 2:
+           fill(100, 200, 255);
+           break;
+         case 3:
+           fill(100, 255, 100);
+           break;
+         }
+        
       }
     }
     else {
@@ -183,11 +221,16 @@ class Ball {
     //    ellipse (j[i], k[i], i, i);
     //  }
     //}
+
     for (int i=0; i<25; i++) {
         j[i] = j [i+1];
         k[i] = k [i+1];
         ellipse (j[i], k[i], i, i);
       }
+
+    
+    //Causing the array index error
+    
     j[25] = pos.x;
     k[25] = pos.y;
     ellipse (j[25], k[25], radius, radius);
@@ -225,8 +268,10 @@ class Ball {
   void secLifeOn()
   {
     //println("secLife", pos.y, ground);
-
-    pos.y = 500;
+    currentTime = timer;
+    destTime = timer + 50;
+    pos.y = 300;
+    delay = true;
     secLifeOn = false;
   }
 }

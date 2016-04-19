@@ -6,8 +6,7 @@ class NoteSheet {
   int x_speed = 5;  // speed of horizontal move
   int y_speed = 3;  // speed of vertical move
   
-  
-  int timer = millis();
+
   Note[] notes = new Note[20];
 
   void drawNoteSheet() {
@@ -22,11 +21,17 @@ class NoteSheet {
     for (int i = 0; i < notes.length; ++i) {
        if (notes[i] != null) {
           notes[i].drawNote();
-          if( notes[i].checkBallCollsion() )        //Checks for note, ball collision
+          if( notes[i].checkBallCollsion() && (!(notes[i].powerUp == b.bColor ) || notes[i].powerUp == 3))        //Checks for note, ball collision
           {
-            applyPowerUp(notes[i]);  
+            applyPowerUp(notes[i]);
+            notes[i] = null;
           }
-          if (notes[i].outbound() || notes[i].checkBallCollsion()) {
+          else if( notes[i].checkBallCollsion() && (notes[i].powerUp == b.bColor ))  
+          {
+             collected = true;
+             notes[i] = null;
+          }
+          else if (notes[i].outbound()) {
           notes[i] = null;
         }
        }
@@ -62,11 +67,13 @@ class NoteSheet {
         }
         break;
       case 2:   // increase player size
-        if(hasPowerUp == false){
-          hasPowerUp = true;
-          increase = true;
-          setTime(2);
-        }
+        /*if(hasPowerUp == false)
+          {
+            hasPowerUp = true;
+            increase = true;
+            setTime(2);
+          }*/
+          state = 2;
         break;
       case 3:   // second chance
 
@@ -104,7 +111,7 @@ class NoteSheet {
      cy = layer*d/2+margin_top;
      x_limit = (float)(Math.random() * (width) / fall_freq);
      powerUp = (int)(random(1,4));                            // Selects random powerup
-     //powerUp = 2;
+     //powerUp = 1;
    }
    void drawNote() {
      pushMatrix();
@@ -116,10 +123,10 @@ class NoteSheet {
          fill(255, 100, 100);
          break;
        case 2:
-         fill(255, 100, 200);
+         fill(100, 200, 255);
          break;
        case 3:
-         fill(255, 200, 100);
+         fill(100, 255, 100);
          break;
      }
      ellipse(cx, cy, d, d);
