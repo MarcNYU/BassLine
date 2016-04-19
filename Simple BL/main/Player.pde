@@ -183,13 +183,14 @@ class Ball {
     //    ellipse (j[i], k[i], i, i);
     //  }
     //}
-    for (int i=0; i<radius; i++) {
+    for (int i=0; i<25; i++) {
         j[i] = j [i+1];
         k[i] = k [i+1];
         ellipse (j[i], k[i], i, i);
       }
     j[25] = pos.x;
     k[25] = pos.y;
+    ellipse (j[25], k[25], radius, radius);
     popMatrix();
   }
   void freeze()

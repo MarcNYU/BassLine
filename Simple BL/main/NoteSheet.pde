@@ -104,7 +104,7 @@ class NoteSheet {
      cy = layer*d/2+margin_top;
      x_limit = (float)(Math.random() * (width) / fall_freq);
      powerUp = (int)(random(1,4));                            // Selects random powerup
-     //powerUp = 1;
+     //powerUp = 2;
    }
    void drawNote() {
      pushMatrix();
