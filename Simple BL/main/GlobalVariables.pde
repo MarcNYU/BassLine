@@ -1,10 +1,18 @@
+// CONSTANT
+
+public final int DEATH = 1;
+public final int FREEZE = 2;
+public final int LIFE = 3;
+ 
+
+
 // INITIALIZATION VARS
 Visualizer classicVi;
 Minim minim;
 ddf.minim.analysis.FFT fft;
 AudioOutput out;
 AudioPlayer mp3;
-BeatDetect beat;
+//BeatDetect beat;
 Ball b;
 Camera c;
 NoteSheet ns;
@@ -16,6 +24,7 @@ PeakDetector beatDetector;
 WavePlayer modulator;
 Function frequencyModulation;
 WavePlayer carrier;
+TempoDetector td;
 
 //MUSIC VARS
 //String[] musicQueue = new String[3];

@@ -51,5 +51,8 @@ void initMusic() {
   //mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);
   out = minim.getLineOut(Minim.STEREO, 44100);
   fft = new ddf.minim.analysis.FFT(mp3.bufferSize(), mp3.sampleRate());//initializes a buffer with the entire sound file 
-  beat = new BeatDetect();
+  //beat = new BeatDetect();
+  
+  td = new TempoDetector(minim, mp3);
+  mp3.play();
 }

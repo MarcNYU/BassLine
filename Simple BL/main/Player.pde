@@ -191,13 +191,13 @@ class Ball {
       else {
         switch(bColor)
          {
-         case 1:
+         case DEATH:
            fill(255, 100, 100);
            break;
-         case 2:
+         case FREEZE:
            fill(100, 200, 255);
            break;
-         case 3:
+         case LIFE:
            fill(100, 255, 100);
            break;
          }

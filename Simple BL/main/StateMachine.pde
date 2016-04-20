@@ -35,7 +35,7 @@ void gameStates()
     break;
   case 1:
     
-    println("game started");
+    //println("game started");
     if(gameInit){
       initBeat();
       gameInit = false;

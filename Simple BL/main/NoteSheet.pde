@@ -1,50 +1,48 @@
 class NoteSheet {
   int margin_top = 10;  // margin before top layer note
+  int margin_left = 50;
+  int margin_right = 50;
   int sheet_height = 20;  // width of space between line
-  int interval = 200;  // intervals of generating notes in milliseconds
-  float fall_freq = 0.18; // frequency of note falling
-  int x_speed = 5;  // speed of horizontal move
-  int y_speed = 3;  // speed of vertical move
+  int x_speed = 53;  // speed of horizontal move
+  int y_speed =35;  // speed of vertical move
   
-
-  Note[] notes = new Note[20];
+  int notes_capacity = 20;
+  Note[] notes = new Note[notes_capacity];
+  int start_index_notes = 0;
+  int end_index_notes = 0;
+  int notes_dropping_capacity = 5;
+  Note[] notes_dropping = new Note[notes_dropping_capacity];
+  int index_dropping = 0;
 
   void drawNoteSheet() {
-    pushMatrix();
     strokeWeight(1);
-    if (millis() - timer > interval) {
+    int tempo_type = td.detectTempo();
+    println(tempo_type);
+    if (tempo_type == 1) {
       generateNote();
       timer = millis();
     }
-    //background(0);
-    drawSheet();
-    for (int i = 0; i < notes.length; ++i) {
-       if (notes[i] != null) {
-          notes[i].drawNote();
-          if( notes[i].checkBallCollsion() && (!(notes[i].powerUp == b.bColor ) || notes[i].powerUp == 3))        //Checks for note, ball collision
-          {
-            applyPowerUp(notes[i]);
-            notes[i] = null;
-          }
-          else if( notes[i].checkBallCollsion() && (notes[i].powerUp == b.bColor ))  
-          {
-             collected = true;
-             notes[i] = null;
-          }
-          else if (notes[i].outbound()) {
-          notes[i] = null;
-        }
-       }
+    if (tempo_type == 2) {
+     generateDroppingNote();
     }
-    popMatrix();
+    //background(0);
+    drawSheet();  
+    drawNotes();
+    drawDroppingNotes();
   }
   void generateNote() {
-    for (int i = 0; i < notes.length; ++i) {
-      if (notes[i] == null) {
-         notes[i] = new Note((int)(Math.random() * 6)+1); 
-         return;
-      }
+    if ((end_index_notes + 1) % notes_capacity != start_index_notes) {
+        notes[end_index_notes] = new Note((int)(Math.random() * 6)+1);
+        end_index_notes = (end_index_notes + 1) % notes_capacity;
     }
+  }
+  void generateDroppingNote() {
+     for (int i = 0; i < notes_dropping_capacity; ++i) {
+       if (notes_dropping[i] == null || notes_dropping[i].outbound()) {
+         notes_dropping[i] = new Note();
+         return;
+       }
+     }
   }
   void drawSheet() {
     stroke(255);
@@ -56,34 +54,31 @@ class NoteSheet {
     }
     popMatrix();
   }
-  
-  void applyPowerUp(Note n){
-    switch(n.getPowerUp()){
-      case 1:  // freeze
-        if(hasPowerUp == false){
-          hasPowerUp = true;
-          frozen = true;
-          setTime(1);
-        }
-        break;
-      case 2:   // increase player size
-        /*if(hasPowerUp == false)
-          {
-            hasPowerUp = true;
-            increase = true;
-            setTime(2);
-          }*/
-          state = 2;
-        break;
-      case 3:   // second chance
-
-        secLifeOn = true;
-        //println("hii", secLifeOn);
-        break;
-      
-      
+  void recycleNotes() {
+    if (notes[start_index_notes] == null) return;
+    while (notes[start_index_notes].outbound()) {
+       start_index_notes = (start_index_notes + 1) % notes_capacity; 
     }
   }
+  void drawNotes() {
+    recycleNotes();
+    for (int i = start_index_notes; i != end_index_notes; i = (i + 1) % notes_capacity) {
+       notes[i].drawNote();
+    }
+  }
+  
+  void drawDroppingNotes() {
+    for (int i = 0; i < notes_dropping_capacity; ++i) {
+       if (notes_dropping[i] != null) {
+          if (!notes_dropping[i].detectCollision()) {
+            notes_dropping[i].drawNote(); 
+          } else {
+            notes_dropping[i] = null; 
+          }
+       }
+    }
+  }
+  
   
   void setTime(int power)
   {
@@ -101,83 +96,87 @@ class NoteSheet {
   }
   
   class Note {
-   int d = sheet_height;
-   float cx = d;
+   
+
+   float d = sheet_height;  // diameter of note
+   float cx = 0;
    float cy;
-   float x_limit; // where does the note fall
+   //float x_limit; // where does the note fall
    int powerUp;
+   boolean dropping = false;
    
    Note(int layer) {  // high -> low : 1 -> 7
      cy = layer*d/2+margin_top;
-     x_limit = (float)(Math.random() * (width) / fall_freq);
+     //x_limit = (float)(Math.random() * (width) / fall_freq);
      powerUp = (int)(random(1,4));                            // Selects random powerup
      //powerUp = 1;
    }
+   Note() {  // dropping note
+     cx = (float)(Math.random() * (width-margin_left-margin_right)+margin_left);
+     cy = margin_top + sheet_height*3;
+     powerUp = (int)(random(1,4));                            // Selects random powerup
+    ;
+   }
+   void apperEffect() {
+     
+   }
    void drawNote() {
-     pushMatrix();
      noStroke();
      //fill(255);
      switch(powerUp)
      {
-       case 1:
+       case DEATH:
          fill(255, 100, 100);
          break;
-       case 2:
+       case FREEZE:
          fill(100, 200, 255);
          break;
-       case 3:
+       case LIFE:
          fill(100, 255, 100);
          break;
      }
      ellipse(cx, cy, d, d);
      move();
-     popMatrix();
-   }
+   
+   void startDropping() {
+     dropping = true; 
+   }}
    void move() {
-     if (cx >= x_limit && cx > 150 && cx < width-150) {
+     if (dropping) {
         cy += y_speed; 
      } else {
        cx += x_speed; 
      }
    }
+   void applyPowerUp(){
+    if (b.bColor == powerUp) {
+      return;
+    }
+    switch(powerUp){
+      case FREEZE:  // freeze
+        hasPowerUp = true;
+        frozen = true;
+        setTime(1);
+        break;
+      case DEATH: 
+        state = 2;
+        break;
+      case LIFE:   // second chance
+
+        secLifeOn = true;
+        //println("hii", secLifeOn);
+        break;
+    }
+  }
+  boolean detectCollision() {
+    if(Math.pow((b.pos.x - cx),2) + Math.pow((b.pos.y - cy),2) < Math.pow((b.radius + d/2), 2)){
+      applyPowerUp();
+      return true;
+    }
+    return false;
+  }
    boolean outbound() {
       return (cx > width || cy > ground); 
-   }
-   boolean checkBallCollsion()
-   {
-     // Check right collision
-     if( b.pos.x + 10 > cx - 12.5 && b.pos.x + 10 < cx + 12.5)
-     {
-       if( b.pos.y + 10 > cy - 12.5 && b.pos.y + 10 < cy + 12.5 )
-       {
-         //println("hit right", b.pos.y +10, cy - 12.5, cy + 12.5 );
-         return true;
-       }
-       else if( b.pos.y - 10 > cy - 12.5 && b.pos.y - 10 < cy + 12.5 )
-       {
-         //println("hit right", b.pos.y -10, cy - 12.5, cy + 12.5);
-         return true;
-       }
-     }
-     // Check left collision
-     else if( b.pos.x - 10 > cx -12.5 && b.pos.x - 10 < cx + 12.5)
-     {
-        if( b.pos.y - 10 > cy +12.5 && b.pos.y - 10 < cy - 12.5 )
-        {
-          //println("hit leftl", b.pos.y -10, cy - 12.5, cy + 12.5);
-          return true;
-        }
-        else if( b.pos.y + 10 > cy -12.5 && b.pos.y +10 < cy + 12.5)
-        {
-          //println("hit leftr", b.pos.y +10, cy - 12.5, cy + 12.5);
-          return true;
-        }
-     }
-     return false;
-   }
-   int getPowerUp()
-   {
-     return powerUp;
    }
   }
 }

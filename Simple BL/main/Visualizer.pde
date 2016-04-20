@@ -85,12 +85,12 @@ class Visualizer {
     //fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
     stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
     colorMode(RGB);//sets color mode back to Red green and blue 
-    beat.detect(mp3.mix);
-    float a = map(eRadius, 20, 80, 60, 255);
-    if ( beat.isOnset() ) eRadius = 85;
-    ellipse(width/2, height-100, eRadius, eRadius);
-    eRadius *= 0.95;
-    if ( eRadius < 20 ) eRadius = 20;
+    //beat.detect(mp3.mix);
+    //float a = map(eRadius, 20, 80, 60, 255);
+    //if ( beat.isOnset() ) eRadius = 85;
+    //ellipse(width/2, height-100, eRadius, eRadius);
+    //eRadius *= 0.95;
+    //if ( eRadius < 20 ) eRadius = 20;
     popMatrix();
   }
 }
