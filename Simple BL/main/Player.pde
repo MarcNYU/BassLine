@@ -1,3 +1,5 @@
+float [] j = new float [50];
+float [] k = new float [50];
 
 
 class Ball {
@@ -22,7 +24,7 @@ class Ball {
     bounce = 8; 
     radius = r;
     alive = true;
-    bColor = (int)(random(1,3));
+    bColor = (int)(random(1, 3));
     for (int i = 0; i<50; i++) {
       j[i] = 0;
       k[i] = 0;
@@ -30,16 +32,15 @@ class Ball {
   }
 
   void update() {
-       //pos.y-=move;
-  if(delay == true && currentTime < destTime)
-  {
+    //pos.y-=move;
+    if (delay == true && currentTime < destTime)
+    {
       currentTime++;
-  }
-  else {
+    } else {
       delay = false;
       pos.x += velo.x;
       pos.y += velo.y;
-  
+
       if (frozen == true)
         freeze();
       if (increase == true)
@@ -48,14 +49,14 @@ class Ball {
         //println("secLife", pos.y, ground);
         secLifeOn();
       }
-  
-  
+
+
       if (start) {
         velo.y = 0;
       } else {
         velo.y += gravity;
       }
-  
+
       if (leftB()) {
         lws = 150;
       } else if (rightB()) {
@@ -67,10 +68,10 @@ class Ball {
         lws += dt * 0.3;//ease rate
         rws += dl * 0.3;//ease rate
       }
-  
+
       if (pos.x == 40 && jump) {
         //if (eRadius >= 52) {
-          if (jump && brightness != 0.0) {
+        if (jump && brightness != 0.0) {
           velo.y = -9;
         } else {
           velo.y = -7;
@@ -78,32 +79,32 @@ class Ball {
         velo.x = 13;
       } else if (pos.x == 440 && jump) {
         //if (eRadius >= 52) {
-          if (jump && brightness != 0.0) {
+        if (jump && brightness != 0.0) {
           velo.y = -9;
         } else {
           velo.y = -7;
         }
         velo.x = -13;
       }
-  
+
       if (pos.x < 40) {
         velo.x = 0;
         velo.y = 0;
         pos.x = 40;
-        if(collected && random(1, 500) < 30)
+        if (collected && random(1, 500) < 30)
         {
-           bColor = (int)(random(1,3));
+          bColor = (int)(random(1, 3));
         }
       } else if (pos.x > 440) {
         velo.x = 0;
         velo.y = 0;
         pos.x = 440;
-        if(collected && random(1, 500) < 30)
+        if (collected && random(1, 500) < 30)
         {
-           bColor = (int)(random(1,3));
+          bColor = (int)(random(1, 3));
         }
       } 
-  
+
       if (pos.x == 40) {
         gravity = .05;
       } else if (pos.x == 440) {
@@ -112,13 +113,12 @@ class Ball {
         gravity = .3;
       }
       if (grounded()) {
-          //playError();
-          state = 2;
-          alive = false;
-        
+        //playError();
+        state = 2;
+        alive = false;
       }
       if (pos.y < ceilling) {
-      //if (false) {
+        //if (false) {
         gravity = .6;
       } else {
         //if (jump && eRadius >= 60) {
@@ -129,14 +129,14 @@ class Ball {
           //gravity = .3;//temp
         }
       }
-  
+
       if (alive && !start) {
         score += 1;
       }
-    
-    //if(pos.x == 40 || pos.x == 440){
-    // jump = false; 
-    //}
+
+      //if(pos.x == 40 || pos.x == 440){
+      // jump = false; 
+      //}
     }
   }
 
@@ -154,7 +154,7 @@ class Ball {
     if (pos.x <= right+2 && pos.x >= right-2) return true;
     return false;
   }
-  
+
   Boolean leftW() {
     if (pos.x <= lw+5 && pos.x >= lw-5) return true;
     return false;
@@ -168,35 +168,28 @@ class Ball {
   void render() {
     pushMatrix();
     noStroke();
-    if(secLifeOn == true)
+    if (secLifeOn == true)
     {
-       stroke( #03F6FC );
-       strokeWeight(2);
-       fill(0);
-       ellipse(pos.x, pos.y, radius+7, radius+7);
+      stroke( #03F6FC );
+      strokeWeight(2);
+      fill(0);
+      ellipse(pos.x, pos.y, radius+7, radius+7);
     }
     noStroke();
-    if(frozen == false){
-      if (jump && eRadius >= 65) {
-        fill(#FFF300);
-      } 
-      else {
-        switch(bColor)
-         {
-         case 1:
-           fill(255, 100, 100);
-           break;
-         case 2:
-           fill(100, 200, 255);
-           break;
-         case 3:
-           fill(100, 255, 100);
-           break;
-         }
-        
+    if (frozen == false) {
+      switch(bColor)
+      {
+      case 1:
+        fill(255, 100, 100);
+        break;
+      case 2:
+        fill(100, 200, 255);
+        break;
+      case 3:
+        fill(100, 255, 100);
+        break;
       }
-    }
-    else {
+    } else {
       fill(255);
     }
     //fill (#03FFFD);
@@ -215,14 +208,14 @@ class Ball {
     //}
 
     for (int i=0; i<25; i++) {
-        j[i] = j [i+1];
-        k[i] = k [i+1];
-        ellipse (j[i], k[i], i, i);
-      }
+      j[i] = j [i+1];
+      k[i] = k [i+1];
+      ellipse (j[i], k[i], i, i);
+    }
 
-    
+
     //Causing the array index error
-    
+
     j[25] = pos.x;
     k[25] = pos.y;
     ellipse (j[25], k[25], radius, radius);
