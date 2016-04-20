@@ -146,25 +146,25 @@ void stringUpdate() {
   press();
 }
 void press() {
-  float b = constrain(1f*(155+0.5)/width*(num-1), 0, num-1);
-  int a = floor(b);
-  int c = ceil(b);
+  float bc = constrain(1f*(155+0.5)/width*(num-1), 0, num-1);
+  int a = floor(bc);
+  int c = ceil(bc);
   int r = (int)random(height/2 - 10, height/2 + 10);
   if (keyPressed) {
-    if (key == 'b') {
-      float X = xc[a]+(xc[c]-xc[a])*(b-a);
+    if (key == 'b' && !frozen && (b.pos.x == 40 || b.pos.x == 440)) {
+      float X = xc[a]+(xc[c]-xc[a])*(bc-a);
       float Xm = float(r)/(height/2)-1;
       float F = (Xm-X)*1f;
-      float Fa = (c-b)*F;
-      float Fc = (b-a)*F;
+      float Fa = (c-bc)*F;
+      float Fc = (bc-a)*F;
       f[a] += Fa;
       f[c] += Fc;
     }
   } else {
-    float V = v[a]+(v[c]-v[a])*(b-a);
+    float V = v[a]+(v[c]-v[a])*(bc-a);
     float F = V*-0.95;
-    float Fa = (c-b)*F;
-    float Fc = (b-a)*F;
+    float Fa = (c-bc)*F;
+    float Fc = (bc-a)*F;
     f[a] += Fa;
     f[c] += Fc;
   }
