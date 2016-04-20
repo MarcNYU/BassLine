@@ -45,7 +45,7 @@ void initGame() {
 void initMusic() {
   
   minim = new Minim(this); 
-  mp3 = minim.loadFile("Tongue Tied (Instrumental Version).mp3", 2048);
+  mp3 = minim.loadFile(songList[currentSongIdx], 2048);
   //mp3 = minim.loadFile("44_Drum_beat_(Rock).mp3", 2048);
   //mp3 = minim.loadFile("I'm Gonna Be (500 Miles) - Sleeping At Last Karaoke.mp3", 2048);
   //mp3 = minim.loadFile("Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3", 2048);
@@ -55,5 +55,5 @@ void initMusic() {
   
   td = new TempoDetector(minim, mp3);
   beat = new Beat();
-  mp3.play();
+  //mp3.play();
 }

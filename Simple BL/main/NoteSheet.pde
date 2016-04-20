@@ -22,7 +22,7 @@ class NoteSheet {
     }
     if (tempo_type == 2) {
      generateDroppingNote();
-     println("true");
+     //println("true");
     }
     drawSheet();  
     drawNotes();

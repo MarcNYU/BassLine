@@ -15,6 +15,7 @@ String song3 = "Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3";
 
 Boolean songChosen = false;
 
+Visualizer menuVi;
 
 void setup() {
   //fullScreen();
@@ -23,13 +24,15 @@ void setup() {
   songList[0] = song1;
   songList[1] = song2;
   songList[2] = song3;
+  menuVi = new Visualizer();
+  initMusic();
   gameStates();
   
   
   //frameRate(60);
   noiseDetail(8);
   initLine();
-  initMusic();
+  
   initGame();
 
   //background(0);

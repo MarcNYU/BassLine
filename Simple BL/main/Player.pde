@@ -185,11 +185,25 @@ class Ball {
     }
     noStroke();
     if(frozen == false){
-      if (jump && eRadius >= 65) {
-        fill(#FFF300);
-      } 
-      else {
-        switch(bColor)
+     //if (jump && eRadius >= 65) {
+     //  fill(#FFF300);
+     //} 
+     //else {
+     //  switch(bColor)
+     //   {
+     //   case DEATH:
+     //     fill(255, 100, 100);
+     //     break;
+     //   case FREEZE:
+     //     fill(100, 200, 255);
+     //     break;
+     //   case LIFE:
+     //     fill(100, 255, 100);
+     //     break;
+     //   }
+        
+     //}
+     switch(bColor)
          {
          case DEATH:
            fill(255, 100, 100);
@@ -201,8 +215,6 @@ class Ball {
            fill(100, 255, 100);
            break;
          }
-        
-      }
     }
     else {
       fill(255);

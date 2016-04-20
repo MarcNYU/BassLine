@@ -1,15 +1,15 @@
 void Game() {
   outt.mute();
-  //println(frameRate);
+  println(frameRate);
   //println(eRadius);
   //println(brightness);
- // mp3.play();
+  // mp3.play();
 
   drawStringL();
   drawStringR();
-  
+
   if (!start) {
-   //mp3.play();
+    mp3.play();
   }
   if (b.pos.x < left || b.pos.x > right) {
     input();
@@ -17,22 +17,22 @@ void Game() {
   td.detectTempo();
 
   if (!start) {
-   ns.drawNoteSheet();
+    ns.drawNoteSheet();
   }  
 
   classicVi.drawEQ();  
   if (td.getTempo() == 1) {
-   beat.reset();
+    beat.reset();
   }
   beat.draw();
   //classicVi.drawBeat();
-  
+
   b.update();
   b.render();
-  
-  
-  
-   //drawGuides();
+
+
+
+  //drawGuides();
   //b.update();
   //drawFG();
   //DrawLines();
@@ -47,28 +47,28 @@ void Game() {
   ////drawFG();
   //DrawLines();
   //b.render();
-   //if (!start) {
-   // ns.drawNoteSheet();
+  //if (!start) {
+  // ns.drawNoteSheet();
   //}
   //drawBeat();
 }
 
-void playError(){
-     //error = true;
-    //if(error){
-     // // add the sine generator as an input to the Gain
-     //  g.addInput(sine);
-    
-     // // ramp the frequency up to 2000Hz over 1000 ms
-     // frequencyEnvelope.addSegment(2000.0f, 10.0f);
-     // error = false;
-    //}
-    g.addInput(carrier);
-    ac.out.addInput(g);
+void playError() {
+  //error = true;
+  //if(error){
+  // // add the sine generator as an input to the Gain
+  //  g.addInput(sine);
+
+  // // ramp the frequency up to 2000Hz over 1000 ms
+  // frequencyEnvelope.addSegment(2000.0f, 10.0f);
+  // error = false;
+  //}
+  g.addInput(carrier);
+  ac.out.addInput(g);
 }
 
 void resetGame() {
-  println("game reset");
+  //println("game reset");
   g = new beads.Gain(ac, 2, 0.2);
   surface.setResizable(true);
   //ac.reset();
