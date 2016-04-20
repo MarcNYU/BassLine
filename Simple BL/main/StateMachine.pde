@@ -48,19 +48,25 @@ void gameStates()
     if (keyPressed ) {
       //text("Loading", width/2-textWidth("Loading")/2, height/2-24);
       if (key == '1') {
+        
         currentSongIdx = 0;
+        println("currentSongIdx");
         //text("loading", width/2-textWidth("loading")/2, height/4-24);  
         state = 1;
         
         
       } else if (key == '2') {
+        
         currentSongIdx = 1;
+        println("currentSongIdx: " + currentSongIdx);
         //text("Loading", width/2-textWidth("Loading")/2, height/2-24);
         
         state = 1;
       }
       else if(key == '3'){
+        
         currentSongIdx = 2;
+        println("currentSongIdx");
         text("Loading", width/2-textWidth("Loading")/2, height/2-24);
         
         state = 1;
@@ -70,7 +76,7 @@ void gameStates()
     break;
   case 1:
     
-    println("game started");
+    //println("game started");
     //if(gameInit){
     //  //initBeat();
     //  gameInit = false;

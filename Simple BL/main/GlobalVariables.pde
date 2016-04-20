@@ -34,7 +34,7 @@ StringSignal signal;
 //String[] musicQueue = new String[3];
 //AudioPlayer[] musicQueue = new AudioPlayer[3];
 //AudioFile[] musicQueue = new AudioFile[3];
-int currentSongIdx = 0;
+int currentSongIdx = 1;
 Boolean musicPaused = false;  
 int timer = millis();
 
