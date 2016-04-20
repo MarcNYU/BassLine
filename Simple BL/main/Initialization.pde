@@ -54,5 +54,6 @@ void initMusic() {
   //beat = new BeatDetect();
   
   td = new TempoDetector(minim, mp3);
+  beat = new Beat();
   mp3.play();
 }

@@ -39,6 +39,7 @@ void draw() {
   background(0);
   gameStates();
 
+
   if (keyPressed ) {
     if (key == 'd') {
       state = 3;

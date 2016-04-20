@@ -37,12 +37,12 @@ void gameStates()
     
     //println("game started");
     if(gameInit){
-      initBeat();
+      //initBeat();
       gameInit = false;
     }
-    if(!(ac.isRunning())){
-      ac.start();
-    }
+    //if(!(ac.isRunning())){
+    //  ac.start();
+    //}
     Game();
     //println("Play Test");
 
@@ -54,7 +54,8 @@ void gameStates()
     //mp3.close();
     //ac.reset();
     //frequencyEnvelope.clear();
-    ac.stop();
+    //ac.stop();
+    mp3.pause();
     
     background(0);
     textSize(32);

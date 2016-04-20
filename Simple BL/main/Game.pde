@@ -4,16 +4,24 @@ void Game() {
   //println(eRadius);
   //println(brightness);
  // mp3.play();
+
   if (!start) {
    //mp3.play();
   }
   if (b.pos.x < left || b.pos.x > right) {
     input();
-  } 
+  }
+  td.detectTempo();
+
   if (!start) {
    ns.drawNoteSheet();
+  }  
+
+  classicVi.drawEQ();  
+  if (td.getTempo() == 1) {
+   beat.reset();
   }
-  classicVi.drawEQ();
+  beat.draw();
   //classicVi.drawBeat();
   
   b.update();
@@ -36,7 +44,7 @@ void Game() {
    //if (!start) {
    // ns.drawNoteSheet();
   //}
-  drawBeat();
+  //drawBeat();
 }
 
 void playError(){
@@ -57,7 +65,7 @@ void resetGame() {
   println("game reset");
   g = new beads.Gain(ac, 2, 0.2);
   surface.setResizable(true);
-  ac.reset();
+  //ac.reset();
   initMusic();
   initGame();
   c.pos.x = 0;

@@ -4,7 +4,7 @@ public final int DEATH = 1;
 public final int FREEZE = 2;
 public final int LIFE = 3;
  
-
+Beat beat;
 
 // INITIALIZATION VARS
 Visualizer classicVi;

@@ -16,16 +16,14 @@ class NoteSheet {
 
   void drawNoteSheet() {
     strokeWeight(1);
-    int tempo_type = td.detectTempo();
-    println(tempo_type);
+    int tempo_type = td.getTempo();
     if (tempo_type == 1) {
       generateNote();
-      timer = millis();
     }
     if (tempo_type == 2) {
      generateDroppingNote();
+     println("true");
     }
-    //background(0);
     drawSheet();  
     drawNotes();
     drawDroppingNotes();
@@ -86,7 +84,7 @@ class NoteSheet {
     {
       case 1:
         currentTime = timer;
-        destTime = timer + 36;
+        destTime = timer + 39;
         break;
       case 2:
         currentTime = timer;
