@@ -37,7 +37,7 @@ class Visualizer {
 
     for (int i = 0; i < fft.specSize(); i += 50)// specSize is changing the range of analysis (iterates through sound sample returned from fft incrementing by 50 which is the size of each line)
     {
-      w = (fft.getFreq(i)*1.1); //width is set to the frequency value 
+      w = (fft.getFreq(i)/1.1); //width is set to the frequency value 
       // Each box is centered so we move half the width
       arclength += d; //spaces the boxes out at intervals of size distance (d) 
 
@@ -69,28 +69,28 @@ class Visualizer {
     popMatrix();
   }
 
-  void drawBeat() {
-    fill(255);
-    ellipse(width/2, height-100, 90, 90);
-    fill(0);
-    ellipse(width/2, height-100, 75, 75);
-    //noLoop();
-    pushMatrix();
-    // rainbow Effect parameters
-    smooth();
-    rectMode(CORNER);
-    colorMode(HSB);// sets color mode value 
-    noFill();
-    strokeWeight(4);
-    //fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
-    stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
-    colorMode(RGB);//sets color mode back to Red green and blue 
-    beat.detect(mp3.mix);
-    float a = map(eRadius, 20, 80, 60, 255);
-    if ( beat.isOnset() ) eRadius = 85;
-    ellipse(width/2, height-100, eRadius, eRadius);
-    eRadius *= 0.95;
-    if ( eRadius < 20 ) eRadius = 20;
-    popMatrix();
-  }
+  //void drawBeat() {
+  //  fill(255);
+  //  ellipse(width/2, height-100, 90, 90);
+  //  fill(0);
+  //  ellipse(width/2, height-100, 75, 75);
+  //  //noLoop();
+  //  pushMatrix();
+  //  // rainbow Effect parameters
+  //  smooth();
+  //  rectMode(CORNER);
+  //  colorMode(HSB);// sets color mode value 
+  //  noFill();
+  //  strokeWeight(4);
+  //  //fill(hVal, 255, 255);//cycles through hue and brightness to expose a greater color palete
+  //  stroke(hVal, 255, 225);// sets the stroke to cycle through the whole color spectrum 
+  //  colorMode(RGB);//sets color mode back to Red green and blue 
+  //  beat.detect(mp3.mix);
+  //  float a = map(eRadius, 20, 80, 60, 255);
+  //  if ( beat.isOnset() ) eRadius = 85;
+  //  ellipse(width/2, height-100, eRadius, eRadius);
+  //  eRadius *= 0.95;
+  //  if ( eRadius < 20 ) eRadius = 20;
+  //  popMatrix();
+  //}
 }

@@ -118,6 +118,8 @@ class Ball {
       score += 1;
     }
     
+    
+    
     //if(pos.x == 40 || pos.x == 440){
     // jump = false; 
     //}

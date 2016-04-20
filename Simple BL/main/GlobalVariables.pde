@@ -13,8 +13,8 @@ PeakDetector beatDetector;
 Minim minimc;
 AudioOutput outt;
 StringSignal signal;
-
-Visualizer mv;
+Line ll;
+Line rl;
 
 
 // GAME VARS

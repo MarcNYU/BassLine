@@ -1,10 +1,10 @@
 void Game() {
   outt.mute();
-  out.mute();
   println(frameRate);
   //println(eRadius);
   //println(brightness);
   mp3.play();
+  mp3.mute();
   //if (!start) {
   //  mp3.play();
   //}
@@ -19,14 +19,22 @@ void Game() {
 
   b.update();
   b.render();
+  //ll.updateString();
+  //ll.drawLine();
+  //rl.updateString();
+  //rl.drawLine();
   //drawGuides();
 
   //DrawLines();
- 
- 
+
+
   drawBeat();
-  drawStringR();
-  drawStringL();
+  if (jump && b.pos.x < 45) {
+    drawStringL();
+  }
+  if (jump && b.pos.x > 435) {
+    drawStringR();
+  }
 }
 
 void resetGame() {
@@ -52,5 +60,4 @@ void drawFG() {
 
 
 void drawBG() {
-  
 }

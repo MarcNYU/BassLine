@@ -12,6 +12,8 @@ void initBeat()
   try
   {
     sp = new SamplePlayer(ac, new Sample(sketchPath("") + "Tongue Tied (Instrumental Version) copy.mp3")); // load up a new SamplePlayer using an included audio file
+    //sp = new SamplePlayer(ac, new Sample(sketchPath("") + "I'm Gonna Be (500 Miles) - Sleeping At Last Karaoke copy.mp3"));
+    //sp = new SamplePlayer(ac, new Sample(sketchPath("") + "Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial) copy.mp3"));
     g.addInput(sp); // connect the SamplePlayer to the master Gain
   }
   catch(Exception e)
@@ -83,4 +85,6 @@ void drawBeat() {
   // set threshold and alpha to the mouse position
   beatDetector.setThreshold((float)mouseX/width);
   beatDetector.setAlpha((float)mouseY/height);
+  //beatDetector.setThreshold((float)width-10);
+  //beatDetector.setAlpha((float)height-10);
 }

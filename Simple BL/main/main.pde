@@ -16,7 +16,6 @@ void setup() {
   //initBeat();
   frameRate(60);
   noiseDetail(8);
-  mv = new Visualizer();
   initMusic();
   initBeat();
   initGame();
