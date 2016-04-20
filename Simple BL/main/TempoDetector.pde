@@ -1,7 +1,9 @@
 class TempoDetector {
     Minim minim;
     AudioPlayer player;
-    int time_limit = 1000;  // The minimum interval between two consecutive drop
+    int localization = 800;  // Control how long to look backward
+    int minimum_interval = 200;  // The minimum interval between two consecutive drop
+    int last_drop;
     int capacity = 500;
     float minimum_diff = 0.01;
     
@@ -16,11 +18,12 @@ class TempoDetector {
     TempoDetector(Minim minim, AudioPlayer player) {
       this.minim = minim;
       this.player = player;
-      for (int i = 0; i < capacity; ++i) {
-         history[i] = 1; 
-      }
     }
-  
+    
+    void init() {
+      
+    }
+    
    void detectTempo() {
      float new_level = player.mix.level();
      float diff = new_level - level;
@@ -28,20 +31,26 @@ class TempoDetector {
      int cur_time = millis();
      
      //println(level);
-     while (start != end && cur_time - history_time[start] > time_limit) {
+     while (start != end && cur_time - history_time[start] > localization) {
        start = (start+1)%capacity;  
      }
-     
-     if (start == end || diff > history[start]) {
+     //println(history_time[start]);
+     //println("start:"+start);
+     //println("end:"+end);
+     //println(history[start]);
+     if (start == end) {
+       history[end] = diff;
+       history_time[end] = cur_time;
+       end = (end+1) % capacity;
+       return;
+     } else if (diff > history[start]) {
        history[start] = diff;
        history_time[start] = cur_time;
        end = (start+1) % capacity;
-       //println("true");
-       //if (cur_time - t > time_limit) {
-       //  t = cur_time;
-       //  return true;
-       //}
-       cur_tempo = 2;
+       if (cur_time - last_drop > minimum_interval) {
+         cur_tempo = 2;
+         last_drop = cur_time;
+       }
        return;
      } else {
        while (diff > history[(end+capacity-1)%capacity]) {

@@ -3,7 +3,6 @@ class Beat {
  void reset() {
     eRadius = 85;
     time = millis();
-    println("resetting");
  }
  void draw() {
    
