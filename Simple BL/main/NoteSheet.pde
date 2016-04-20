@@ -3,8 +3,8 @@ class NoteSheet {
   int margin_left = 50;
   int margin_right = 50;
   int sheet_height = 20;  // width of space between line
-  int x_speed = 53;  // speed of horizontal move
-  int y_speed =35;  // speed of vertical move
+  int x_speed = 5;  // speed of horizontal move
+  int y_speed = 3;  // speed of vertical move
   
   int notes_capacity = 20;
   Note[] notes = new Note[notes_capacity];
@@ -104,6 +104,7 @@ class NoteSheet {
    //float x_limit; // where does the note fall
    int powerUp;
    boolean dropping = false;
+   int dx = 30;  // for initial animation
    
    Note(int layer) {  // high -> low : 1 -> 7
      cy = layer*d/2+margin_top;
@@ -115,14 +116,13 @@ class NoteSheet {
      cx = (float)(Math.random() * (width-margin_left-margin_right)+margin_left);
      cy = margin_top + sheet_height*3;
      powerUp = (int)(random(1,4));                            // Selects random powerup
-    ;
+     dropping = true;
    }
    void apperEffect() {
      
    }
    void drawNote() {
      noStroke();
-     //fill(255);
      switch(powerUp)
      {
        case DEATH:
@@ -135,12 +135,14 @@ class NoteSheet {
          fill(100, 255, 100);
          break;
      }
-     ellipse(cx, cy, d, d);
+     ellipse(cx, cy, d+dx, d+dx);
+     if (dx > 0) dx -= 5;
      move();
+   }
    
    void startDropping() {
      dropping = true; 
-   }}
+   }
    void move() {
      if (dropping) {
         cy += y_speed; 
