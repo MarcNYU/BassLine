@@ -33,7 +33,7 @@ int move = 0;
 int state = 0;
 int score;
 boolean error = false;
-boolean loading = false;
+
 
 // GUIDE VARS
 float ceilling = height+100;
