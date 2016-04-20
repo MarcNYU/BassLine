@@ -10,6 +10,11 @@ Camera c;
 NoteSheet ns;
 AudioContext ac;
 PeakDetector beatDetector;
+Minim minimc;
+AudioOutput outt;
+StringSignal signal;
+
+Visualizer mv;
 
 
 // GAME VARS
@@ -58,3 +63,13 @@ float rws = -1;
 
 float z;
 float u;
+
+// NEW LINE VARS
+float[] xc;
+float[] Xcopy;
+float[] v;
+float[] f;
+float kc = 0.5;
+float cc = 0.0003;
+int num = 256;
+int monitorPoint = num/18;

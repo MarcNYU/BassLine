@@ -63,16 +63,16 @@ class Ball {
     }
 
     if (pos.x == 40 && jump) {
-      //if (eRadius >= 52) {
-        if (jump && brightness != 0.0) {
+      if (eRadius >= 52) {
+        //if (jump && brightness != 0.0) {
         velo.y = -9;
       } else {
         velo.y = -7;
       }
       velo.x = 13;
     } else if (pos.x == 440 && jump) {
-      //if (eRadius >= 52) {
-        if (jump && brightness != 0.0) {
+      if (eRadius >= 52) {
+        //if (jump && brightness != 0.0) {
         velo.y = -9;
       } else {
         velo.y = -7;
@@ -105,8 +105,8 @@ class Ball {
     //if (false) {
       gravity = .6;
     } else {
-      //if (jump && eRadius >= 60) {
-      if (jump && brightness != 0.0) {
+      if (jump && eRadius >= 65) {
+      //if (jump && brightness != 0.0) {
         gravity = .3;
       } else {
         gravity = .4;
@@ -160,11 +160,12 @@ class Ball {
     }
     noStroke();
     if(frozen == false){
-      if (jump && eRadius >= 65) {
-        fill(#FFF300);
-      } else {
-        fill(#03F6FC);
-      }
+      fill(#03F6FC);
+      //if (jump && eRadius >= 65) {
+      //  fill(#FFF300);
+      //} else {
+      //  fill(#03F6FC);
+      //}
     }
     else {
       fill(255);

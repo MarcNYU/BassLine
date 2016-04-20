@@ -1,42 +1,32 @@
 void Game() {
-  
-  //println(frameRate);
+  outt.mute();
+  out.mute();
+  println(frameRate);
   //println(eRadius);
   //println(brightness);
   mp3.play();
-  if (!start) {
-   //mp3.play();
-  }
+  //if (!start) {
+  //  mp3.play();
+  //}
   if (b.pos.x < left || b.pos.x > right) {
     input();
   } 
   if (!start) {
-   ns.drawNoteSheet();
+    ns.drawNoteSheet();
   }
   classicVi.drawEQ();
   //classicVi.drawBeat();
-  
+
   b.update();
   b.render();
-   drawGuides();
-  //b.update();
-  //drawFG();
-  DrawLines();
-  //translate(-c.pos.x, c.pos.y);
-  //translate(-c.pos.x, height-300);
-
-  ////drawBG();
-  //c.drawC();
-  //translate(c.pos.x, -b.pos.y);
   //drawGuides();
-  ////b.update();
-  ////drawFG();
+
   //DrawLines();
-  //b.render();
-   //if (!start) {
-   // ns.drawNoteSheet();
-  //}
+ 
+ 
   drawBeat();
+  drawStringR();
+  drawStringL();
 }
 
 void resetGame() {
@@ -62,5 +52,5 @@ void drawFG() {
 
 
 void drawBG() {
-  drawHeights();
+  
 }

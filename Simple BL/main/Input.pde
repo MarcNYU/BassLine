@@ -22,3 +22,9 @@ void input() {
 //   jump = false;
 // }
 //}
+
+void keyPressed() {
+  if (key == ESC) {
+    
+  }
+}

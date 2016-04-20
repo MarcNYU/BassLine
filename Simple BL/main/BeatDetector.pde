@@ -52,7 +52,8 @@ void initBeat()
     {
       protected void messageReceived(Bead b)
       {
-        brightness = 1.0; 
+        //brightness = 1.0; 
+        eRadius = 85;
         println("Is Called");    
       }
     }
@@ -66,13 +67,18 @@ void initBeat()
 
 // the draw method draws a shape on screen whwenever a beat is detected
 void drawBeat() { 
-  fill(brightness*255);
-  ellipse(width/2,height-100,85,85);  
+  //fill(brightness*255);
+  //ellipse(width/2,height-100,85,85);  
+  
+  fill(255);
+  ellipse(width/2,height-100,eRadius,eRadius);  
   
   // decrease brightness over time
   int dt = millis() - time;
   brightness -= (dt * 0.01);
-  if (brightness < 0) brightness = 0;
+  eRadius -= (dt * 0.2);
+  //if (brightness < 0) brightness = 0;
+  if (eRadius < 20) eRadius = 20;
   time += dt; 
   // set threshold and alpha to the mouse position
   beatDetector.setThreshold((float)mouseX/width);
