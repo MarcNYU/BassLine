@@ -7,6 +7,7 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
+Visualizer menuVi;
 
 String[] songList = new String[3];
 String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
@@ -23,6 +24,8 @@ void setup() {
   songList[0] = song1;
   songList[1] = song2;
   songList[2] = song3;
+  menuVi = new Visualizer();
+  initMusic();
   gameStates();
   
   

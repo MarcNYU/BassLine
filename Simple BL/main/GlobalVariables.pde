@@ -17,6 +17,8 @@ WavePlayer modulator;
 Function frequencyModulation;
 WavePlayer carrier;
 
+
+
 //MUSIC VARS
 //String[] musicQueue = new String[3];
 //AudioPlayer[] musicQueue = new AudioPlayer[3];
@@ -31,6 +33,7 @@ int move = 0;
 int state = 0;
 int score;
 boolean error = false;
+boolean loading = false;
 
 // GUIDE VARS
 float ceilling = height+100;

@@ -1,32 +1,51 @@
+
 void gameStates()
 {
   switch(state)
   {
+  
   case 0:
     background(0);
-    textSize(32);
-    fill(255);
+    
+    
+    DrawLines();
+   // classicVi.drawEQ();
+    
+    textSize(40);
+    
+    fill(50 , 150, 255);
     //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
-    text("Select A Song\n\n", width/2-textWidth("Select A Song\n\n")/2, height/4-24);
-    text("Select the number that \ncorresponds with each song\n\n", width/2-textWidth("Select the number that \n\ncorresponds with each song\n\n")/2, height/4+24);
-    textSize(14);
+    text("Baseline\n\n", width/2-textWidth("Baseline\n\n")/2, height/4-24);
+    textSize(20);
+    fill(255);
+    text("Select the number that \ncorresponds with each song\n\n", width/2-textWidth("Select the number that \n\ncorresponds with each song\n\n")/2, height/4+84);
+    textSize(12);
     for(int i = 0; i < songList.length; i++){
       text(i+1 + ". " + songList[i] + "\n", width/2-textWidth(i+1 + ". " +songList[i]+ "\n")/2, height- 282 + i *40);   
     
     }
     //text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
+    
+    //text("loading", width/2-textWidth("loading")/2, height/4-24);
+    menuVi.drawEQ();
     if (keyPressed ) {
+      //text("Loading", width/2-textWidth("Loading")/2, height/2-24);
       if (key == '1') {
         currentSongIdx = 0;
-        
-        state = 1;
+        text("loading", width/2-textWidth("loading")/2, height/4-24);  
+        if(loading){
+         state = 1;
+        }
+        loading = true;
       } else if (key == '2') {
         currentSongIdx = 1;
+        text("Loading", width/2-textWidth("Loading")/2, height/2-24);
         
         state = 1;
       }
       else if(key == '3'){
         currentSongIdx = 2;
+        text("Loading", width/2-textWidth("Loading")/2, height/2-24);
         
         state = 1;
       }

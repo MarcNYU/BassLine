@@ -15,6 +15,10 @@ class Visualizer {
   Visualizer() {  
     hVal = 0; //hue value
     eRadius = 20;
+    //minim = new Minim(this); 
+    //mp3 = minim.loadFile("Tongue Tied (Instrumental Version).mp3", 2048);
+    //out = minim.getLineOut(Minim.STEREO, 44100);
+    //fft = new ddf.minim.analysis.FFT(mp3.bufferSize(), mp3.sampleRate());//initializes a buffer with the entire sound file
     rectMode(CORNER); //set rectangles to be drawn from top left corner
   }  
 
