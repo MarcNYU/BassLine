@@ -26,9 +26,8 @@ class NoteSheet {
             applyPowerUp(notes[i]);
             notes[i] = null;
           }
-          else if( notes[i].checkBallCollsion() && (notes[i].powerUp == b.bColor ))  
+          else if( notes[i].checkBallCollsion() && notes[i].powerUp == b.bColor)  
           {
-             collected = true;
              notes[i] = null;
           }
           else if (notes[i].outbound()) {
@@ -66,14 +65,18 @@ class NoteSheet {
           setTime(1);
         }
         break;
-      case 2:   // increase player size
+      case 2:   // instant death
         /*if(hasPowerUp == false)
           {
             hasPowerUp = true;
             increase = true;
             setTime(2);
           }*/
-          state = 2;
+          if(secLifeOn == true)
+            b.secLifeOn();
+          else
+            //state = 2;
+            b.pos.y = height;
         break;
       case 3:   // second chance
 

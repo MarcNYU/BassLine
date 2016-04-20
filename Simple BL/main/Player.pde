@@ -113,16 +113,10 @@ class Ball {
         gravity = .3;
       }
       if (grounded()) {
-        if(secLifeOn == true)
-        {
-          state = 4;
-        }
-        else
-        {
           //playError();
           state = 2;
           alive = false;
-        }
+        
       }
       if (pos.y < ceilling) {
       //if (false) {
