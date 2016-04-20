@@ -1,5 +1,4 @@
-float [] j = new float [50];
-float [] k = new float [50];
+
 
 class Ball {
   PVector pos;

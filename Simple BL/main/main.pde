@@ -30,7 +30,6 @@ void setup() {
   menuVi = new Visualizer();
   initMusic();
   gameStates();
-  initBeat();
   initGame();
   initLine();
 
