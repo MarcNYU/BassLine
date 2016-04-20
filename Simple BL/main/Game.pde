@@ -1,10 +1,13 @@
 void Game() {
-  
+  outt.mute();
   //println(frameRate);
   //println(eRadius);
   //println(brightness);
  // mp3.play();
 
+  drawStringL();
+  drawStringR();
+  
   if (!start) {
    //mp3.play();
   }
@@ -26,10 +29,13 @@ void Game() {
   
   b.update();
   b.render();
+  
+  
+  
    //drawGuides();
   //b.update();
   //drawFG();
-  DrawLines();
+  //DrawLines();
   //translate(-c.pos.x, c.pos.y);
   //translate(-c.pos.x, height-300);
 

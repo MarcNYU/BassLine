@@ -28,7 +28,7 @@ void setup() {
   
   //frameRate(60);
   noiseDetail(8);
-  
+  initLine();
   initMusic();
   initGame();
 
