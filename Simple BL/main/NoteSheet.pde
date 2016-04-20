@@ -114,8 +114,8 @@ class NoteSheet {
    Note(int layer) {  // high -> low : 1 -> 7
      cy = layer*d/2+margin_top;
      x_limit = (float)(Math.random() * (width) / fall_freq);
-     //powerUp = (int)(random(1,4));                            // Selects random powerup
-     powerUp = 1;
+     powerUp = (int)(random(1,4));                            // Selects random powerup
+     //powerUp = 1;
    }
    void drawNote() {
      pushMatrix();
@@ -127,10 +127,10 @@ class NoteSheet {
          fill(255, 100, 100);
          break;
        case 2:
-         fill(255, 100, 200);
+         fill(100, 200, 255);
          break;
        case 3:
-         fill(255, 200, 100);
+         fill(100, 255, 100);
          break;
      }
      ellipse(cx, cy, d, d);
