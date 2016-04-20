@@ -16,6 +16,10 @@ StringSignal signal;
 Line ll;
 Line rl;
 
+//MUSIC VARS
+int currentSongIdx = 0;
+Boolean musicPaused = false; 
+int timer = millis();
 
 // GAME VARS
 int move = 0;
@@ -34,6 +38,7 @@ float rw = 440;
 float gravity = .3;
 
 // PLAYER VARS
+boolean gameInit = true;
 boolean jump;
 boolean start = true;
 int currentTime = 0;
@@ -43,6 +48,8 @@ boolean increase = false;
 boolean secLifeOn = false;
 boolean hasPowerUp = false;
 int increaseRadius = 50;
+boolean delay = false;
+boolean collected = true;
 
 // EQ VARS
 float eRadius;

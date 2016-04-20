@@ -49,8 +49,10 @@ void Game() {
 }
 
 void resetGame() {
+  println("game reset");
+  //g = new beads.Gain(ac, 2, 0.2);
   surface.setResizable(true);
-
+  ac.reset();
   initMusic();
   initGame();
   c.pos.x = 0;

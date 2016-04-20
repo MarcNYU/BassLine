@@ -11,7 +11,7 @@ void initBeat()
   SamplePlayer sp = null;
   try
   {
-    sp = new SamplePlayer(ac, new Sample(sketchPath("") + "Tongue Tied (Instrumental Version) copy.mp3")); // load up a new SamplePlayer using an included audio file
+    sp = new SamplePlayer(ac, new Sample(sketchPath("") + songList[currentSongIdx])); // load up a new SamplePlayer using an included audio file
     //sp = new SamplePlayer(ac, new Sample(sketchPath("") + "I'm Gonna Be (500 Miles) - Sleeping At Last Karaoke copy.mp3"));
     //sp = new SamplePlayer(ac, new Sample(sketchPath("") + "Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial) copy.mp3"));
     g.addInput(sp); // connect the SamplePlayer to the master Gain

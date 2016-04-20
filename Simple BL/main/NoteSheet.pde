@@ -13,7 +13,7 @@ class NoteSheet {
   void drawNoteSheet() {
     pushMatrix();
     strokeWeight(1);
-    if (millis() - timer > interval) {
+  if (millis() - timer > interval) {
       generateNote();
       timer = millis();
     }
@@ -22,11 +22,16 @@ class NoteSheet {
     for (int i = 0; i < notes.length; ++i) {
        if (notes[i] != null) {
           notes[i].drawNote();
-          if( notes[i].checkBallCollsion() )        //Checks for note, ball collision
+          if( notes[i].checkBallCollsion() && (!(notes[i].powerUp == b.bColor ) || notes[i].powerUp == 3))        //Checks for note, ball collision
           {
-            applyPowerUp(notes[i]);  
+            applyPowerUp(notes[i]);
+            notes[i] = null;
           }
-          if (notes[i].outbound() || notes[i].checkBallCollsion()) {
+          else if( notes[i].checkBallCollsion() && notes[i].powerUp == b.bColor)  
+          {
+             notes[i] = null;
+          }
+          else if (notes[i].outbound()) {
           notes[i] = null;
         }
        }
@@ -62,11 +67,17 @@ class NoteSheet {
         }
         break;
       case 2:   // increase player size
-        if(hasPowerUp == false){
-          hasPowerUp = true;
-          increase = true;
-          setTime(2);
-        }
+        /*if(hasPowerUp == false)
+          {
+            hasPowerUp = true;
+            increase = true;
+            setTime(2);
+          }*/
+          if(secLifeOn == true)
+            b.secLifeOn();
+          else
+            //state = 2;
+            b.pos.y = height;
         break;
       case 3:   // second chance
 
