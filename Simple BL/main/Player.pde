@@ -1,6 +1,3 @@
-float [] j = new float [50];
-float [] k = new float [50];
-
 class Ball {
   PVector pos;
   PVector velo;
@@ -13,6 +10,9 @@ class Ball {
 
   boolean alive;
   int bColor;
+  
+  float [] j = new float [50];
+  float [] k = new float [50];
 
 
   Ball (float x, float y, float r) {
