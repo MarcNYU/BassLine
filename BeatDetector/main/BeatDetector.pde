@@ -4,10 +4,10 @@ import beads.*; // import the beads library
 
 class BeatDetector {
   int delays = 1000;  // The delay from line generation to musci beats 
-  int target_interval = 300;  // Target interval of beats, will dynamicly affect threshold
+  int target_interval = 500;  // Target interval of beats, will dynamicly affect threshold
   
   int last_beat;
-  float default_threshold = (float)1e-15;
+  float default_threshold = (float)1e-10;
   float cur_threshold = default_threshold;
   
   AudioContext ac; // create our AudioContext
