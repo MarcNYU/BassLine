@@ -12,7 +12,7 @@ import ddf.minim.ugens.*;
 void setup() {
   //fullScreen();
   surface.setResizable(true);
-  size(480, 852);
+  size(550, 852);
   //initBeat();
   frameRate(60);
   noiseDetail(8);

@@ -1,3 +1,12 @@
+float[] xc;
+float[] Xcopy;
+float[] v;
+float[] f;
+float kc = 0.5;
+float cc = 0.0003;
+int num = 256;
+int monitorPoint = num/18;
+
 class StringSignal implements AudioSignal {
   void generate(float[] samp) {
     for (int i=0; i<samp.length; i++) {
@@ -29,6 +38,7 @@ void initLine() {
 }
 void drawStringR() {
   pushMatrix();
+  strokeWeight(1.5);
   stroke(255);
   translate (200, 1);
   arrayCopy(xc, Xcopy);
@@ -43,6 +53,7 @@ void drawStringR() {
 }
 void drawStringL() {
   pushMatrix();
+  strokeWeight(1.5);
   stroke(255);
   translate (-200, 1);
   arrayCopy(xc, Xcopy);
@@ -80,7 +91,7 @@ void press() {
   int c = ceil(bc);
   int r = (int)random(height/2 - 10, height/2 + 10);
   if (keyPressed) {
-    if (key == 'b' && !frozen && (b.pos.x == 40 || b.pos.x == 440)) {
+    if (key == 'b' && !b.frozen && (b.pos.x == 40 || b.pos.x == 440)) {
       float X = xc[a]+(xc[c]-xc[a])*(bc-a);
       float Xm = float(r)/(height/2)-1;
       float F = (Xm-X)*1f;

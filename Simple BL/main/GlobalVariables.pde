@@ -30,18 +30,10 @@ float lw = 40;
 float rw = 440;
 
 // PHYSICS VARS
-float gravity = .3;
+
 
 // PLAYER VARS
-boolean jump;
 boolean start = true;
-int currentTime = 0;
-int destTime = 0;
-boolean frozen = false;
-boolean increase = false;
-boolean secLifeOn = false;
-boolean hasPowerUp = false;
-int increaseRadius = 50;
 
 // EQ VARS
 float eRadius;
@@ -64,11 +56,3 @@ float z;
 float u;
 
 // NEW LINE VARS
-float[] xc;
-float[] Xcopy;
-float[] v;
-float[] f;
-float kc = 0.5;
-float cc = 0.0003;
-int num = 256;
-int monitorPoint = num/18;

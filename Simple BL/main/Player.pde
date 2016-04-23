@@ -7,11 +7,23 @@ class Ball {
 
   int dir;
   int currentPlatform;
+  float gravity = .3;
 
   float bounce;
   float radius;
 
   boolean alive;
+  boolean jump;
+  
+  boolean frozen = false;
+  boolean increase = false;
+  boolean secLifeOn = false;
+  boolean hasPowerUp = false;
+  
+  
+  int currentTime = 0;
+  int destTime = 0;
+  //int increaseRadius = 50;
 
 
   Ball (float x, float y, float r) {
@@ -19,7 +31,7 @@ class Ball {
     velo = new PVector(0, 0); //Vec2 of x and y velocity
     currentPlatform = 1;
     dir = 1; 
-    bounce = 8; 
+    //bounce = 8; 
     radius = r;
     alive = true;
     for (int i = 0; i<50; i++) {
@@ -70,6 +82,7 @@ class Ball {
         velo.y = -7;
       }
       velo.x = 13;
+      //setTime(13);
     } else if (pos.x == 440 && jump) {
       if (eRadius >= 52) {
         //if (jump && brightness != 0.0) {
@@ -78,14 +91,17 @@ class Ball {
         velo.y = -7;
       }
       velo.x = -13;
+      //setTime(-13);
     }
 
     if (pos.x < 40) {
       velo.x = 0;
+      //setTime(0);
       velo.y = 0;
       pos.x = 40;
     } else if (pos.x > 440) {
       velo.x = 0;
+      //setTime(0);
       velo.y = 0;
       pos.x = 440;
     } 
@@ -102,11 +118,11 @@ class Ball {
       alive = false;
     }
     if (pos.y < ceilling) {
-    //if (false) {
+      //if (false) {
       gravity = .6;
     } else {
       if (jump && eRadius >= 65) {
-      //if (jump && brightness != 0.0) {
+        //if (jump && brightness != 0.0) {
         gravity = .3;
       } else {
         gravity = .4;
@@ -117,12 +133,11 @@ class Ball {
     if (alive && !start) {
       score += 1;
     }
-    
-    
-    
-    //if(pos.x == 40 || pos.x == 440){
-    // jump = false; 
-    //}
+
+  }
+  
+  void setTime(int jumpTime) {
+    velo.x = jumpTime;
   }
 
   Boolean grounded() {
@@ -139,7 +154,7 @@ class Ball {
     if (pos.x <= right+2 && pos.x >= right-2) return true;
     return false;
   }
-  
+
   Boolean leftW() {
     if (pos.x <= lw+5 && pos.x >= lw-5) return true;
     return false;
@@ -153,23 +168,22 @@ class Ball {
   void render() {
     pushMatrix();
     noStroke();
-    if(secLifeOn == true)
+    if (secLifeOn == true)
     {
-       stroke( #03F6FC );
-       strokeWeight(2);
-       fill(0);
-       ellipse(pos.x, pos.y, radius+7, radius+7);
+      stroke( #03F6FC );
+      strokeWeight(2);
+      fill(0);
+      ellipse(pos.x, pos.y, radius+7, radius+7);
     }
     noStroke();
-    if(frozen == false){
+    if (frozen == false) {
       fill(#03F6FC);
       //if (jump && eRadius >= 65) {
       //  fill(#FFF300);
       //} else {
       //  fill(#03F6FC);
       //}
-    }
-    else {
+    } else {
       fill(255);
     }
     //fill (#03FFFD);
@@ -187,10 +201,10 @@ class Ball {
     //  }
     //}
     for (int i=0; i<radius; i++) {
-        j[i] = j [i+1];
-        k[i] = k [i+1];
-        ellipse (j[i], k[i], i, i);
-      }
+      j[i] = j [i+1];
+      k[i] = k [i+1];
+      ellipse (j[i], k[i], i, i);
+    }
     j[25] = pos.x;
     k[25] = pos.y;
     popMatrix();
@@ -215,7 +229,7 @@ class Ball {
 
     if (currentTime < destTime )
     {
-      radius = increaseRadius; 
+      //radius = increaseRadius; 
       currentTime ++;
     } else
     {

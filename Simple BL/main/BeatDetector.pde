@@ -55,7 +55,7 @@ void initBeat()
       protected void messageReceived(Bead b)
       {
         //brightness = 1.0; 
-        eRadius = 85;
+        eRadius = 20;
         println("Is Called");    
       }
     }
@@ -77,10 +77,11 @@ void drawBeat() {
   
   // decrease brightness over time
   int dt = millis() - time;
-  brightness -= (dt * 0.01);
-  eRadius -= (dt * 0.2);
+  //brightness -= (dt * 0.01);
+  //eRadius = 85;
+  eRadius += (dt * 0.2);
   //if (brightness < 0) brightness = 0;
-  if (eRadius < 20) eRadius = 20;
+  if (eRadius > 85) eRadius = 85;
   time += dt; 
   // set threshold and alpha to the mouse position
   beatDetector.setThreshold((float)mouseX/width);

@@ -8,11 +8,12 @@ void Game() {
   //if (!start) {
   //  mp3.play();
   //}
+  //b.setTime(13);
   if (b.pos.x < left || b.pos.x > right) {
     input();
   } 
   if (!start) {
-    ns.drawNoteSheet();
+    //ns.drawNoteSheet();
   }
   classicVi.drawEQ();
   //classicVi.drawBeat();

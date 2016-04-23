@@ -55,22 +55,22 @@ class NoteSheet {
   void applyPowerUp(Note n){
     switch(n.getPowerUp()){
       case 1:  // freeze
-        if(hasPowerUp == false){
-          hasPowerUp = true;
-          frozen = true;
+        if(b.hasPowerUp == false){
+          b.hasPowerUp = true;
+          b.frozen = true;
           setTime(1);
         }
         break;
       case 2:   // increase player size
-        if(hasPowerUp == false){
-          hasPowerUp = true;
-          increase = true;
+        if(b.hasPowerUp == false){
+          b.hasPowerUp = true;
+          b.increase = true;
           setTime(2);
         }
         break;
       case 3:   // second chance
 
-        secLifeOn = true;
+        b.secLifeOn = true;
         //println("hii", secLifeOn);
         break;
       
@@ -83,12 +83,12 @@ class NoteSheet {
     switch(power)
     {
       case 1:
-        currentTime = timer;
-        destTime = timer + 36;
+        b.currentTime = timer;
+        b.destTime = timer + 36;
         break;
       case 2:
-        currentTime = timer;
-        destTime = timer + 300;
+        b.currentTime = timer;
+        b.destTime = timer + 300;
         break;
     }
   }

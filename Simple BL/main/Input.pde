@@ -1,14 +1,14 @@
 void input() {
   if (keyPressed) {
     //if(key == 'b' && eRadius > 60) {
-    if (key == 'b' && !frozen) {
-      jump = true;
+    if (key == 'b' && !b.frozen) {
+      b.jump = true;
       start = false;
     }
     
     
   } else {
-    jump = false;
+    b.jump = false;
   }
 }
 
