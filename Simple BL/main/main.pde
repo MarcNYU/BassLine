@@ -9,10 +9,13 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 Visualizer menuVi;
 
-String[] songList = new String[3];
+String[] songList = new String[5];
 String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
-String song2 = "Coldplay - Adventure Of A Lifetime Instrumental.mp3";  
+String null1 = "";
+String song2 = "Coldplay - Adventure Of A Lifetime Instrumental.mp3";
+String null2 = "";
 String song3 = "Crypt_of_the_NecroDancer_OST_-_Tombtorial_(Tutorial).mp3";
+String null3 = "";
 
 Boolean songChosen = false;
 
@@ -25,8 +28,10 @@ void setup() {
   frameRate(60);
   noiseDetail(8);
   songList[0] = song1;
-  songList[1] = song2;
-  songList[2] = song3;
+  songList[1] = null1;
+  songList[2] = song2;
+  songList[3] = null2;
+  songList[4] = song3;
   menuVi = new Visualizer();
   initMusic();
   gameStates();
