@@ -31,13 +31,14 @@ void setup() {
   initMusic();
   gameStates();
   initGame();
-  initLine();
+  initString();
 
   //background(0);
 }
 
 void draw() {
   background(0);
+  outt.mute();
   gameStates();
 
   if (keyPressed ) {

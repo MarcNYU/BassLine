@@ -5,7 +5,7 @@ void gameStates()
   
   case 0:
     background(0);
-    
+    //outt.mute();
     
     DrawLines();
    // classicVi.drawEQ();
@@ -61,7 +61,7 @@ void gameStates()
       text("Choose your song", width/2-textWidth("Choose your song")/2, 220);
       fill(0);
       stroke(255);
-      strokeWeight(1);
+      //strokeWeight(1);
       if(upPressed == true)
         fill(255);
       triangle(width/2, height- 505, (width/2)-20, height- 485, (width/2)+20, height- 485);
@@ -140,7 +140,7 @@ void gameStates()
 
     break;
   case 2:
-
+     //outt.mute();
 
     //mp3.close();
     //ac.reset();

@@ -5,7 +5,7 @@ void DrawLines() {
 
 void LWallLine() {
   pushMatrix();
-  strokeWeight(1);
+  //strokeWeight(1);
   stroke(255);
   noFill();
   //fill(0);
@@ -38,7 +38,7 @@ void LWallLine() {
 
 void RWallLine() {
   pushMatrix();
-  strokeWeight(1);
+  //strokeWeight(1);
   stroke(255);
   noFill();
   //fill(0);
@@ -70,7 +70,7 @@ void RWallLine() {
 
 void drawGuides() {
   pushMatrix();
-  strokeWeight(1);
+  //strokeWeight(1);
   stroke(#FF0000);
   //line(0, ground-51, width, ground-51);
   line(0, ground-1, width, ground-1);

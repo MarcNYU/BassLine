@@ -69,15 +69,18 @@ void initBeat()
 
 // the draw method draws a shape on screen whwenever a beat is detected
 void drawBeat() { 
+  pushMatrix();
   //fill(brightness*255);
   //ellipse(width/2,height-100,85,85);  
-  
-  fill(255);
-  ellipse(width/2,height-100,eRadius,eRadius);  
+  stroke(100, 255, 100);
+  strokeWeight(2);
+  noFill();
+  //ellipse(width/2,height-100,eRadius,eRadius);  
+  ellipse(b.pos.x,b.pos.y,eRadius,eRadius);
   
   // decrease brightness over time
   int dt = millis() - time;
-  brightness -= (dt * 0.01);
+  //brightness -= (dt * 0.01);
   eRadius -= (dt * 0.2);
   //if (brightness < 0) brightness = 0;
   if (eRadius < 20) eRadius = 20;
@@ -87,4 +90,5 @@ void drawBeat() {
   beatDetector.setAlpha((float)mouseY/height);
   //beatDetector.setThreshold((float)width-10);
   //beatDetector.setAlpha((float)height-10);
+  popMatrix();
 }

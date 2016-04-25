@@ -10,9 +10,9 @@ Camera c;
 NoteSheet ns;
 AudioContext ac;
 PeakDetector beatDetector;
-Minim minimc;
-AudioOutput outt;
-StringSignal signal;
+//Minim minimc;
+//AudioOutput outt;
+//StringSignal signal;
 Line ll;
 Line rl;
 
@@ -80,11 +80,11 @@ float z;
 float u;
 
 // NEW LINE VARS
-float[] xc;
-float[] Xcopy;
-float[] v;
-float[] f;
-float kc = 0.5;
-float cc = 0.0003;
-int num = 256;
-int monitorPoint = num/18;
+//float[] xc;
+//float[] Xcopy;
+//float[] v;
+//float[] f;
+//float kc = 0.5;
+//float cc = 0.0003;
+//int num = 256;
+//int monitorPoint = num/18;

@@ -20,7 +20,7 @@ class Visualizer {
 
   void drawEQ() {
     pushMatrix(); //saves current context of the operations
-    strokeWeight(1);
+    //strokeWeight(1);
     // rainbow Effect parameters
     smooth(); //linearly interpolates between color gradient
     colorMode(HSB);// sets color mode value (Hue-Saturation-Brightness or RGB)

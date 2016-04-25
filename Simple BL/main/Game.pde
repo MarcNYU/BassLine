@@ -1,5 +1,5 @@
 void Game() {
-  outt.mute();
+  //outt.mute();
   println(frameRate);
   //println(eRadius);
   //println(brightness);
@@ -18,7 +18,7 @@ void Game() {
   //classicVi.drawBeat();
 
   b.update();
-  b.render();
+  
   //ll.updateString();
   //ll.drawLine();
   //rl.updateString();
@@ -27,7 +27,7 @@ void Game() {
 
   //DrawLines();
 
-  drawBeat();
+  
   //if (jump && b.pos.x < 45) {
   //  drawStringL();
   //} else {
@@ -46,6 +46,8 @@ void Game() {
   //}
   drawStringL();
   drawStringR();
+  drawBeat();
+  b.render();
 }
 
 void resetGame() {
