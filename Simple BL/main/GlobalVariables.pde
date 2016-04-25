@@ -20,11 +20,19 @@ Line rl;
 int currentSongIdx = 0;
 Boolean musicPaused = false; 
 int timer = millis();
+Boolean releasedKey = true;
 
 // GAME VARS
 int move = 0;
 int state = 0;
 int score;
+
+// MENU VARS
+int blinkColor;
+int blinkChange = 5;
+Boolean upPressed = false;
+Boolean downPressed = false;
+
 
 // GUIDE VARS
 float ceilling = height+100;

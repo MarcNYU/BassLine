@@ -28,3 +28,9 @@ void keyPressed() {
     //sp.close();
   }
 }
+
+void keyReleased() {
+  releasedKey = true;
+  upPressed = false;
+  downPressed = false;
+}
