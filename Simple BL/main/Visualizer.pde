@@ -37,7 +37,7 @@ class Visualizer {
 
     for (int i = 0; i < fft.specSize(); i += 50)// specSize is changing the range of analysis (iterates through sound sample returned from fft incrementing by 50 which is the size of each line)
     {
-      w = (fft.getFreq(i)/1.1); //width is set to the frequency value 
+      w = (fft.getFreq(i)/1.2); //width is set to the frequency value 
       // Each box is centered so we move half the width
       arclength += d; //spaces the boxes out at intervals of size distance (d) 
 

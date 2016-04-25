@@ -93,7 +93,7 @@ void gameStates()
     if (keyPressed) {
       if(key == ENTER)
        {
-          text("loading...", width/2-textWidth("loading...")/2, height - 200); 
+          text("Loading...", width/2-textWidth("loading...")/2, height - 200); 
           state = 1;
        }
     }
@@ -158,7 +158,7 @@ void gameStates()
     resetGame();
     start = true;
     //frequencyEnvelope.clear();
-    state = 1;
+    state = 0;
     }
     //println("Game Over");
 

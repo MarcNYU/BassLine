@@ -72,7 +72,7 @@ class Ball {
 
       if (pos.x == 40 && jump) {
         if (eRadius >= 52) {
-        //if (jump && brightness != 0.0) {
+          //if (jump && brightness != 0.0) {
           velo.y = -9;
         } else {
           velo.y = -7;
@@ -80,7 +80,7 @@ class Ball {
         velo.x = 13;
       } else if (pos.x == 440 && jump) {
         if (eRadius >= 52) {
-        //if (jump && brightness != 0.0) {
+          //if (jump && brightness != 0.0) {
           velo.y = -9;
         } else {
           velo.y = -7;
@@ -123,7 +123,7 @@ class Ball {
         gravity = .6;
       } else {
         if (jump && eRadius >= 52) {
-        //if (jump && brightness != 0.0) {
+          //if (jump && brightness != 0.0) {
           gravity = .3;
         } else {
           gravity = .4;
@@ -195,19 +195,19 @@ class Ball {
       fill(255);
     }
     //fill (#03FFFD);
-    if (pos.x == 40 || pos.x == 440) {
-    for (int i=0; i<radius; i++) {
-      j[i] = pos.x;
-      k[i] = pos.y;
-      ellipse (j[i], k[i], radius, radius);
-    } 
-    } else {
-    for (int i=0; i<radius; i++) {
-      j[i] = j [i+1];
-      k[i] = k [i+1];
-      ellipse (j[i], k[i], i, i);
-    }
-    }
+    //if (pos.x == 40 || pos.x == 440) {
+    //  for (int i=0; i<radius; i++) {
+    //    j[i] = pos.x;
+    //    k[i] = pos.y;
+    //    ellipse (j[i], k[i], radius, radius);
+    //  }
+    //} else {
+    //  for (int i=0; i<radius; i++) {
+    //    j[i] = j [i+1];
+    //    k[i] = k [i+1];
+    //    ellipse (j[i], k[i], i, i);
+    //  }
+    //}
     ellipse (pos.x, pos.y, radius, radius);
     //for (int i=0; i<25; i++) {
     // j[i] = j [i+1];

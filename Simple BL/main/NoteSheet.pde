@@ -96,7 +96,7 @@ class NoteSheet {
     {
       case 1:
         currentTime = timer;
-        destTime = timer + 40;
+        destTime = timer + 49;
         break;
       case 2:
         currentTime = timer;
@@ -146,7 +146,7 @@ class NoteSheet {
      popMatrix();
    }
    void move() {
-     if (cx >= x_limit && cx > 150 && cx < width-150) {
+     if (cx >= x_limit && cx > 150 && cx < width-150 && (powerUp == 1 || powerUp == 3)) {
         cy += y_speed; 
      } else {
        cx += x_speed; 
