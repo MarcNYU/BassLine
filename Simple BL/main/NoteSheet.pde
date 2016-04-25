@@ -22,15 +22,16 @@ class NoteSheet {
     for (int i = 0; i < notes.length; ++i) {
        if (notes[i] != null) {
           notes[i].drawNote();
-          if( notes[i].checkBallCollsion() && (!(notes[i].powerUp == b.bColor ) || notes[i].powerUp == 3))        //Checks for note, ball collision
+          //if( notes[i].checkBallCollsion() && (!(notes[i].powerUp == b.bColor ) || notes[i].powerUp == 3))        //Checks for note, ball collision
+          if( notes[i].checkBallCollsion())
           {
             applyPowerUp(notes[i]);
             notes[i] = null;
           }
-          else if( notes[i].checkBallCollsion() && notes[i].powerUp == b.bColor)  
-          {
-             notes[i] = null;
-          }
+          //else if( notes[i].checkBallCollsion() && notes[i].powerUp == b.bColor)  
+          //{
+          //   notes[i] = null;
+          //}
           else if (notes[i].outbound()) {
           notes[i] = null;
         }
@@ -121,24 +122,30 @@ class NoteSheet {
      pushMatrix();
      noStroke();
      //fill(255);
-     switch(powerUp)
-     {
-       case 1:
-         fill(255, 100, 100);
-         break;
-       case 2:
-         fill(100, 200, 255);
-         break;
-       case 3:
-         fill(100, 255, 100);
-         break;
-     }
+     //switch(powerUp)
+     //{
+     //  case 1:
+     //    fill(255, 100, 100);
+     //    break;
+     //  case 2:
+     //    fill(100, 200, 255);
+     //    break;
+     //  case 3:
+     //    fill(100, 255, 100);
+     //    break;
+     //}
+     if(powerUp == 1)
+       fill(100,200,255);
+     else if(powerUp == 3)
+       fill(100,255,100);
+     else
+       fill(255);
      ellipse(cx, cy, d, d);
      move();
      popMatrix();
    }
    void move() {
-     if (cx >= x_limit && cx > 150 && cx < width-150) {
+     if (cx >= x_limit && cx > 150 && cx < width-150 && (powerUp == 1 || powerUp == 3)) {
         cy += y_speed; 
      } else {
        cx += x_speed; 

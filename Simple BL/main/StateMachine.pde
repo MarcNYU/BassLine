@@ -61,13 +61,13 @@ void gameStates()
       text("Choose your song", width/2-textWidth("Choose your song")/2, 220);
       fill(0);
       stroke(255);
-      strokeWeight(1);
+      //strokeWeight(1);
       if(upPressed == true)
-        fill(255);
+        fill(220);
       triangle(width/2, height- 505, (width/2)-20, height- 485, (width/2)+20, height- 485);
       fill(0);
       if(downPressed == true)
-        fill(255);
+        fill(220);
       triangle(width/2, height- 385, (width/2)-20, height- 405, (width/2)+20, height- 405);
       fill(0);
       rect(width/2, height- 445, 380, 50);
@@ -89,11 +89,11 @@ void gameStates()
 
     //for(int i = 0; i < songList.length; i++){
     // text(i+1 + ". " + songList[i] + "\n", width/2-textWidth(i+1 + ". " +songList[i]+ "\n")/2, height- 282 + i *40);   
-    
+    fill(255);
     if (keyPressed) {
       if(key == ENTER)
        {
-          text("loading...", width/2-textWidth("loading...")/2, height - 200); 
+          text("Loading ...", width/2-textWidth("loading...")/2, height - 200); 
           state = 1;
        }
     }

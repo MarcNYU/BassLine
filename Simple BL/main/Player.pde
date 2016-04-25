@@ -34,7 +34,7 @@ class Ball {
 
   void update() {
     //pos.y-=move;
-    if (delay == true && currentTime < destTime)
+    if (delay == true && currentTime < destTime && (rightB() || leftB()))
     {
       currentTime++;
     } else {
@@ -92,18 +92,18 @@ class Ball {
         velo.x = 0;
         velo.y = 0;
         pos.x = 40;
-        if (collected && random(1, 500) < 30)
-        {
-          bColor = (int)(random(1, 3));
-        }
+        //if (collected && random(1, 500) < 30)
+        //{
+        //  bColor = (int)(random(1, 3));
+        //}
       } else if (pos.x > 440) {
         velo.x = 0;
         velo.y = 0;
         pos.x = 440;
-        if (collected && random(1, 500) < 30)
-        {
-          bColor = (int)(random(1, 3));
-        }
+        //if (collected && random(1, 500) < 30)
+        //{
+        //  bColor = (int)(random(1, 3));
+        //}
       } 
 
       if (pos.x == 40) {
@@ -178,19 +178,20 @@ class Ball {
     }
     noStroke();
     if (frozen == false) {
-      switch(bColor)
-      {
-      case 1:
-        fill(255, 100, 100);
-        break;
-      case 2:
-        fill(100, 200, 255);
-        break;
-      case 3:
+      //switch(bColor)
+      //{
+      //case 1:
+        //fill(255, 100, 100);
+        //break;
+      //case 2:
+      //  fill(100, 200, 255);
+      //  break;
+      //case 3:
         fill(100, 255, 100);
-        break;
-      }
-    } else {
+        //break;
+      //}
+    } 
+    else {
       fill(255);
     }
     //fill (#03FFFD);
@@ -208,18 +209,18 @@ class Ball {
     //  }
     //}
 
-    for (int i=0; i<25; i++) {
-      j[i] = j [i+1];
-      k[i] = k [i+1];
-      ellipse (j[i], k[i], i, i);
-    }
+    //for (int i=0; i<25; i++) {
+    //  j[i] = j [i+1];
+    //  k[i] = k [i+1];
+    //  ellipse (j[i], k[i], i, i);
+    //}
 
-
+    ellipse (b.pos.x, b.pos.y, radius, radius);
     //Causing the array index error
 
-    j[25] = pos.x;
-    k[25] = pos.y;
-    ellipse (j[25], k[25], radius, radius);
+    //j[25] = pos.x;
+    //k[25] = pos.y;
+    //ellipse (j[25], k[25], radius, radius);
     popMatrix();
   }
   void freeze()
@@ -255,8 +256,10 @@ class Ball {
   {
     currentTime = timer;
     destTime = timer + 50;
-    pos.y = 300;
+    
     delay = true;
     secLifeOn = false;
+    if(grounded())
+      pos.y = 300;
   }
 }
