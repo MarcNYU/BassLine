@@ -6,7 +6,6 @@ AudioOutput out;
 AudioPlayer mp3;
 BeatDetect beat;
 Ball b;
-Camera c;
 NoteSheet ns;
 AudioContext ac;
 PeakDetector beatDetector;

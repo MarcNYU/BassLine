@@ -36,9 +36,7 @@ void resetGame() {
 
   initMusic();
   initGame();
-  c.pos.x = 0;
-  c.pos.y = 0;
-  translate(c.pos.x, c.pos.y);
+
   score = 0;
 }
 

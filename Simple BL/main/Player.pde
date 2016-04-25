@@ -38,6 +38,8 @@ class Ball {
       j[i] = 0;
       k[i] = 0;
     }
+    j[25] = pos.x;
+    k[25] = pos.y;
   }
 
   void update() {

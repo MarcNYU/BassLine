@@ -1,6 +1,5 @@
 void initGame() {
   b = new Ball(40, height-200, 25);
-  c = new Camera();
   classicVi = new Visualizer();
   ns = new NoteSheet();
   score = (int) b.pos.y;
