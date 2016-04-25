@@ -24,7 +24,8 @@ class Ball {
     bounce = 8; 
     radius = r;
     alive = true;
-    bColor = (int)(random(1, 3));
+    //bColor = (int)(random(1, 3));
+    bColor = 1;
     for (int i = 0; i<50; i++) {
       j[i] = 0;
       k[i] = 0;

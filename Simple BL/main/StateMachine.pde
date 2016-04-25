@@ -14,7 +14,7 @@ void gameStates()
     
     fill(50 , 150, 255);
     //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
-    text("Baseline\n\n", width/2-textWidth("Baseline\n\n")/2, height/4-24);
+    text("Baseline\n\n", width/2-textWidth("Baseline\n\n")/2, height/4-100);
     //textSize(20);
     //fill(255);
     //text("Select the number that \ncorresponds with each song\n\n", width/2-textWidth("Select the number that \n\ncorresponds with each song\n\n")/2, height/4+84);
@@ -58,7 +58,7 @@ void gameStates()
         }
       }
        
-      text("Choose your song", width/2-textWidth("Choose your song")/2, 320);
+      text("Choose your song", width/2-textWidth("Choose your song")/2, 220);
       fill(0);
       stroke(255);
       strokeWeight(1);
@@ -74,13 +74,13 @@ void gameStates()
 
       fill(255);
       
-      textSize(15);
-      text(currentSongIdx + ". " + songList[currentSongIdx] + "\n", width/2-textWidth(currentSongIdx + ". " +songList[currentSongIdx]+ "\n")/2, height- 442);
+      textSize(12);
+      text(songList[currentSongIdx] + "\n", width/2-textWidth(currentSongIdx + ". " +songList[currentSongIdx]+ "\n")/2, height- 442);
 
      textSize(20);
      //Draws the blinking press enter key to start
      fill(blinkColor);
-     text("Press Enter to start", width/2-textWidth("Press Enter to start")/2, height- 340);
+     text("Press Enter to start", width/2-textWidth("Press Enter to start")/2, height- 320);
      blinkColor+= blinkChange;
      if(blinkColor >= 255 || blinkColor <= 0)
        blinkChange = blinkChange* -1;
@@ -93,7 +93,7 @@ void gameStates()
     if (keyPressed) {
       if(key == ENTER)
        {
-          text("loading", width/2-textWidth("loading")/2, height/4-24); 
+          text("loading...", width/2-textWidth("loading...")/2, height - 200); 
           state = 1;
        }
     }
