@@ -58,17 +58,17 @@ class Ball {
         velo.y += gravity;
       }
 
-      if (leftB()) {
-        lws = 150;
-      } else if (rightB()) {
-        rws = 150;
-      } else {
-        float target = 0;
-        float dt = target - lws;
-        float dl = target - rws;
-        lws += dt * 0.3;//ease rate
-        rws += dl * 0.3;//ease rate
-      }
+      //if (leftB()) {
+      //  lws = 150;
+      //} else if (rightB()) {
+      //  rws = 150;
+      //} else {
+      //  float target = 0;
+      //  float dt = target - lws;
+      //  float dl = target - rws;
+      //  lws += dt * 0.3;//ease rate
+      //  rws += dl * 0.3;//ease rate
+      //}
 
       if (pos.x == 40 && jump) {
         if (eRadius >= 52) {
@@ -92,18 +92,18 @@ class Ball {
         velo.x = 0;
         velo.y = 0;
         pos.x = 40;
-        if (collected && random(1, 500) < 30)
-        {
-          bColor = (int)(random(1, 3));
-        }
+        //if (collected && random(1, 500) < 30)
+        //{
+        //  bColor = (int)(random(1, 3));
+        //}
       } else if (pos.x > 440) {
         velo.x = 0;
         velo.y = 0;
         pos.x = 440;
-        if (collected && random(1, 500) < 30)
-        {
-          bColor = (int)(random(1, 3));
-        }
+        //if (collected && random(1, 500) < 30)
+        //{
+        //  bColor = (int)(random(1, 3));
+        //}
       } 
 
       if (pos.x == 40) {

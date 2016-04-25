@@ -73,10 +73,11 @@ void drawBeat() {
   //fill(brightness*255);
   //ellipse(width/2,height-100,85,85);  
   stroke(100, 255, 100);
-  strokeWeight(2);
+  //strokeWeight(2);
   noFill();
   //ellipse(width/2,height-100,eRadius,eRadius);  
   ellipse(b.pos.x,b.pos.y,eRadius,eRadius);
+  ellipse(b.pos.x,b.pos.y,eRadius-1,eRadius-1);
   
   // decrease brightness over time
   int dt = millis() - time;
