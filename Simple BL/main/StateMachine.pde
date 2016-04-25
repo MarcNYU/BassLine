@@ -14,7 +14,7 @@ void gameStates()
     
     fill(50 , 150, 255);
     //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
-    text("Baseline\n\n", width/2-textWidth("Baseline\n\n")/2, height/4-100);
+    text("BassLine\n\n", width/2-textWidth("BassLine\n\n")/2, height/4-100);
     //textSize(20);
     //fill(255);
     //text("Select the number that \ncorresponds with each song\n\n", width/2-textWidth("Select the number that \n\ncorresponds with each song\n\n")/2, height/4+84);
