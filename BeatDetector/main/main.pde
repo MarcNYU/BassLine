@@ -27,9 +27,9 @@ class Line {
     time_create = millis(); 
   }
   void move() {
-    if (y < 0) return;
-    y = (millis() - time_create) * height / delays;
-    if (y >= height) {
+    if (y == -1) return;
+    y = height - (millis() - time_create) * height / delays;
+    if (y < 0) {
       y = -1;
       brightness = 1; 
     }
