@@ -67,26 +67,3 @@ void RWallLine() {
   endShape(CLOSE);
   popMatrix();
 }
-
-void drawGuides() {
-  pushMatrix();
-  //strokeWeight(1);
-  stroke(#FF0000);
-  //line(0, ground-51, width, ground-51);
-  line(0, ground-1, width, ground-1);
-  //line(0, ground, width, ground);
-  line(0, ground+1, width, ground+1);
-
-  line(0, ceilling-1, width, ceilling-1);
-  line(0, ceilling+1, width, ceilling+1);
-
-  line(left-2, 0, left-2, height);
-  //line(left, 0, left, height);
-  line(left+2, 0, left+2, height);
-  //line(50, 0, 50, height);
-  //line(590, 0, 590, height);
-  line(right-2, 0, right-2, height);
-  //line(right, 0, right, height);
-  line(right+2, 0, right+2, height);
-  popMatrix();
-}

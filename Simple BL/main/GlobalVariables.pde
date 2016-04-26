@@ -8,8 +8,7 @@ BeatDetect beat;
 Ball b;
 Camera c;
 NoteSheet ns;
-AudioContext ac;
-PeakDetector beatDetector;
+
 //Minim minimc;
 //AudioOutput outt;
 //StringSignal signal;
@@ -35,12 +34,12 @@ Boolean downPressed = false;
 
 
 // GUIDE VARS
-float ceilling = height+100;
-float ground = height+650;
-float left = 50;
-float right = 430;
-float lw = 40;
-float rw = 440;
+//float ceilling = height+100;
+//float ground = height+650;
+//float left = 50;
+//float right = 430;
+//float lw = 40;
+//float rw = 440;
 
 // PHYSICS VARS
 float gravity = .3;
@@ -60,7 +59,6 @@ boolean delay = false;
 boolean collected = true;
 
 // EQ VARS
-float eRadius;
 
 // BEAT VARS
 float brightness;

@@ -58,18 +58,6 @@ class Ball {
         velo.y += gravity;
       }
 
-      //if (leftB()) {
-      //  lws = 150;
-      //} else if (rightB()) {
-      //  rws = 150;
-      //} else {
-      //  float target = 0;
-      //  float dt = target - lws;
-      //  float dl = target - rws;
-      //  lws += dt * 0.3;//ease rate
-      //  rws += dl * 0.3;//ease rate
-      //}
-
       if (pos.x == 40 && jump) {
         if (eRadius >= 52) {
           //if (jump && brightness != 0.0) {
@@ -91,19 +79,11 @@ class Ball {
       if (pos.x < 40) {
         velo.x = 0;
         velo.y = 0;
-        pos.x = 40;
-        //if (collected && random(1, 500) < 30)
-        //{
-        //  bColor = (int)(random(1, 3));
-        //}
+        pos.x = 40; 
       } else if (pos.x > 440) {
         velo.x = 0;
         velo.y = 0;
         pos.x = 440;
-        //if (collected && random(1, 500) < 30)
-        //{
-        //  bColor = (int)(random(1, 3));
-        //}
       } 
 
       if (pos.x == 40) {
@@ -156,16 +136,6 @@ class Ball {
     return false;
   }
 
-  Boolean leftW() {
-    if (pos.x <= lw+5 && pos.x >= lw-5) return true;
-    return false;
-  }
-
-  Boolean rightW() {
-    if (pos.x <= rw+5 && pos.x >= rw-5) return true;
-    return false;
-  }
-
   void render() {
     pushMatrix();
     noStroke();
@@ -178,36 +148,24 @@ class Ball {
     }
     noStroke();
     if (frozen == false) {
-      //switch(bColor)
-      //{
-      //case 1:
-      //  fill(255, 100, 100);
-      //  break;
-      //case 2:
-      //  fill(100, 200, 255);
-      //  break;
-      //case 3:
-      //  fill(100, 255, 100);
-      //  break;
-      //}
       fill(100, 255, 100);
     } else {
       fill(255);
     }
     //fill (#03FFFD);
-    //if (pos.x == 40 || pos.x == 440) {
-    //  for (int i=0; i<radius; i++) {
-    //    j[i] = pos.x;
-    //    k[i] = pos.y;
-    //    ellipse (j[i], k[i], radius, radius);
-    //  }
-    //} else {
-    //  for (int i=0; i<radius; i++) {
-    //    j[i] = j [i+1];
-    //    k[i] = k [i+1];
-    //    ellipse (j[i], k[i], i, i);
-    //  }
-    //}
+    if (pos.x == 40 || pos.x == 440) {
+     for (int i=0; i<radius; i++) {
+       j[i] = pos.x;
+       k[i] = pos.y;
+       ellipse (j[i], k[i], radius, radius);
+     }
+    } else {
+     for (int i=0; i<radius; i++) {
+       j[i] = j [i+1];
+       k[i] = k [i+1];
+       ellipse (j[i], k[i], i, i);
+     }
+    }
     ellipse (pos.x, pos.y, radius, radius);
     //for (int i=0; i<25; i++) {
     // j[i] = j [i+1];

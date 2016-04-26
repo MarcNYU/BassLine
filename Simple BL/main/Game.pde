@@ -16,34 +16,9 @@ void Game() {
   }
   classicVi.drawEQ();
   //classicVi.drawBeat();
-
+  input();
   b.update();
-  
-  //ll.updateString();
-  //ll.drawLine();
-  //rl.updateString();
-  //rl.drawLine();
-  //drawGuides();
-
-  //DrawLines();
-
-  
-  //if (jump && b.pos.x < 45) {
-  //  drawStringL();
-  //} else {
-  //  pushMatrix();
-  //  stroke(255);
-  //  line(40,0,40,height);
-  //  popMatrix();
-  //}
-  //if (jump && b.pos.x > 435) {
-  //  drawStringR();
-  //} else {
-  //  pushMatrix();
-  //  stroke(255);
-  //  line(440,0,440,height);
-  //  popMatrix();
-  //}
+  drawGuides();
   drawStringL();
   drawStringR();
   drawBeat();
@@ -67,7 +42,7 @@ void drawFG() {
   if (!start) {
     ns.drawNoteSheet();
   }
-  DrawLines();
+  //DrawLines();
   classicVi.drawEQ();
   //classicVi.drawBeat();
   //drawGuides();
