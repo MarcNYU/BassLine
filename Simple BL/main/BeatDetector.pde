@@ -91,7 +91,7 @@ void drawBeat() {
   time += dt; 
   // set threshold and alpha to the mouse position
   beatDetector.setThreshold(0.95);
-  beatDetector.setAlpha(0.95);
+  beatDetector.setAlpha(0.99);
   //beatDetector.setThreshold((float)width-10);
   //beatDetector.setAlpha((float)height-10);
   popMatrix();

@@ -1,3 +1,10 @@
+int currentTime = 0;
+int destTime = 0;
+boolean frozen = false;
+boolean increase = false;
+boolean secLifeOn = false;
+boolean hasPowerUp = false;
+
 class NoteSheet {
   int margin_top = 10;  // margin before top layer note
   int sheet_height = 20;  // width of space between line

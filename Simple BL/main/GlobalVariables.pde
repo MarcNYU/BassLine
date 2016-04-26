@@ -5,7 +5,7 @@ ddf.minim.analysis.FFT fft;
 AudioOutput out;
 AudioPlayer mp3;
 BeatDetect beat;
-Ball b;
+//Ball b;
 Camera c;
 NoteSheet ns;
 
@@ -42,18 +42,13 @@ Boolean downPressed = false;
 //float rw = 440;
 
 // PHYSICS VARS
-float gravity = .3;
+//float gravity = .3;
 
 // PLAYER VARS
 boolean gameInit = true;
 boolean jump;
 boolean start = true;
-int currentTime = 0;
-int destTime = 0;
-boolean frozen = false;
-boolean increase = false;
-boolean secLifeOn = false;
-boolean hasPowerUp = false;
+
 int increaseRadius = 50;
 boolean delay = false;
 boolean collected = true;

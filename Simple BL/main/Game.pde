@@ -8,10 +8,10 @@ void Game() {
   //if (!start) {
   //  mp3.play();
   //}
-  if (b.pos.x < left || b.pos.x > right) {
+  if (b.pos.x == left || b.pos.x == right) {
     input();
   } 
-  if (!start) {
+  if (!startOfGame) {
     ns.drawNoteSheet();
   }
   classicVi.drawEQ();

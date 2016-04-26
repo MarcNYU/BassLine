@@ -158,7 +158,7 @@ void gameStates()
 
     if (keyPressed) {
       resetGame();
-      start = true;
+      startOfGame = true;
       //frequencyEnvelope.clear();
       state = 0;
     }
