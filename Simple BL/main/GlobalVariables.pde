@@ -8,6 +8,7 @@ BeatDetect beat;
 Ball b;
 Camera c;
 NoteSheet ns;
+Glide gainGlide;
 
 //Minim minimc;
 //AudioOutput outt;

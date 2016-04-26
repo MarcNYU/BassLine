@@ -3,6 +3,7 @@ void Game() {
   println(frameRate);
   //println(eRadius);
   //println(brightness);
+  gainGlide.setValue(mouseX / (float)width);
   mp3.play();
   mp3.mute();
   //if (!start) {

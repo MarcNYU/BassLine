@@ -9,7 +9,8 @@ void initBeat()
 
   // set up the AudioContext and the master Gain object
   ac = new AudioContext();
-  beads.Gain g = new beads.Gain(ac, 2, 0.2);
+  gainGlide = new Glide(ac, 0.0, 50);
+  beads.Gain g = new beads.Gain(ac, 2, gainGlide);
   ac.out.addInput(g);
 
   // load up a sample included in code download

@@ -136,6 +136,8 @@ void gameStates()
     if (!(ac.isRunning())) {
       ac.start();
     }
+    textSize(40);
+    text("Score: ", 50, 40);
     Game();
     //println("Play Test");
 
