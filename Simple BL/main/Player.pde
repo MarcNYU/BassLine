@@ -26,8 +26,8 @@ class Player {
     velo = new PVector(0, 0);
     alive = true;
     jump = false;
-    frozen = false;
-    secLifeOn = false;
+    //frozen = false;
+    //secLifeOn = false;
     score = 0;
     bounceCounter = 0;
     for (int i = 0; i<50; i++) {
@@ -37,16 +37,16 @@ class Player {
   }
   void update() {
     BaseLine();
+    //freeze();
     if (delay && currentTime < destTime) {
       currentTime++;
     } else {
       delay = false;
       pos.x += velo.x;
       pos.y += velo.y;
-
-      if (frozen) {
+      if (frozen == true)
         freeze();
-      } 
+        
       if (pos.y > ground && secLifeOn) {
         //println("secLife", pos.y, ground);
         secLifeOn();
@@ -119,7 +119,7 @@ class Player {
     }
   }
   void manageBonusCounter() {
-    if (jump && eRadius >= 52) {
+    if (jump && eRadius >= 52 && (pos.x == 40 || pos.x == 440)) {
       noLoop();
       bounceCounter++;
       loop();
@@ -140,7 +140,7 @@ class Player {
   {
     currentTime = timer;
     destTime = timer + 50;
-    pos.y = 300;
+    pos.y = 500;
     delay = true;
     secLifeOn = false;
   }

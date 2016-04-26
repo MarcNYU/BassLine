@@ -47,7 +47,7 @@ Boolean downPressed = false;
 // PLAYER VARS
 boolean gameInit = true;
 boolean jump;
-boolean start = true;
+//boolean start = true;
 
 int increaseRadius = 50;
 boolean delay = false;

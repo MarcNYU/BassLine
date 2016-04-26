@@ -1,8 +1,11 @@
+Glide gainGlide;
+
 void Game() {
   //outt.mute();
   println(frameRate);
   //println(eRadius);
   //println(brightness);
+  gainGlide.setValue(mouseX / (float)width);
   mp3.play();
   mp3.mute();
   //if (!start) {
@@ -39,7 +42,7 @@ void resetGame() {
 }
 
 void drawFG() {
-  if (!start) {
+  if (!startOfGame) {
     ns.drawNoteSheet();
   }
   //DrawLines();
