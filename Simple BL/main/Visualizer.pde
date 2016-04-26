@@ -29,7 +29,7 @@ class Visualizer {
     colorMode(RGB);//sets color mode back to Red green and blue //Resets color setting to RGB
 
     //for loop for creating the audio bars
-    translate(width/2, height-100); //Moves EQ wheel downward from center of the screen
+    translate(width/2, height-110); //Moves EQ wheel downward from center of the screen
     float arclength = 0; //Arc of the EQ wheel (distance between bars as the EQ wheel rotates)
 
     //noFill();

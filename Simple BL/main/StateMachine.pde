@@ -60,7 +60,7 @@ void gameStates()
       }
     }
 
-    text("Choose your song", width/2-textWidth("Choose your song")/2, 220);
+    
     fill(0);
     stroke(255);
     //strokeWeight(1);
@@ -75,11 +75,12 @@ void gameStates()
     rect(width/2, height- 445, 380, 50);
 
     fill(255);
-
+    
     textSize(12);
     text(songList[currentSongIdx] + "\n", width/2-textWidth(currentSongIdx + ". " +songList[currentSongIdx]+ "\n")/2, height- 442);
 
     textSize(20);
+    text("Choose your song", width/2-textWidth("Choose your song")/2, 320);
     //Draws the blinking press enter key to start
     fill(blinkColor);
     text("Press Enter to start", width/2-textWidth("Press Enter to start")/2, height- 320);
@@ -152,11 +153,21 @@ void gameStates()
     ac.stop();
 
     background(0);
-    textSize(32);
+    stroke(255);
+    line(40, 0, 40, height);
+    line(440, 0, 440, height);
+    textSize(40);
     fill(255);
-    text("GAME OVER", width/2-textWidth("GAME OVER")/2, height/2-32);
-    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
-    text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
+    text("GAME OVER", width/2-textWidth("GAME OVER")/2, 200);
+    text("Score: " + (int)(score/100), width/2-textWidth("Score: #")/2, 300);
+    textSize(20);
+    fill(blinkColor);
+    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+52);
+    blinkColor+= blinkChange;
+    if (blinkColor >= 255 || blinkColor <= 0)
+      blinkChange = blinkChange* -1;
+    
+    menuVi.drawEQ();    
 
     if (keyPressed) {
       resetGame();
