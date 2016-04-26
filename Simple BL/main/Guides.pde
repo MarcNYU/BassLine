@@ -14,11 +14,11 @@ void drawGuides() {
   
   line(0, middle, width, middle);
 
-  line(left-30, 0, left-30, height);
+  line(left-20, 0, left-20, height);
   //line(width/2 - 200, 0, width/2 -200, height);
-  line(left, 0, left, height);
+  line(left+20, 0, left+20, height);
   
-  line(right, 0, right, height);
+  line(right-20, 0, right-20, height);
   //line(width/2 + 200, 0, width/2 + 200, height);
-  line(right+30, 0, right+30, height);
+  line(right+20, 0, right+20, height);
 }
