@@ -4,9 +4,9 @@ boolean startOfGame = true;
 float gravity = .3;
 Ball b;
 
-  int bmLevCount = 0;
-  int midLevCount = 0;
-  int highLevCount = 0;
+  int bmLevCount ;
+  int midLevCount;
+  int highLevCount;
 class Ball {
   PVector pos;
   PVector velo;
@@ -122,7 +122,7 @@ class Ball {
       }
 
       if (alive && !startOfGame) {
-        score += 1;
+        //score += 1;
       }
 
       //if(pos.x == 40 || pos.x == 440){
@@ -279,6 +279,7 @@ class Ball {
     if (BelowMidLine()) {
       //score += 10;
       bmLevCount += 10;
+      
     } else if (AboveMidLine()) {
       //score += 30 * bounceCounter;
       midLevCount += 30 * bounceCounter;
