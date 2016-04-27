@@ -170,8 +170,8 @@ void gameStates()
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
     
-    //drawScore();
-    menuVi.drawEQ();    
+    drawScore();
+    //menuVi.drawEQ();    
 
     if (keyPressed) {
       resetGame();
