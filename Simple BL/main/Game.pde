@@ -57,7 +57,7 @@ void drawFG() {
   rect(0, height-41, width-1, 38);
   textSize(30);
   fill(100, 255, 100);
-  text("Score: " + score * 100 + "%", 20, 35);
+  text("Percent of Song Completed: " + round(score * 100) + "%", 20, 35);
   if (secLifeOn) {
    text("Extra Life", width-150, 35);
   }
@@ -104,8 +104,8 @@ void drawScore(int minutes, int seconds) {
 
   //stroke(255);
   //line(40, 450, width-40, 450);
-  text("Final Score: ", 80, 400);
-  text(score * 100 + "%", 270, 400);
+  text("Percent of Song Completed: ", 80, 400);
+  text(round(score * 100) + "%", 270, 400);
   
 }
 
