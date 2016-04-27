@@ -40,7 +40,7 @@ void resetGame() {
   c.pos.x = 0;
   c.pos.y = 0;
   translate(c.pos.x, c.pos.y);
-  score = 0;
+  b.score = 0;
 }
 
 void drawFG() {

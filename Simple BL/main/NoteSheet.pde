@@ -103,7 +103,7 @@ class NoteSheet {
     {
       case 1:
         currentTime = timer;
-        destTime = timer + 49;
+        destTime = timer + 45;
         break;
       case 2:
         currentTime = timer;

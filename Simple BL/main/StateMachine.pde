@@ -149,7 +149,7 @@ void gameStates()
     break;
   case 2:
     //outt.mute();
-
+    //mp3.rewind();
     //mp3.close();
     //ac.reset();
     //frequencyEnvelope.clear();

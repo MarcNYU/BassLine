@@ -4,7 +4,7 @@ void initGame() {
   c = new Camera();
   classicVi = new Visualizer();
   ns = new NoteSheet();
-  score = (int) b.pos.y;
+  b.score = (int) b.pos.y;
   ll = new Line(-200);
   rl = new Line(200);
 }
