@@ -15,18 +15,19 @@ void setup() {
 void draw()
 {
   background(0);
+  noFill();
   int beats[] = bq.nexts(); // returns an array of time of beats
   for (int i = 0; i < beats.length; ++i) {
     
-    int y = height - beats[i] * height / forward;
+    int y = beats[i] * height / forward;
     //line (0, y, width, y);
     ellipse(width/2, height/2, y, y);
   }
   int next = bq.next(); // return next beat
   if (next <= 20) {
-     brightness = 1; 
+     background(255); 
   }
-  fill(brightness*255);
+  //fill(brightness*255);
   //ellipse(width/2,height/2,width/2,height/2); 
   brightness -= 0.1; 
 
