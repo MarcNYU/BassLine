@@ -7,7 +7,7 @@ float right = 440;
 
 
 void drawGuides() {
-  stroke(#FF0000);
+  stroke(#FFFFFF, 100);
   line(0, ground, width, ground);
 
   line(0, ceilling, width, ceilling);

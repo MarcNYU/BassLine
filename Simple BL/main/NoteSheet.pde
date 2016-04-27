@@ -1,5 +1,5 @@
 class NoteSheet {
-  int margin_top = 60;  // margin before top layer note
+  int margin_top = 55;  // margin before top layer note
   int sheet_height = 20;  // width of space between line
   int interval = 200;  // intervals of generating notes in milliseconds
   float fall_freq = 0.18; // frequency of note falling

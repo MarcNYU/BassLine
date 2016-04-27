@@ -15,11 +15,12 @@ void Game() {
   if (!start) {
     ns.drawNoteSheet();
   }
+  drawGuides();
   classicVi.drawEQ();
   //classicVi.drawBeat();
   input();
   b.update();
-  drawGuides();
+
   drawStringL();
   drawStringR();
   drawBeat();
@@ -51,4 +52,26 @@ void drawFG() {
 
 
 void drawBG() {
+}
+
+void drawScore()
+{
+  textSize(15);
+  fill(255);
+  text("High Level Time: ", 80, 300);
+  text(" x 50 = ", 250, 300);
+  text("PlaceholderScore", 250, 300);
+  
+  text("Mid Level Time: " , 80, 350);
+  text(" x 30 = ", 250, 350);
+  text("PlaceholderScore", 250, 350);
+  
+  text("Low Level Time: " , 80, 400);
+  text(" x 10 = ", 250, 400);
+  text("PlaceholderScore", 250, 400);
+  
+  stroke(255);
+  line(40, 450, width-40, 450);
+  text("Final Score: ", 80, 500);
+  text("PlaceholderScore", 250, 500);
 }

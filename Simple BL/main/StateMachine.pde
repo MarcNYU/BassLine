@@ -96,7 +96,7 @@ void gameStates()
     if (keyPressed) {
       if (key == ENTER)
       {
-        text("Loading...", width/2-textWidth("loading...")/2, height - 200); 
+        text("Loading...", width/2-textWidth("Loading...")/2, height - 250); 
         state = 1;
       }
     }
@@ -159,14 +159,15 @@ void gameStates()
     textSize(40);
     fill(255);
     text("GAME OVER", width/2-textWidth("GAME OVER")/2, 200);
-    text("Score: " + (int)(score/100), width/2-textWidth("Score: #")/2, 300);
+    
     textSize(20);
     fill(blinkColor);
-    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+52);
+    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height - 250);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
     
+    drawScore();
     menuVi.drawEQ();    
 
     if (keyPressed) {
