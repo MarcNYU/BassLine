@@ -25,7 +25,8 @@ void draw()
   }
   int next = bq.next(); // return next beat
   if (next <= 20) {
-     background(255); 
+     background(255
+     ); 
   }
   //fill(brightness*255);
   //ellipse(width/2,height/2,width/2,height/2); 
