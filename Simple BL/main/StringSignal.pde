@@ -129,7 +129,7 @@ void press() {
   int c = ceil(bc);
   int r = (int)random(height/2 - 10, height/2 + 10);
   if (keyPressed) {
-    if (key == 'b' && eRadius >= 52) {
+    if (key == ' ' && eRadius >= 52) {
       float X = xc[a]+(xc[c]-xc[a])*(bc-a);
       float Xm = float(r)/(height/2)-1;
       float F = (Xm-X)*1f;
@@ -137,7 +137,7 @@ void press() {
       float Fc = (bc-a)*F;
       f[a] += Fa;
       f[c] += Fc;
-    } else if (key == 'b' && !(eRadius >= 52)) {
+    } else if (key == ' ' && !(eRadius >= 52)) {
       float V = v[a]+(v[c]-v[a])*(bc-a);
       float F = V*-0.95;
       float Fa = (c-bc)*F;

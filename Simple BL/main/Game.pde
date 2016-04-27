@@ -15,7 +15,7 @@ void Game() {
     input();
   } 
   if (!startOfGame) {
-    //ns.drawNoteSheet();
+    ns.drawNoteSheet();
   }
   classicVi.drawEQ();
   //classicVi.drawBeat();

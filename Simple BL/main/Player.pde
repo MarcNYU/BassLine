@@ -158,11 +158,12 @@ class Ball {
   void render() {
     showSecLife();
     noStroke();
-    showFrozen();
+    
     noStroke();
     showLastPosition();
     //showTrail();
     noStroke();
+    //showFrozen();
     drawPlayer();
   }
   void showSecLife() {
@@ -216,7 +217,11 @@ class Ball {
     k[25] = pos.y;
   }
   void drawPlayer() {
-    fill(100, 255, 100);
+    if (frozen == false) {
+      fill(100, 255, 100);
+    } else {
+      fill(255);
+    }
     ellipse(pos.x, pos.y, radius+1, radius+1);
   }
 

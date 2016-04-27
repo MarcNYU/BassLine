@@ -1,7 +1,7 @@
 void input() {
   if (keyPressed) {
     //if(key == 'b' && eRadius > 60) {
-    if (key == 'b' && !frozen) {
+    if (key == ' ' && !frozen) {
       jump = true;
       startOfGame = false;
     }

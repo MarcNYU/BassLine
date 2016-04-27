@@ -9,9 +9,12 @@ void gameStates()
 
     //DrawLines();
     stroke(255);
-    line(40, 0, 40, height);
+    
+    line(40, -height*2, 40, height);
     line(440, 0, 440, height);
-    // classicVi.drawEQ();
+    
+   
+    //classicVi.drawEQ();
 
     textSize(50);
 
@@ -72,7 +75,7 @@ void gameStates()
       fill(255);
     triangle(width/2, height- 385, (width/2)-20, height- 405, (width/2)+20, height- 405);
     fill(0);
-    rect(width/2, height- 445, 380, 50);
+    rect(width-430, height- 470, 380, 50);
 
     fill(255);
 
