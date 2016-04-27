@@ -108,7 +108,7 @@ class Ball {
         //if (false) {
         gravity = .6;
       } else {
-        if (jump && eRadius >= 52) {
+        if (jump && eRadius >= 50) {
           //if (jump && brightness != 0.0) {
           gravity = .3;
         } else {
@@ -272,11 +272,11 @@ class Ball {
   //}
   void manageScore() {
     if (BelowMidLine()) {
-      score += 10;
+      score += 1;
     } else if (AboveMidLine()) {
-      score += 30 * bounceCounter;
+      score += 5;
     } else if (TopLine()) {
-      score += 50 * bounceCounter;
+      score += 10;
     }
   }
   void manageBonusCounter() {

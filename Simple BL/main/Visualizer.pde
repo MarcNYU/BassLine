@@ -37,7 +37,7 @@ class Visualizer {
 
     for (int i = 0; i < fft.specSize()-170; i += 50)// specSize is changing the range of analysis (iterates through sound sample returned from fft incrementing by 50 which is the size of each line)
     {
-      triangle(i/1.8, height-42, i/1.8 + 12.5, (height-42) - fft.getFreq(i)/2.5, i/1.8 + 25, height-42);
+      triangle(i/1.8, height-42, i/1.8 + 12.5, (height-42) - fft.getFreq(i)/2.8, i/1.8 + 25, height-42);
       //rect(i, height/12, 25, (height/2 - 100) - fft.getFreq(i)*1.2);// draws an inversed rect and alters its height based on the translated frequency
       //rect(i/2, height, 10, -height/2 - fft.getFreq(i)/1.2);// draws a rect and alters its height based on the translated frequency
       //triangle(i, height, i+1, fft.getFreq(i)/1.2, i+2, height);

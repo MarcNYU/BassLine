@@ -8,6 +8,7 @@ void Game() {
   gainGlide.setValue(mouseX / (float)width);
   mp3.play();
   mp3.mute();
+  //b.manageScore();
   //if (!start) {
   //  mp3.play();
   //}
@@ -57,7 +58,7 @@ void drawFG() {
   rect(0, height-41, width-1, 38);
   textSize(30);
   fill(100, 255, 100);
-  text("Score: " + score, 20, 35);
+  text("Score: " + score*10, 20, 35);
   if (secLifeOn) {
    text("Extra Life", width-150, 35);
   }
