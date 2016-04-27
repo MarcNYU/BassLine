@@ -57,10 +57,10 @@ void drawFG() {
   rect(0, height-41, width-1, 38);
   textSize(30);
   fill(100, 255, 100);
-  //text("Score: ", 20, 35);
-  //if (secLifeOn) {
-  //  text("Extra Life", width-150, 35);
-  //}
+  text("Score: " + score, 20, 35);
+  if (secLifeOn) {
+   text("Extra Life", width-150, 35);
+  }
   fill(255);
   noStroke();
   ellipse(width/2, height-45, eRadius, eRadius);

@@ -60,8 +60,7 @@ void gameStates()
       fill(255);
     triangle(width/2, height- 385, (width/2)-20, height- 405, (width/2)+20, height- 405);
     fill(0);
-    rectMode(CORNER);
-    rect(width/2, height- 445, 380, 50);
+    rect(width-430, height- 470, 380, 50);
 
     fill(255);
 
@@ -95,7 +94,8 @@ void gameStates()
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
     score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
-    text("Score: " + score, 20, 35);
+    //fill(100, 255, 100);
+    //text("Score: " + score, 20, 35);
   if (secLifeOn) {
     text("Extra Life", width-150, 35);
   }
@@ -119,7 +119,7 @@ void gameStates()
     
     Game();
     fill(0,0,150);
-    text("Score: " + score , 50,40);
+    //text("Score: " + score , 50,40);
     //if (!(ac.isRunning())) {
     //  songEnded = true;
       
@@ -149,8 +149,8 @@ void gameStates()
     background(0);
     textSize(32);
     fill(255);
-    //text("GAME OVER", width/2-textWidth("GAME OVER")/2, height/2-32);
-    //text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
+    text("GAME OVER", width/2-textWidth("GAME OVER")/2, 200);
+    //text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, 200);
     //textSize(22);
     drawScore(minutes,seconds);
     //text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
