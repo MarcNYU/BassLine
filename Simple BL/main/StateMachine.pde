@@ -97,12 +97,19 @@ void gameStates()
     
     //println("game started");
     if (gameInit) {
-      initBeat();
       mp3.play();
       mp3.mute();
+      
+      initBeat();
+      
       println("game init current song idx: " + currentSongIdx);
       gameInit = false;
     }
+    
+    //if(start){
+      //mp3.play();
+      //mp3.mute();
+    //}
     
     Game();
     fill(0,0,150);
@@ -123,6 +130,7 @@ void gameStates()
     //ac.reset();
     //frequencyEnvelope.clear();
     ac.stop();
+    //st.kill();
     
     mp3.close();
     
@@ -152,12 +160,19 @@ void gameStates()
      
     if (keyPressed) {
       resetGame();
-      
+      mp3.rewind();
       start = true;
       //returnToPlay = true;
       //frequencyEnvelope.clear();
-      state = 0;
+      sp.kill();
       gameInit = true;
+      state = 0;
+      //sp.reset();
+      
+      //sp.setToEnd();
+      
+      //restart = true;
+      
       
       
     }

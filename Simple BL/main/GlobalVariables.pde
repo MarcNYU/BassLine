@@ -42,6 +42,10 @@ boolean hasPowerUp = false;
 int increaseRadius = 50;
 boolean delay = false;
 boolean collected = true;
+AudioContextStopTrigger st;
+SamplePlayer sp;
+boolean restart = false;
+
 
 // EQ VARS
 //float eRadius;

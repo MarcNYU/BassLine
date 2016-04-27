@@ -13,11 +13,15 @@ void initBeat()
  ac.out.addInput(g);
 
  // load up a sample included in code download
- SamplePlayer sp = null;
+sp = null;
  try
  {
    sp = new SamplePlayer(ac, new Sample(sketchPath("") + songList[currentSongIdx])); // load up a new SamplePlayer using an included audio file
    g.addInput(sp); // connect the SamplePlayer to the master Gain
+   ac.out.addInput(sp);
+   st = new AudioContextStopTrigger (ac);
+   st.kill();
+   sp.setKillListener(st);
  }
  catch(Exception e)
  {
