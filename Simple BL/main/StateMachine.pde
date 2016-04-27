@@ -3,13 +3,15 @@ float fixDec(float n, int d) {
 }
 int seconds;
 int minutes;
-float score;
+float cur_Score;
 void gameStates()
 {
   switch(state)
   {
 
   case 0:
+    
+    if(ac.isRunning()) ac.stop();
     background(0);
     //outt.mute();
 
@@ -93,17 +95,25 @@ void gameStates()
   case 1:
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
-    score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    
+    
     
     //println("game started");
     if (gameInit) {
       initBeat();
+      //mp3.close();
+      cur_Score = fixDec((float)(ac.getTime()- startTime/songRuntimes[currentSongIdx]),2);
       gameInit = false;
+    }
+    
+    if(!start){
+      mp3.play();
+      cur_Score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
     }
     
     Game();
     fill(0,0,150);
-    text("Score: " + score , 50,40);
+    text("Score: " + cur_Score , 50,40);
     if (!(ac.isRunning())) {
       songEnded = true;
       
@@ -124,7 +134,7 @@ void gameStates()
     
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
-    //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    //cur_Score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
     
     
     background(0);
@@ -135,7 +145,7 @@ void gameStates()
     textSize(22);
     text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
     println("Current Time: " + minutes  + ":" + seconds);
-    text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
+    text("Score: " + cur_Score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
     text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 32);
@@ -150,7 +160,8 @@ void gameStates()
       start = true;
       returnToPlay = true;
       //frequencyEnvelope.clear();
-      state = 1;
+      
+      state = 0;
       
       
     }
@@ -170,11 +181,11 @@ void gameStates()
     background(0);
     textSize(20);
     fill(255);
-    //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    //cur_Score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
     text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, height/2-32);
     text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
     println("Current Time: " + minutes  + ":" + seconds);
-    text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
+    text("Score: " + cur_Score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
     text("Hit any key to return to the main menu", width/2-textWidth("Hit any key to return to the main menu")/2, height/2+52);
@@ -188,7 +199,7 @@ void gameStates()
     line(440, 0, 440, height);   
     
     
-    text("Distance: " + score, width/2-textWidth("Distance: #")/2, height-100);
+    text("Distance: " + cur_Score, width/2-textWidth("Distance: #")/2, height-100);
 
     if (keyPressed) {
       //frequencyEnvelope.clear();

@@ -1,9 +1,11 @@
+float startTime;
 void input() {
   if (keyPressed) {
     //if(key == 'b' && eRadius > 60) {
     if (key == 'b' && !frozen) {
       jump = true;
       start = false;
+      startTime = millis();
     }
     
     

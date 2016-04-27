@@ -113,7 +113,7 @@ class Ball {
       }
 
       if (alive && !start) {
-        score += 1;
+        //score += 1;
       }
 
       //if(pos.x == 40 || pos.x == 440){

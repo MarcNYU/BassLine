@@ -31,12 +31,13 @@ void resetGame() {
   //g = new beads.Gain(ac, 2, 0.2);
   surface.setResizable(true);
   ac.reset();
+  //mp3.close();
   initMusic();
   initGame();
   c.pos.x = 0;
   c.pos.y = 0;
   translate(c.pos.x, c.pos.y);
-  score = 0;
+  cur_Score = 0;
 }
 
 void drawFG() {
