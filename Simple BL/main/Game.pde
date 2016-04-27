@@ -67,25 +67,25 @@ void drawFG() {
   popMatrix();
 }
 
-void drawScore(float minutes, float seconds) {
+void drawScore(int minutes, int seconds) {
   textSize(15);
   fill(255);
   text("High Level Time: "+ minutes  + ":" + seconds , 80, 300);
   text(" x 50 = ", 250, 300);
-  text( score, 250, 300);
+  text( score, 350, 300);
 
   text("Mid Level Time: " + minutes  + ":" + seconds , 80, 350);
   text(" x 30 = ", 250, 350);
-  text( score, 250, 350);
+  text( score, 350, 350);
 
   text("Low Level Time: " + minutes  + ":" + seconds, 80, 400);
   text(" x 10 = ", 250, 400);
-  text( score, 250, 400);
+  text( score, 350, 400);
 
   stroke(255);
   line(40, 450, width-40, 450);
   text("Final Score: ", 80, 500);
-  text(score, 250, 500);
+  text(score, 350, 500);
 }
 
 void drawBG() {

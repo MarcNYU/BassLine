@@ -60,6 +60,7 @@ void gameStates()
       fill(255);
     triangle(width/2, height- 385, (width/2)-20, height- 405, (width/2)+20, height- 405);
     fill(0);
+    rectMode(CORNER);
     rect(width/2, height- 445, 380, 50);
 
     fill(255);
@@ -157,7 +158,7 @@ void gameStates()
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
-    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 32);
+    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 200);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
