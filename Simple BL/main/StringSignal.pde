@@ -47,21 +47,22 @@ void initString() {
 void drawStringR() {
   pushMatrix();
   //strokeWeight(1.5);
-  if (keyPressed) {
-    if (key == 'b' && eRadius < 65) {
-    //if (key == 'b' && check) {
-      stroke(1, 255, 1);
-    } else if (key == 'b' && !(eRadius >= 52)) {
-      stroke(255, 1, 1);
-    }
-  } else {
-    if (eRadius >= 52) {
-      stroke(255, 1, 1);
-    } else {
-      stroke(255);
-    }
-  }
-  
+  //if (keyPressed) {
+  //  if (key == 'b' && eRadius >= 52 && (b.leftB() || b.rightB()) ) {
+  //  //if (key == 'b' && check) {
+  //    stroke(1, 255, 1);
+  //  } else if (key == 'b' && !(eRadius >= 52)) {
+  //    stroke(255, 1, 1);
+  //  }
+  //} else {
+  //  //if (eRadius >= 52) {
+  //  //  stroke(255, 1, 1);
+  //  //} else {
+  //  //  stroke(255);
+  //  //}
+  //  stroke(255);
+  //}
+  stroke(255);
   translate (200, 1);
   arrayCopy(xc, Xcopy);
   for (int i=1; i<num; i++) {
@@ -76,21 +77,22 @@ void drawStringR() {
 void drawStringL() {
   pushMatrix();
   //strokeWeight(1.5);
-  if (keyPressed) {
-    if (key == 'b' && eRadius < 65) {
-    //if (key == 'b' && check) {
-      stroke(1, 255, 1);
-    } else if (key == 'b' && !(eRadius >= 52)) {
-      stroke(255, 1, 1);
-    }
-  } else {
-    if (eRadius >= 52) {
-      stroke(255, 1, 1);
-    } else {
-      stroke(255);
-    }
-  }
-
+  //if (keyPressed) {
+  //  if (key == 'b' && eRadius >= 52 && (b.leftB() || b.rightB()) ) {
+  //  //if (key == 'b' && check) {
+  //    stroke(1, 255, 1);
+  //  } else if (key == 'b' && !(eRadius >= 52)) {
+  //    stroke(255, 1, 1);
+  //  }
+  //} else {
+  //  //if (eRadius >= 52) {
+  //  //  stroke(255, 1, 1);
+  //  //} else {
+  //  //  stroke(255);
+  //  //}
+  //  stroke(255);
+  //}
+  stroke(255);
   translate (-200, 1);
   arrayCopy(xc, Xcopy);
   for (int i=1; i<num; i++) {

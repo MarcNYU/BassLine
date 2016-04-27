@@ -85,7 +85,7 @@ class Ball {
       if (pos.x < 40) {
         velo.x = 0;
         velo.y = 0;
-        pos.x = 40; 
+        pos.x = 40;
       } else if (pos.x > 440) {
         velo.x = 0;
         velo.y = 0;
@@ -126,7 +126,7 @@ class Ball {
       //}
     }
   }
-  
+
   boolean TopLine() {
     if (pos.y < ceilling) return true;
     return false;
@@ -159,8 +159,10 @@ class Ball {
     showSecLife();
     noStroke();
     showFrozen();
+    noStroke();
     showLastPosition();
     //showTrail();
+    noStroke();
     drawPlayer();
   }
   void showSecLife() {
@@ -184,12 +186,22 @@ class Ball {
       for (int i=0; i<radius; i++) {
         j[i] = pos.x;
         k[i] = pos.y;
+        if (!(jump && eRadius >= 52)) {
+          fill(255, 1, 1);
+        } else {
+          fill(100, 255, 100);
+        }
         ellipse (j[i], k[i], radius, radius);
       }
     } else {
       for (int i=0; i<radius; i++) {
         j[i] = j [i+1];
         k[i] = k [i+1];
+        if (!(jump && eRadius >= 52)) {
+          fill(255, 1, 1);
+        } else {
+          fill(100, 255, 100);
+        }
         ellipse (j[i], k[i], i, i);
       }
     }
@@ -204,7 +216,8 @@ class Ball {
     k[25] = pos.y;
   }
   void drawPlayer() {
-    ellipse(pos.x, pos.y, radius, radius);
+    fill(100, 255, 100);
+    ellipse(pos.x, pos.y, radius+1, radius+1);
   }
 
   //void render() {
@@ -303,7 +316,7 @@ class Ball {
   {
     currentTime = timer;
     destTime = timer + 50;
-    pos.y = 300;
+    pos.y = 600;
     delay = true;
     secLifeOn = false;
   }

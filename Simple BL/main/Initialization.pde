@@ -1,5 +1,5 @@
 void initGame() {
-  b = new Ball(40, height-200, 25);
+  b = new Ball(40, height-200, 26);
   //b = new Player(40, height-200);
   c = new Camera();
   classicVi = new Visualizer();

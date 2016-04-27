@@ -15,7 +15,7 @@ void input() {
 //   //value = 255;
 //   jump = true;
 //   start = false;
-    
+
 // } else {
 //   jump = false;
 // }
@@ -28,7 +28,21 @@ void keyPressed() {
 }
 
 void keyReleased() {
+  jump = false;
   releasedKey = true;
   upPressed = false;
   downPressed = false;
+}
+
+void check() {
+  if (!b.leftB() && !b.rightB() && jump) {
+    b.freeze();
+    gravity = .6;
+  } else {
+    if (b.pos.y < ceilling) {
+      gravity = .65;
+    } else {
+      gravity = .4;
+    }
+  }
 }

@@ -15,11 +15,12 @@ void Game() {
     input();
   } 
   if (!startOfGame) {
-    ns.drawNoteSheet();
+    //ns.drawNoteSheet();
   }
   classicVi.drawEQ();
   //classicVi.drawBeat();
   input();
+  check();
   b.update();
   drawGuides();
   drawStringL();
