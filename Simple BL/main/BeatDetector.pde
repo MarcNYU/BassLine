@@ -1,5 +1,6 @@
-AudioContext ac;
+//AudioContext ac;
 PeakDetector beatDetector;
+SamplePlayer sp;
 
 float eRadius;
 
@@ -14,7 +15,7 @@ void initBeat()
   ac.out.addInput(g);
 
   // load up a sample included in code download
-  SamplePlayer sp = null;
+  sp = null;
   try
   {
     sp = new SamplePlayer(ac, new Sample(sketchPath("") + songList[currentSongIdx])); // load up a new SamplePlayer using an included audio file

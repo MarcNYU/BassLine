@@ -13,7 +13,7 @@ class Ball {
 
   float bounce;
   float radius;
-  int score;
+  //int score;
   int bounceCounter;
   int bonusCap = 20;
 

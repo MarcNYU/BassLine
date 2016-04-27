@@ -8,11 +8,17 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 Visualizer menuVi;
+AudioContext ac;
 
 String[] songList = new String[3];
 String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
 String song2 = "Coldplay - Adventure Of A Lifetime Instrumental.mp3";  
 String song3 = "Twenty One Pilots - Stressed Out (Tomsize Remix).mp3";
+
+Integer[] songRuntimes = new Integer[3];
+Integer sLen1 = 180000 + 43000;//00:03:43 = (180,000 + 43000)
+Integer sLen2 = 240000 + 26000;//00:04:26 = (240,000 + 26000)
+Integer sLen3 = 180000 + 44000;//00:03:44 = (180,000 + 44000)
 
 Boolean songChosen = false;
 
@@ -27,7 +33,11 @@ void setup() {
   songList[0] = song1;
   songList[1] = song2;
   songList[2] = song3;
+  songRuntimes[0] = sLen1;
+  songRuntimes[1] = sLen2;
+  songRuntimes[2] = sLen3;
   menuVi = new Visualizer();
+  ac = new AudioContext();
   initMusic();
   gameStates();
   initGame();
@@ -40,6 +50,14 @@ void draw() {
   background(0);
   println(frozen);
   outt.mute();
+  if( ac.getTime() > songRuntimes[currentSongIdx] + 5000){
+       //songEnded = false;
+     //else if( ac.getTime() > 5000){    
+       println("song ended");
+       state = 4;
+      
+       
+     }
   gameStates();
 
   if (keyPressed ) {

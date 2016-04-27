@@ -57,35 +57,35 @@ void drawFG() {
   rect(0, height-41, width-1, 38);
   textSize(30);
   fill(100, 255, 100);
-  text("Score: ", 20, 35);
-  if (secLifeOn) {
-    text("Extra Life", width-150, 35);
-  }
+  //text("Score: ", 20, 35);
+  //if (secLifeOn) {
+  //  text("Extra Life", width-150, 35);
+  //}
   fill(255);
   noStroke();
   ellipse(width/2, height-45, eRadius, eRadius);
   popMatrix();
 }
 
-void drawScore() {
+void drawScore(float minutes, float seconds) {
   textSize(15);
   fill(255);
-  text("High Level Time: ", 80, 300);
+  text("High Level Time: "+ minutes  + ":" + seconds , 80, 300);
   text(" x 50 = ", 250, 300);
-  text("PlaceholderScore", 250, 300);
+  text( score, 250, 300);
 
-  text("Mid Level Time: ", 80, 350);
+  text("Mid Level Time: " + minutes  + ":" + seconds , 80, 350);
   text(" x 30 = ", 250, 350);
-  text("PlaceholderScore", 250, 350);
+  text( score, 250, 350);
 
-  text("Low Level Time: ", 80, 400);
+  text("Low Level Time: " + minutes  + ":" + seconds, 80, 400);
   text(" x 10 = ", 250, 400);
-  text("PlaceholderScore", 250, 400);
+  text( score, 250, 400);
 
   stroke(255);
   line(40, 450, width-40, 450);
   text("Final Score: ", 80, 500);
-  text("PlaceholderScore", 250, 500);
+  text(score, 250, 500);
 }
 
 void drawBG() {

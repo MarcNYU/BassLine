@@ -25,7 +25,7 @@ Boolean releasedKey = true;
 // GAME VARS
 int move = 0;
 int state = 0;
-int score;
+float score;
 
 // MENU VARS
 int blinkColor;
