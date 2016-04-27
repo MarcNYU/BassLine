@@ -1,7 +1,7 @@
 void Game() {
-  println(frameRate);
+  //println(frameRate);
   if (!start) {
-    mp3.play();
+    //mp3.play();
   }
   if (b.pos.x < left || b.pos.x > right) {
     input();
@@ -19,9 +19,9 @@ void resetGame(){
     
     initMusic();
     initGame();
-    c.pos.x = 0;
-    c.pos.y = 0;
-    translate(c.pos.x, c.pos.y);
+    //c.pos.x = 0;
+    //c.pos.y = 0;
+    //translate(c.pos.x, c.pos.y);
     score = 0;
 }
 

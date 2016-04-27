@@ -1,7 +1,7 @@
 // INITIALIZATION VARS
 Visualizer classicVi;
 Minim minim;
-FFT fft;
+ddf.minim.analysis.FFT fft;
 AudioOutput out;
 AudioPlayer mp3;
 BeatDetect beat;
@@ -12,7 +12,13 @@ NoteSheet ns;
 // GAME VARS
 int move = 0;
 int state = 0;
-int score;
+//int score;
+
+//MUSIC VARS
+int currentSongIdx = 0;
+Boolean musicPaused = false; 
+int timer = millis();
+Boolean releasedKey = true;
 
 // GUIDE VARS
 float ceilling = height+100;
@@ -24,6 +30,7 @@ float right = 430;
 float gravity = .3;
 
 // PLAYER VARS
+boolean gameInit = true;
 boolean jump;
 boolean start = true;
 int currentTime = 0;
@@ -33,9 +40,21 @@ boolean increase = false;
 boolean secLifeOn = false;
 boolean hasPowerUp = false;
 int increaseRadius = 50;
+boolean delay = false;
+boolean collected = true;
 
 // EQ VARS
-float eRadius;
+//float eRadius;
+
+// MENU VARS
+int blinkColor;
+int blinkChange = 5;
+Boolean upPressed = false;
+Boolean downPressed = false;
+
+// BEAT VARS
+float brightness;
+int time; // tracks the time 
 
 // LINE VARS
 float spike = -1;

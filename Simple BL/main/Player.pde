@@ -89,7 +89,7 @@ class Ball {
       gravity = .3;
     }
     if (grounded()) {
-      state = 1;
+      state = 2;
       alive = false;
     }
     if (pos.y < ceilling) {
