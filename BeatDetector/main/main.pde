@@ -18,11 +18,11 @@ void draw()
   int beats[] = bq.nexts(); // returns an array of time of beats
   for (int i = 0; i < beats.length; ++i) {
     
-    int y = height - (beats[i] - millis()) * height / forward;
+    int y = height - beats[i] * height / forward;
     line (0, y, width, y);
   }
   int next = bq.next(); // return next beat
-  if (next - millis() <= 20) {
+  if (next <= 20) {
      brightness = 1; 
   }
   fill(brightness*255);

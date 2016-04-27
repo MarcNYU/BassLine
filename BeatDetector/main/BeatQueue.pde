@@ -21,7 +21,7 @@ class BeatQueue {
   // Give the time of next beat
   public int next() {
     pop_invalids();
-    return queue[front];
+    return queue[front] - millis();
   }
   
   // Give an array of times of beat within the set period 
@@ -30,7 +30,7 @@ class BeatQueue {
     pop_invalids();
     int result[] = new int[size];
     for (int i = front, count=0; i != end; i = increase_index(i), ++count) {
-      result[count] = queue[i]; 
+      result[count] = queue[i] - millis(); 
     }
     return result;
   }
