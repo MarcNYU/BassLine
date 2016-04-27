@@ -1,4 +1,4 @@
-AudioContext ac;
+//AudioContext ac;
 PeakDetector beatDetector;
 
 float eRadius;
@@ -8,7 +8,7 @@ void initBeat()
   time = millis();
 
   // set up the AudioContext and the master Gain object
-  ac = new AudioContext();
+  //ac = new AudioContext();
   beads.Gain g = new beads.Gain(ac, 2, 0.2);
   ac.out.addInput(g);
 

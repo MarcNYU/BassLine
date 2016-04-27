@@ -95,6 +95,7 @@ class Ball {
       }
       if (grounded()) {
         //playError();
+        //ac.reset();
         state = 2;
         alive = false;
       }

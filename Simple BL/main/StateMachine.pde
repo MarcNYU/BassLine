@@ -1,3 +1,9 @@
+float fixDec(float n, int d) {
+  return Float.parseFloat(String.format("%." + d + "f", n));
+}
+int seconds;
+int minutes;
+float score;
 void gameStates()
 {
   switch(state)
@@ -18,27 +24,9 @@ void gameStates()
     fill(50, 150, 255);
     //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
     text("BassLine\n\n", width/2-textWidth("BassLine\n\n")/2, height/4-100);
-    //textSize(20);
-    //fill(255);
-    //text("Select the number that \ncorresponds with each song\n\n", width/2-textWidth("Select the number that \n\ncorresponds with each song\n\n")/2, height/4+84);
+    
     textSize(15);
-    //if (keyPressed) {
-    ////If the user presses the right arrow, the next song in the array is played
-    //  if (key == CODED) {
-    //     if (keyCode == RIGHT) {
-    //       noLoop();
-    //       if(currentSongIdx < songList.length -1)
-    //         currentSongIdx++;
-    //       text(currentSongIdx + ". " + songList[currentSongIdx] + "\n", width/2-textWidth(currentSongIdx + ". " +songList[currentSongIdx]+ "\n")/2, height- 282 + 40);
-    //     }
-    //     else if(keyCode == LEFT){
-    //       if(currentSongIdx > 0)
-    //         currentSongIdx--;
-    //         text(currentSongIdx + ". " + songList[currentSongIdx] + "\n", width/2-textWidth(currentSongIdx + ". " +songList[currentSongIdx]+ "\n")/2, height- 282 + 40);
-    //     }
-    //  }
-    //}
-    //loop();
+    
     if (keyPressed && releasedKey == true) {
       //If the user presses the right arrow, the next song in the array is played
       releasedKey = false;
@@ -89,54 +77,38 @@ void gameStates()
 
     loop();
 
-    //for(int i = 0; i < songList.length; i++){
-    // text(i+1 + ". " + songList[i] + "\n", width/2-textWidth(i+1 + ". " +songList[i]+ "\n")/2, height- 282 + i *40);   
-
+   
     if (keyPressed) {
       if (key == ENTER)
       {
+        fill(255);
         text("Loading...", width/2-textWidth("loading...")/2, height - 200); 
         state = 1;
       }
     }
-    //text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
-
-    //text("loading", width/2-textWidth("loading")/2, height/4-24);
+    
     menuVi.drawEQ();
-    //if (keyPressed ) {
-    //  //text("Loading", width/2-textWidth("Loading")/2, height/2-24);
-    //  if (key == '1') {
-    //    currentSongIdx = 0;
-    //    //text("loading", width/2-textWidth("loading")/2, height/4-24);  
-    //    state = 1;
-
-
-    //  } else if (key == '2') {
-    //    currentSongIdx = 1;
-    //    //text("Loading", width/2-textWidth("Loading")/2, height/2-24);
-
-    //    state = 1;
-    //  }
-    //  else if(key == '3'){
-    //    currentSongIdx = 2;
-    //    text("Loading", width/2-textWidth("Loading")/2, height/2-24);
-
-    //    state = 1;
-    //  }
-
-
+    
     break;
   case 1:
-
-    println("game started");
+    seconds = (int)(ac.getTime()/(1000))%60;
+    minutes = (int)(ac.getTime()/1000)/60;  
+    score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    
+    //println("game started");
     if (gameInit) {
       initBeat();
       gameInit = false;
     }
-    if (!(ac.isRunning())) {
-      ac.start();
-    }
+    
     Game();
+    fill(0,0,150);
+    text("Score: " + score , 50,40);
+    if (!(ac.isRunning())) {
+      songEnded = true;
+      
+    }
+    
     //println("Play Test");
 
 
@@ -147,20 +119,40 @@ void gameStates()
     //mp3.close();
     //ac.reset();
     //frequencyEnvelope.clear();
-    ac.stop();
 
+    ac.stop();
+    
+    seconds = (int)(ac.getTime()/(1000))%60;
+    minutes = (int)(ac.getTime()/1000)/60;  
+    //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    
+    
     background(0);
     textSize(32);
     fill(255);
     text("GAME OVER", width/2-textWidth("GAME OVER")/2, height/2-32);
-    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
-    text("Distance: " + (int)(score/100), width/2-textWidth("Distance: #")/2, height-100);
+    //text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2+32);
+    textSize(22);
+    text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
+    println("Current Time: " + minutes  + ":" + seconds);
+    text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
 
+    fill(blinkColor);
+    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 32);
+    blinkColor+= blinkChange;
+    if (blinkColor >= 255 || blinkColor <= 0)
+      blinkChange = blinkChange* -1;
+    //drawScore();
+     //menuVi.drawEQ();
+     
     if (keyPressed) {
       resetGame();
       start = true;
+      returnToPlay = true;
       //frequencyEnvelope.clear();
-      state = 0;
+      state = 1;
+      
+      
     }
     //println("Game Over");
 
@@ -171,5 +163,40 @@ void gameStates()
     Game();
     println("Debug");
     break;
+    
+  case 4:
+    //print("\n\n\n\nstate 4 entered\n\n\n\n");
+    ac.stop();
+    background(0);
+    textSize(20);
+    fill(255);
+    //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, height/2-32);
+    text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
+    println("Current Time: " + minutes  + ":" + seconds);
+    text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
+
+    fill(blinkColor);
+    text("Hit any key to return to the main menu", width/2-textWidth("Hit any key to return to the main menu")/2, height/2+52);
+    blinkColor+= blinkChange;
+    if (blinkColor >= 255 || blinkColor <= 0)
+      blinkChange = blinkChange* -1;
+    
+    menuVi.drawEQ();
+    stroke(255);
+    line(40, 0, 40, height);
+    line(440, 0, 440, height);   
+    
+    
+    text("Distance: " + score, width/2-textWidth("Distance: #")/2, height-100);
+
+    if (keyPressed) {
+      //frequencyEnvelope.clear();
+      state = 0;
+      
+    }   
+    break;
   }
+  
+    
 }
