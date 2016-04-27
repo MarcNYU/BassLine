@@ -19,14 +19,15 @@ void draw()
   for (int i = 0; i < beats.length; ++i) {
     
     int y = height - beats[i] * height / forward;
-    line (0, y, width, y);
+    //line (0, y, width, y);
+    ellipse(width/2, height/2, y, y);
   }
   int next = bq.next(); // return next beat
   if (next <= 20) {
      brightness = 1; 
   }
   fill(brightness*255);
-  ellipse(width/2,height/2,width/2,height/2); 
+  //ellipse(width/2,height/2,width/2,height/2); 
   brightness -= 0.1; 
 
 }
