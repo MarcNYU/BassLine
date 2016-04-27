@@ -10,7 +10,7 @@ void initBeat()
   // set up the AudioContext and the master Gain object
   ac = new AudioContext();
   gainGlide = new Glide(ac, 0.0, 50);
-  beads.Gain g = new beads.Gain(ac, 2, gainGlide);
+  beads.Gain g = new beads.Gain(ac, 2, .2);
   ac.out.addInput(g);
 
   // load up a sample included in code download
@@ -79,10 +79,12 @@ void drawBeat() {
   stroke(100, 255, 100);
   //strokeWeight(2);
   noFill();
-  //ellipse(width/2,height-100,eRadius,eRadius);  
+   
   ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
   ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
 
+   
+  
   // decrease brightness over time
   int dt = millis() - time;
   eRadius -= (dt * 0.2);
@@ -92,7 +94,7 @@ void drawBeat() {
   time += dt; 
   // set threshold and alpha to the mouse position
   beatDetector.setThreshold(0.95);
-  beatDetector.setAlpha(0.95);
+  beatDetector.setAlpha(0.99);
   //beatDetector.setThreshold((float)width-10);
   //beatDetector.setAlpha((float)height-10);
   popMatrix();

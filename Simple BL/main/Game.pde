@@ -25,6 +25,7 @@ void Game() {
   drawStringR();
   drawBeat();
   b.render();
+  drawFG();
 }
 
 void resetGame() {
@@ -41,13 +42,24 @@ void resetGame() {
 }
 
 void drawFG() {
-  if (!start) {
-    ns.drawNoteSheet();
-  }
-  //DrawLines();
-  classicVi.drawEQ();
-  //classicVi.drawBeat();
-  //drawGuides();
+  pushMatrix();
+  rectMode(CORNER);
+  
+  fill(0);
+  stroke(255);
+  rect(0,0,width-1,40);
+  rect(0,height-42,width-1,40);
+  fill(0);
+  ellipse(width/2,height-45, 85, 85);
+  stroke(0);
+  rect(0,height-41,width-1,38);
+  textSize(40);
+  fill(100,255,100);
+  text("Score: ", 20, 35);
+  fill(255);
+  noStroke();
+  ellipse(width/2,height-45, eRadius, eRadius);
+  popMatrix();
 }
 
 
