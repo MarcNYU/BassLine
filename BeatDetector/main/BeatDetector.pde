@@ -3,12 +3,13 @@ import java.util.TimerTask;
 import beads.*; // import the beads library
 
 class BeatDetector {
-  int delays = 1000;  // The delay from line generation to musci beats 
+  public int forward;  // How long to look forward 
   int target_interval = 500;  // Target interval of beats, will dynamicly affect threshold
   
   int last_beat;
   float default_threshold = (float)1e-10;
   float cur_threshold = default_threshold;
+  
   
   AudioContext ac; // create our AudioContext
   AudioContext ac2;
@@ -16,7 +17,8 @@ class BeatDetector {
   Gain gain2;
   PeakDetector peakDetector;
   
-  BeatDetector() {
+  BeatDetector(int forward) {
+    this.forward = forward;
     // set up the AudioContext and the master Gain object
     ac = new AudioContext();
     gain = new Gain(ac, 1, 0.1);
@@ -69,9 +71,9 @@ class BeatDetector {
     // Delay Gain
     ac2 = new AudioContext();
     gain2 = new Gain(ac2, 1, 1);
-    TapIn delayIn = new TapIn(ac2, delays+100);
+    TapIn delayIn = new TapIn(ac2, forward+100);
     delayIn.addInput(gain2);
-    TapOut delayOut = new TapOut(ac2, delayIn, delays); 
+    TapOut delayOut = new TapOut(ac2, delayIn, forward); 
     //Gain delayGain = new Gain(ac2, 1, 1); // the gain for our delay
     //delayGain.addInput(delayOut); // connect the delay output to the gain
     ac2.out.addInput(delayOut);
@@ -105,33 +107,33 @@ class BeatDetector {
     peakDetector.addMessageListener(b);
   }
   
-  void increaeThreshold() {             
+  private void increaeThreshold() {             
     if (cur_threshold < default_threshold) {
       cur_threshold = default_threshold; 
     } else {
       cur_threshold = cur_threshold * 100;
     }
     peakDetector.setThreshold(cur_threshold);
-    println("increasing " + cur_threshold);
+    //println("increasing " + cur_threshold);
   }
   
-  void decreaseThreshold() {
+  private void decreaseThreshold() {
     if (cur_threshold > default_threshold) {
       cur_threshold = default_threshold; 
    } else {
      cur_threshold = cur_threshold * 0.1;
    }
    peakDetector.setThreshold(cur_threshold);
-    println("decreasing " + cur_threshold);
+    //println("decreasing " + cur_threshold);
   }
   
-  void scheduleDecrease() {
-    println("scheduled");
+  private void scheduleDecrease() {
+    //println("scheduled");
     final float pre_threshold = cur_threshold;
     new Timer().schedule(new TimerTask() {
       public void run() {
         if (cur_threshold == pre_threshold) {
-           println("affecting");
+           //println("affecting");
            decreaseThreshold();
            scheduleDecrease();
         };
