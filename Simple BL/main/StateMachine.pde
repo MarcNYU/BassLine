@@ -94,6 +94,7 @@ void gameStates()
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
     score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
+    //b.manageScore();
     //fill(100, 255, 100);
     //text("Score: " + score, 20, 35);
   if (secLifeOn) {
