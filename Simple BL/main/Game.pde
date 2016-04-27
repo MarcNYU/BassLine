@@ -67,25 +67,38 @@ void drawFG() {
   popMatrix();
 }
 
+  
+  
 void drawScore(int minutes, int seconds) {
   textSize(15);
   fill(255);
-  //text("High Level Time: "+ minutes  + ":" + seconds , 80, 300);
+  float high = highLevCount * score;
+  float mid = midLevCount * score;
+  float bottom = bmLevCount * score;
+  text("High Level Points: " , 80, 300);
   //text(" x 50 = ", 250, 300);
-  //text( score, 350, 300);
+  text( high, 350, 300);
 
-  //text("Mid Level Time: " + minutes  + ":" + seconds , 80, 350);
+  text("Mid Level Points: " , 80, 350);
   //text(" x 30 = ", 250, 350);
-  //text( score, 350, 350);
-
-  text("Time in Song: " + minutes  + ":" + seconds, 80, 300);
+  text( mid  , 350, 350);
+  
+  text("Bottom Level Points: " , 80, 450);
+  //text(" x 30 = ", 250, 450);
+  text( bottom , 350, 450);
+  score = bottom  + mid + high;
+  text("Time in Song: ", 80, 240);
+  text( minutes  + ":" + seconds , 350, 240);
+  stroke(255);
+  line(40, 470, width-40, 470);
+  
+  text("Final Score: ", 80, 550);
+  text(score, 350, 550);
   //text(" x 10 = ", 250, 400);
   //text( score, 350, 400);
 
-  //stroke(255);
-  //line(40, 450, width-40, 450);
-  text("Final Score: ", 80, 400);
-  text(score, 170, 400);
+  
+  
 }
 
 void drawBG() {

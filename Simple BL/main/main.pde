@@ -50,7 +50,7 @@ void draw() {
   background(0);
   println(frozen);
   outt.mute();
-  if( ac.getTime() > songRuntimes[currentSongIdx] + 5000){
+  if( ac.getTime() > songRuntimes[currentSongIdx] + 5000 && !startOfGame){
        //songEnded = false;
      //else if( ac.getTime() > 5000){    
        println("song ended");

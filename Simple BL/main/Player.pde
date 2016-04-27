@@ -4,6 +4,9 @@ boolean startOfGame = true;
 float gravity = .3;
 Ball b;
 
+  int bmLevCount = 0;
+  int midLevCount = 0;
+  int highLevCount = 0;
 class Ball {
   PVector pos;
   PVector velo;
@@ -19,6 +22,7 @@ class Ball {
 
   boolean alive;
   int bColor;
+  
 
 
   Ball (float x, float y, float r) {
@@ -270,13 +274,17 @@ class Ball {
   //  ellipse (j[25], k[25], radius, radius);
   //  popMatrix();
   //}
+    
   void manageScore() {
     if (BelowMidLine()) {
-      score += 10;
+      //score += 10;
+      bmLevCount += 10;
     } else if (AboveMidLine()) {
-      score += 30 * bounceCounter;
+      //score += 30 * bounceCounter;
+      midLevCount += 30 * bounceCounter;
     } else if (TopLine()) {
-      score += 50 * bounceCounter;
+      //score += 50 * bounceCounter;
+      highLevCount += 50 * bounceCounter;
     }
   }
   void manageBonusCounter() {

@@ -159,7 +159,7 @@ void gameStates()
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
-    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 200);
+    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 230);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
@@ -201,13 +201,13 @@ void gameStates()
     textSize(20);
     fill(255);
     //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
-    text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, height/2-32);
-    text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
-    println("Current Time: " + minutes  + ":" + seconds);
-    text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
+    text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, 180);
+    //text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
+    //println("Current Time: " + minutes  + ":" + seconds);
+    //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
-    text("Hit any key to return to the main menu", width/2-textWidth("Hit any key to return to the main menu")/2, height/2+52);
+    text("Hit any key to return to the main menu", width/2-textWidth("Hit any key to return to the main menu")/2, height/2 + 230);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
@@ -217,8 +217,8 @@ void gameStates()
     line(40, 0, 40, height);
     line(440, 0, 440, height);   
     
-    
-    text("Distance: " + score, width/2-textWidth("Distance: #")/2, height-100);
+    drawScore(minutes,seconds);
+    //text("Distance: " + score, width/2-textWidth("Distance: #")/2, height-100);
 
     if (keyPressed) {
       //frequencyEnvelope.clear();
