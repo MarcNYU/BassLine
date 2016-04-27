@@ -38,6 +38,7 @@ void setup() {
 
 void draw() {
   background(0);
+  println(frozen);
   outt.mute();
   gameStates();
 

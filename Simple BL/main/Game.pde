@@ -1,3 +1,5 @@
+Glide gainGlide;
+
 void Game() {
   //outt.mute();
   println(frameRate);
@@ -9,18 +11,18 @@ void Game() {
   //if (!start) {
   //  mp3.play();
   //}
-  if (b.pos.x < left || b.pos.x > right) {
+  if (b.pos.x == left || b.pos.x == right) {
     input();
   } 
-  if (!start) {
+  if (!startOfGame) {
     ns.drawNoteSheet();
   }
-  drawGuides();
   classicVi.drawEQ();
   //classicVi.drawBeat();
   input();
+  check();
   b.update();
-
+  drawGuides();
   drawStringL();
   drawStringR();
   drawBeat();
@@ -44,46 +46,24 @@ void resetGame() {
 void drawFG() {
   pushMatrix();
   rectMode(CORNER);
-  
+
   fill(0);
   stroke(255);
-  rect(0,0,width-1,40);
-  rect(0,height-42,width-1,40);
+  rect(0, 0, width-1, 40);
+  rect(-10, height-42, width+10, 40);
   fill(0);
-  ellipse(width/2,height-45, 85, 85);
+  ellipse(width/2, height-45, 85, 85);
   stroke(0);
-  rect(0,height-41,width-1,38);
+  rect(0, height-41, width-1, 38);
   textSize(40);
-  fill(100,255,100);
+  fill(100, 255, 100);
   text("Score: ", 20, 35);
   fill(255);
   noStroke();
-  ellipse(width/2,height-45, eRadius, eRadius);
+  ellipse(width/2, height-45, eRadius, eRadius);
   popMatrix();
 }
 
 
 void drawBG() {
-}
-
-void drawScore()
-{
-  textSize(15);
-  fill(255);
-  text("High Level Time: ", 80, 300);
-  text(" x 50 = ", 250, 300);
-  text("PlaceholderScore", 250, 300);
-  
-  text("Mid Level Time: " , 80, 350);
-  text(" x 30 = ", 250, 350);
-  text("PlaceholderScore", 250, 350);
-  
-  text("Low Level Time: " , 80, 400);
-  text(" x 10 = ", 250, 400);
-  text("PlaceholderScore", 250, 400);
-  
-  stroke(255);
-  line(40, 450, width-40, 450);
-  text("Final Score: ", 80, 500);
-  text("PlaceholderScore", 250, 500);
 }

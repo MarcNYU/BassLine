@@ -1,6 +1,6 @@
 // GUIDE VARS
 float ceilling = 250;
-float ground = 750;
+float ground = 740;
 float middle = 450;
 float left = 40;
 float right = 440;

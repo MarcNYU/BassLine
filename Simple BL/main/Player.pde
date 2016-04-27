@@ -1,6 +1,8 @@
 float [] j = new float [50];
 float [] k = new float [50];
-
+boolean startOfGame = true;
+float gravity = .3;
+Ball b;
 
 class Ball {
   PVector pos;
@@ -11,6 +13,9 @@ class Ball {
 
   float bounce;
   float radius;
+  int score;
+  int bounceCounter;
+  int bonusCap = 20;
 
   boolean alive;
   int bColor;
@@ -26,6 +31,7 @@ class Ball {
     alive = true;
     //bColor = (int)(random(1, 3));
     bColor = 1;
+    bounceCounter = 0;
     for (int i = 0; i<50; i++) {
       j[i] = -10;
       k[i] = -10;
@@ -52,7 +58,7 @@ class Ball {
       }
 
 
-      if (start) {
+      if (startOfGame) {
         velo.y = 0;
       } else {
         velo.y += gravity;
@@ -79,7 +85,7 @@ class Ball {
       if (pos.x < 40) {
         velo.x = 0;
         velo.y = 0;
-        pos.x = 40; 
+        pos.x = 40;
       } else if (pos.x > 440) {
         velo.x = 0;
         velo.y = 0;
@@ -111,7 +117,7 @@ class Ball {
         }
       }
 
-      if (alive && !start) {
+      if (alive && !startOfGame) {
         score += 1;
       }
 
@@ -119,6 +125,19 @@ class Ball {
       // jump = false; 
       //}
     }
+  }
+
+  boolean TopLine() {
+    if (pos.y < ceilling) return true;
+    return false;
+  }
+  boolean BelowMidLine() {
+    if (pos.y > middle && pos.y < ground) return true;
+    return false;
+  }
+  boolean AboveMidLine() {
+    if (pos.y < middle && pos.y > ceilling) return true;
+    return false;
   }
 
   Boolean grounded() {
@@ -137,49 +156,137 @@ class Ball {
   }
 
   void render() {
-    pushMatrix();
+    showSecLife();
     noStroke();
-    if (secLifeOn == true)
-    {
+    
+    noStroke();
+    showLastPosition();
+    //showTrail();
+    noStroke();
+    //showFrozen();
+    drawPlayer();
+  }
+  void showSecLife() {
+    noStroke();
+    if (secLifeOn) {
       stroke( #03F6FC );
       //strokeWeight(2);
       fill(0);
       ellipse(pos.x, pos.y, radius+7, radius+7);
     }
-    noStroke();
+  }
+  void showFrozen() {
     if (frozen == false) {
       fill(100, 255, 100);
     } else {
       fill(255);
     }
-    //fill (#03FFFD);
+  }
+  void showLastPosition() {
     if (pos.x == 40 || pos.x == 440) {
-     for (int i=0; i<radius; i++) {
-       j[i] = pos.x;
-       k[i] = pos.y;
-       ellipse (j[i], k[i], radius, radius);
-     }
+      for (int i=0; i<radius; i++) {
+        j[i] = pos.x;
+        k[i] = pos.y;
+        if (!(jump && eRadius >= 52)) {
+          fill(255, 1, 1);
+        } else {
+          fill(100, 255, 100);
+        }
+        ellipse (j[i], k[i], radius, radius);
+      }
     } else {
-     for (int i=0; i<radius; i++) {
-       j[i] = j [i+1];
-       k[i] = k [i+1];
-       ellipse (j[i], k[i], i, i);
-     }
+      for (int i=0; i<radius; i++) {
+        j[i] = j [i+1];
+        k[i] = k [i+1];
+        if (!(jump && eRadius >= 52)) {
+          fill(255, 1, 1);
+        } else {
+          fill(100, 255, 100);
+        }
+        ellipse (j[i], k[i], i, i);
+      }
     }
-    ellipse (pos.x, pos.y, radius, radius);
-    //for (int i=0; i<25; i++) {
-    // j[i] = j [i+1];
-    // k[i] = k [i+1];
-    // ellipse (j[i], k[i], i, i);
-    //}
+  }
+  void showTrail() {
+    for (int i=0; i<radius; i++) {
+      j[i] = j [i+1];
+      k[i] = k [i+1];
+      ellipse (j[i], k[i], i, i);
+    }
+    j[25] = pos.x;
+    k[25] = pos.y;
+  }
+  void drawPlayer() {
+    if (frozen == false) {
+      fill(100, 255, 100);
+    } else {
+      fill(255);
+    }
+    ellipse(pos.x, pos.y, radius+1, radius+1);
+  }
+
+  //void render() {
+  //  pushMatrix();
+  //  noStroke();
+  //  if (secLifeOn == true)
+  //  {
+  //    stroke( #03F6FC );
+  //    //strokeWeight(2);
+  //    fill(0);
+  //    ellipse(pos.x, pos.y, radius+7, radius+7);
+  //  }
+  //  noStroke();
+  //  if (frozen == false) {
+  //    fill(100, 255, 100);
+  //  } else {
+  //    fill(255);
+  //  }
+  //  //fill (#03FFFD);
+  //  if (pos.x == 40 || pos.x == 440) {
+  //   for (int i=0; i<radius; i++) {
+  //     j[i] = pos.x;
+  //     k[i] = pos.y;
+  //     ellipse (j[i], k[i], radius, radius);
+  //   }
+  //  } else {
+  //   for (int i=0; i<radius; i++) {
+  //     j[i] = j [i+1];
+  //     k[i] = k [i+1];
+  //     ellipse (j[i], k[i], i, i);
+  //   }
+  //  }
+  //  ellipse (pos.x, pos.y, radius, radius);
+  //  //for (int i=0; i<25; i++) {
+  //  // j[i] = j [i+1];
+  //  // k[i] = k [i+1];
+  //  // ellipse (j[i], k[i], i, i);
+  //  //}
 
 
-    ////Causing the array index error
+  //  ////Causing the array index error
 
-    //j[25] = pos.x;
-    //k[25] = pos.y;
-    ellipse (j[25], k[25], radius, radius);
-    popMatrix();
+  //  //j[25] = pos.x;
+  //  //k[25] = pos.y;
+  //  ellipse (j[25], k[25], radius, radius);
+  //  popMatrix();
+  //}
+  void manageScore() {
+    if (BelowMidLine()) {
+      score += 10;
+    } else if (AboveMidLine()) {
+      score += 30 * bounceCounter;
+    } else if (TopLine()) {
+      score += 50 * bounceCounter;
+    }
+  }
+  void manageBonusCounter() {
+    if (jump && eRadius >= 52 && (pos.x == 40 || pos.x == 440)) {
+      noLoop();
+      bounceCounter++;
+      loop();
+    } else {
+      bounceCounter = 0;
+    }
   }
   void freeze()
   {
@@ -214,7 +321,7 @@ class Ball {
   {
     currentTime = timer;
     destTime = timer + 50;
-    pos.y = 300;
+    pos.y = 600;
     delay = true;
     secLifeOn = false;
   }

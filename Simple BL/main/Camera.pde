@@ -6,7 +6,7 @@ class Camera {
     //You should play with the program and code to see how the staring position can be changed
   }
   void drawC() {
-    if (!start) {
+    if (!startOfGame) {
       pos.y+=2.9;
     } 
   }
