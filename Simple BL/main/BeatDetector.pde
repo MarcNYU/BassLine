@@ -1,6 +1,8 @@
 //AudioContext ac;
 PeakDetector beatDetector;
 SamplePlayer sp;
+float brightness;
+int time; // tracks the time 
 
 float eRadius;
 

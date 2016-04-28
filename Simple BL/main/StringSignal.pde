@@ -6,6 +6,9 @@ Minim minimc;
 AudioOutput outt;
 StringSignal signal;
 
+Line ll;
+Line rl;
+
 float[] xc;
 float[] Xcopy;
 float[] v;

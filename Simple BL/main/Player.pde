@@ -2,6 +2,8 @@ float [] j = new float [50];
 float [] k = new float [50];
 boolean startOfGame = true;
 float gravity = .3;
+boolean gameInit = true;
+boolean jump;
 Ball b;
 
   int bmLevCount ;
@@ -44,22 +46,9 @@ class Ball {
 
   void update() {
     //pos.y-=move;
-    if (delay == true && currentTime < destTime)
-    {
-      currentTime++;
-    } else {
-      delay = false;
       pos.x += velo.x;
       pos.y += velo.y;
 
-      if (frozen == true)
-        freeze();
-      if (increase == true)
-        increaseSize();
-      if ( pos.y > ground && secLifeOn == true) {
-        //println("secLife", pos.y, ground);
-        secLifeOn();
-      }
 
 
       if (startOfGame) {
@@ -128,7 +117,6 @@ class Ball {
       //if(pos.x == 40 || pos.x == 440){
       // jump = false; 
       //}
-    }
   }
 
   boolean TopLine() {
@@ -160,32 +148,16 @@ class Ball {
   }
 
   void render() {
-    showSecLife();
     noStroke();
     
     noStroke();
     showLastPosition();
     //showTrail();
     noStroke();
-    //showFrozen();
+    
     drawPlayer();
   }
-  void showSecLife() {
-    noStroke();
-    if (secLifeOn) {
-      stroke( #03F6FC );
-      //strokeWeight(2);
-      fill(0);
-      ellipse(pos.x, pos.y, radius+7, radius+7);
-    }
-  }
-  void showFrozen() {
-    if (frozen == false) {
-      fill(100, 255, 100);
-    } else {
-      fill(255);
-    }
-  }
+
   void showLastPosition() {
     if (pos.x == 40 || pos.x == 440) {
       for (int i=0; i<radius; i++) {
@@ -221,59 +193,9 @@ class Ball {
     k[25] = pos.y;
   }
   void drawPlayer() {
-    if (frozen == false) {
-      fill(100, 255, 100);
-    } else {
-      fill(255);
-    }
+     fill(100, 255, 100);
     ellipse(pos.x, pos.y, radius+1, radius+1);
   }
-
-  //void render() {
-  //  pushMatrix();
-  //  noStroke();
-  //  if (secLifeOn == true)
-  //  {
-  //    stroke( #03F6FC );
-  //    //strokeWeight(2);
-  //    fill(0);
-  //    ellipse(pos.x, pos.y, radius+7, radius+7);
-  //  }
-  //  noStroke();
-  //  if (frozen == false) {
-  //    fill(100, 255, 100);
-  //  } else {
-  //    fill(255);
-  //  }
-  //  //fill (#03FFFD);
-  //  if (pos.x == 40 || pos.x == 440) {
-  //   for (int i=0; i<radius; i++) {
-  //     j[i] = pos.x;
-  //     k[i] = pos.y;
-  //     ellipse (j[i], k[i], radius, radius);
-  //   }
-  //  } else {
-  //   for (int i=0; i<radius; i++) {
-  //     j[i] = j [i+1];
-  //     k[i] = k [i+1];
-  //     ellipse (j[i], k[i], i, i);
-  //   }
-  //  }
-  //  ellipse (pos.x, pos.y, radius, radius);
-  //  //for (int i=0; i<25; i++) {
-  //  // j[i] = j [i+1];
-  //  // k[i] = k [i+1];
-  //  // ellipse (j[i], k[i], i, i);
-  //  //}
-
-
-  //  ////Causing the array index error
-
-  //  //j[25] = pos.x;
-  //  //k[25] = pos.y;
-  //  ellipse (j[25], k[25], radius, radius);
-  //  popMatrix();
-  //}
     
   void manageScore() {
     if (BelowMidLine()) {
@@ -296,42 +218,5 @@ class Ball {
     } else {
       bounceCounter = 0;
     }
-  }
-  void freeze()
-  {
-    //println("freeze", currentTime, destTime);
-
-    if (currentTime < destTime )
-    {
-      frozen = true; 
-      currentTime ++;
-    } else
-    {
-      frozen = false;
-      hasPowerUp = false;
-    }
-  }
-  void increaseSize()
-  {
-    //println("increase", currentTime, destTime);
-
-    if (currentTime < destTime )
-    {
-      radius = increaseRadius; 
-      currentTime ++;
-    } else
-    {
-      radius = 25;
-      increase = false;
-      hasPowerUp = false;
-    }
-  }
-  void secLifeOn()
-  {
-    currentTime = timer;
-    destTime = timer + 50;
-    pos.y = 600;
-    delay = true;
-    secLifeOn = false;
   }
 }

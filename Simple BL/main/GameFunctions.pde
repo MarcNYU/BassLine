@@ -1,23 +1,30 @@
 Glide gainGlide;
 
+void initGame() {
+  b = new Ball(40, height-200, 26);
+  //b = new Player(40, height-200);
+  score = (int) b.pos.y;
+  ll = new Line(-200);
+  rl = new Line(200);
+}
+
+void initMusic() {
+
+}
+
 void Game() {
   //outt.mute();
   println(frameRate);
   //println(eRadius);
   //println(brightness);
   gainGlide.setValue(mouseX / (float)width);
-  mp3.play();
-  mp3.mute();
+
   //if (!start) {
   //  mp3.play();
   //}
   if (b.pos.x == left || b.pos.x == right) {
     input();
   } 
-  if (!startOfGame) {
-    ns.drawNoteSheet();
-  }
-  classicVi.drawEQ();
   //classicVi.drawBeat();
   input();
   check();
@@ -37,9 +44,6 @@ void resetGame() {
   ac.reset();
   initMusic();
   initGame();
-  c.pos.x = 0;
-  c.pos.y = 0;
-  translate(c.pos.x, c.pos.y);
   score = 0;
 }
 
@@ -58,9 +62,6 @@ void drawFG() {
   textSize(30);
   fill(100, 255, 100);
   text("Score: " + score * 100 + "%", 20, 35);
-  if (secLifeOn) {
-   text("Extra Life", width-150, 35);
-  }
   fill(255);
   noStroke();
   ellipse(width/2, height-45, eRadius, eRadius);
@@ -110,4 +111,41 @@ void drawScore(int minutes, int seconds) {
 }
 
 void drawBG() {
+}
+
+void input() {
+  if (keyPressed) {
+    //if(key == 'b' && eRadius > 60) {
+    if ((key == ' ' || key == 'b')) {
+      jump = true;
+      startOfGame = false;
+    }
+  } else {
+    jump = false;
+  }
+}
+
+void keyPressed() {
+  if (key == ESC) {
+    //sp.close();
+  }
+}
+
+void keyReleased() {
+  jump = false;
+  releasedKey = true;
+  upPressed = false;
+  downPressed = false;
+}
+
+void check() {
+  if (!b.leftB() && !b.rightB() && jump) {
+    gravity = .6;
+  } else {
+    if (b.pos.y < ceilling) {
+      gravity = .65;
+    } else {
+      gravity = .4;
+    }
+  }
 }

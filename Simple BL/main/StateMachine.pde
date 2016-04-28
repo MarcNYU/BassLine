@@ -4,6 +4,23 @@ float fixDec(float n, int d) {
 int seconds;
 int minutes;
 
+//MUSIC VARS
+int currentSongIdx = 0;
+Boolean musicPaused = false; 
+int timer = millis();
+Boolean releasedKey = true;
+
+// GAME VARS
+int move = 0;
+int state = 0;
+float score;
+
+// MENU VARS
+int blinkColor;
+int blinkChange = 5;
+Boolean upPressed = false;
+Boolean downPressed = false;
+
 void gameStates()
 {
   switch(state)
@@ -87,7 +104,6 @@ void gameStates()
       }
     }
     
-    menuVi.drawEQ();
     
     break;
   case 1:
@@ -97,15 +113,12 @@ void gameStates()
     //b.manageScore();
     //fill(100, 255, 100);
     //text("Score: " + score, 20, 35);
-  if (secLifeOn) {
-    text("Extra Life", width-150, 35);
-  }
+
     
     
     //println("game started");
     if (gameInit) {
-      mp3.play();
-      mp3.mute();
+ 
       
       initBeat();
       
@@ -139,7 +152,7 @@ void gameStates()
     ac.stop();
     //st.kill();
     
-    mp3.close();
+
     
     
     seconds = (int)(ac.getTime()/(1000))%60;
@@ -168,7 +181,7 @@ void gameStates()
      
     if (keyPressed) {
       resetGame();
-      mp3.rewind();
+      
       startOfGame = true;
       //returnToPlay = true;
       //frequencyEnvelope.clear();
@@ -212,7 +225,7 @@ void gameStates()
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
     
-    menuVi.drawEQ();
+ 
     stroke(255);
     line(40, 0, 40, height);
     line(440, 0, 440, height);   

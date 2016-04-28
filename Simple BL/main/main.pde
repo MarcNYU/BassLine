@@ -7,7 +7,7 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
-Visualizer menuVi;
+
 AudioContext ac;
 
 String[] songList = new String[3];
@@ -36,7 +36,6 @@ void setup() {
   songRuntimes[0] = sLen1;
   songRuntimes[1] = sLen2;
   songRuntimes[2] = sLen3;
-  menuVi = new Visualizer();
   ac = new AudioContext();
   initMusic();
   gameStates();
@@ -48,7 +47,6 @@ void setup() {
 
 void draw() {
   background(0);
-  println(frozen);
   outt.mute();
   if( ac.getTime() > songRuntimes[currentSongIdx] + 5000 && !startOfGame){
        //songEnded = false;
