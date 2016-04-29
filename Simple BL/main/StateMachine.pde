@@ -113,7 +113,28 @@ void gameStates()
     //b.manageScore();
     //fill(100, 255, 100);
     //text("Score: " + score, 20, 35);
-
+    
+    //If timer has been initiated (if the player hit the floor), start the fail timer, turn off timer start
+    if(timerStart){
+      failTimer = millis();
+      timerStart = false;    
+    }
+    
+    //If they are still failing (they have hit the floor and haven't risen above the midline) change the color of the ball from white to black
+    if(failing){
+      fadeValue -= failTimer/1000;
+      //If the fail timer has been on for more than five seconds, end the game
+      if((millis() - failTimer) > 5000){
+        state = 2;
+      }
+      //if the player was failing and they are now above the midline, then turn failing off and reset fail timer
+      if(b.AboveMidLine()){
+        failing = false;
+        failTimer = 0;
+      }
+    }
+    
+    
     
     
     //println("game started");

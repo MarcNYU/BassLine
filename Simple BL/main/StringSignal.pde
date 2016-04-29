@@ -65,7 +65,10 @@ void drawStringR() {
   //  //}
   //  stroke(255);
   //}
-  stroke(255);
+  if(!failing)
+    stroke(255);
+  else
+    stroke(fadeValue); 
   translate (200, 1);
   arrayCopy(xc, Xcopy);
   for (int i=1; i<num; i++) {
@@ -95,7 +98,11 @@ void drawStringL() {
   //  //}
   //  stroke(255);
   //}
-  stroke(255);
+  if(!failing)
+    stroke(255);
+  else
+    stroke(fadeValue);
+    
   translate (-200, 1);
   arrayCopy(xc, Xcopy);
   for (int i=1; i<num; i++) {

@@ -100,8 +100,8 @@ class Ball {
         //gravity = .3;
       }
       if (grounded()) {
-        //playError();
-        state = 2;
+        timerStart = true;
+        
         alive = false;
       }
       if (pos.y < ceilling) {
@@ -200,7 +200,14 @@ class Ball {
     k[25] = pos.y;
   }
   void drawPlayer() {
+    //draw the player normally
+    if(!failing){
      fill(100, 255, 100);
+    }
+    //draw the player with the faded color
+    else{
+      fill(100, 255, 100,fadeValue);
+    }
     ellipse(pos.x, pos.y, radius+1, radius+1);
   }
     

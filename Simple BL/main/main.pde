@@ -9,6 +9,10 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 AudioContext ac;
+Float fadeValue;
+Boolean timerStart; 
+Integer failTimer;
+Boolean failing;
 
 String[] songList = new String[3];
 String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
@@ -41,6 +45,10 @@ void setup() {
   gameStates();
   initGame();
   initString();
+  fadeValue = 255.0;
+  timerStart = false;
+  failTimer = 0;
+  failing = false;
 
   //background(0);
 }

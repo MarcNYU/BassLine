@@ -78,8 +78,12 @@ void initBeat()
 void drawBeat() { 
   pushMatrix();
   //fill(brightness*255);
-  //ellipse(width/2,height-100,85,85);  
-  stroke(100, 255, 100);
+  //ellipse(width/2,height-100,85,85);
+  
+  if(!failing)
+    stroke(100, 255, 100);
+  else
+    stroke(100, 255, fadeValue);
   //strokeWeight(2);
   noFill();
    

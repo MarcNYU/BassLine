@@ -62,6 +62,8 @@ void resetGame() {
 }
 
 void drawFG() {
+  //if player is not failing, draw FG normally, otherwise, draw with fade value
+  if(!failing){
   pushMatrix();
   rectMode(CORNER);
 
@@ -73,13 +75,34 @@ void drawFG() {
   ellipse(width/2, height-45, 85, 85);
   stroke(0);
   rect(0, height-41, width-1, 38);
-  textSize(30);
+  textSize(22);
   fill(100, 255, 100);
-  text("Score: " + round(score * 100) + "%", 20, 35);
+  text("Percent Completion: " + round(score * 100) + "%", 20, 35);
   fill(255);
   noStroke();
   ellipse(width/2, height-45, eRadius, eRadius);
   popMatrix();
+  }
+  else{
+    pushMatrix();
+  rectMode(CORNER);
+
+  fill(fadeValue);
+  stroke(fadeValue);
+  rect(0, 0, width-1, 40);
+  rect(-10, height-42, width+10, 40);
+  fill(fadeValue);
+  ellipse(width/2, height-45, 85, 85);
+  stroke(fadeValue);
+  rect(0, height-41, width-1, 38);
+  textSize(22);
+  fill(100, 255, 100, fadeValue);
+  text("Percent Completion: " + round(score * 100) + "%", 20, 35);
+  fill(fadeValue);
+  noStroke();
+  ellipse(width/2, height-45, eRadius, eRadius);
+  popMatrix();
+  }
 }
 
   
@@ -119,7 +142,7 @@ void drawScore(int minutes, int seconds) {
 
   //stroke(255);
   //line(40, 450, width-40, 450);
-  text("Final Score: ", 80, 400);
+  text("Percent Completion: ", 80, 400);
   text(round(score * 100) + "%", 270, 400);
   
 }
