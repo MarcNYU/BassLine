@@ -1,4 +1,7 @@
 Glide gainGlide;
+BeatDetector bd;    
+BeatQueue bq;
+int forward = 2000;  // how many milliseconds to look forward
 
 void initGame() {
   b = new Ball(40, height-200, 26);
@@ -9,23 +12,21 @@ void initGame() {
 }
 
 void initMusic() {
-
+  stroke(255);
+  bd = new BeatDetector(forward);
+  bd.loadSong(songList[currentSongIdx]);
+  bq = new BeatQueue(bd);
+  bd.start();
 }
 
 void Game() {
-  //outt.mute();
   println(frameRate);
-  //println(eRadius);
-  //println(brightness);
+
   gainGlide.setValue(mouseX / (float)width);
 
-  //if (!start) {
-  //  mp3.play();
-  //}
   if (b.pos.x == left || b.pos.x == right) {
     input();
   } 
-  //classicVi.drawBeat();
   input();
   check();
   b.update();
@@ -35,6 +36,19 @@ void Game() {
   drawBeat();
   b.render();
   drawFG();
+   noFill();
+  int beats[] = bq.nexts(); // returns an array of time of beats
+  for (int i = 0; i < beats.length; ++i) {
+    
+    int y = beats[i] * height / forward;
+    //line (0, y, width, y);
+    ellipse(width/2, height/2, y, y);
+  }
+  int next = bq.next(); // return next beat
+  if (next <= 20) {
+     //background(255
+     //); 
+  }
 }
 
 void resetGame() {

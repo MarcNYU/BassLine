@@ -119,7 +119,7 @@ void gameStates()
     //println("game started");
     if (gameInit) {
  
-      
+      initMusic();
       initBeat();
       
       println("game init current song idx: " + currentSongIdx);
