@@ -21,7 +21,7 @@ class BeatDetector {
     this.forward = forward;
     // set up the AudioContext and the master Gain object
     ac = new AudioContext();
-    gain = new beads.Gain(ac, 1, 0.1);
+    gain = new beads.Gain(ac, 1, 0.01);
     ac.out.addInput(gain);
     
     // set up the ShortFrameSegmenter
