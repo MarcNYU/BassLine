@@ -202,7 +202,9 @@ class Ball {
   void drawPlayer() {
     //draw the player normally
     if(!failing){
-     fill(100, 255, 100);
+      float rVal = pos.y / height;
+      float bVal = 1 - (rVal / 10) ;
+      fill(255*rVal, 255, 255*bVal ,fadeValue);
     }
     //draw the player with the faded color
     else{
