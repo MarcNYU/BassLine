@@ -22,7 +22,7 @@ void initMusic() {
 void Game() {
   println(frameRate);
 
-  gainGlide.setValue(mouseX / (float)width);
+  //gainGlide.setValue(mouseX / (float)width);
 
   if (b.pos.x == left || b.pos.x == right) {
     input();
@@ -33,22 +33,9 @@ void Game() {
   drawGuides();
   drawStringL();
   drawStringR();
-  drawBeat();
+  //drawBeat();
   b.render();
   drawFG();
-   noFill();
-  int beats[] = bq.nexts(); // returns an array of time of beats
-  for (int i = 0; i < beats.length; ++i) {
-    
-    int y = beats[i] * height / forward;
-    //line (0, y, width, y);
-    ellipse(width/2, height/2, y, y);
-  }
-  int next = bq.next(); // return next beat
-  if (next <= 20) {
-     //background(255
-     //); 
-  }
 }
 
 void resetGame() {
@@ -63,50 +50,66 @@ void resetGame() {
 
 void drawFG() {
   //if player is not failing, draw FG normally, otherwise, draw with fade value
-  if(!failing){
-  pushMatrix();
-  rectMode(CORNER);
-
-  fill(0);
-  stroke(255);
-  rect(0, 0, width-1, 40);
-  rect(-10, height-42, width+10, 40);
-  fill(0);
-  ellipse(width/2, height-45, 85, 85);
-  stroke(0);
-  rect(0, height-41, width-1, 38);
-  textSize(22);
-  fill(100, 255, 100);
-  text("Percent Completion: " + round(score * 100) + "%", 20, 35);
-  fill(255);
-  noStroke();
-  ellipse(width/2, height-45, eRadius, eRadius);
-  popMatrix();
-  }
-  else{
+  if (!failing) {
     pushMatrix();
-  rectMode(CORNER);
+    rectMode(CORNER);
 
-  fill(fadeValue);
-  stroke(fadeValue);
-  rect(0, 0, width-1, 40);
-  rect(-10, height-42, width+10, 40);
-  fill(fadeValue);
-  ellipse(width/2, height-45, 85, 85);
-  stroke(fadeValue);
-  rect(0, height-41, width-1, 38);
-  textSize(22);
-  fill(100, 255, 100, fadeValue);
-  text("Percent Completion: " + round(score * 100) + "%", 20, 35);
-  fill(fadeValue);
-  noStroke();
-  ellipse(width/2, height-45, eRadius, eRadius);
-  popMatrix();
+    fill(0);
+    stroke(255);
+    rect(0, 0, width-1, 40);
+    rect(-10, height-42, width+10, 40);
+    fill(0);
+    ellipse(width/2, height-45, 85, 85);
+    stroke(0);
+    rect(0, height-41, width-1, 38);
+    textSize(22);
+    fill(100, 255, 100);
+    text("Percent Completion: " + round(score * 100) + "%", 20, 35);
+    fill(255);
+    noStroke();
+    ellipse(width/2, height-45, eRadius, eRadius);
+    popMatrix();
+  } else {
+    pushMatrix();
+    rectMode(CORNER);
+
+    fill(fadeValue);
+    stroke(fadeValue);
+    rect(0, 0, width-1, 40);
+    rect(-10, height-42, width+10, 40);
+    fill(fadeValue);
+    ellipse(width/2, height-45, 85, 85);
+    stroke(fadeValue);
+    rect(0, height-41, width-1, 38);
+    textSize(22);
+    fill(100, 255, 100, fadeValue);
+    text("Percent Completion: " + round(score * 100) + "%", 20, 35);
+    fill(fadeValue);
+    noStroke();
+    ellipse(width/2, height-45, eRadius, eRadius);
+    popMatrix();
   }
+    
+  stroke(255);
+  noFill();
+  int beats[] = bq.nexts(); // returns an array of time of beats
+  for (int i = 0; i < beats.length; ++i) {
+    
+    int y = beats[i] * height / forward;
+    //line (0, y, width, y);
+    ellipse(width/2, height/2, y, y);
+  }
+  int next = bq.next(); // return next beat
+  if (next <= 20) {
+      
+  }
+  //fill(brightness*255);
+  ellipse(width/2,height/2,85,85); 
+
 }
 
-  
-  
+
+
 void drawScore(int minutes, int seconds) {
   //textSize(15);
   //fill(255);
@@ -120,7 +123,7 @@ void drawScore(int minutes, int seconds) {
   //text("Mid Level Points: " , 80, 350);
   ////text(" x 30 = ", 250, 350);
   //text( mid  , 350, 350);
-  
+
   //text("Bottom Level Points: " , 80, 450);
   ////text(" x 30 = ", 250, 450);
   //text( bottom , 350, 450);
@@ -129,13 +132,13 @@ void drawScore(int minutes, int seconds) {
   //text( minutes  + ":" + seconds , 350, 240);
   //stroke(255);
   //line(40, 470, width-40, 470);
-  
+
   //text("Final Score: ", 80, 550);
   //text(score, 350, 550);
   ////text(" x 10 = ", 250, 400);
   ////text( score, 350, 400);
 
-  
+
   text("Time in Song: " + minutes  + ":" + seconds, 80, 300);
   //text(" x 10 = ", 250, 400);
   //text( score, 350, 400);
@@ -144,7 +147,6 @@ void drawScore(int minutes, int seconds) {
   //line(40, 450, width-40, 450);
   text("Percent Completion: ", 80, 400);
   text(round(score * 100) + "%", 270, 400);
-  
 }
 
 void drawBG() {

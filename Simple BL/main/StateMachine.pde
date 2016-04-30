@@ -141,7 +141,7 @@ void gameStates()
     if (gameInit) {
  
       initMusic();
-      initBeat();
+      //initBeat();
       
       println("game init current song idx: " + currentSongIdx);
       gameInit = false;
