@@ -48,7 +48,7 @@ class Ball {
     //pos.y-=move;
       pos.x += velo.x;
       pos.y += velo.y;
-      gravity = 0;
+      //gravity = 0;
 
 
 
@@ -61,25 +61,25 @@ class Ball {
       if (pos.x == 40 && jump) {
         if (eRadius >= 52) {
           //if (jump && brightness != 0.0) {
-          //velo.y = -9;
+          velo.y = -9;
         } else {
-          //velo.y = -7;
+          velo.y = -7;
         }
-        //velo.x = 13;
-        float x = (abs(bq.next())/100);
-        if (x<13)x=13;
-        velo.x = x;
+        velo.x = 13;
+        //float x = (abs(bq.next())/100);
+        //if (x<13)x=13;
+        //velo.x = x;
       } else if (pos.x == 440 && jump) {
         if (eRadius >= 52) {
           //if (jump && brightness != 0.0) {
-          //velo.y = -9;
+          velo.y = -9;
         } else {
-          //velo.y = -7;
+          velo.y = -7;
         }
-        //velo.x = -13;
-        float x = (abs(bq.next())/100);
-        if (x<13)x=13;
-        velo.x = -x;
+        velo.x = -13;
+        //float x = (abs(bq.next())/100);
+        //if (x<13)x=13;
+        //velo.x = -x;
       }
 
       if (pos.x < 40) {
@@ -93,26 +93,28 @@ class Ball {
       } 
 
       if (pos.x == 40) {
-        //gravity = .05;
+        gravity = .05;
       } else if (pos.x == 440) {
-        //gravity = .05;
+        gravity = .05;
       } else {
-        //gravity = .3;
+        gravity = .3;
       }
       if (grounded()) {
-        timerStart = true;
-        
-        alive = false;
+        //timerStart = true;
+        //gravity = 0;
+        velo.y = 0;
+        pos.y = ground-11;
+        //alive = false;
       }
       if (pos.y < ceilling) {
         //if (false) {
-        //gravity = .6;
+        gravity = .6;
       } else {
         if (jump && eRadius >= 52) {
           //if (jump && brightness != 0.0) {
-          //gravity = .3;
+          gravity = .3;
         } else {
-          //gravity = .4;
+          gravity = .4;
           //gravity = .3;//temp
         }
       }
@@ -140,7 +142,7 @@ class Ball {
   }
 
   Boolean grounded() {
-    if (pos.y >= ground) return true; //If the ball is below the "ground"
+    if (pos.y > ground-10) return true; //If the ball is below the "ground"
     return false;
   }
 

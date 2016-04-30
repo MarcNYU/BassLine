@@ -103,7 +103,7 @@ void drawFG() {
     int y = 110 - beats[i] * 110 / forward;
     //int y = beats[i] * height / forward;
     //line (0, y, width, y);
-    ellipse(width/2, height/2, y, y);
+    ellipse(width/2, height-100, y, y);
   }
   int next = bq.next(); // return next beat
   if (next <= 20) {
