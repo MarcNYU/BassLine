@@ -94,17 +94,19 @@ void drawFG() {
     //ellipse(width/2, height-45, eRadius, eRadius);
     popMatrix();
   }
-
+  
   stroke(255);
   noFill();
+  ellipse(width/2, height, width, width);
   int beats[] = bq.nexts(); // returns an array of time of beats
   for (int i = 0; i < beats.length; ++i) {
-
-    int y = 110 - beats[i] * 110 / forward;
+    int y = width - beats[i] * 110 / forward;
+    println(y);
     //int y = beats[i] * height / forward;
     //line (0, y, width, y);
-    ellipse(width/2, height-100, y, y);
+    ellipse(width/2, height, y, y);
   }
+  
   int next = bq.next(); // return next beat
   if (next <= 20) {
     eRadius = 85;
