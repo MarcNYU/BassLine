@@ -14,8 +14,8 @@ class BeatDetector {
   float cur_threshold = default_threshold;
   
   
-  AudioContext ac; // create our AudioContext
-  AudioContext ac2;
+  
+  
   beads.Gain gain;
   beads.Gain gain2;
   PeakDetector peakDetector;

@@ -35,6 +35,9 @@ void Game() {
   drawStringL();
   drawStringR();
   b.render();
+  //seconds = (int)(ac.getTime()/(1000))%60;
+  //minutes = (int)(ac.getTime()/1000)/60;
+  //score = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
   drawFG();
 }
 
@@ -43,6 +46,7 @@ void resetGame() {
   //g = new beads.Gain(ac, 2, 0.2);
   surface.setResizable(true);
   ac.reset();
+  ac2.reset();
   initMusic();
   initGame();
   score = 0;
@@ -65,6 +69,7 @@ void drawFG() {
     textSize(22);
     fill(100, 255, 100);
     text("Percent Completion: " + round(score * 100) + "%", 20, 35);
+    //text("Minutes: " + round(minutes) + " Seconds: " + seconds + " Score: " + score, 20, 35);
     //fill(255);
     //noStroke();
     //ellipse(width/2, height-45, eRadius, eRadius);

@@ -110,6 +110,9 @@ void gameStates()
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
     score = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
+    
+    
+    
     //b.manageScore();
     //fill(100, 255, 100);
     //text("Score: " + score, 20, 35);
@@ -170,6 +173,7 @@ void gameStates()
     //ac.reset();
     //frequencyEnvelope.clear();
     ac.stop();
+    ac2.stop();
     //st.kill();
     
 
@@ -230,6 +234,7 @@ void gameStates()
   case 4:
     //print("\n\n\n\nstate 4 entered\n\n\n\n");
     ac.stop();
+    ac2.stop();
     background(0);
     textSize(20);
     fill(255);

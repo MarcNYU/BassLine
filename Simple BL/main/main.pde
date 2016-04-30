@@ -8,7 +8,9 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-AudioContext ac;
+AudioContext ac; // create our AudioContext
+AudioContext ac2;
+
 Float fadeValue;
 Boolean timerStart; 
 Integer failTimer;
