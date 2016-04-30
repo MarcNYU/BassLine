@@ -141,7 +141,6 @@ void gameStates()
     if (gameInit) {
  
       initMusic();
-      //initBeat();
       
       println("game init current song idx: " + currentSongIdx);
       gameInit = false;
@@ -206,7 +205,7 @@ void gameStates()
       startOfGame = true;
       //returnToPlay = true;
       //frequencyEnvelope.clear();
-      sp.kill();
+      //sp.kill();
       gameInit = true;
       state = 0;
       //sp.reset();

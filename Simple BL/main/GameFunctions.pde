@@ -13,6 +13,7 @@ void initGame() {
 
 void initMusic() {
   stroke(255);
+  time = millis();
   bd = new BeatDetector(forward);
   bd.loadSong(songList[currentSongIdx]);
   bq = new BeatQueue(bd);
@@ -33,7 +34,6 @@ void Game() {
   drawGuides();
   drawStringL();
   drawStringR();
-  //drawBeat();
   b.render();
   drawFG();
 }
@@ -65,9 +65,9 @@ void drawFG() {
     textSize(22);
     fill(100, 255, 100);
     text("Percent Completion: " + round(score * 100) + "%", 20, 35);
-    fill(255);
-    noStroke();
-    ellipse(width/2, height-45, eRadius, eRadius);
+    //fill(255);
+    //noStroke();
+    //ellipse(width/2, height-45, eRadius, eRadius);
     popMatrix();
   } else {
     pushMatrix();
@@ -84,28 +84,40 @@ void drawFG() {
     textSize(22);
     fill(100, 255, 100, fadeValue);
     text("Percent Completion: " + round(score * 100) + "%", 20, 35);
-    fill(fadeValue);
-    noStroke();
-    ellipse(width/2, height-45, eRadius, eRadius);
+    //fill(fadeValue);
+    //noStroke();
+    //ellipse(width/2, height-45, eRadius, eRadius);
     popMatrix();
   }
-    
+
   stroke(255);
   noFill();
   int beats[] = bq.nexts(); // returns an array of time of beats
   for (int i = 0; i < beats.length; ++i) {
-    
-    int y = beats[i] * height / forward;
+
+    int y = 110 - beats[i] * 110 / forward;
+    //int y = beats[i] * height / forward;
     //line (0, y, width, y);
     ellipse(width/2, height/2, y, y);
   }
   int next = bq.next(); // return next beat
   if (next <= 20) {
-      
+    eRadius = 85;
   }
   //fill(brightness*255);
-  ellipse(width/2,height/2,85,85); 
+  //ellipse(width/2,height/2,100,100); 
 
+  stroke(100, 255, 100);
+
+  ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
+  ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
+
+  int dt = millis() - time;
+  eRadius -= (dt * 0.2);
+  //eRadius += (dt * 0.1);
+  if (eRadius < 20) eRadius = 20;
+  //if (eRadius > 85) eRadius = 85;
+  time += dt;
 }
 
 

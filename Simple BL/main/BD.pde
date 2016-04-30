@@ -2,6 +2,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import beads.*; // import the beads library
 
+int time; // tracks the time 
+float eRadius;
+
 class BeatDetector {
   public int forward;  // How long to look forward 
   int target_interval = 500;  // Target interval of beats, will dynamicly affect threshold
@@ -60,7 +63,6 @@ class BeatDetector {
            } else {
              increaeThreshold();
            }
-           
            last_beat = millis();
            scheduleDecrease();
          }

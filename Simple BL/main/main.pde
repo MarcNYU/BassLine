@@ -31,7 +31,6 @@ void setup() {
   //fullScreen();
   surface.setResizable(true);
   size(480, 852);
-  //initBeat();
   frameRate(60);
   noiseDetail(8);
   songList[0] = song1;
