@@ -66,7 +66,7 @@ class Ball {
           //velo.y = -7;
         }
         //velo.x = 13;
-        float x = (abs(bq.next())/100)%20;
+        float x = (abs(bq.next())/100);
         if (x<13)x=13;
         velo.x = x;
       } else if (pos.x == 440 && jump) {
@@ -77,7 +77,7 @@ class Ball {
           //velo.y = -7;
         }
         //velo.x = -13;
-        float x = (abs(bq.next())/100)%20;
+        float x = (abs(bq.next())/100);
         if (x<13)x=13;
         velo.x = -x;
       }
