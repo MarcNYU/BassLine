@@ -17,15 +17,17 @@ Integer failTimer;
 Boolean failing;
 Boolean hitFloor;
 
-String[] songList = new String[3];
+String[] songList = new String[4];
 String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
 String song2 = "Coldplay - Adventure Of A Lifetime Instrumental.mp3";  
 String song3 = "Twenty One Pilots - Stressed Out (Tomsize Remix).mp3";
+String song4 = "SKRILLEX - BANGARANG (FT. SIRAH).mp3";
 
-Integer[] songRuntimes = new Integer[3];
+Integer[] songRuntimes = new Integer[4];
 Integer sLen1 = 180000 + 43000;//00:03:43 = (180,000 + 43000)
 Integer sLen2 = 240000 + 26000;//00:04:26 = (240,000 + 26000)
 Integer sLen3 = 180000 + 44000;//00:03:44 = (180,000 + 44000)
+Integer sLen4 = 180000 + 44000;//00:03:36 = (180,000 + 36000)
 
 Boolean songChosen = false;
 
@@ -39,9 +41,11 @@ void setup() {
   songList[0] = song1;
   songList[1] = song2;
   songList[2] = song3;
+  songList[3] = song4;
   songRuntimes[0] = sLen1;
   songRuntimes[1] = sLen2;
   songRuntimes[2] = sLen3;
+  songRuntimes[3] = sLen4;
   ac = new AudioContext();
   
   gameStates();
