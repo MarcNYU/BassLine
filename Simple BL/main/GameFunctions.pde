@@ -85,7 +85,7 @@ void drawFG() {
     rect(0, height-41, width-1, 40);
     textSize(22);
     fill(100, 255, 100);
-    text("Percent Completion: " + round(percentCompletion * 100) + "%", 20, 35);
+    text("Percent Completion: " + min(round(percentCompletion * 100),100) + "%", 20, 35);
     //text("Minutes: " + round(minutes) + " Seconds: " + seconds + " Score: " + score, 20, 35);
     //fill(255);
     //noStroke();
@@ -105,7 +105,7 @@ void drawFG() {
     rect(0, height-41, width-1, 40);
     textSize(22);
     fill(100, 255, 100, fadeValue);
-    text("Percent Completion: " + round(percentCompletion * 100) + "%", 20, 35);
+    text("Percent Completion: " + min(round(percentCompletion * 100),100) + "%", 20, 35);
     //fill(fadeValue);
     //noStroke();
     //ellipse(width/2, height-45, eRadius, eRadius);
@@ -148,7 +148,12 @@ void drawScore(int minutes, int seconds) {
   textSize(20);
   fill(fadeInVal);
   fadeInVal += 5;
-  text("GAME OVER", width/2-textWidth("GAME OVER")/2, 150);
+  if(state == 2)
+    text("GAME OVER", width/2-textWidth("GAME OVER")/2, 150);
+  
+  else if ( state == 4)
+    text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, 150);
+    
   textSize(15);
   float high = b.bounceCounts[2] * 5;
   float mid = b.bounceCounts[1] * 3;
@@ -188,7 +193,7 @@ void drawScore(int minutes, int seconds) {
   //line(40, 450, width-40, 450);
   
   text("Percent Completion: ", 80, 250);
-  text(round(percentCompletion * 100) + "%", 350, 250);
+  text(min(round(percentCompletion * 100),100) + "%", 350, 250);
 }
 
 void drawBG() {

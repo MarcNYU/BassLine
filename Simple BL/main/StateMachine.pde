@@ -255,7 +255,7 @@ void gameStates()
     textSize(20);
     fill(255);
     //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
-    text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, 180);
+    
     //text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
     //println("Current Time: " + minutes  + ":" + seconds);
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
