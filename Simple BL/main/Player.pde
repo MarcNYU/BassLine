@@ -26,7 +26,7 @@ class Ball {
   int bColor;
   int currentZone = 0;
   int bounceCounts[] = new int[4];
-  
+
   int lowZoneIdx = 0;
   int midZondIdx = 1;
   int highZoneIdx = 2;
@@ -44,11 +44,11 @@ class Ball {
     bColor = 1;
     bounceCounter = 0;
     songSpd = 13;
-    
+
     bounceCounts[0] =0;
     bounceCounts[1] =0;
     bounceCounts[2] =0;
-    
+
     for (int i = 0; i<50; i++) {
       j[i] = -10;
       k[i] = -10;
@@ -61,35 +61,35 @@ class Ball {
     //velo.y += gravity;
 
     if (startOfGame) {
-     velo.y = 0;
+      velo.y = 0;
     } else {
-     velo.y += gravity;
+      velo.y += gravity;
     }
 
     if (grounded()) {
-     onGround();
+      onGround();
     } else {
-     inAir();
+      inAir();
     }
 
     if (BelowDropLine() && !hitFloor) {
-       hitFloor = true;
+      hitFloor = true;
     }
-    
-    if(BelowMidLine()){
-        currentZone =0;
+
+    if (BelowMidLine()) {
+      currentZone =0;
     }
-    
-    if(AboveMidLine()){
-        currentZone =1;
+
+    if (AboveMidLine()) {
+      currentZone =1;
     }
-    
-    if(BelowDropLine()){
-       currentZone = 3; 
+
+    if (BelowDropLine()) {
+      currentZone = 3;
     }
-      
+
     if (leftB() || rightB()) {
-      gravity = .01;
+      gravity = .4;
     }
 
     if (pos.x < 40) {
@@ -99,42 +99,48 @@ class Ball {
       velo.x = 0;
       pos.x = 440;
     }
-    
+
     if (pos.x == 40 || pos.x == 440) {
       gravity = .01;
     }
-    
+
     if (pos.y > ground+3) {
       pos.y = ground;
     }
   }
   void onGround() {
-    if (leftB() && jump) {//p
-      velo.y = -7;
+    if (leftB() && jump) {
+      velo.y = -2;
       velo.x = songSpd;
-    } else if (rightB() && jump) {//w
-      velo.y = -7;
+    } else if (rightB() && jump) {
+      velo.y = -2;
       velo.x = -songSpd;
     } else {
       velo.y = 0;
       velo.x = 0;
     }
-    gravity = .2;
+    //gravity = .2;
   }
   void inAir() {
-    if (leftB() && jump) {//p
-      velo.y = -7;
+    if (leftB() && jump) {
+      if (eRadius >= 52) { 
+        velo.y = -.5;
+      } else {
+        velo.y = 0;
+      }
       velo.x = songSpd;
-    } else if (rightB() && jump) {//w
-      velo.y = -7;
+    } else if (rightB() && jump) {
+      if (eRadius >= 52) { 
+        velo.y = -.5;
+      } else {
+        velo.y = 0;
+      }
       velo.x = -songSpd;
     } 
     //gravity = .3;
-    if (pos.y < ceilling && (leftB() == false && rightB() == false)) {
-     gravity = .6;
-    } else {
-     gravity = .3;
-    }
+    if (pos.y < ceilling && !leftB() && !rightB()) {
+     velo.y = 0;
+    } 
   }
   void setSongSpeed(float s) {
     songSpd = s;
