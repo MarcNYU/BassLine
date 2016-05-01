@@ -179,7 +179,7 @@ void drawBG() {
 void input() {
   if (keyPressed) {
     //if(key == 'b' && eRadius > 60) {
-    if ((key == ' ' || key == 'b') && eRadius >= 52) {
+    if ((key == ' ' || key == 'b')) {
       jump = true;
       startOfGame = false;
     }
