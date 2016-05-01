@@ -82,7 +82,7 @@ void drawFG() {
     fill(0);
     ellipse(width/2, height, 200, 200);
     stroke(0);
-    rect(0, height-41, width-1, 38);
+    rect(0, height-41, width-1, 40);
     textSize(22);
     fill(100, 255, 100);
     text("Percent Completion: " + round(percentCompletion * 100) + "%", 20, 35);
@@ -102,7 +102,7 @@ void drawFG() {
     fill(fadeValue);
     ellipse(width/2, height, 200, 200);
     stroke(fadeValue);
-    rect(0, height-41, width-1, 38);
+    rect(0, height-41, width-1, 40);
     textSize(22);
     fill(100, 255, 100, fadeValue);
     text("Percent Completion: " + round(percentCompletion * 100) + "%", 20, 35);
