@@ -124,14 +124,14 @@ class Ball {
   void inAir() {
     if (leftB() && jump) {
       if (eRadius >= 52) { 
-        velo.y = -.85;
+        velo.y = -.95;
       } else {
         velo.y = 0;
       }
       velo.x = songSpd;
     } else if (rightB() && jump) {
       if (eRadius >= 52) { 
-        velo.y = -.85;
+        velo.y = -.95;
       } else {
         velo.y = 0;
       }
