@@ -2,6 +2,7 @@ Glide gainGlide;
 BeatDetector bd;    
 BeatQueue bq;
 int forward = 2000;  // how many milliseconds to look forward
+float spd;
 
 void initGame() {
   b = new Ball(40, height-200, 26);
@@ -29,7 +30,10 @@ void Game() {
     input();
   } 
   input();
-  check();
+  //check();
+  spd = (abs(bq.next())/100);
+  if (spd<10)spd=10;
+  b.setSongSpeed(spd);
   b.update();
   drawGuides();
   drawStringL();
