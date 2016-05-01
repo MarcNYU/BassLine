@@ -110,10 +110,10 @@ class Ball {
   }
   void onGround() {
     if (leftB() && jump) {
-      velo.y = -2;
+      velo.y = -3;
       velo.x = songSpd;
     } else if (rightB() && jump) {
-      velo.y = -2;
+      velo.y = -3;
       velo.x = -songSpd;
     } else {
       velo.y = 0;
