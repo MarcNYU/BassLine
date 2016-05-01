@@ -2,7 +2,8 @@
 float ceilling = 140;
 float ground = 740;
 float dropLine = 700;
-float middle = 400;
+float safeLine = 600;
+float middle = 350;
 float left = 40;
 float right = 440;
 
@@ -22,6 +23,8 @@ void drawGuides() {
   line(0, middle, width, middle);
   
   line(0, dropLine, width, dropLine);
+  
+  line(0, safeLine, width, safeLine);
 
   //line(left-30, 0, left-30, height);
   ////line(width/2 - 200, 0, width/2 -200, height);

@@ -146,7 +146,7 @@ void gameStates()
         state = 2;
       }
       //if the player was failing and they are now above the midline, then turn failing off and reset fail timer
-      if(b.AboveMidLine()){
+      if(b.AboveSafeLine()){
         failing = false;
         failTimer = 0;
         fadeValue = 255.0;

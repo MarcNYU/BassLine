@@ -80,7 +80,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     rect(-10, height-42, width+10, 40);
     fill(0);
-    ellipse(width/2, height-45, 85, 85);
+    ellipse(width/2, height, 200, 200);
     stroke(0);
     rect(0, height-41, width-1, 38);
     textSize(22);
@@ -100,7 +100,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     rect(-10, height-42, width+10, 40);
     fill(fadeValue);
-    ellipse(width/2, height-45, 85, 85);
+    ellipse(width/2, height, 200, 200);
     stroke(fadeValue);
     rect(0, height-41, width-1, 38);
     textSize(22);
@@ -117,10 +117,10 @@ void drawFG() {
   int beats[] = bq.nexts(); // returns an array of time of beats
   for (int i = 0; i < beats.length; ++i) {
 
-    int y = 110 - beats[i] * 110 / forward;
+    int y = 200 - beats[i] * 200 / forward;
     //int y = beats[i] * height / forward;
     //line (0, y, width, y);
-    ellipse(width/2, height-100, y, y);
+    ellipse(width/2, height, y, y);
   }
   int next = bq.next(); // return next beat
   if (next <= 20) {

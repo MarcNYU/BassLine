@@ -101,7 +101,7 @@ class Ball {
     }
 
     if (pos.x == 40 || pos.x == 440) {
-      gravity = .01;
+      gravity = .02;
     }
 
     if (pos.y > ground+3) {
@@ -124,14 +124,14 @@ class Ball {
   void inAir() {
     if (leftB() && jump) {
       if (eRadius >= 52) { 
-        velo.y = -.5;
+        velo.y = -.85;
       } else {
         velo.y = 0;
       }
       velo.x = songSpd;
     } else if (rightB() && jump) {
       if (eRadius >= 52) { 
-        velo.y = -.5;
+        velo.y = -.85;
       } else {
         velo.y = 0;
       }
@@ -167,6 +167,10 @@ class Ball {
   }
   boolean AboveMidLine() {
     if (pos.y < middle && pos.y > ceilling) return true;
+    return false;
+  }
+  boolean AboveSafeLine() {
+    if (pos.y < safeLine && pos.y > middle) return true;
     return false;
   }
   boolean BelowDropLine() {
