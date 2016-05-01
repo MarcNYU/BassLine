@@ -15,6 +15,7 @@ Float fadeValue;
 Boolean timerStart; 
 Integer failTimer;
 Boolean failing;
+Boolean hitFloor;
 
 String[] songList = new String[3];
 String song1 = "Tongue Tied (Instrumental Version) copy.mp3";
@@ -50,6 +51,7 @@ void setup() {
   timerStart = false;
   failTimer = 0;
   failing = false;
+  hitFloor = false;
 
   //background(0);
 }

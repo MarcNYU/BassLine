@@ -14,7 +14,8 @@ Boolean releasedKey = true;
 int move = 0;
 int state = 0;
 float score;
-
+float percentCompletion;
+Float fadeChange = 0.4;
 // MENU VARS
 int blinkColor;
 int blinkChange = 5;
@@ -27,6 +28,8 @@ void gameStates()
   {
 
   case 0:
+    startOfGame = true;
+    gameInit = true;
     background(0);
     //outt.mute();
 
@@ -87,7 +90,7 @@ void gameStates()
     textSize(20);
     //Draws the blinking press enter key to start
     fill(blinkColor);
-    text("Press Enter to start", width/2-textWidth("Press Enter to start")/2, height- 320);
+    text("Press Space to start", width/2-textWidth("Press Space to start")/2, height- 320);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
@@ -96,7 +99,7 @@ void gameStates()
 
    
     if (keyPressed) {
-      if (key == ENTER)
+      if (key == ' ' || key == ENTER)
       {
         fill(255);
         text("Loading...", width/2-textWidth("loading...")/2, height - 200); 
@@ -109,7 +112,7 @@ void gameStates()
   case 1:
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
-    score = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
+    percentCompletion = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
     
     
     
@@ -118,22 +121,35 @@ void gameStates()
     //text("Score: " + score, 20, 35);
     
     //If timer has been initiated (if the player hit the floor), start the fail timer, turn off timer start
-    if(timerStart){
-      failTimer = millis();
-      timerStart = false;    
+    if(hitFloor){
+      //failTimer = millis();
+      failing = true;
+      hitFloor = false;
     }
+    
+    
+    //if(timerStart){
+    //  failTimer = millis();
+    //  timerStart = false;    
+    //}
     
     //If they are still failing (they have hit the floor and haven't risen above the midline) change the color of the ball from white to black
     if(failing){
-      fadeValue -= failTimer/1000;
+      //fadeValue -= abs(max(failTimer/10000,0));
+      
+      if(fadeValue >0)
+        fadeValue -= fadeChange;
+      b.bounceCounts[3] -= 0.01;
+      println("fail timer: " + failTimer + " fade value: " + fadeValue + "fail penalty: " + b.bounceCounts[3]);
       //If the fail timer has been on for more than five seconds, end the game
-      if((millis() - failTimer) > 5000){
+      if(fadeValue <= 0){
         state = 2;
       }
       //if the player was failing and they are now above the midline, then turn failing off and reset fail timer
       if(b.AboveMidLine()){
         failing = false;
         failTimer = 0;
+        fadeValue = 255.0;
       }
     }
     
@@ -187,7 +203,7 @@ void gameStates()
     background(0);
     textSize(32);
     fill(255);
-    text("GAME OVER", width/2-textWidth("GAME OVER")/2, 200);
+    
     //text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, 200);
     //textSize(22);
     drawScore(minutes,seconds);
@@ -196,7 +212,7 @@ void gameStates()
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
-    text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, height/2 + 230);
+    text("Press Enter to replay", width/2-textWidth("Press Enter to replay")/2, height/2 + 230);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
@@ -204,13 +220,13 @@ void gameStates()
      //menuVi.drawEQ();
      
     if (keyPressed) {
-      resetGame();
+      if(key == ENTER){
       
-      startOfGame = true;
+      resetGame();
       //returnToPlay = true;
       //frequencyEnvelope.clear();
       //sp.kill();
-      gameInit = true;
+      
       state = 0;
       //sp.reset();
       
@@ -218,7 +234,7 @@ void gameStates()
       
       //restart = true;
       
-      
+      }
       
     }
     //println("Game Over");
@@ -245,7 +261,7 @@ void gameStates()
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
 
     fill(blinkColor);
-    text("Hit any key to return to the main menu", width/2-textWidth("Hit any key to return to the main menu")/2, height/2 + 230);
+    text("Press Enter to return to the main menu", width/2-textWidth("Press Enter to return to the main menu")/2, height/2 + 230);
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
@@ -259,8 +275,11 @@ void gameStates()
     //text("Distance: " + score, width/2-textWidth("Distance: #")/2, height-100);
 
     if (keyPressed) {
+      if(key == ENTER){
       //frequencyEnvelope.clear();
       state = 0;
+      
+      }
       
     }   
     break;

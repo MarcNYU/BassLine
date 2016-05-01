@@ -24,6 +24,12 @@ class Ball {
 
   boolean alive;
   int bColor;
+  int currentZone = 0;
+  int bounceCounts[] = new int[4];
+  
+  int lowZoneIdx = 0;
+  int midZondIdx = 1;
+  int highZoneIdx = 2;
 
 
 
@@ -38,6 +44,11 @@ class Ball {
     bColor = 1;
     bounceCounter = 0;
     songSpd = 13;
+    
+    bounceCounts[0] =0;
+    bounceCounts[1] =0;
+    bounceCounts[2] =0;
+    
     for (int i = 0; i<50; i++) {
       j[i] = -10;
       k[i] = -10;
@@ -56,11 +67,27 @@ class Ball {
     }
 
     if (grounded()) {
-      onGround();
+     onGround();
     } else {
-      inAir();
+     inAir();
     }
 
+    if (BelowDropLine() && !hitFloor) {
+       hitFloor = true;
+    }
+    
+    if(BelowMidLine()){
+        currentZone =0;
+    }
+    
+    if(AboveMidLine()){
+        currentZone =1;
+    }
+    
+    if(BelowDropLine()){
+       currentZone = 3; 
+    }
+      
     if (leftB() || rightB()) {
       gravity = .01;
     }
@@ -206,10 +233,11 @@ class Ball {
       bmLevCount += 10;
     } else if (AboveMidLine()) {
       //score += 30 * bounceCounter;
-      midLevCount += 30 * bounceCounter;
+      //midLevCount += 30 * bounceCounter;
+      midLevCount += 30 ;
     } else if (TopLine()) {
       //score += 50 * bounceCounter;
-      highLevCount += 50 * bounceCounter;
+      highLevCount += 50;
     }
   }
   void manageBonusCounter() {

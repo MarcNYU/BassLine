@@ -3,6 +3,8 @@ BeatDetector bd;
 BeatQueue bq;
 int forward = 2000;  // how many milliseconds to look forward
 float spd;
+float fadeInVal = 1;
+
 
 void initGame() {
   b = new Ball(40, height-200, 26);
@@ -22,7 +24,7 @@ void initMusic() {
 }
 
 void Game() {
-  println(frameRate);
+  //println(frameRate);
 
   //gainGlide.setValue(mouseX / (float)width);
 
@@ -54,7 +56,15 @@ void resetGame() {
   surface.setResizable(true);
   ac.reset();
   ac2.reset();
-  initMusic();
+  fadeValue = 255.0;
+  timerStart = false;
+  failTimer = 0;
+  failing = false;
+  hitFloor = false;
+  b.bounceCounts[0] =0;
+  b.bounceCounts[1] =0;
+  b.bounceCounts[2] =0;
+  //initMusic();
   initGame();
   score = 0;
 }
@@ -75,7 +85,7 @@ void drawFG() {
     rect(0, height-41, width-1, 38);
     textSize(22);
     fill(100, 255, 100);
-    text("Percent Completion: " + round(score * 100) + "%", 20, 35);
+    text("Percent Completion: " + round(percentCompletion * 100) + "%", 20, 35);
     //text("Minutes: " + round(minutes) + " Seconds: " + seconds + " Score: " + score, 20, 35);
     //fill(255);
     //noStroke();
@@ -95,7 +105,7 @@ void drawFG() {
     rect(0, height-41, width-1, 38);
     textSize(22);
     fill(100, 255, 100, fadeValue);
-    text("Percent Completion: " + round(score * 100) + "%", 20, 35);
+    text("Percent Completion: " + round(percentCompletion * 100) + "%", 20, 35);
     //fill(fadeValue);
     //noStroke();
     //ellipse(width/2, height-45, eRadius, eRadius);
@@ -135,42 +145,50 @@ void drawFG() {
 
 
 void drawScore(int minutes, int seconds) {
-  //textSize(15);
-  //fill(255);
-  //float high = highLevCount * score;
-  //float mid = midLevCount * score;
-  //float bottom = bmLevCount * score;
-  //text("High Level Points: " , 80, 300);
-  ////text(" x 50 = ", 250, 300);
+  textSize(20);
+  fill(fadeInVal);
+  fadeInVal += 5;
+  text("GAME OVER", width/2-textWidth("GAME OVER")/2, 150);
+  textSize(15);
+  float high = b.bounceCounts[2] * 5;
+  float mid = b.bounceCounts[1] * 3;
+  float bottom = b.bounceCounts[0] * 2;
+  float drop = b.bounceCounts[3] * 2;
+  text("Bounce points in Top Zone: " + b.bounceCounts[2] + "  x 5 " , 80, 300);
+  text(" = " + high , 350, 300);
   //text( high, 350, 300);
 
-  //text("Mid Level Points: " , 80, 350);
-  ////text(" x 30 = ", 250, 350);
+  text("Bounce points in Mid Zone: " + b.bounceCounts[1] + " x 3 ", 80, 350);
+  text("= " + mid, 350, 350);
   //text( mid  , 350, 350);
 
-  //text("Bottom Level Points: " , 80, 450);
-  ////text(" x 30 = ", 250, 450);
+  text("Bounce points in Low Zone: " + b.bounceCounts[0] + " x 2 " , 80, 400);
+  text("= " + bottom, 350, 400);
+  
+  text("fail mode penalty: " , 80, 450);
+  text("= " + drop, 350, 450);
   //text( bottom , 350, 450);
-  //score = bottom  + mid + high;
-  //text("Time in Song: ", 80, 240);
-  //text( minutes  + ":" + seconds , 350, 240);
-  //stroke(255);
-  //line(40, 470, width-40, 470);
+  score = bottom  + mid + high + drop;
+  text("Time in Song: ", 80, 200);
+  text( minutes  + ":" + seconds , 350, 200);
+  stroke(255);
+  line(40, 480, width-40, 480);
 
-  //text("Final Score: ", 80, 550);
-  //text(score, 350, 550);
-  ////text(" x 10 = ", 250, 400);
-  ////text( score, 350, 400);
+  text("Final Score: ", 80, 520);
+  text(max(score,0), 350, 520);
+  //text(" x 10 = ", 250, 400);
+  //text( score, 350, 400);
 
 
-  text("Time in Song: " + minutes  + ":" + seconds, 80, 300);
+  //text("Time in Song: " + minutes  + ":" + seconds, 80, 300);
   //text(" x 10 = ", 250, 400);
   //text( score, 350, 400);
 
   //stroke(255);
   //line(40, 450, width-40, 450);
-  text("Percent Completion: ", 80, 400);
-  text(round(score * 100) + "%", 270, 400);
+  
+  text("Percent Completion: ", 80, 250);
+  text(round(percentCompletion * 100) + "%", 350, 250);
 }
 
 void drawBG() {
@@ -182,6 +200,12 @@ void input() {
     if ((key == ' ' || key == 'b')) {
       jump = true;
       startOfGame = false;
+      noLoop();
+      if(b.currentZone != 3)
+        b.bounceCounts[b.currentZone] += 1;
+      else
+        b.bounceCounts[b.currentZone] -= 1;
+      loop();
     }
   } else {
     jump = false;
