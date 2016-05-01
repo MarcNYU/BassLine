@@ -136,6 +136,10 @@ class Ball {
     if (pos.y < middle && pos.y > ceilling) return true;
     return false;
   }
+  boolean BelowDropLine() {
+    if (pos.y > dropLine) return true;
+    return false;
+  }
 
   void render() {
     noStroke();
