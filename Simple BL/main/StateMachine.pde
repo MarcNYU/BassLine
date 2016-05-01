@@ -99,7 +99,7 @@ void gameStates()
 
    
     if (keyPressed) {
-      if (key == ' ' || key == ENTER)
+      if (key == ' ')
       {
         fill(255);
         text("Loading...", width/2-textWidth("loading...")/2, height - 200); 
@@ -277,6 +277,9 @@ void gameStates()
     if (keyPressed) {
       if(key == ENTER){
       //frequencyEnvelope.clear();
+      
+      resetGame();
+      
       state = 0;
       
       }
