@@ -20,14 +20,14 @@ Boolean hitFloor;
 String[] songList = new String[4];
 String song1 = "I Heard It Through The Grapevine vs. Feel Good Inc.mp3";
 String song2 = "Coldplay - Adventure Of A Lifetime Instrumental.mp3";  
-String song3 = "Twenty One Pilots - Stressed Out (Tomsize Remix).mp3";
+String song3 = "Twenty One Pilots - Stressed Out Audio Only.mp3";
 String song4 = "SKRILLEX - BANGARANG (FT. SIRAH).mp3";
 
 
 Integer[] songRuntimes = new Integer[4];
 Integer sLen1 = 180000 + 42000;//00:03:42 = (180,000 + 42000)
 Integer sLen2 = 240000 + 26000;//00:04:26 = (240,000 + 26000)
-Integer sLen3 = 180000 + 44000;//00:03:44 = (180,000 + 44000)
+Integer sLen3 = 180000 + 42000;//00:03:42 = (180,000 + 42000)
 Integer sLen4 = 180000 + 44000;//00:03:36 = (180,000 + 36000)
 
 Boolean songChosen = false;
