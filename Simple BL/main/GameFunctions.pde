@@ -64,12 +64,45 @@ void resetGame() {
   b.bounceCounts[0] =0;
   b.bounceCounts[1] =0;
   b.bounceCounts[2] =0;
+  b.bounceCounts[3] =0;
   //initMusic();
   initGame();
   score = 0;
 }
 
 void drawFG() {
+  
+  stroke(255);
+  noFill();
+  int beats[] = bq.nexts(); // returns an array of time of beats
+  for (int i = 0; i < beats.length; ++i) {
+
+    int y = 200 - beats[i] * 200 / forward;
+    //int y = beats[i] * height / forward;
+    //line (0, y, width, y);
+    ellipse(width/2, height, y, y);
+  }
+  int next = bq.next(); // return next beat
+  if (next <= 20) {
+    eRadius = 85;
+  }
+  //fill(brightness*255);
+  //ellipse(width/2,height/2,100,100); 
+  
+  stroke(100, 255, 100);
+
+  ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
+  ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
+
+  int dt = millis() - time;
+  eRadius -= (dt * 0.2);
+  //eRadius += (dt * 0.1);
+  if (eRadius < 20) eRadius = 20;
+  //if (eRadius > 85) eRadius = 85;
+  time += dt;
+  
+  
+  
   //if player is not failing, draw FG normally, otherwise, draw with fade value
   if (!failing) {
     pushMatrix();
@@ -112,34 +145,7 @@ void drawFG() {
     popMatrix();
   }
 
-  stroke(255);
-  noFill();
-  int beats[] = bq.nexts(); // returns an array of time of beats
-  for (int i = 0; i < beats.length; ++i) {
-
-    int y = 200 - beats[i] * 200 / forward;
-    //int y = beats[i] * height / forward;
-    //line (0, y, width, y);
-    ellipse(width/2, height, y, y);
-  }
-  int next = bq.next(); // return next beat
-  if (next <= 20) {
-    eRadius = 85;
-  }
-  //fill(brightness*255);
-  //ellipse(width/2,height/2,100,100); 
-
-  stroke(100, 255, 100);
-
-  ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
-  ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
-
-  int dt = millis() - time;
-  eRadius -= (dt * 0.2);
-  //eRadius += (dt * 0.1);
-  if (eRadius < 20) eRadius = 20;
-  //if (eRadius > 85) eRadius = 85;
-  time += dt;
+  
 }
 
 
@@ -180,7 +186,7 @@ void drawScore(int minutes, int seconds) {
   line(40, 480, width-40, 480);
 
   text("Final Score: ", 80, 520);
-  text(max(score,0), 350, 520);
+  text(max(fixDec(score,1),0), 350, 520);
   //text(" x 10 = ", 250, 400);
   //text( score, 350, 400);
 

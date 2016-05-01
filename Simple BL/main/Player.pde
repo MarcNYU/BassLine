@@ -48,6 +48,7 @@ class Ball {
     bounceCounts[0] =0;
     bounceCounts[1] =0;
     bounceCounts[2] =0;
+    bounceCounts[3] =0;
 
     for (int i = 0; i<50; i++) {
       j[i] = -10;
@@ -228,7 +229,7 @@ class Ball {
     if (!failing) {
       float rVal = pos.y / height;
       float bVal = 1 - (rVal / 10) ;
-      fill(255*rVal, 255, 255*bVal, fadeValue);
+      fill(255*rVal, 255, 255*bVal);
     }
     //draw the player with the faded color
     else {
