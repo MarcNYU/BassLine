@@ -1,11 +1,13 @@
 
 class BeatQueue {
+  int deviation = 30; // Within how many ms would be considered on beat
   
   int capacity = 50;
   int queue[] = new int[capacity];
   int front = 0;
   int end = 0;
   int size = 0;
+  int last_beat;
     
   public BeatQueue(BeatDetector bd) {
     bd.addListener(     
@@ -36,6 +38,10 @@ class BeatQueue {
     return result;
   }
   
+  public boolean onBeat() {
+    return next() - millis() < deviation || millis() - last_beat < deviation; 
+  }
+  
   private void push_back(int time) {
     queue[end] = time + bd.forward;
     end = increase_index(end);
@@ -45,6 +51,7 @@ class BeatQueue {
   
   private void pop_invalids() {
     while (size > 0 && millis() > queue[front]) {
+       last_beat = queue[front];
        front = increase_index(front);
        --size;
     }

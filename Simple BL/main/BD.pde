@@ -8,6 +8,7 @@ float eRadius;
 class BeatDetector {
   public int forward;  // How long to look forward 
   int target_interval = 500;  // Target interval of beats, will dynamicly affect threshold
+  String start_music_src = "start_music.wav";  // The place of the start music
   
   int last_beat;
   float default_threshold = (float)1e-10;
@@ -19,6 +20,8 @@ class BeatDetector {
   beads.Gain gain;
   beads.Gain gain2;
   PeakDetector peakDetector;
+  
+  AudioContext ac_start = new AudioContext(); // Music before real song begin
   
   BeatDetector(int forward) {
     this.forward = forward;
@@ -98,6 +101,8 @@ class BeatDetector {
       gain.addInput(player); // connect the SamplePlayer to the master Gain
       SamplePlayer player2 = new SamplePlayer(ac2, new Sample(sketchPath("") + songPath)); // load up a new SamplePlayer using an included audio file
       gain2.addInput(player2); // connect the SamplePlayer to the master Gain
+      SamplePlayer player_start = new SamplePlayer(ac2, new Sample(sketchPath("") + start_music_src));
+      ac_start.out.addInput(player_start);
       
     }
     catch(Exception e)
@@ -145,6 +150,8 @@ class BeatDetector {
   }    
    
    void start() {
+    ac_start.start();
+     
     ac.start();
     ac2.start();
    }
