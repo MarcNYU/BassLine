@@ -126,7 +126,7 @@ class Ball {
     //}
     if (grounded()) {
       //gravity = 0;
-      velo.y = 0;
+      pos.y = ground-3;
     }
     if (pos.y > ground) {
       pos.y = ground-5;
