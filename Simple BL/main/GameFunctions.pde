@@ -157,11 +157,11 @@ void drawScore(int minutes, int seconds) {
     text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, 150);
 
   textSize(15);
-  float high = b.bounceCounts[2] * 5;
+  float high = b.bounceCounts[2] * 4;
   float mid = b.bounceCounts[1] * 3;
   float bottom = b.bounceCounts[0] * 2;
   float drop = b.bounceCounts[3] * 2;
-  text("Bounce points in Top Zone: " + b.bounceCounts[2] + "  x 5 ", 80, 300);
+  text("Bounce points in Top Zone: " + b.bounceCounts[2] + "  x 4 ", 80, 300);
   text(" = " + high, 350, 300);
   //text( high, 350, 300);
 
@@ -182,7 +182,7 @@ void drawScore(int minutes, int seconds) {
   line(40, 480, width-40, 480);
 
   text("Final Score: ", 80, 520);
-  text(max(fixDec(score, 1), 0), 350, 520);
+  text(max(round(score), 0), 350, 520);
   //text(" x 10 = ", 250, 400);
   //text( score, 350, 400);
 

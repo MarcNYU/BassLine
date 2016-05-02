@@ -15,6 +15,7 @@ void drawGuides() {
   } else {
     stroke(#FFFFFF, fadeValue);
   }
+  
   line(0, ground, width, ground);
 
   line(0, ceilling, width, ceilling);

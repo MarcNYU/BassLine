@@ -32,6 +32,7 @@ class Ball {
   int lowZoneIdx = 0;
   int midZondIdx = 1;
   int highZoneIdx = 2;
+  
 
 
 
@@ -52,6 +53,7 @@ class Ball {
     bounceCounts[0] =0;
     bounceCounts[1] =0;
     bounceCounts[2] =0;
+    bounceCounts[3] =0;
 
     for (int i = 0; i<50; i++) {
       j[i] = -10;
@@ -85,6 +87,9 @@ class Ball {
     if (BelowDropLine()) {
       currentZone = 3;
     }
+    
+    if(AboveTopLine())
+      currentZone = 2;
 
     if (pos.x == 40 && jump) {
       if (eRadius >= 52) {
@@ -265,6 +270,10 @@ class Ball {
   }
   void setSongSpeed(float s) {
     songSpd = s;
+  }
+  boolean AboveTopLine() {
+    if (pos.y > ceilling) return true;
+    return false;
   }
   Boolean grounded() {
     if (pos.y <= ground+3 && pos.y >= ground-3) return true; //If the ball is between the positions right above and below the "ground"
