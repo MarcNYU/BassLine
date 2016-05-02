@@ -268,7 +268,7 @@ class Ball {
           lineVelo.y = .6;
         }
       } else {
-        lineVelo.y = .5;
+        lineVelo.y = .4;
       }
     } else if (BelowSafeLine()) {
       if (jump) {
