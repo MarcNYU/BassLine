@@ -13,6 +13,7 @@ class Ball {
   PVector pos;
   PVector velo;
   PVector linePos;
+  PVector lineVelo;
 
   int dir;
   int currentPlatform;
@@ -37,7 +38,8 @@ class Ball {
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
     velo = new PVector(0, 0); //Vec2 of x and y velocity
-    linePos = new PVector(0,y);
+    linePos = new PVector(0, y);
+    lineVelo = new PVector(0, 0);
     currentPlatform = 1;
     dir = 1;  
     radius = r;
@@ -110,9 +112,10 @@ class Ball {
   //  }
   //}
   void update() {
-    pos.y += velo.y;
+    //pos.y += velo.y;
+    pos.y = linePos.y;
     pos.x += velo.x;
-
+    linePos.y += lineVelo.y;
     if (startOfGame) {
       velo.y = 0;
     }
@@ -121,6 +124,7 @@ class Ball {
       velo.y = 0;
     } else {
       reverseMovement();
+      moveLine();
     }
     if (BelowDropLine() && !hitFloor) {
       hitFloor = true;
@@ -156,94 +160,143 @@ class Ball {
     if (TopLine()) {
       if (leftB() && jump) {
         if (checkRadius()) {
-          velo.y = -.5;
+          //velo.y = -.5;
         } else {
-          velo.y = .5;
+          //velo.y = .5;
         }
         velo.x = songSpd;
       } else if (rightB() && jump) {
         if (checkRadius()) {
-          velo.y = -.5;
+          //velo.y = -.5;
         } else {
-          velo.y = .5;
+          //velo.y = .5;
         }
         velo.x = -songSpd;
       }
     } else if (AboveMidLine() || BelowMidLine()) {
       if (leftB() && jump) {
         if (checkRadius()) {
-          velo.y = -1.5;
+          //velo.y = -1.5;
         } else if (!checkRadius()) {
-          velo.y = .6;
+          //velo.y = .6;
         } else {
-          velo.y = .5;
+          //velo.y = .5;
         }
         velo.x = songSpd;
       } else if (rightB() && jump) {
         if (checkRadius()) {
-          velo.y = -1.5;
+          //velo.y = -1.5;
         } else if (!checkRadius()) {
-          velo.y = .6;
+          //velo.y = .6;
         } else {
-          velo.y = .5;
+          //velo.y = .5;
         }
         velo.x = -songSpd;
       }
     } else if (BelowSafeLine()) {
       if (leftB() && jump) {
         if (checkRadius()) {
-          velo.y = -2;
+          //velo.y = -2;
         } else if (!checkRadius()) {
-          velo.y = .3;
+          //velo.y = .3;
         } else {
-          velo.y = .2;
+          //velo.y = .2;
         }
         velo.x = songSpd;
       } else if (rightB() && jump) {
         if (checkRadius()) {
-          velo.y = -2;
+          //velo.y = -2;
         } else if (!checkRadius()) {
-          velo.y = .3;
+          //velo.y = .3;
         } else {
-          velo.y = .2;
+          //velo.y = .2;
         }
         velo.x = -songSpd;
       }
     } else if (BelowDropLine()) {
       if (leftB() && jump) {
         if (checkRadius()) {
-          velo.y = -3;
+          //velo.y = -3;
         } else if (!checkRadius()) {
-          velo.y = .1;
+          //velo.y = .1;
         } else {
-          velo.y = .1;
+          //velo.y = .1;
         }
         velo.x = songSpd;
       } else if (rightB() && jump) {
         if (checkRadius()) {
-          velo.y = -3;
+          //velo.y = -3;
         } else if (!checkRadius()) {
-          velo.y = .1;
+          //velo.y = .1;
         } else {
-          velo.y = .1;
+          //velo.y = .1;
         }
         velo.x = -songSpd;
       }
     } else if (pos.y < 100) {
       if (leftB() && jump) {
         if (checkRadius()) {
-          velo.y = 0;
+          //velo.y = 0;
         } else {
-          velo.y = .5;
+          //velo.y = .5;
         }
         velo.x = songSpd;
       } else if (rightB() && jump) {
         if (checkRadius()) {
-          velo.y = 0;
+          //velo.y = 0;
         } else {
-          velo.y = .5;
+          //velo.y = .5;
         }
         velo.x = -songSpd;
+      }
+    }
+  }
+  void moveLine() {
+    if (TopLine()) {
+      if (jump) {
+        if (checkRadius()) {
+          lineVelo.y = -.5;
+        }
+      } else {
+        lineVelo.y = .5;
+      }
+    } else if (AboveMidLine() || BelowMidLine()) {
+      if (jump) {
+        if (checkRadius()) {
+          lineVelo.y = -1.5;
+        } else if (!checkRadius()) {
+          lineVelo.y = .6;
+        }
+      } else {
+        lineVelo.y = .5;
+      }
+    } else if (BelowSafeLine()) {
+      if (jump) {
+        if (checkRadius()) {
+          lineVelo.y = -2;
+        } else if (!checkRadius()) {
+          lineVelo.y = .3;
+        }
+      } else {
+        lineVelo.y = .2;
+      }
+    } else if (BelowDropLine()) {
+      if (jump) {
+        if (checkRadius()) {
+          lineVelo.y = -3;
+        } else if (!checkRadius()) {
+          lineVelo.y = .1;
+        }
+      } else {
+        lineVelo.y = .1;
+      }
+    } else if (pos.y < 100) {
+      if (jump) {
+        if (checkRadius()) {
+          lineVelo.y = 0;
+        }
+      } else {
+        lineVelo.y = .5;
       }
     }
   }
@@ -406,9 +459,9 @@ boolean checkRadius() {
   return eRadius >= 52;
 }
 
-      //if(b.BelowMidLine()){
-      //  failing = false;
-      //  failTimer = 0;
-      //  fadeValue = 255.0;
-        
- // b = //new Ball(40, 100, 26);
+//if(b.BelowMidLine()){
+//  failing = false;
+//  failTimer = 0;
+//  fadeValue = 255.0;
+
+// b = //new Ball(40, 100, 26);
