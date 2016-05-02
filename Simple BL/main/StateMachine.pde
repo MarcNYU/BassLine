@@ -40,9 +40,9 @@ void gameStates()
     // classicVi.drawEQ();
 
     textSize(50);
-  
+
     //text("Top Line ", 80, ceilling);
-    
+
     fill(50, 150, 255);
     //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
     text("BassLine\n\n", width/2-textWidth("BassLine\n\n")/2, height/4-100);
