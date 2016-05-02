@@ -16,7 +16,7 @@ void drawGuides() {
   } else {
     stroke(#FFFFFF, fadeValue);
   }
-  
+
   line(0, ground, width, ground);
 
   line(0, ceilling, width, ceilling);
@@ -45,57 +45,58 @@ void BG() {
   //rect(40, middle, 400, 250);
   //fill(0, 0, 105);
   //rect(40, safeLine, 400, 100);
-  
+
   noStroke();
   if (b.pos.y < ceilling) {
     fill(0, 150, 255);
     rect(0, 0, width, ceilling);
-    
+
     fill(0, 100, 205);
     rect(0, ceilling, width, 210);
-    
+
     fill(0, 50, 155);
     rect(0, middle, width, 250);
-    
+
     fill(0, 0, 105);
     rect(0, safeLine, width, 100);
   } else if (b.pos.y < middle && b.pos.y > ceilling) {
-    if(prevPos < ceilling)
+    if (prevPos < ceilling)
       alphaVal = 255;
     fill(0, 150, 255, alphaVal);
     rect(0, 0, width, ceilling);
     alphaVal -= 25;
-    
+
     fill(0, 100, 205);
     rect(0, ceilling, width, 210);
-    
+
     fill(0, 50, 155);
     rect(0, middle, width, 250);
-    
+
     fill(0, 0, 105);
     rect(0, safeLine, width, 100);
   } else if (b.pos.y < safeLine && b.pos.y > middle) {
-    if(prevPos < middle)
+    if (prevPos < middle)
       alphaVal = 255;
     fill(0, 100, 205, alphaVal);
     rect(0, ceilling, width, 210);
     alphaVal -= 25;
-    
+
     fill(0, 50, 155);
     rect(0, middle, width, 250);
-    
+
     fill(0, 0, 105);
     rect(0, safeLine, width, 100);
   } else if (b.pos.y < dropLine && b.pos.y > safeLine) {
-    if(prevPos < safeLine)
+    if (prevPos < safeLine)
       alphaVal = 255;
     fill(0, 50, 155, alphaVal);
     rect(0, middle, width, 250);
     alphaVal -= 25;
-      
+
     fill(0, 0, 105);
     rect(0, safeLine, width, 100);
   }
-  
+  fill(0, 0, 20);
+  rect(0, dropLine, width, height);
   prevPos = b.pos.y;
 }

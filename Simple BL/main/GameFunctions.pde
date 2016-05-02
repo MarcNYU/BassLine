@@ -103,7 +103,7 @@ void drawFG() {
     stroke(fadeValue);
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
-    fill(fadeValue2);
+    fill(0);
     stroke(250,255,0);
     ellipse(width/2, height, 300, 300);
     stroke(fadeValue2);
@@ -140,7 +140,7 @@ void drawFG() {
   //ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
 
   int dt = millis() - time;
-  eRadius -= (dt * 0.2);
+  eRadius -= (dt * 0.15);
   //eRadius += (dt * 0.1);
   if (eRadius < 20) eRadius = 20;
   //if (eRadius > 85) eRadius = 85;

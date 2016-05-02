@@ -139,25 +139,25 @@ class Ball {
     //}
     if (TopLine()) {
       if (pos.x == 40 || pos.x == 440) {
-        gravity = .04;
+        gravity = .03;
       } else {
         gravity = .7;
       }
     } else if (AboveMidLine()||BelowMidLine()) {
       if ((pos.x == 40 || pos.x == 440) || (pos.x < 40 || pos.x > 440)) {
-        gravity = .04;
+        gravity = .03;
       } else {
         gravity = .45;
       }
     } else if (BelowSafeLine()) {
       if ((pos.x == 40 || pos.x == 440) || (pos.x < 40 || pos.x > 440)) {
-        gravity = .04;
+        gravity = .02;
       } else {
         gravity = .2;
       }
     } else if (BelowDropLine()) {
       if ((pos.x == 40 || pos.x == 440) || (pos.x < 40 || pos.x > 440)) {
-        gravity = .04;
+        gravity = .01;
       } else {
         gravity = .1;
       }
@@ -373,6 +373,7 @@ class Ball {
     noFill();
     ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
     ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
+    ellipse(b.pos.x, b.pos.y, eRadius-2, eRadius-2);
   }
 
   void manageScore() {
