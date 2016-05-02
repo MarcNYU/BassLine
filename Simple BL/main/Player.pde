@@ -361,11 +361,12 @@ class Ball {
       float rVal = pos.y / height;
       float bVal = 1 - (rVal / 10) ;
       fill(255*bVal, 255, 255*rVal, fadeValue);
+      //println(255*bVal, 255, 255*rVal);
     }
     //draw the player with the faded color
-    else {
-      fill(100, 255, 100, fadeValue);
-    }
+    //else {
+    //  fill(100, 255, 100, fadeValue);
+    //}
     ellipse(pos.x, pos.y, radius+1, radius+1);
   }
 

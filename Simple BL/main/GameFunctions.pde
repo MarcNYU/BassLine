@@ -58,7 +58,7 @@ void resetGame() {
   ac.reset();
   ac2.reset();
   fadeValue = 255.0;
-  fadeValue = 0.0;
+  fadeValue2 = 0.0;
   timerStart = false;
   failTimer = 0;
   failing = false;
