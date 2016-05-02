@@ -44,9 +44,9 @@ void gameStates()
     fill(50, 150, 255);
     //text(1 + ". " + songList[0] + "\n", width/2-textWidth(1 + ". " +songList[0]+ "\n")/2, height/2+42);
     text("BassLine\n\n", width/2-textWidth("BassLine\n\n")/2, height/4-100);
-    
+
     textSize(15);
-    
+
     if (keyPressed && releasedKey == true) {
       //If the user presses the right arrow, the next song in the array is played
       releasedKey = false;
@@ -97,7 +97,7 @@ void gameStates()
 
     loop();
 
-   
+
     if (keyPressed) {
       if (key == ' ')
       {
@@ -106,78 +106,78 @@ void gameStates()
         state = 1;
       }
     }
-    
-    
+
+
     break;
   case 1:
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
-    percentCompletion = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
-    
-    
-    
+    percentCompletion = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]), 2), 100);
+
+
+
     //b.manageScore();
     //fill(100, 255, 100);
     //text("Score: " + score, 20, 35);
-    
+
     //If timer has been initiated (if the player hit the floor), start the fail timer, turn off timer start
-    if(hitFloor){
+    if (hitFloor) {
       //failTimer = millis();
       failing = true;
       hitFloor = false;
     }
-    
-    
+
+
     //if(timerStart){
     //  failTimer = millis();
     //  timerStart = false;    
     //}
-    
+
     //If they are still failing (they have hit the floor and haven't risen above the midline) change the color of the ball from white to black
-    if(failing){
+    if (failing) {
       //fadeValue -= abs(max(failTimer/10000,0));
-      
-      if(fadeValue >0)
+
+      if (fadeValue >0)
         fadeValue -= fadeChange;
       b.bounceCounts[3] -= 0.01;
       println("fail timer: " + failTimer + " fade value: " + fadeValue + "fail penalty: " + b.bounceCounts[3]);
       //If the fail timer has been on for more than five seconds, end the game
-      if(fadeValue <= 0){
+      if (fadeValue <= 0) {
         state = 2;
       }
       //if the player was failing and they are now above the midline, then turn failing off and reset fail timer
-      if(b.AboveSafeLine()){
+      if (b.BelowMidLine()) {
         failing = false;
         failTimer = 0;
         fadeValue = 255.0;
       }
     }
-    
-    
-    
-    
+
+
+
+
     //println("game started");
     if (gameInit) {
- 
+
       initMusic();
-      
+
       println("game init current song idx: " + currentSongIdx);
       gameInit = false;
     }
-    
+
     //if(start){
-      //mp3.play();
-      //mp3.mute();
+    //mp3.play();
+    //mp3.mute();
     //}
-    
+
     Game();
-    fill(0,0,150);
+    fill(0, 0, 150);
     //text("Score: " + score , 50,40);
     //if (!(ac.isRunning())) {
     //  songEnded = true;
-      
+
     //}
-    
+
     //println("Play Test");
 
 
@@ -191,22 +191,22 @@ void gameStates()
     ac.stop();
     ac2.stop();
     //st.kill();
-    
 
-    
-    
+
+
+
     seconds = (int)(ac.getTime()/(1000))%60;
     minutes = (int)(ac.getTime()/1000)/60;  
     //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
-    
-    
+
+
     background(0);
     textSize(32);
     fill(255);
-    
+
     //text("Hit any key to replay", width/2-textWidth("Hit any key to replay")/2, 200);
     //textSize(22);
-    drawScore(minutes,seconds);
+    drawScore(minutes, seconds);
     //text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
     //println("Current Time: " + minutes  + ":" + seconds);
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
@@ -217,25 +217,23 @@ void gameStates()
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
     //drawScore();
-     //menuVi.drawEQ();
-     
+    //menuVi.drawEQ();
+
     if (keyPressed) {
-      if(key == ENTER){
-      
-      resetGame();
-      //returnToPlay = true;
-      //frequencyEnvelope.clear();
-      //sp.kill();
-      
-      state = 0;
-      //sp.reset();
-      
-      //sp.setToEnd();
-      
-      //restart = true;
-      
+      if (key == ENTER) {
+
+        resetGame();
+        //returnToPlay = true;
+        //frequencyEnvelope.clear();
+        //sp.kill();
+
+        state = 0;
+        //sp.reset();
+
+        //sp.setToEnd();
+
+        //restart = true;
       }
-      
     }
     //println("Game Over");
 
@@ -246,7 +244,7 @@ void gameStates()
     Game();
     println("Debug");
     break;
-    
+
   case 4:
     //print("\n\n\n\nstate 4 entered\n\n\n\n");
     ac.stop();
@@ -255,7 +253,7 @@ void gameStates()
     textSize(20);
     fill(255);
     //score = fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2);
-    
+
     //text("Current Time: " + minutes  + ":" + seconds , width/2-textWidth("Current Time: ")/2, height-190);
     //println("Current Time: " + minutes  + ":" + seconds);
     //text("Score: " + score, width/2-textWidth("Score: ")/2, height-160);
@@ -265,28 +263,24 @@ void gameStates()
     blinkColor+= blinkChange;
     if (blinkColor >= 255 || blinkColor <= 0)
       blinkChange = blinkChange* -1;
-    
- 
+
+
     stroke(255);
     line(40, 0, 40, height);
     line(440, 0, 440, height);   
-    
-    drawScore(minutes,seconds);
+
+    drawScore(minutes, seconds);
     //text("Distance: " + score, width/2-textWidth("Distance: #")/2, height-100);
 
     if (keyPressed) {
-      if(key == ENTER){
-      //frequencyEnvelope.clear();
-      
-      resetGame();
-      
-      state = 0;
-      
+      if (key == ENTER) {
+        //frequencyEnvelope.clear();
+
+        resetGame();
+
+        state = 0;
       }
-      
     }   
     break;
   }
-  
-    
 }

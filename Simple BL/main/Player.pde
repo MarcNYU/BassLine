@@ -12,6 +12,7 @@ int highLevCount;
 class Ball {
   PVector pos;
   PVector velo;
+  PVector linePos;
 
   int dir;
   int currentPlatform;
@@ -36,6 +37,7 @@ class Ball {
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
     velo = new PVector(0, 0); //Vec2 of x and y velocity
+    linePos = new PVector(0,y);
     currentPlatform = 1;
     dir = 1;  
     radius = r;
@@ -48,31 +50,78 @@ class Ball {
     bounceCounts[0] =0;
     bounceCounts[1] =0;
     bounceCounts[2] =0;
-    bounceCounts[3] =0;
 
     for (int i = 0; i<50; i++) {
       j[i] = -10;
       k[i] = -10;
     }
   }
+  //void update() {
+  //  pos.y += velo.y;
+  //  pos.x += velo.x;
+  //  //velo.y += gravity;
 
+  //  if (startOfGame) {
+  //    velo.y = 0;
+  //  } else {
+  //    velo.y += gravity;
+  //  }
+
+  //  if (grounded()) {
+  //    onGround();
+  //  } else {
+  //    inAir();
+  //  }
+
+  //  if (BelowDropLine() && !hitFloor) {
+  //    hitFloor = true;
+  //  }
+
+  //  if (BelowMidLine()) {
+  //    currentZone =0;
+  //  }
+
+  //  if (AboveMidLine()) {
+  //    currentZone =1;
+  //  }
+
+  //  if (BelowDropLine()) {
+  //    currentZone = 3;
+  //  }
+
+  //  if (leftB() || rightB()) {
+  //    gravity = .4;
+  //  }
+
+  //  if (pos.x < 40) {
+  //    velo.x = 0;
+  //    pos.x = 40;
+  //  } else if (pos.x > 440) {
+  //    velo.x = 0;
+  //    pos.x = 440;
+  //  }
+
+  //  if (pos.x == 40 || pos.x == 440) {
+  //    gravity = .02;
+  //  }
+
+  //  if (pos.y > ground+3) {
+  //    pos.y = ground;
+  //  }
+  //}
   void update() {
     pos.y += velo.y;
     pos.x += velo.x;
-    //velo.y += gravity;
 
     if (startOfGame) {
       velo.y = 0;
-    } else {
-      velo.y += gravity;
     }
 
     if (grounded()) {
-      onGround();
+      velo.y = 0;
     } else {
-      inAir();
+      reverseMovement();
     }
-
     if (BelowDropLine() && !hitFloor) {
       hitFloor = true;
     }
@@ -89,24 +138,113 @@ class Ball {
       currentZone = 3;
     }
 
-    if (leftB() || rightB()) {
-      gravity = .4;
-    }
-
     if (pos.x < 40) {
       velo.x = 0;
+      //velo.y = 0;
       pos.x = 40;
     } else if (pos.x > 440) {
       velo.x = 0;
+      //velo.y = 0;
       pos.x = 440;
-    }
-
-    if (pos.x == 40 || pos.x == 440) {
-      gravity = .02;
     }
 
     if (pos.y > ground+3) {
       pos.y = ground;
+    }
+  }
+  void reverseMovement() {
+    if (TopLine()) {
+      if (leftB() && jump) {
+        if (checkRadius()) {
+          velo.y = -.5;
+        } else {
+          velo.y = .5;
+        }
+        velo.x = songSpd;
+      } else if (rightB() && jump) {
+        if (checkRadius()) {
+          velo.y = -.5;
+        } else {
+          velo.y = .5;
+        }
+        velo.x = -songSpd;
+      }
+    } else if (AboveMidLine() || BelowMidLine()) {
+      if (leftB() && jump) {
+        if (checkRadius()) {
+          velo.y = -1.5;
+        } else if (!checkRadius()) {
+          velo.y = .6;
+        } else {
+          velo.y = .5;
+        }
+        velo.x = songSpd;
+      } else if (rightB() && jump) {
+        if (checkRadius()) {
+          velo.y = -1.5;
+        } else if (!checkRadius()) {
+          velo.y = .6;
+        } else {
+          velo.y = .5;
+        }
+        velo.x = -songSpd;
+      }
+    } else if (BelowSafeLine()) {
+      if (leftB() && jump) {
+        if (checkRadius()) {
+          velo.y = -2;
+        } else if (!checkRadius()) {
+          velo.y = .3;
+        } else {
+          velo.y = .2;
+        }
+        velo.x = songSpd;
+      } else if (rightB() && jump) {
+        if (checkRadius()) {
+          velo.y = -2;
+        } else if (!checkRadius()) {
+          velo.y = .3;
+        } else {
+          velo.y = .2;
+        }
+        velo.x = -songSpd;
+      }
+    } else if (BelowDropLine()) {
+      if (leftB() && jump) {
+        if (checkRadius()) {
+          velo.y = -3;
+        } else if (!checkRadius()) {
+          velo.y = .1;
+        } else {
+          velo.y = .1;
+        }
+        velo.x = songSpd;
+      } else if (rightB() && jump) {
+        if (checkRadius()) {
+          velo.y = -3;
+        } else if (!checkRadius()) {
+          velo.y = .1;
+        } else {
+          velo.y = .1;
+        }
+        velo.x = -songSpd;
+      }
+    } else if (pos.y < 100) {
+      if (leftB() && jump) {
+        if (checkRadius()) {
+          velo.y = 0;
+        } else {
+          velo.y = .5;
+        }
+        velo.x = songSpd;
+      } else if (rightB() && jump) {
+        if (checkRadius()) {
+          velo.y = 0;
+        } else {
+          velo.y = .5;
+        }
+        velo.x = -songSpd;
+      }
     }
   }
   void onGround() {
@@ -140,8 +278,8 @@ class Ball {
     } 
     //gravity = .3;
     if (pos.y < ceilling && !leftB() && !rightB()) {
-     velo.y = 0;
-    } 
+      velo.y = 0;
+    }
   }
   void setSongSpeed(float s) {
     songSpd = s;
@@ -151,11 +289,11 @@ class Ball {
     return false;
   }
   Boolean leftB() {
-    if (pos.x <= left+2 && pos.x >= left-2) return true;
+    if (pos.x <= left+1 && pos.x >= left-2) return true;
     return false;
   }
   Boolean rightB() {
-    if (pos.x <= right+2 && pos.x >= right-2) return true;
+    if (pos.x <= right+2 && pos.x >= right-1) return true;
     return false;
   }
   boolean TopLine() {
@@ -163,15 +301,15 @@ class Ball {
     return false;
   }
   boolean BelowMidLine() {
-    if (pos.y > middle && pos.y < ground) return true;
+    if (pos.y > middle && pos.y < safeLine) return true;
     return false;
   }
   boolean AboveMidLine() {
     if (pos.y < middle && pos.y > ceilling) return true;
     return false;
   }
-  boolean AboveSafeLine() {
-    if (pos.y < safeLine && pos.y > middle) return true;
+  boolean BelowSafeLine() {
+    if (pos.y < dropLine && pos.y > safeLine) return true;
     return false;
   }
   boolean BelowDropLine() {
@@ -188,6 +326,8 @@ class Ball {
     noStroke();
 
     drawPlayer();
+    //stroke(255);
+    //line(0, linePos.y, width, linePos.y);
   }
 
   void showLastPosition() {
@@ -229,7 +369,7 @@ class Ball {
     if (!failing) {
       float rVal = pos.y / height;
       float bVal = 1 - (rVal / 10) ;
-      fill(255*rVal, 255, 255*bVal);
+      fill(255*rVal, 255, 255*bVal, fadeValue);
     }
     //draw the player with the faded color
     else {
@@ -261,3 +401,14 @@ class Ball {
     }
   }
 }
+
+boolean checkRadius() {
+  return eRadius >= 52;
+}
+
+      //if(b.BelowMidLine()){
+      //  failing = false;
+      //  failTimer = 0;
+      //  fadeValue = 255.0;
+        
+ // b = //new Ball(40, 100, 26);
