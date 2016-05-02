@@ -6,7 +6,8 @@ float safeLine = 600;
 float middle = 350;
 float left = 40;
 float right = 440;
-
+float alphaVal = 255;
+float prevPos = ceilling;
 
 void drawGuides() {
 
@@ -44,30 +45,57 @@ void BG() {
   //rect(40, middle, 400, 250);
   //fill(0, 0, 105);
   //rect(40, safeLine, 400, 100);
-
+  
+  
   if (b.pos.y < ceilling) {
     fill(0, 150, 255);
     rect(40, 0, 400, ceilling);
+    
     fill(0, 100, 205);
     rect(40, ceilling, 400, 210);
+    
     fill(0, 50, 155);
     rect(40, middle, 400, 250);
+    
     fill(0, 0, 105);
     rect(40, safeLine, 400, 100);
   } else if (b.pos.y < middle && b.pos.y > ceilling) {
+    if(prevPos < ceilling)
+      alphaVal = 255;
+    fill(0, 150, 255, alphaVal);
+    rect(40, 0, 400, ceilling);
+    alphaVal -= 25;
+    
     fill(0, 100, 205);
     rect(40, ceilling, 400, 210);
+    
     fill(0, 50, 155);
     rect(40, middle, 400, 250);
+    
     fill(0, 0, 105);
     rect(40, safeLine, 400, 100);
   } else if (b.pos.y < safeLine && b.pos.y > middle) {
+    if(prevPos < middle)
+      alphaVal = 255;
+    fill(0, 100, 205, alphaVal);
+    rect(40, ceilling, 400, 210);
+    alphaVal -= 25;
+    
     fill(0, 50, 155);
     rect(40, middle, 400, 250);
+    
     fill(0, 0, 105);
     rect(40, safeLine, 400, 100);
   } else if (b.pos.y < dropLine && b.pos.y > safeLine) {
+    if(alphaVal < safeLine)
+      alphaVal = 255;
+    fill(0, 50, 155, alphaVal);
+    rect(40, middle, 400, 250);
+    alphaVal -= 25;
+      
     fill(0, 0, 105);
     rect(40, safeLine, 400, 100);
   }
+  
+  prevPos = b.pos.y;
 }
