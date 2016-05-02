@@ -31,13 +31,14 @@ void Game() {
   if (b.pos.x == left || b.pos.x == right) {
     input();
   } 
+  BG();
   input();
   //check();
   spd = (abs(bq.next())/100) + 10;
   println(bq.next());
   //if (spd<10)spd=10;
   //if (spd>20)spd=20;
-  b.setSongSpeed(spd);
+  //b.setSongSpeed(spd);
 
   b.update();
   drawGuides();
@@ -79,11 +80,11 @@ void drawFG() {
     fill(0);
     stroke(255);
     rect(0, 0, width-1, 40);
-    rect(-10, height-42, width+10, 40);
+    //rect(-10, height-42, width+10, 40);
     fill(0);
     ellipse(width/2, height, 200, 200);
     stroke(0);
-    rect(0, height-41, width-1, 40);
+    //rect(0, height-41, width-1, 40);
     textSize(22);
     fill(100, 255, 100);
     text("Percent Completion: " + min(round(percentCompletion * 100), 100) + "%", 20, 35);
@@ -99,11 +100,11 @@ void drawFG() {
     fill(fadeValue);
     stroke(fadeValue);
     rect(0, 0, width-1, 40);
-    rect(-10, height-42, width+10, 40);
+    //rect(-10, height-42, width+10, 40);
     fill(fadeValue);
     ellipse(width/2, height, 200, 200);
     stroke(fadeValue);
-    rect(0, height-41, width-1, 40);
+    //rect(0, height-41, width-1, 40);
     textSize(22);
     fill(100, 255, 100, fadeValue);
     text("Percent Completion: " + min(round(percentCompletion * 100), 100) + "%", 20, 35);
