@@ -46,55 +46,55 @@ void BG() {
   //fill(0, 0, 105);
   //rect(40, safeLine, 400, 100);
   
-  
+  noStroke();
   if (b.pos.y < ceilling) {
     fill(0, 150, 255);
-    rect(40, 0, 400, ceilling);
+    rect(0, 0, width, ceilling);
     
     fill(0, 100, 205);
-    rect(40, ceilling, 400, 210);
+    rect(0, ceilling, width, 210);
     
     fill(0, 50, 155);
-    rect(40, middle, 400, 250);
+    rect(0, middle, width, 250);
     
     fill(0, 0, 105);
-    rect(40, safeLine, 400, 100);
+    rect(0, safeLine, width, 100);
   } else if (b.pos.y < middle && b.pos.y > ceilling) {
     if(prevPos < ceilling)
       alphaVal = 255;
     fill(0, 150, 255, alphaVal);
-    rect(40, 0, 400, ceilling);
+    rect(0, 0, width, ceilling);
     alphaVal -= 25;
     
     fill(0, 100, 205);
-    rect(40, ceilling, 400, 210);
+    rect(0, ceilling, width, 210);
     
     fill(0, 50, 155);
-    rect(40, middle, 400, 250);
+    rect(0, middle, width, 250);
     
     fill(0, 0, 105);
-    rect(40, safeLine, 400, 100);
+    rect(0, safeLine, width, 100);
   } else if (b.pos.y < safeLine && b.pos.y > middle) {
     if(prevPos < middle)
       alphaVal = 255;
     fill(0, 100, 205, alphaVal);
-    rect(40, ceilling, 400, 210);
+    rect(0, ceilling, width, 210);
     alphaVal -= 25;
     
     fill(0, 50, 155);
-    rect(40, middle, 400, 250);
+    rect(0, middle, width, 250);
     
     fill(0, 0, 105);
-    rect(40, safeLine, 400, 100);
+    rect(0, safeLine, width, 100);
   } else if (b.pos.y < dropLine && b.pos.y > safeLine) {
     if(prevPos < safeLine)
       alphaVal = 255;
     fill(0, 50, 155, alphaVal);
-    rect(40, middle, 400, 250);
+    rect(0, middle, width, 250);
     alphaVal -= 25;
       
     fill(0, 0, 105);
-    rect(40, safeLine, 400, 100);
+    rect(0, safeLine, width, 100);
   }
   
   prevPos = b.pos.y;

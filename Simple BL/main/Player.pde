@@ -32,7 +32,7 @@ class Ball {
   int lowZoneIdx = 0;
   int midZondIdx = 1;
   int highZoneIdx = 2;
-  
+
 
 
 
@@ -87,8 +87,8 @@ class Ball {
     if (BelowDropLine()) {
       currentZone = 3;
     }
-    
-    if(AboveTopLine())
+
+    if (AboveTopLine())
       currentZone = 2;
 
     if (pos.x == 40 && jump) {
@@ -361,13 +361,18 @@ class Ball {
       float rVal = pos.y / height;
       float bVal = 1 - (rVal / 10) ;
       fill(255*bVal, 255, 255*rVal, fadeValue);
+      stroke(255*bVal, 255, 255*rVal, fadeValue);
       //println(255*bVal, 255, 255*rVal);
     }
     //draw the player with the faded color
     //else {
     //  fill(100, 255, 100, fadeValue);
     //}
+    
     ellipse(pos.x, pos.y, radius+1, radius+1);
+    noFill();
+    ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
+    ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
   }
 
   void manageScore() {

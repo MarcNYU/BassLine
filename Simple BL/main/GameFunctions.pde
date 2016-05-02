@@ -41,7 +41,7 @@ void Game() {
   //b.setSongSpeed(spd);
 
   b.update();
-  drawGuides();
+  //drawGuides();
   drawStringL();
   drawStringR();
   b.render();
@@ -83,7 +83,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(0);
-    ellipse(width/2, height, 200, 200);
+    ellipse(width/2, height, 300, 300);
     stroke(0);
     //rect(0, height-41, width-1, 40);
     textSize(22);
@@ -103,7 +103,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(fadeValue2);
-    ellipse(width/2, height, 200, 200);
+    ellipse(width/2, height, 300, 300);
     stroke(fadeValue2);
     //rect(0, height-41, width-1, 40);
     textSize(22);
@@ -120,7 +120,7 @@ void drawFG() {
   int beats[] = bq.nexts(); // returns an array of time of beats
   for (int i = 0; i < beats.length; ++i) {
 
-    int y = 200 - beats[i] * 200 / forward;
+    int y = 300 - beats[i] * 300 / forward;
     //int y = beats[i] * height / forward;
     //line (0, y, width, y);
     ellipse(width/2, height, y, y);
@@ -132,10 +132,10 @@ void drawFG() {
   //fill(brightness*255);
   //ellipse(width/2,height/2,100,100); 
 
-  stroke(100, 255, 100);
+  //stroke(100, 255, 100);
 
-  ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
-  ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
+  //ellipse(b.pos.x, b.pos.y, eRadius, eRadius);
+  //ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
 
   int dt = millis() - time;
   eRadius -= (dt * 0.2);
