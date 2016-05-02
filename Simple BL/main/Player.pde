@@ -360,7 +360,7 @@ class Ball {
     if (!failing) {
       float rVal = pos.y / height;
       float bVal = 1 - (rVal / 10) ;
-      fill(255*rVal, 255, 255*bVal, fadeValue);
+      fill(255*bVal, 255, 255*rVal, fadeValue);
     }
     //draw the player with the faded color
     else {

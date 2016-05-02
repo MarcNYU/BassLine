@@ -141,6 +141,8 @@ void gameStates()
 
       if (fadeValue >0)
         fadeValue -= fadeChange;
+      if (fadeValue2 < 255)
+        fadeValue2 += fadeChange;
       b.bounceCounts[3] -= 0.01;
       println("fail timer: " + failTimer + " fade value: " + fadeValue + "fail penalty: " + b.bounceCounts[3]);
       //If the fail timer has been on for more than five seconds, end the game

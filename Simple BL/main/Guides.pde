@@ -87,7 +87,7 @@ void BG() {
     fill(0, 0, 105);
     rect(40, safeLine, 400, 100);
   } else if (b.pos.y < dropLine && b.pos.y > safeLine) {
-    if(alphaVal < safeLine)
+    if(prevPos < safeLine)
       alphaVal = 255;
     fill(0, 50, 155, alphaVal);
     rect(40, middle, 400, 250);

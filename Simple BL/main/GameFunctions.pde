@@ -58,6 +58,7 @@ void resetGame() {
   ac.reset();
   ac2.reset();
   fadeValue = 255.0;
+  fadeValue = 0.0;
   timerStart = false;
   failTimer = 0;
   failing = false;
@@ -82,7 +83,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(0);
-    //ellipse(width/2, height, 200, 200);
+    ellipse(width/2, height, 200, 200);
     stroke(0);
     //rect(0, height-41, width-1, 40);
     textSize(22);
@@ -101,12 +102,12 @@ void drawFG() {
     stroke(fadeValue);
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
-    fill(fadeValue);
-    //ellipse(width/2, height, 200, 200);
-    stroke(fadeValue);
+    fill(fadeValue2);
+    ellipse(width/2, height, 200, 200);
+    stroke(fadeValue2);
     //rect(0, height-41, width-1, 40);
     textSize(22);
-    fill(100, 255, 100, fadeValue);
+    fill(255, fadeValue2);
     text("Percent Completion: " + min(round(percentCompletion * 100), 100) + "%", 20, 35);
     //fill(fadeValue);
     //noStroke();

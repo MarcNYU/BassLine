@@ -12,6 +12,7 @@ AudioContext ac; // create our AudioContext
 AudioContext ac2;
 
 Float fadeValue;
+Float fadeValue2;
 Boolean timerStart; 
 Integer failTimer;
 Boolean failing;
@@ -53,6 +54,7 @@ void setup() {
   initGame();
   initString();
   fadeValue = 255.0;
+  fadeValue2 = 0.0;
   timerStart = false;
   failTimer = 0;
   failing = false;
