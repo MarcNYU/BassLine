@@ -1,9 +1,9 @@
 // GUIDE VARS
-float ceilling = 140;
+float ceilling = 160;
 float ground = 740;
 float dropLine = 700;
 float safeLine = 600;
-float middle = 350;
+float middle = 360;
 float left = 40;
 float right = 440;
 float alphaVal = 255;

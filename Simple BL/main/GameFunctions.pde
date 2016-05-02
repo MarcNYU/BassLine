@@ -83,6 +83,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(0);
+    stroke(250,255,0);
     ellipse(width/2, height, 300, 300);
     stroke(0);
     //rect(0, height-41, width-1, 40);
@@ -103,6 +104,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(fadeValue2);
+    stroke(250,255,0);
     ellipse(width/2, height, 300, 300);
     stroke(fadeValue2);
     //rect(0, height-41, width-1, 40);
