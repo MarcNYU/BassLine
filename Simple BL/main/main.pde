@@ -26,10 +26,20 @@ String song4 = "SKRILLEX - BANGARANG (FT. SIRAH).mp3";
 
 
 Integer[] songRuntimes = new Integer[4];
-Integer sLen1 = 180000 + 42000;//00:03:42 = (180,000 + 42000)
-Integer sLen2 = 120000 + 58000;//00:02:58 = (120,000 + 58000)
-Integer sLen3 = 180000 + 20000;//00:03:20 = (180,000 + 20000)
-Integer sLen4 = 180000 + 44000;//00:03:36 = (180,000 + 36000)
+
+//full length runtime
+
+//Integer sLen1 = 180000 + 42000;//00:03:42 = (180,000 + 42000)
+//Integer sLen2 = 120000 + 58000;//00:02:58 = (120,000 + 58000)
+//Integer sLen3 = 180000 + 20000;//00:03:20 = (180,000 + 20000)
+//Integer sLen4 = 180000 + 44000;//00:03:36 = (180,000 + 36000)
+
+//Abridged Versions
+
+Integer sLen1 = 60000; //+ 42000;//00:03:42 = (180,000 + 42000)
+Integer sLen2 = 60000;// + 58000;//00:02:58 = (120,000 + 58000)
+Integer sLen3 = 60000 ;//+ 20000;//00:03:20 = (180,000 + 20000)
+Integer sLen4 = 60000; //+ 44000;//00:03:36 = (180,000 + 36000)
 
 Boolean songChosen = false;
 
@@ -67,10 +77,10 @@ void setup() {
 void draw() {
   background(0);
   outt.mute();
-  if( ac.getTime() > songRuntimes[currentSongIdx]+ 5000 && !startOfGame){
+  if( ac.getTime() > songRuntimes[currentSongIdx] && !startOfGame){
        //songEnded = false;
      //else if( ac.getTime() > 5000){    
-       println("song ended");
+      // println("song ended");
        state = 4;
       
        

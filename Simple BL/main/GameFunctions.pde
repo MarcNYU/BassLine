@@ -4,6 +4,7 @@ BeatQueue bq;
 int forward = 2000;  // how many milliseconds to look forward
 float spd;
 float fadeInVal = 1;
+float volumeFade = 0.4;
 
 
 void initGame() {
@@ -24,9 +25,11 @@ void initMusic() {
 }
 
 void Game() {
-  println(frameRate);
-  manageVolume();
+  //println(frameRate);
+  //manageVolume();
+  fadeVolume();
   gainGlide.setValue(volume);
+  println("percent completion: " + percentCompletion);
 
   if (b.pos.x == left || b.pos.x == right) {
     input();
@@ -53,7 +56,7 @@ void Game() {
 }
 
 void resetGame() {
-  println("game reset");
+  //println("game reset");
   //g = new beads.Gain(ac, 2, 0.2);
   volume = 1;
   surface.setResizable(true);
@@ -217,6 +220,16 @@ void manageVolume() {
     volume = .20;
   }
 }
+
+void fadeVolume(){
+   if(percentCompletion >0.95){
+     if(volume > 0)
+       volume -= volumeFade;
+     //volume = 0;
+    // println("volume after fade: " + volume);
+   }
+}
+
 
 void drawBG() {
 }
