@@ -1,6 +1,7 @@
 import java.util.Timer;
 import java.util.TimerTask;
 import beads.*; // import the beads library
+float volume;
 
 int time; // tracks the time 
 float eRadius;
@@ -13,9 +14,6 @@ class BeatDetector {
   int last_beat;
   float default_threshold = (float)1e-10;
   float cur_threshold = default_threshold;
-  
-  
-  
   
   beads.Gain gain;
   beads.Gain gain2;
@@ -77,7 +75,9 @@ class BeatDetector {
     
     // Delay Gain
     ac2 = new AudioContext();
-    gain2 = new beads.Gain(ac2, 1, 1);
+    //gain2 = new beads.Gain(ac2, 1, volume);
+    gainGlide = new Glide(ac2, 0.0, 50);
+    gain2 = new beads.Gain(ac2, 1, gainGlide);
     TapIn delayIn = new TapIn(ac2, forward+100);
     delayIn.addInput(gain2);
     TapOut delayOut = new TapOut(ac2, delayIn, forward); 

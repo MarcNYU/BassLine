@@ -25,8 +25,8 @@ void initMusic() {
 
 void Game() {
   //println(frameRate);
-
-  //gainGlide.setValue(mouseX / (float)width);
+  manageVolume();
+  gainGlide.setValue(volume);
 
   if (b.pos.x == left || b.pos.x == right) {
     input();
@@ -55,6 +55,7 @@ void Game() {
 void resetGame() {
   println("game reset");
   //g = new beads.Gain(ac, 2, 0.2);
+  volume = 1;
   surface.setResizable(true);
   ac.reset();
   ac2.reset();
@@ -100,7 +101,8 @@ void drawFG() {
     pushMatrix();
     rectMode(CORNER);
 
-    fill(fadeValue);
+    //fill(fadeValue);
+    fill(0);
     stroke(fadeValue);
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
@@ -204,6 +206,16 @@ void drawScore(int minutes, int seconds) {
   //line(40, 450, width-40, 450);
 
   
+}
+
+void manageVolume() {
+  if (b.pos.y < middle) {
+    volume = 1;
+  } else if (b.pos.y > middle && b.pos.y < dropLine) {
+    volume = .50;
+  }  else if (b.pos.y > dropLine) {
+    volume = .20;
+  }
 }
 
 void drawBG() {

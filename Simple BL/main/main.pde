@@ -49,7 +49,7 @@ void setup() {
   songRuntimes[2] = sLen3;
   songRuntimes[3] = sLen4;
   ac = new AudioContext();
-  
+  volume = 1;
   gameStates();
   initGame();
   initString();
