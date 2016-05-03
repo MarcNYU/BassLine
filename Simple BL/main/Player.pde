@@ -98,7 +98,7 @@ class Ball {
       } else {
         velo.y = -4.5;
       }
-      velo.x = 13;
+      velo.x = 13.5;
     } else if (pos.x == 440 && jump) {
       if (eRadius >= 52) {
         //if (jump && brightness != 0.0) {
@@ -106,7 +106,7 @@ class Ball {
       } else {
         velo.y = -4.5;
       }
-      velo.x = -13;
+      velo.x = -13.5;
     }
 
     if (pos.x < 40) {

@@ -24,7 +24,7 @@ void initMusic() {
 }
 
 void Game() {
-  //println(frameRate);
+  println(frameRate);
   manageVolume();
   gainGlide.setValue(volume);
 
@@ -35,7 +35,7 @@ void Game() {
   input();
   //check();
   spd = (abs(bq.next())/100) + 10;
-  println(bq.next());
+  //println(bq.next());
   //if (spd<10)spd=10;
   //if (spd>20)spd=20;
   //b.setSongSpeed(spd);
