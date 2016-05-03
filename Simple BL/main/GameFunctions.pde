@@ -90,7 +90,7 @@ void drawFG() {
     stroke(0);
     //rect(0, height-41, width-1, 40);
     textSize(22);
-    fill(100, 255, 100);
+    fill(250,255,0);
     text("Percent Completion: " + min(round(percentCompletion * 100), 100) + "%", 20, 35);
     //text("Minutes: " + round(minutes) + " Seconds: " + seconds + " Score: " + score, 20, 35);
     //fill(255);

@@ -15,7 +15,7 @@ int move = 0;
 int state = 0;
 float score;
 float percentCompletion;
-Float fadeChange = 0.4;
+Float fadeChange = 0.7;
 // MENU VARS
 int blinkColor;
 int blinkChange = 5;
