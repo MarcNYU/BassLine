@@ -48,6 +48,7 @@ void Game() {
   //seconds = (int)(ac.getTime()/(1000))%60;
   //minutes = (int)(ac.getTime()/1000)/60;
   //score = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
+  makeRipples();
   drawFG();
 }
 

@@ -53,6 +53,7 @@ void setup() {
   gameStates();
   initGame();
   initString();
+  initRipples();
   fadeValue = 255.0;
   fadeValue2 = 0.0;
   timerStart = false;
