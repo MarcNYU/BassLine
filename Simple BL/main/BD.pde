@@ -8,7 +8,7 @@ float eRadius;
 class BeatDetector {
   public int forward;  // How long to look forward 
   int target_interval = 500;  // Target interval of beats, will dynamicly affect threshold
-  String start_music_src = "start_music.wav";  // The place of the start music
+  String start_music_src = "start_music3.mp3";  // The place of the start music
   
   int last_beat;
   float default_threshold = (float)1e-10;
