@@ -102,7 +102,7 @@ class BeatDetector {
       gain.addInput(player); // connect the SamplePlayer to the master Gain
       SamplePlayer player2 = new SamplePlayer(ac2, new Sample(sketchPath("") + songPath)); // load up a new SamplePlayer using an included audio file
       gain2.addInput(player2); // connect the SamplePlayer to the master Gain
-      SamplePlayer player_start = new SamplePlayer(ac2, new Sample(sketchPath("") + start_music_src));
+      SamplePlayer player_start = new SamplePlayer(ac_start, new Sample(sketchPath("") + start_music_src));
       ac_start.out.addInput(player_start);
       
     }
