@@ -12,8 +12,6 @@ int highLevCount;
 class Ball {
   PVector pos;
   PVector velo;
-  PVector linePos;
-  PVector lineVelo;
 
   int dir;
   int currentPlatform;
@@ -39,8 +37,6 @@ class Ball {
   Ball (float x, float y, float r) {
     pos = new PVector(x, y); //Vec2 of x and y position
     velo = new PVector(0, 0); //Vec2 of x and y velocity
-    linePos = new PVector(0, y);
-    lineVelo = new PVector(0, 0);
     currentPlatform = 1;
     dir = 1;  
     radius = r;
@@ -74,22 +70,15 @@ class Ball {
 
     if (BelowDropLine() && !hitFloor) {
       hitFloor = true;
-    }
-
-    if (BelowMidLine()) {
+    } else if (BelowMidLine()) {
       currentZone =0;
-    }
-
-    if (AboveMidLine()) {
+    } else if (AboveMidLine()) {
       currentZone =1;
-    }
-
-    if (BelowDropLine()) {
+    } else if (BelowDropLine()) {
       currentZone = 3;
-    }
-
-    if (AboveTopLine())
+    } else if (AboveTopLine()) {
       currentZone = 2;
+    }
 
     if (pos.x == 40 && jump) {
       if (eRadius >= 52) {
@@ -326,10 +315,15 @@ class Ball {
       for (int i=0; i<radius; i++) {
         j[i] = pos.x;
         k[i] = pos.y;
-        if (!(jump && eRadius >= 52)) {
-          fill(255, 1, 1);
+        //if (!(jump && eRadius >= 52)) {
+        //  fill(255, 1, 1);
+        //} else {
+        //  fill(250, 255, 100);
+        //}
+        if (hitFloor) {
+          fill(255, fadeValue);
         } else {
-          fill(100, 255, 100);
+          fill(250, 255, 100);
         }
         ellipse (j[i], k[i], radius, radius);
       }
@@ -337,10 +331,15 @@ class Ball {
       for (int i=0; i<radius; i++) {
         j[i] = j [i+1];
         k[i] = k [i+1];
-        if (!(jump && eRadius >= 52)) {
-          fill(255, 1, 1);
+        //if (!(jump && eRadius >= 52)) {
+        //  fill(255, 1, 1);
+        //} else {
+        //  fill(100, 255, 100);
+        //}
+        if (hitFloor) {
+          fill(255, fadeValue);
         } else {
-          fill(100, 255, 100);
+          fill(250, 255, 100);
         }
         ellipse (j[i], k[i], i, i);
       }
@@ -368,7 +367,7 @@ class Ball {
     //else {
     //  fill(100, 255, 100, fadeValue);
     //}
-    
+
     ellipse(pos.x, pos.y, radius+1, radius+1);
     noFill();
     ellipse(b.pos.x, b.pos.y, eRadius, eRadius);

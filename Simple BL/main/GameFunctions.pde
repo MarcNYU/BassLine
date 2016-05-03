@@ -112,7 +112,7 @@ void drawFG() {
     stroke(fadeValue2);
     //rect(0, height-41, width-1, 40);
     textSize(22);
-    fill(255, fadeValue2);
+    fill(255);
     text("Percent Completion: " + min(round(percentCompletion * 100), 100) + "%", 20, 35);
     //fill(fadeValue);
     //noStroke();
@@ -183,7 +183,7 @@ void drawScore(int minutes, int seconds) {
   text("Bounce points in Low Zone: ", 80, 400);
   text("= " + bottom, 350, 400);
 
-  text("fail mode penalty: ", 80, 450);
+  text("Danger Zone penalty: ", 80, 450);
   text("= " + drop, 350, 450);
   //text( bottom , 350, 450);
   score = bottom  + mid + high + drop;
@@ -230,11 +230,11 @@ void input() {
       noLoop();
       if (b.currentZone != 3){
         b.bounceCounts[b.currentZone] += 1;
-        println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]);
+        //println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]);
       }
       else{
         b.bounceCounts[b.currentZone] -= 1;
-        println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]); 
+        //println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]); 
       }
       loop();
     }
