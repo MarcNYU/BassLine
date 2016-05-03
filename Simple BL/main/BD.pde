@@ -54,7 +54,8 @@ class BeatDetector {
     
     // the threshold is the gain level that will trigger the beat detector - this will vary on each recording
     peakDetector.setThreshold(cur_threshold);
-    //peakDetector.setThreshold(.95);
+    
+    //peakDetector.setThreshold(.1);
     peakDetector.setAlpha(0.99);
     peakDetector.addMessageListener(
       new Bead()

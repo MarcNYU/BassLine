@@ -153,26 +153,31 @@ void drawScore(int minutes, int seconds) {
   textSize(20);
   fill(fadeInVal);
   fadeInVal += 5;
-  if (state == 2)
+  if (state == 2){
     text("GAME OVER", width/2-textWidth("GAME OVER")/2, 150);
+    text("Percent Completion: ", 80, 250);
+    text(min(round(percentCompletion * 100), 100) + "%", 350, 250);
+  }
 
-  else if ( state == 4)
+  else if ( state == 4){
     text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, 150);
+    //drawGuides();
+  }
 
   textSize(15);
   float high = b.bounceCounts[2] * 4;
   float mid = b.bounceCounts[1] * 3;
   float bottom = b.bounceCounts[0] * 2;
   float drop = b.bounceCounts[3] * 2;
-  text("Bounce points in Top Zone: " + b.bounceCounts[2] + "  x 4 ", 80, 300);
+  text("Bounce points in Top Zone: ", 80, 300);
   text(" = " + high, 350, 300);
   //text( high, 350, 300);
 
-  text("Bounce points in Mid Zone: " + b.bounceCounts[1] + " x 3 ", 80, 350);
+  text("Bounce points in Mid Zone:  ", 80, 350);
   text("= " + mid, 350, 350);
   //text( mid  , 350, 350);
 
-  text("Bounce points in Low Zone: " + b.bounceCounts[0] + " x 2 ", 80, 400);
+  text("Bounce points in Low Zone: ", 80, 400);
   text("= " + bottom, 350, 400);
 
   text("fail mode penalty: ", 80, 450);
@@ -197,8 +202,7 @@ void drawScore(int minutes, int seconds) {
   //stroke(255);
   //line(40, 450, width-40, 450);
 
-  text("Percent Completion: ", 80, 250);
-  text(min(round(percentCompletion * 100), 100) + "%", 350, 250);
+  
 }
 
 void drawBG() {
@@ -211,10 +215,14 @@ void input() {
       jump = true;
       startOfGame = false;
       noLoop();
-      if (b.currentZone != 3)
+      if (b.currentZone != 3){
         b.bounceCounts[b.currentZone] += 1;
-      else
+        println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]);
+      }
+      else{
         b.bounceCounts[b.currentZone] -= 1;
+        println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]); 
+      }
       loop();
     }
   } else {
