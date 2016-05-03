@@ -18,6 +18,8 @@ Integer failTimer;
 Boolean failing;
 Boolean hitFloor;
 
+Boolean playtest;
+
 String[] songList = new String[4];
 String song1 = "I Heard It Through The Grapevine vs. Feel Good Inc.mp3";
 String song2 = "Major Lazer & DJ Snake - Lean On .mp3";  
@@ -70,7 +72,7 @@ void setup() {
   failTimer = 0;
   failing = false;
   hitFloor = false;
-
+  playtest = true;
   //background(0);
 }
 

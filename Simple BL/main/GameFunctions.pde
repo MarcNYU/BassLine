@@ -26,8 +26,9 @@ void initMusic() {
 
 void Game() {
   //println(frameRate);
-  //manageVolume();
-  fadeVolume();
+  manageVolume();
+  if(playtest)
+    fadeVolume();
   gainGlide.setValue(volume);
   println("percent completion: " + percentCompletion);
 
