@@ -21,10 +21,10 @@ Boolean hitFloor;
 Boolean playtest;
 
 String[] songList = new String[4];
-String song1 = "I Heard It Through The Grapevine vs. Feel Good Inc.mp3";
-String song2 = "Major Lazer & DJ Snake - Lean On .mp3";  
-String song3 = "Twenty One Pilots - Stressed Out Audio Only.mp3";
-String song4 = "SKRILLEX - BANGARANG (FT. SIRAH).mp3";
+String song1 = "Grapevine vs. Feel Good Inc (Demo).mp3";
+String song2 = "Lean On (Demo).mp3";  
+String song3 = "Twenty One Pilots - Stressed Out (Demo).mp3";
+String song4 = "SKRILLEX - BANGARANG (Demo).mp3";
 
 
 Integer[] songRuntimes = new Integer[4];
