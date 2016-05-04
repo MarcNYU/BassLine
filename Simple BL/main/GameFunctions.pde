@@ -28,7 +28,7 @@ void Game() {
   //println(frameRate);
   println(bq.nexts());
   manageVolume();
-  if(playtest)
+  if (playtest)
     fadeVolume();
   gainGlide.setValue(volume);
   //println("percent completion: " + percentCompletion);
@@ -55,6 +55,9 @@ void Game() {
   //score = min(fixDec((float)(ac.getTime()/songRuntimes[currentSongIdx]),2),100);
   makeRipples();
   drawFG();
+  if (b.pos.y > dropLine && hitFloor) {
+   b.bounceCounts[3] -= 1;
+  }
 }
 
 void resetGame() {
@@ -90,12 +93,12 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(0);
-    stroke(250,255,0);
+    stroke(250, 255, 0);
     ellipse(width/2, height, 300, 300);
     stroke(0);
     //rect(0, height-41, width-1, 40);
     textSize(22);
-    fill(250,255,0);
+    fill(250, 255, 0);
     text("Percent Completion: " + min(round(percentCompletion * 100), 100) + "%", 20, 35);
     //text("Minutes: " + round(minutes) + " Seconds: " + seconds + " Score: " + score, 20, 35);
     //fill(255);
@@ -112,7 +115,7 @@ void drawFG() {
     rect(0, 0, width-1, 40);
     //rect(-10, height-42, width+10, 40);
     fill(0);
-    stroke(250,255,0);
+    stroke(250, 255, 0);
     ellipse(width/2, height, 300, 300);
     stroke(fadeValue2);
     //rect(0, height-41, width-1, 40);
@@ -161,13 +164,11 @@ void drawScore(int minutes, int seconds) {
   textSize(20);
   fill(fadeInVal);
   fadeInVal += 5;
-  if (state == 2){
+  if (state == 2) {
     text("GAME OVER", width/2-textWidth("GAME OVER")/2, 150);
     text("Percent Completion: ", 80, 250);
     text(min(round(percentCompletion * 100), 100) + "%", 350, 250);
-  }
-
-  else if ( state == 4){
+  } else if ( state == 4) {
     text("You've made it to the end of the song!", width/2-textWidth("You've made it to the end of the song!")/2, 150);
     //drawGuides();
   }
@@ -209,8 +210,6 @@ void drawScore(int minutes, int seconds) {
 
   //stroke(255);
   //line(40, 450, width-40, 450);
-
-  
 }
 
 void manageVolume() {
@@ -218,18 +217,18 @@ void manageVolume() {
     volume = 1;
   } else if (b.pos.y > middle && b.pos.y < dropLine) {
     volume = .50;
-  }  else if (b.pos.y > dropLine) {
+  } else if (b.pos.y > dropLine) {
     volume = .20;
   }
 }
 
-void fadeVolume(){
-   if(percentCompletion >0.95){
-     if(volume > 0)
-       volume -= volumeFade;
-     //volume = 0;
+void fadeVolume() {
+  if (percentCompletion >0.95) {
+    if (volume > 0)
+      volume -= volumeFade;
+    //volume = 0;
     // println("volume after fade: " + volume);
-   }
+  }
 }
 
 
@@ -238,19 +237,23 @@ void drawBG() {
 
 void input() {
   if (keyPressed) {
-    if(key == 'b') {
-    //if ((key == ' ' || key == 'b')) {
+    if (key == 'b') {
+      //if ((key == ' ' || key == 'b')) {
       jump = true;
       startOfGame = false;
       noLoop();
-      if (b.currentZone != 3){
+      if (b.currentZone != 3) {
         b.bounceCounts[b.currentZone] += 1;
         //println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]);
-      }
-      else{
+      } else {
         b.bounceCounts[b.currentZone] -= 1;
-        //println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]); 
+        //println("current zone: " + b.currentZone + "bounce counts: "+ b.bounceCounts[b.currentZone]);
       }
+      //if (b.pos.y > dropLine && hitFloor) {
+      //  //noLoop();
+      //  b.bounceCounts[3] -= 1;
+      //  //loop();
+      //}
       loop();
     }
   } else {

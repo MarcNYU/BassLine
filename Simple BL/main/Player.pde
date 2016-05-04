@@ -62,7 +62,7 @@ class Ball {
     pos.y += velo.y;
 
 
-    if (startOfGame && min(round(percentCompletion * 100), 100) < 2) {
+    if (min(round(percentCompletion * 100), 100) < 2) {
       velo.y = 0;
     } else {
       velo.y += gravity;
