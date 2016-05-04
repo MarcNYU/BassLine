@@ -26,11 +26,12 @@ void initMusic() {
 
 void Game() {
   //println(frameRate);
+  println(bq.nexts());
   manageVolume();
   if(playtest)
     fadeVolume();
   gainGlide.setValue(volume);
-  println("percent completion: " + percentCompletion);
+  //println("percent completion: " + percentCompletion);
 
   if (b.pos.x == left || b.pos.x == right) {
     input();
@@ -147,7 +148,7 @@ void drawFG() {
   //ellipse(b.pos.x, b.pos.y, eRadius-1, eRadius-1);
 
   int dt = millis() - time;
-  eRadius -= (dt * 0.15);
+  eRadius -= (dt * 0.12);
   //eRadius += (dt * 0.1);
   if (eRadius < 20) eRadius = 20;
   //if (eRadius > 85) eRadius = 85;
