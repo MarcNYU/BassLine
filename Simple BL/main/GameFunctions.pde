@@ -5,7 +5,7 @@ int forward = 2000;  // how many milliseconds to look forward
 float spd;
 float fadeInVal = 1;
 float volumeFade = 0.4;
-
+boolean checkGap;
 
 void initGame() {
   b = new Ball(40, 100, 26);
@@ -26,7 +26,8 @@ void initMusic() {
 
 void Game() {
   //println(frameRate);
-  println(bq.nexts());
+  //println(bq.nexts());
+  //bq.holdGap();
   manageVolume();
   if (playtest)
     fadeVolume();
@@ -56,7 +57,7 @@ void Game() {
   makeRipples();
   drawFG();
   if (b.pos.y > dropLine && hitFloor) {
-   b.bounceCounts[3] -= 1;
+    b.bounceCounts[3] -= 1;
   }
 }
 
@@ -127,6 +128,20 @@ void drawFG() {
     //ellipse(width/2, height-45, eRadius, eRadius);
     popMatrix();
   }
+  //int bs[] = bq.nexts();
+  //for (int i = 0; i < bs.length; ++i) {
+
+  //  int y = 300 - bs[i] * 300 / forward;
+  //  //int y = beats[i] * height / forward;
+  //  //line (0, y, width, y);
+  //  if (checkGap) {
+  //    noStroke();
+  //    fill(255);
+  //    ellipse(width/2, height, y, y);
+  //    fill(0);
+  //    ellipse(width/2, height, y-10, y-10);
+  //  }
+  //}
 
   stroke(255);
   noFill();
@@ -237,7 +252,7 @@ void drawBG() {
 
 void input() {
   if (keyPressed) {
-    if (key == 'b') {
+    if (key == ' ') {
       //if ((key == ' ' || key == 'b')) {
       jump = true;
       startOfGame = false;

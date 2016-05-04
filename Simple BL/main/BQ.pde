@@ -38,6 +38,20 @@ class BeatQueue {
     return result;
   }
   
+  public void holdGap() {
+    int k;
+    for (int i = front, count=0; i != end; i = increase_index(i), ++count) {
+      k = i+1;
+      if (k > end) k = 0;
+      println((queue[i] - millis()) - (queue[k] - millis()));
+      if ((queue[i] - millis()) - (queue[k] - millis()) < 0) {
+        checkGap = true;
+      } else {
+        checkGap = false;
+      }
+    }
+  }
+  
   public boolean onBeat() {
     return next() - millis() < deviation || millis() - last_beat < deviation; 
   }

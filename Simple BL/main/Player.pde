@@ -64,6 +64,7 @@ class Ball {
 
     if (min(round(percentCompletion * 100), 100) < 2) {
       velo.y = 0;
+      jump = false;
     } else {
       velo.y += gravity;
     }
